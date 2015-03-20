@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    p1:minWidth="250dp"
+    p1:minHeight="250dp"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/relativeLayout1"
+    p1:background="#F7F3DE">
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        p1:layout_width="150dp"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/progressBar1"
+        p1:layout_alignParentRight="true"
+        p1:layout_alignParentTop="true"
+        p1:layout_marginRight="75dp"
+        p1:layout_marginTop="5dp" />
+    <TextView
+        p1:text="progress"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:layout_toLeftOf="@id/progressBar1"
+        p1:id="@+id/textView1"
+        p1:layout_alignTop="@id/progressBar1" />
+    <ImageView
+        p1:layout_centerInParent="true"
+        p1:layout_width="91dp"
+        p1:layout_height="116dp"
+        p1:id="@+id/imageView1"
+        p1:src="@drawable/Stethicon"
+        p1:layout_alignParentTop="true"
+        p1:layout_marginTop="50dp" />
+    <TextView
+        p1:text="Tell us about your Primary Care Doctor"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:layout_below="@id/imageView1"
+        p1:id="@+id/textView2"
+        p1:layout_centerHorizontal="true"
+        p1:textSize="28dp"
+        p1:gravity="center"
+        p1:layout_alignParentLeft="true"
+        p1:layout_alignParentRight="true"
+        p1:layout_marginLeft="50dp"
+        p1:layout_marginRight="50dp"
+        p1:layout_marginTop="25dp" />
+    <TextView
+        p1:text="This information will allow us to better understand your healthcare needs"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:layout_below="@id/textView2"
+        p1:gravity="center"
+        p1:textSize="14dp"
+        p1:layout_alignParentLeft="true"
+        p1:layout_alignParentRight="true"
+        p1:id="@+id/textView3"
+        p1:layout_marginTop="10dp"
+        p1:layout_marginLeft="40dp"
+        p1:layout_marginRight="40dp" />
+    <TextView
+        p1:text="My Doctor's Name is..."
+        p1:layout_width="wrap_content"
+        p1:layout_height="50dp"
+        p1:layout_below="@id/textView3"
+        p1:id="@+id/textView4"
+        p1:layout_alignParentRight="true"
+        p1:layout_alignParentLeft="true"
+        p1:drawableLeft="@drawable/ic_magn"
+        p1:drawablePadding="10dp"
+        p1:gravity="center_vertical"
+        p1:layout_marginTop="30dp"
+        p1:layout_marginLeft="15dp"
+        p1:layout_marginRight="15dp"
+        p1:background="@drawable/RoundBorderTextView" />
+    <TextView
+        p1:text="or"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/BetweenBars"
+        p1:layout_centerHorizontal="true"
+        p1:layout_below="@id/textView4"
+        p1:layout_marginTop="25dp" />
+    <View
+        p1:layout_width="60dp"
+        p1:layout_height="1dp"
+        p1:layout_below="@id/textView4"
+        p1:id="@+id/view1"
+        p1:background="#808080"
+        p1:layout_toLeftOf="@id/BetweenBars"
+        p1:layout_marginRight="15dp"
+        p1:layout_alignTop="@id/BetweenBars"
+        p1:layout_marginTop="9dp" />
+    <View
+        p1:layout_width="60dp"
+        p1:layout_height="1dp"
+        p1:layout_below="@id/textView4"
+        p1:id="@+id/view1"
+        p1:background="#808080"
+        p1:layout_toRightOf="@id/BetweenBars"
+        p1:layout_marginLeft="15dp"
+        p1:layout_alignTop="@id/BetweenBars"
+        p1:layout_marginTop="9dp" />
+    <Button
+        p1:text="Button"
+        p1:layout_width="300dp"
+        p1:layout_height="wrap_content"
+        p1:layout_below="@id/BetweenBars"
+        p1:id="@+id/button1"
+        p1:layout_centerHorizontal="true"
+        p1:layout_marginTop="25dp"
+        p1:background="@drawable/CompassBlueButton" />
+</RelativeLayout>

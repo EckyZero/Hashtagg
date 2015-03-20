@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{55FCE780-373E-42A3-86F3-ECD2F7B8A9B7}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>UnitTests.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)SeasonDalTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SeasonSalTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SeasonBLTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TeamDalTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TeamSalTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
+  </ItemGroup>
+</Project>

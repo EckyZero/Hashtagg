@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string></string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MinimumOSVersion</key>
+	<string></string>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+	</array>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ShadowsIntoLightTwo-Regular.ttf</string>
+		<string>CenturyGothic.ttf</string>
+		<string>CenturyGothicBold.ttf</string>
+		<string>Futura-Book-Bold.ttf</string>
+		<string>Futura-Book.ttf</string>
+		<string>FuturaStd-Bold.ttf</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>CFBundleIconFiles</key>
+	<array/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Compass uses your location to provide more accurate search results. </string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Compass uses your location to provide more accurate search results. </string>
+	<key>CFBundleDisplayName</key>
+	<string></string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.0.1</string>
+</dict>
+</plist>

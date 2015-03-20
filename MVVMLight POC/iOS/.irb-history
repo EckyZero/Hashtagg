@@ -1,0 +1,25 @@
+start_test_server_in_background
+query "*"
+stop_test_server
+exit
+start_test_server_in_background
+query "*"
+stop_test_server
+exit
+exit
+start_test_server_in_background
+"label marked:'#{error_message}'"
+query "label marked:'#{error_message}'"
+query "label marked:#{'Please Enter a Valid Email Address'}"
+query "label marked:{'Please Enter a Valid Email Address'}"
+query "label marked:'Please Enter a Valid Email Address'"
+stop_test_server
+exit
+start_test_server_in_background
+stop_test_server
+exit
+start_test_server_in_background
+stop_test_server
+exit
+start_test_server_in_background
+exit

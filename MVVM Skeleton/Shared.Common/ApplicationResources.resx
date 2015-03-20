@@ -1,0 +1,624 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LegalFirstName" xml:space="preserve">
+    <value>Legal First Name</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="PreferredFirstName" xml:space="preserve">
+    <value>Preferred First Name</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Birthdate" xml:space="preserve">
+    <value>Birthdate</value>
+  </data>
+  <data name="LastFourSocial" xml:space="preserve">
+    <value>Last 4 of SSN</value>
+  </data>
+  <data name="LastFourSocialFull" xml:space="preserve">
+    <value>Last 4 of Social Security Number</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="CreatePassword" xml:space="preserve">
+    <value>Create a Password</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="Transgender" xml:space="preserve">
+    <value>Transgender</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username (email)</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PIN" xml:space="preserve">
+    <value>PIN</value>
+  </data>
+  <data name="PasswordsDontMatch" xml:space="preserve">
+    <value>Oops! We type fast when we get excited, too. It looks like your passwords don’t match. Please click ‘OK’ to enter identical passwords.</value>
+  </data>
+  <data name="PincodesDontMatch" xml:space="preserve">
+    <value>Oops! We type fast when we get excited, too. It looks like your PINs don’t match. Please click ‘OK’ to enter an identical PIN.</value>
+  </data>
+  <data name="AlreadyRegisteredMessage" xml:space="preserve">
+    <value>Oops! It looks like this username already exists. Please login with your existing username and password. If you think we might have gotten confused, just send us an email to portal@compassphs.com.</value>
+  </data>
+  <data name="RegistrationErrorMessage" xml:space="preserve">
+    <value>Well, this is awkward! We had a little trouble processing your registration, could you try once more for us?</value>
+  </data>
+  <data name="NotActiveMessage" xml:space="preserve">
+    <value>Someone’s eager! The portal excites us, too. It looks like your Compass membership hasn’t started yet, or we are unable to match your information to an account in our system. Not to worry, your Health Pro consultant will email you as soon are you are eligible to log in. If you think this is an error, just send a message to portal@compassphs.com.</value>
+  </data>
+  <data name="MemberNotFoundMessage" xml:space="preserve">
+    <value>Uh oh! It looks like the personal information you’ve provided doesn’t match our records. Not to worry, just email us at portal@compassphs.com and we will get you taken care of.</value>
+  </data>
+  <data name="LoginInvalidMessage" xml:space="preserve">
+    <value>Oops! It looks like your username or password doesn’t match our records. Give it another shot, or select ‘Forgot Password’ to reset. Head’s Up: To protect your information, we will lock your account after 5 failed login attempts.</value>
+  </data>
+  <data name="LoginErrorMessage" xml:space="preserve">
+    <value>Well, this is awkward! We had a little trouble processing your login, could you try once more for us?</value>
+  </data>
+  <data name="LoginLockedMessage" xml:space="preserve">
+    <value>Uh oh! It looks like you reached the maximum number of login attempts. To protect your account, you are unable to login at this time. Please email us at portal@compassphs.com or call 800.513.1667 x631 for assistance</value>
+  </data>
+  <data name="TooltipPreferredFirstNameMessage" xml:space="preserve">
+    <value>We would like to know what first name you prefer, in the event that we need to provide you more specific information. Our Health Pros want to ensure that we are advocating for you in a way that is personal and attempt to do what is possible to make your experience with us most comfortable.</value>
+  </data>
+  <data name="TooltipCreateAPasswordMessage" xml:space="preserve">
+    <value>We need you to create a password that you can use to reset information on the app. This password can also be used to access your information via our online at member.compassphs.com.</value>
+  </data>
+  <data name="TooltipBirthdayMessage" xml:space="preserve">
+    <value>We use your birthdate information to validate with your employer or spouses employer that you are registered for the service. This information is also used to make relevant recommendations and provide you with a better more personalized experience.</value>
+  </data>
+  <data name="TooltipLastFourSsnMessage" xml:space="preserve">
+    <value>We use your Last 4 of your SSN to validate with your employer or spouses employer that you are registered for the service. This information is also used for confirmation security purposes. We will be providing you with confidential and personal medical information and want to do everything possible to ensure your information is safe and secure.</value>
+  </data>
+  <data name="TooltipLoginPasswordMessage" xml:space="preserve">
+    <value>We need you to enter your password to login to the app and access protected healthcare data.</value>
+  </data>
+  <data name="PINLockedOutMessage" xml:space="preserve">
+    <value>Someone’s eager! The portal excites us, too. It looks like you reached the maximum number of login attempts with your PIN code. To protect your privacy, we’re going to send you back to the login page where you can enter your full password and create a new 4 digit PIN.</value>
+  </data>
+  <data name="DoctorPromptSearchPlaceholder" xml:space="preserve">
+    <value>Search Doctor's name</value>
+  </data>
+  <data name="ProcedurePromptPlaceholder" xml:space="preserve">
+    <value>Ex. Colonoscopy</value>
+  </data>
+  <data name="ProcedureLookupPlaceholder" xml:space="preserve">
+    <value>Ex. Colonoscopy</value>
+  </data>
+  <data name="ProcedureLookupErrorMessage" xml:space="preserve">
+    <value>We didn't find any results for</value>
+  </data>
+  <data name="ProcedureLookupErrorDetailMessage" xml:space="preserve">
+    <value>If you aren’t sure how to spell the name of your procedure, try typing in the first few letters. We will provide hints as you type to help you out.</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="TryAgainLater" xml:space="preserve">
+    <value>Please Try Again Later</value>
+  </data>
+  <data name="FillOutAllFields" xml:space="preserve">
+    <value>Please fill out every field in order to register.</value>
+  </data>
+  <data name="INeedHelpWith" xml:space="preserve">
+    <value>I Need Help With...</value>
+  </data>
+  <data name="AnErrorOccurred" xml:space="preserve">
+    <value>An Error Occurred</value>
+  </data>
+  <data name="NoCardsFound" xml:space="preserve">
+    <value>No Cards Found</value>
+  </data>
+  <data name="CheckInternetConnection" xml:space="preserve">
+    <value>Check Your Internet Connection.</value>
+  </data>
+  <data name="DoctorLookupErrorMessage" xml:space="preserve">
+    <value>We didn't find any results for</value>
+  </data>
+  <data name="PrescriptionLookupErrorMessage" xml:space="preserve">
+    <value>We didn't find any results for</value>
+  </data>
+  <data name="DoctorLookupSearchErrorMessage" xml:space="preserve">
+    <value>TODO: get proper lingo from mktng</value>
+  </data>
+  <data name="DoctorLookupErrorDetailMessage" xml:space="preserve">
+    <value>Make sure you are spelling your doctor's name correctly or that they are one of the following specialists (Internist, Family Practitioner).</value>
+  </data>
+  <data name="PrescriptionLookupErrorDetailMessage" xml:space="preserve">
+    <value>If you aren’t sure how to spell the name of your medication, try typing in the first few letters. We will provide hints as you type to help you out.</value>
+  </data>
+  <data name="DoctorLookupPlaceholder" xml:space="preserve">
+    <value>Search Doctor's name</value>
+  </data>
+  <data name="PrescriptionLookupPlaceholder" xml:space="preserve">
+    <value>Search prescription's name</value>
+  </data>
+  <data name="PrescriptionPromptPlaceholder" xml:space="preserve">
+    <value>Ex. Ezetimbe (Zetia)</value>
+  </data>
+  <data name="LookupAddingMedicationErrorMessage" xml:space="preserve">
+    <value>An error occured while trying to save your medication. Please try again.</value>
+  </data>
+  <data name="LookupAddingEntityErrorMessage" xml:space="preserve">
+    <value>An error occured while trying to save your selection. Please try again.</value>
+  </data>
+  <data name="ErrorAddingDependentMessage" xml:space="preserve">
+    <value>An error occured while trying to add your family member. Please try again.</value>
+  </data>
+  <data name="LookupRemovingEntityErrorMessage" xml:space="preserve">
+    <value>An error occured while trying to delete your selection. Please try again.</value>
+  </data>
+  <data name="LookupEditingEntityErrorMessage" xml:space="preserve">
+    <value>An error occured while trying to edit your selection. Please try again.</value>
+  </data>
+  <data name="LookupRetrievingPatientProvidersErrorMessage" xml:space="preserve">
+    <value>TODO: get proper lingo from mktng</value>
+  </data>
+  <data name="LookupRetrievingPatientPrescriptionsErrorMessage" xml:space="preserve">
+    <value>TODO: get proper lingo from mktng</value>
+  </data>
+  <data name="LookupRetrievingPatientProceduresErrorMessage" xml:space="preserve">
+    <value>TODO: get proper lingo from mktng</value>
+  </data>
+  <data name="LookupRetrievingDependentsErrorMessage" xml:space="preserve">
+    <value>An error occured while trying to retrieve your list of dependents.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="RemoveAlertTitle" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="RemoveAlertMessage" xml:space="preserve">
+    <value>You will not be able to undo any changes.</value>
+  </data>
+  <data name="Dosage" xml:space="preserve">
+    <value>Dosage</value>
+  </data>
+  <data name="Frequency" xml:space="preserve">
+    <value>Frequency</value>
+  </data>
+  <data name="ProcedurePromptDatePlaceholder" xml:space="preserve">
+    <value>Estimated date</value>
+  </data>
+  <data name="ProcedureDate" xml:space="preserve">
+    <value>Procedure Date</value>
+  </data>
+  <data name="CalendarTitle" xml:space="preserve">
+    <value>Select Date</value>
+  </data>
+  <data name="SaveIt" xml:space="preserve">
+    <value>Save it</value>
+  </data>
+  <data name="AddIt" xml:space="preserve">
+    <value>Add it</value>
+  </data>
+  <data name="Relationship" xml:space="preserve">
+    <value>Relationship</value>
+  </data>
+  <data name="AddAFamilyMember" xml:space="preserve">
+    <value>Add a family member</value>
+  </data>
+  <data name="Partner" xml:space="preserve">
+    <value>Partner</value>
+  </data>
+  <data name="Child" xml:space="preserve">
+    <value>Child</value>
+  </data>
+  <data name="Parent" xml:space="preserve">
+    <value>Parent</value>
+  </data>
+  <data name="Guardian" xml:space="preserve">
+    <value>Guardian</value>
+  </data>
+  <data name="MedicalPOA" xml:space="preserve">
+    <value>Medical POA</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Spouse" xml:space="preserve">
+    <value>Spouse</value>
+  </data>
+  <data name="Pet" xml:space="preserve">
+    <value>Pet</value>
+  </data>
+  <data name="Self" xml:space="preserve">
+    <value>Self</value>
+  </data>
+  <data name="PINNotValid" xml:space="preserve">
+    <value>PIN Not Valid</value>
+  </data>
+  <data name="IncentiveSummaryUncompletedTitle" xml:space="preserve">
+    <value>Incentives you can earn</value>
+  </data>
+  <data name="IncentiveSummaryUncompletedSubtitle" xml:space="preserve">
+    <value>There are good resources to be healthy-some of them earn rewards you can spend! We'll even tell you when it's getting time to do them :-)</value>
+  </data>
+  <data name="IncentiveSummaryCompletedTitle" xml:space="preserve">
+    <value>Incentives you completed</value>
+  </data>
+  <data name="RecommendationSummaryTitle" xml:space="preserve">
+    <value>Recommended actions</value>
+  </data>
+  <data name="RecommendationSummarySubtitle" xml:space="preserve">
+    <value>Being healthy is worth more than money. Here's some things everyone should do for their own sake.</value>
+  </data>
+  <data name="MyIncentives" xml:space="preserve">
+    <value>My Incentives</value>
+  </data>
+  <data name="DoctorName" xml:space="preserve">
+    <value>Doctor Name</value>
+  </data>
+  <data name="CongratsOnCompleting" xml:space="preserve">
+    <value>Congrats on completing this!</value>
+  </data>
+  <data name="LetsGetVerificationDetails" xml:space="preserve">
+    <value>Let's get the verification details. What is the name of the doctor you saw?</value>
+  </data>
+  <data name="LetsGetVerificationDetailsWithProcedure" xml:space="preserve">
+    <value>Let's get the verification details. What is the procedure and the name of the doctor you saw?</value>
+  </data>
+  <data name="MyDoctorsNameIs" xml:space="preserve">
+    <value>My Doctor's name is...</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed - Nice Work!</value>
+  </data>
+  <data name="Due" xml:space="preserve">
+    <value>Due</value>
+  </data>
+  <data name="MarkActionAsCompleted" xml:space="preserve">
+    <value>Mark as completed</value>
+  </data>
+  <data name="CannotCompleteAction" xml:space="preserve">
+    <value>Cannot complete</value>
+  </data>
+  <data name="DateCompleted" xml:space="preserve">
+    <value>Date Completed</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="WhenDidYouCompleteTheProcedure" xml:space="preserve">
+    <value>When did you complete the procedure?</value>
+  </data>
+  <data name="IncentiveCompletedAttestionText" xml:space="preserve">
+    <value>Compass and your employer value your health and would like to encourage everyone to stay up to date with wellness exams and other important health activities. In some circumstances, your procedures may not have been captured in the claims data received by Compass. This submission will serve as a self-attestation of the completion of a requirement. This attestation is applicable to the active period of your employer's existing incentive program. As such, this attestation is not indefinite and may require an update at a future time.  In addition, this submission gives Compass permission to perform audits to verify the accuracy of the information provided. By providing this information, you confirm that you understand that if you falsify any information, you may forfeit access to preferred plans, savings, incentives and health fund contributions, and may face other disciplinary actions based on your employee code of conduct.</value>
+  </data>
+  <data name="IncentiveCantCompleteAttestationText" xml:space="preserve">
+    <value>Compass and your employer value your health and would like to encourage everyone to stay up to date with wellness exams and other important health activities. In some circumstances, you may request to be exempt from completing an activity. This submission will serve as a formal request to be exempt for the completion of a requirement. This exemption is applicable to the active period of your employer's existing incentive program. As such, this exemption is not indefinite and may require an update at a future time.  In addition, this submission gives Compass permission to perform audits to verify the accuracy of the information provided. By providing this information, you confirm that you understand that if you falsify any information, you may forfeit access to preferred plans, savings, incentives and health fund contributions, and may face other disciplinary actions based on your employee code of conduct.</value>
+  </data>
+  <data name="IncentiveAttestationDefaultDisclaimer" xml:space="preserve">
+    <value>By typing my full name, I am acknowledging and consenting to be held to these standards.</value>
+  </data>
+  <data name="IncentiveCantCompleteTooltipText" xml:space="preserve">
+    <value>Thank you for your attestation. The purpose of this attestation is to indicate a valid medical reason for which you are prevented from completing an action that is part of your employer’s incentive program. Compass will process, retain, and protect this information subject to the Health Insurance Portability and Accountability Act (HIPAA). If you have questions about our full privacy protocols, our full privacy policy is available at http://www.compassphs.com/CompassUserTerms.pdf</value>
+  </data>
+  <data name="Attestation" xml:space="preserve">
+    <value>Attestation</value>
+  </data>
+  <data name="MyFullName" xml:space="preserve">
+    <value>My Full Name</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="CompletedDate" xml:space="preserve">
+    <value>Completed Date</value>
+  </data>
+  <data name="CannotCompleteTask" xml:space="preserve">
+    <value>Cannot complete task</value>
+  </data>
+  <data name="IncentiveActionSorryCantComplete" xml:space="preserve">
+    <value>We're sorry you can't complete your %@ at this time.</value>
+  </data>
+  <data name="IncentiveActionCantCompleteDescription" xml:space="preserve">
+    <value>We know there can be a lot of reasons something can't happen be done right now. Let us know what's going on-and we hope you can come back later and have it done.</value>
+  </data>
+  <data name="ChooseAReason" xml:space="preserve">
+    <value>Choose a reason</value>
+  </data>
+  <data name="WhatIsYourDoctorsName" xml:space="preserve">
+    <value>What is your doctor's name?</value>
+  </data>
+  <data name="IncentiveCantCompletePromptText" xml:space="preserve">
+    <value>We know there can be a lot of reasons something can’t be done right now. Let us know what’s going on—and we hope you can come back later and have it done.</value>
+  </data>
+  <data name="IncentiveActionDetailsDownloadError" xml:space="preserve">
+    <value>Oops! We were unable to get you the information you need for this action from the server. Please try again.</value>
+  </data>
+  <data name="ProcedureName" xml:space="preserve">
+    <value>Procedure name</value>
+  </data>
+  <data name="PremiumDifferential" xml:space="preserve">
+    <value>Premium Differential</value>
+  </data>
+  <data name="AccountCredit" xml:space="preserve">
+    <value>Account Credit</value>
+  </data>
+  <data name="MyHealthDetails" xml:space="preserve">
+    <value>My Health Details</value>
+  </data>
+  <data name="HealthDetailsProcedurePromptHeader" xml:space="preserve">
+    <value>Tell us about any upcoming procedures or tests.</value>
+  </data>
+  <data name="HealthDetailsProcedurePromptBody" xml:space="preserve">
+    <value>Surgical procedure, mammogram, MRI, endoscopy, etc.</value>
+  </data>
+  <data name="HealthDetailsProcedurePromptFooter" xml:space="preserve">
+    <value>This information allows us to:
+• Identify risks before they become unmanagable
+• Provide a record of progress
+• Check off one of your incentives to save</value>
+  </data>
+  <data name="PrescriptionsPromptNotAdded" xml:space="preserve">
+    <value>You have not added any medications yet.</value>
+  </data>
+  <data name="PrescriptionPromptTile" xml:space="preserve">
+    <value>Are you currently taking any Medications?</value>
+  </data>
+  <data name="PrescriptionPromptButtonTitle" xml:space="preserve">
+    <value>Add a medication</value>
+  </data>
+  <data name="PrescriptionPromptFooterText" xml:space="preserve">
+    <value>This information allows us to:
+• Keep an up-to-date record of your medications
+• Provide alternative cheaper medication options
+• Send your Prescription information to your doctor</value>
+  </data>
+  <data name="PrescriptionPromptPageTitle" xml:space="preserve">
+    <value>My Medications</value>
+  </data>
+  <data name="PrescriptionPromptListHeader" xml:space="preserve">
+    <value>Taking control of what you spend on Prescriptions can be difficult. Let us help you out by telling us what you are currently taking.</value>
+  </data>
+  <data name="PrescriptionPromptListAddButtonTitle" xml:space="preserve">
+    <value>Add another prescription</value>
+  </data>
+  <data name="HealthDetailsProcedurePromptButtonTitle" xml:space="preserve">
+    <value>Add an upcoming procedure</value>
+  </data>
+  <data name="HealthDetailsListHeader" xml:space="preserve">
+    <value>Taking control of your health can be a bit daunting. Let us help you out by looking at your results below and identifying key areas of your health to tackle first.</value>
+  </data>
+  <data name="UpcomingProcedures" xml:space="preserve">
+    <value>MY UPCOMING PROCEDURES &amp; TESTS</value>
+  </data>
+  <data name="ProcedureHistory" xml:space="preserve">
+    <value>PROCEDURE HISTORY</value>
+  </data>
+  <data name="AddProcedure" xml:space="preserve">
+    <value>Add a new procedure or test</value>
+  </data>
+  <data name="MyBiometricResults" xml:space="preserve">
+    <value>My Biometric Results</value>
+  </data>
+  <data name="MyBiometricResultsDescription" xml:space="preserve">
+    <value>Text here about risk factor counts and how to interpret the results below.</value>
+  </data>
+  <data name="LogoutPromptBody" xml:space="preserve">
+    <value>Are you sure you want to Logout?</value>
+  </data>
+  <data name="LogoutPromptTitle" xml:space="preserve">
+    <value>Logout?</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="SettingsPageTitle" xml:space="preserve">
+    <value>My Settings</value>
+  </data>
+  <data name="SelectDate" xml:space="preserve">
+    <value>Select date</value>
+  </data>
+  <data name="ReadAndSignBelow" xml:space="preserve">
+    <value>Read and sign below</value>
+  </data>
+  <data name="ViewMyIncentives" xml:space="preserve">
+    <value>View my incentives</value>
+  </data>
+  <data name="MyBiometricResultsEmptyMessage" xml:space="preserve">
+    <value>You currently have no biometric results to view. This could be either because you have not been screened yet or because we are still processing your screening results.</value>
+  </data>
+  <data name="HealthDetailsConditionPromptHeader" xml:space="preserve">
+    <value>Do you have a condition we should know about?</value>
+  </data>
+  <data name="HealthDetailsConditionPromptBody" xml:space="preserve">
+    <value>We will consider this information when making recommendations to you.</value>
+  </data>
+  <data name="HealthDetailsConditionPromptButtonTitle" xml:space="preserve">
+    <value>Add a Condition</value>
+  </data>
+  <data name="HealthDetailsConditionListAddButtonTitle" xml:space="preserve">
+    <value>Add a new diagnosis</value>
+  </data>
+  <data name="ConditionLookupPlaceholder" xml:space="preserve">
+    <value>Search Condition by name</value>
+  </data>
+  <data name="ConditionLookupErrorMessage" xml:space="preserve">
+    <value>We didn't find any results for</value>
+  </data>
+  <data name="ConditionLookupErrorDetailMessage" xml:space="preserve">
+    <value>If you aren’t sure how to spell the name of your condition, try typing in the first few letters. We will provide hints as you type to help you out.</value>
+  </data>
+	<data name="HealthDetailsResultPromptHeader" xml:space="preserve">
+    <value>Curious about how to be a bit more proactive?</value>
+  </data>
+  <data name="HealthDetailsResultPromptBody" xml:space="preserve">
+    <value>We can help you identify areas of concern.</value>
+  </data>
+  <data name="HealthDetailsResultPromptButtonTitle" xml:space="preserve">
+    <value>Set up a screening</value>
+  </data>
+  <data name="PINWrongMessage" xml:space="preserve">
+    <value>Oops! We type fast when we get excited, too. It looks like your PIN doesn’t match what we have saved for you. Please click ‘OK’ to retry.</value>
+  </data>
+  <data name="BloodPressureDefiniton" xml:space="preserve">
+    <value>Blood pressure is the pressure of the blood in the circulatory system. It is measured as systolic over diastolic.</value>
+  </data>
+  <data name="HdlCholesterolDefiniton" xml:space="preserve">
+    <value>HDL cholesterol is the well-behaved "good cholesterol." This friendly scavenger cruises the bloodstream. As it does, it removes harmful bad cholesterol from where it doesn't belong.</value>
+  </data>
+  <data name="GlucoseDefiniton" xml:space="preserve">
+    <value>A blood glucose test measures the amount of a type of sugar, called glucose, in your blood. Glucose comes from carbohydrate foods. It is the main source of energy used by the body.</value>
+  </data>
+  <data name="TriglyceridesDefiniton" xml:space="preserve">
+    <value>Triglycerides are a type of fat (lipid) found in your blood. When you eat, your body converts any calories it doesn't need to use right away into triglycerides.</value>
+  </data>
+  <data name="WaistCirumferenceDefinition" xml:space="preserve">
+    <value>Your waist size is a clue to whether you're at high risk for type 2 diabetes, high blood pressure, high cholesterol, and heart disease.</value>
+  </data>
+</root>

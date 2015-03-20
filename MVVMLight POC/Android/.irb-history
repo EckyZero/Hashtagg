@@ -1,0 +1,50 @@
+query "Button marked:'Log in'"button
+query "button marked:'Log in'"
+query "button marked:'Log in'"id
+query "button id:'Log in'"
+query "button id:'LoginButton'"
+"button marked:'LoginButton'"
+query "button marked:'LoginButton'"
+query "button marked:'Log In'"
+stop_test_server
+exit
+start_test_server_in_background
+query "label marked:'Please Enter a Valid Email Address'"
+query "label marked:'Please Enter a Valid Email Address'"textview
+query "textview marked:'Please Enter a Valid Email Address'"
+query "textview text:'Please Enter a Valid Email Address'"
+query "textview index:0"
+query "textview index:1"
+query "textview index:-1"
+query "textview index:-1"
+query "textview index:-1"
+query "textview index:1"
+query "textview index:0"
+query "label index:0"
+query "label"
+query "textview"
+query "*"
+query "com.android.internal.widget.DialogTitle"
+query "DialogTitle"
+query "DialogTitle marked:'Please Enter a Valid Email Address'"
+query "DialogTitle marked:'Please Enter a Valid Email Address'"query button
+query "button"
+query "button marked:'OK'"
+query "button marked:'OK'"exit
+exit
+start_test_server_in_background
+query "label marked:'European Soccer Seasons'"
+query "*"
+query "textview marked:'European Soccer Seasons'"
+exit
+start_test_server_in_background
+start_test_server_in_background
+query "textview"
+query "textview marked:'Premier League 2014/15"
+query "textview marked:'Premier League 2014/15'"
+tap "textview marked:'Premier League 2014/15'"
+tap_mark "textview marked:'Premier League 2014/15'"
+tap_mark "'Premier League 2014/15'"
+tap_mark "Premier League 2014/15"
+query "textview marked:'Manchester United FC'"
+exit
