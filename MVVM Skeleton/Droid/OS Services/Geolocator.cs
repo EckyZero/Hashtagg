@@ -1,30 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Android.App;
 using Android.Content;
 using Android.Locations;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+using CompassMobile.Shared.Common;
 using Shared.Common;
 
 namespace Droid
 {
     public class Geolocator : BaseService, IGeolocator
     {
-        private TaskCompletionSource<Android.Locations.Location> _locationRecieved;
+        private TaskCompletionSource<Location> _locationRecieved;
 
-        private LocationManager Manager
-        {
-            get
-            {
-                return _activity.GetSystemService(Context.LocationService) as LocationManager;
-            }
-        }
+        private LocationManager _locMgr;
 
         private GeoLocation _curLocation = null;
 
@@ -32,20 +18,22 @@ namespace Droid
         {
             if (_curLocation == null)
             {
-                _locationRecieved = new TaskCompletionSource<Android.Locations.Location>();
+                _locMgr = _activity.GetSystemService(Context.LocationService) as LocationManager;
+
+                _locationRecieved = new TaskCompletionSource<Location>();
 
                 Criteria locationCriteria = new Criteria();
 
                 locationCriteria.Accuracy = Accuracy.Coarse;
                 locationCriteria.PowerRequirement = Power.Low;
 
-                string locationProvider = Manager.GetBestProvider(locationCriteria, true);
+                string locationProvider = _locMgr.GetBestProvider(locationCriteria, true);
 
-                if (locationProvider != null && Manager.IsProviderEnabled(locationProvider))
+                if (locationProvider != null && _locMgr.IsProviderEnabled(locationProvider))
                 {
-                    Manager.RequestLocationUpdates(locationProvider, 2000, 1, Activity);
+                    _locMgr.RequestLocationUpdates(locationProvider, 2000, 1, Activity);
 
-                    Android.Locations.Location loc = await _locationRecieved.Task.TimeoutAfter(1000);
+                    Location loc = await _locationRecieved.Task.TimeoutAfter(1000);
 
                     if (loc != null)
                     {
@@ -57,20 +45,14 @@ namespace Droid
             return _curLocation;
         }
 
-        public void LocationChanged(Android.Locations.Location location)
+        public void LocationChanged(Location location)
         {
-            Manager.RemoveUpdates(Activity);
+             _locMgr.RemoveUpdates(Activity);
 
             if (_locationRecieved != null)
             {
                 _locationRecieved.TrySetResult(location);
             }
         }
-
-		public bool IsDeniedFromUsingGeoLocation ()
-		{
-            return !Manager.IsProviderEnabled(LocationManager.GpsProvider) && !Manager.IsProviderEnabled(LocationManager.NetworkProvider);
-		}
-
     }
 }

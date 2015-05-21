@@ -4,7 +4,7 @@ using Shared.Common;
 
 namespace iOS
 {
-    public class DispatcherService : BaseService, IDispatcherService
+	public class DispatcherService : IDispatcherService
 	{
 		private NSObject _invoker;
 

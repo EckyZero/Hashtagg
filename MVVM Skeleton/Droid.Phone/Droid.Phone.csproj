@@ -6,18 +6,19 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{8E25E0C6-BAAF-45DE-AE8C-0A7A6B84DE23}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CompassMobile.Droid.Phone</RootNamespace>
+    <RootNamespace>Droid.Phone</RootNamespace>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidApplication>True</AndroidApplication>
-    <AssemblyName>CompassMobile.Droid.Phone</AssemblyName>
+    <AssemblyName>Droid.Phone</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>
+    </TargetFrameworkVersion>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
+    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -27,21 +28,10 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
-    <MandroidI18n>
-    </MandroidI18n>
-    <MonoDroidExtraArgs>
-    </MonoDroidExtraArgs>
-    <AndroidLinkSkip>
-    </AndroidLinkSkip>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <AndroidStoreUncompressedFileExtensions>
-    </AndroidStoreUncompressedFileExtensions>
-    <JavaOptions>
-    </JavaOptions>
+    <ConsolePause>false</ConsolePause>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -50,45 +40,23 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <AndroidLinkSkip>
+    </AndroidLinkSkip>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <AndroidSupportedAbis>armeabi-v7a;x86</AndroidSupportedAbis>
+    <AndroidSupportedAbis>armeabi-v7a,x86</AndroidSupportedAbis>
+    <AndroidStoreUncompressedFileExtensions>
+    </AndroidStoreUncompressedFileExtensions>
+    <MandroidI18n>
+    </MandroidI18n>
+    <JavaMaximumHeapSize>
+    </JavaMaximumHeapSize>
+    <JavaOptions>
+    </JavaOptions>
     <MonoDroidExtraArgs>
     </MonoDroidExtraArgs>
     <PlatformTarget>x86</PlatformTarget>
-    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
-    <AndroidLinkSkip>System.Core</AndroidLinkSkip>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TestCloud|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TESTCLOUD</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
-    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
-    <MonoDroidExtraArgs>
-    </MonoDroidExtraArgs>
-    <WarningLevel>4</WarningLevel>
-    <Optimize>false</Optimize>
-    <AndroidLinkSkip>System.Core</AndroidLinkSkip>
-    <MandroidI18n>
-    </MandroidI18n>
-    <AndroidStoreUncompressedFileExtensions>
-    </AndroidStoreUncompressedFileExtensions>
-    <JavaOptions>
-    </JavaOptions>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Refractored.PagerSlidingTabStrip">
-      <HintPath>..\packages\Refractored.PagerSlidingTabStrip.1.0.1\lib\MonoAndroid10\Refractored.PagerSlidingTabStrip.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -121,6 +89,9 @@
     <Reference Include="AutoMapper.Android">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\MonoAndroid\AutoMapper.Android.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.9.1.107\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
+    </Reference>
     <Reference Include="GalaSoft.MvvmLight">
       <HintPath>..\packages\MvvmLightLibs.5.1.1.0\lib\monoandroid1\GalaSoft.MvvmLight.dll</HintPath>
     </Reference>
@@ -145,348 +116,25 @@
     <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
       <HintPath>..\packages\Xamarin.Android.Support.v7.RecyclerView.21.0.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
     </Reference>
-    <Reference Include="GCM.Client">
-      <HintPath>..\Components\GCMClient-1.0\lib\android\GCM.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Insights">
-      <HintPath>..\packages\Xamarin.Insights.1.9.1.107\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
-    </Reference>
-    <Reference Include="AndHUD">
-      <HintPath>..\Components\AndHUD-1.3.1\lib\android\AndHUD.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\CalendarActivity.cs" />
-    <Compile Include="Activities\ConfirmPINResetActivity.cs" />
-    <Compile Include="Activities\ConfirmPINActivity.cs" />
-    <Compile Include="Activities\CreatePINResetActivity.cs" />
-    <Compile Include="Activities\DependentInformationActivity.cs" />
-    <Compile Include="Activities\DependentPromptActivity.cs" />
-    <Compile Include="Activities\DependentPromptListActivity.cs" />
-    <Compile Include="Activities\EnterPINResetActivity.cs" />
-    <Compile Include="Activities\GenericConditionsLookupActivity.cs" />
-    <Compile Include="Activities\GenericLookupBaseActivity.cs" />
-    <Compile Include="Activities\GenericPrescriptionInformationActivity.cs" />
-    <Compile Include="Activities\GenericPrescriptionLookupActivity.cs" />
-    <Compile Include="Activities\GenericProcedureInformationActivity.cs" />
-    <Compile Include="Activities\GenericProcedureLookupActivity.cs" />
-    <Compile Include="Activities\GetConnectedLookupBaseActivity.cs" />
-    <Compile Include="Activities\GetConnectedPromptBaseActivity.cs" />
-    <Compile Include="Activities\GetConnectedPromptListBaseActivity.cs" />
-    <Compile Include="Activities\HamburgerMenuActivity.cs" />
-    <Compile Include="Activities\Incentives\IncentiveAttestationBaseActivity.cs" />
-    <Compile Include="Activities\Incentives\IncentiveAttestationInformationBaseActivity.cs" />
-    <Compile Include="Activities\Incentives\MarkAsCompleted\IncentiveCompletedAttestationActivity.cs" />
-    <Compile Include="Activities\Incentives\MarkAsCompleted\IncentiveCompletedInformationActivity.cs" />
-    <Compile Include="Activities\Incentives\MarkCannotComplete\IncentiveCantCompleteAttestationActivity.cs" />
-    <Compile Include="Activities\Incentives\MarkCannotComplete\InventiveCantCompleteDoctorVerifyActivity.cs" />
-    <Compile Include="Activities\Incentives\MarkCannotComplete\IncentiveCantCompleteReasonPromptActivity.cs" />
-    <Compile Include="Activities\Incentives\MarkCannotComplete\IncentiveCantCompletePromptActivity.cs" />
-    <Compile Include="Activities\Incentives\PromptBaseActivity.cs" />
-    <Compile Include="Activities\Incentives\MarkAsCompleted\IncentiveCompletedPromptActivity.cs" />
-    <Compile Include="Activities\Incentives\IncentiveActionDetailActivity.cs" />
-    <Compile Include="Activities\Incentives\IncentiveDetailActivity.cs" />
-    <Compile Include="Activities\PINBaseActivity.cs" />
-    <Compile Include="Activities\CreatePINActivity.cs" />
-    <Compile Include="Activities\DoctorLookupActivity.cs" />
-    <Compile Include="Activities\DoctorPromptActivity.cs" />
-    <Compile Include="Activities\DoctorPromptListActivity.cs" />
-    <Compile Include="Activities\EnterPINActivity.cs" />
-    <Compile Include="Activities\GetStartedActivity.cs" />
-    <Compile Include="Activities\LoginActivity.cs" />
-    <Compile Include="Activities\PrescriptionInformationActivity.cs" />
-    <Compile Include="Activities\PrescriptionLookupActivity.cs" />
-    <Compile Include="Activities\PrescriptionPromptActivity.cs" />
-    <Compile Include="Activities\PrescriptionPromptListActivity.cs" />
-    <Compile Include="Activities\ProcedureInformationActivity.cs" />
-    <Compile Include="Activities\ProcedureLookupActivity.cs" />
-    <Compile Include="Activities\ProcedurePromptActivity.cs" />
-    <Compile Include="Activities\ProcedurePromptListActivity.cs" />
-    <Compile Include="Activities\RegisterActivity.cs" />
-    <Compile Include="Activities\SettingsDependentInformationActivity.cs" />
-    <Compile Include="Activities\SplashActivity.cs" />
-    <Compile Include="Activities\TooltipActivity.cs" />
-    <Compile Include="Fragments\BaseFragment.cs" />
-    <Compile Include="Fragments\HealthDetailsConditionsListFragment.cs" />
-    <Compile Include="Fragments\HomeFragment.cs" />
-    <Compile Include="Fragments\IncentivesSummaryFragment.cs" />
-    <Compile Include="Fragments\MedicationListFragment.cs" />
-    <Compile Include="Fragments\MyHealthDetailsBaseListFragment.cs" />
-    <Compile Include="Fragments\MyHealthDetailsProcedureListFragment.cs" />
-    <Compile Include="Fragments\MyHealthDetailsConditionsFragment.cs" />
-    <Compile Include="Fragments\MyHealthDetailsFragment.cs" />
-    <Compile Include="Fragments\MyHealthDetailsProcedureFragment.cs" />
-    <Compile Include="Fragments\MyHealthDetailsResultsFragment.cs" />
-    <Compile Include="Fragments\MyMedicationsFragment.cs" />
-    <Compile Include="Fragments\SettingsFragment.cs" />
     <Compile Include="MainApplication.cs" />
-    <Compile Include="OS_Services\GCM\GcmOfflineBroadcastReceiver.cs" />
-    <Compile Include="OS_Services\GCM\GcmService.cs" />
-    <Compile Include="OS_Services\NotificationsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="UIHelpers\DrawableHelpers.cs" />
-    <Compile Include="UIHelpers\ExtendedMenuItem.cs" />
-    <Compile Include="UIHelpers\Hamburger\HamburgerMenuAdapter.cs" />
-    <Compile Include="UIHelpers\Hamburger\HamburgerMenuToggle.cs" />
-    <Compile Include="UIHelpers\Incentives\IncentiveColors.cs" />
-    <Compile Include="UIHelpers\Incentives\IncentiveExtensions.cs" />
-    <Compile Include="UIHelpers\Navigation\IncentiveActionDetailsNavigationParameters.cs" />
-    <Compile Include="Activities\Incentives\BiometricResultsActivity.cs" />
-    <Compile Include="Activities\Incentives\BiometricResultDetailActivity.cs" />
-    <Compile Include="Fragments\MyHealthDetailsResultsListFragment.cs" />
-    <Compile Include="Activities\Incentives\IncentiveSummaryActivity.cs" />
-    <Compile Include="UIHelpers\ViewHolders\CellDataHolder.cs" />
-    <Compile Include="UIHelpers\ViewHolders\IViewHolder.cs" />
-    <Compile Include="UIHelpers\AnimatedImagePlayer.cs" />
+    <Compile Include="UIHelpers\ColorExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Fonts\CenturyGothic.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AndroidAsset>
-    <AndroidAsset Include="Assets\Fonts\CenturyGothicBold.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AndroidAsset>
-    <AndroidAsset Include="Assets\Fonts\Futura-Book-Bold.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AndroidAsset>
-    <AndroidAsset Include="Assets\Fonts\Futura-Book.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AndroidAsset>
-    <AndroidAsset Include="Assets\Fonts\FuturaStd-Bold.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AndroidAsset>
-    <AndroidAsset Include="Assets\Fonts\ShadowsIntoLightTwo-Regular.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AndroidAsset>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <AndroidResource Include="Resources\layout\SplashPage.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\GetStarted.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Registration.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Login.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\GetConnectedPrompt.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\GetConnectedLookup.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\GetConnectedLookupCell.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\GetConnectedLookupProgressCell.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\GetConnectedPromptListHeader.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\GetConnectedPromptListCell.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Toolbar.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\GenericPIN.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\GetConnectedPromptListFooter.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Tooltip.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\GetConnectedPromptList.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\GetConnectedPromptListDialog.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\PrescriptionInformation.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\ProcedureInformation.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\DependentPrompt.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\DependentInformation.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\IncentivesSummary.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\MyHealthDetails.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\HamburgerMenuSection.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Header.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\DependentsPromptListCell.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Incentives_IncentiveRow.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Incentives_Summary_Subsection.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Incentives_ActionRow.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Incentives_RecommendedRow.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\SettingsHeader.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\SettingsFooter.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Settings.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Incentives_Summary_Uncompleted_Header.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Incentives_Summary_Completed_Header.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Incentive_Detail.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\IncentiveDetailRow.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\BasePrompt.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\IncentiveAttestationInformation.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\IncentiveAttestationConfirmation.axml">
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\IncentiveActionDetailRow.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Incentive_Action_Detail.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Incentives_Action_Button.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\Calendar.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\MyHealthDetails_BasePrompt.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\MyHealthDetails_BasePromptList.axml">
-      <SubType>AndroidResource</SubType>
-      <DependentUpon>BiometricResultCell.axml</DependentUpon>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\MyHealthDetails_BasePromptListHeader.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\MyHealthDetails_BasePromptListFooter.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\BaseListSectionHeader.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\BaseListAddAnotherButton.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\BaseLookup.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\BiometricResults.axml" />
-    <AndroidResource Include="Resources\layout\BiometricResultCell.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable-mdpi\OrangeWarningTriangle.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\OrangeWarningTriangle.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\OrangeWarningTriangle.png" />
-    <AndroidResource Include="Resources\layout\StandardOrangeButton.axml" />
-    <AndroidResource Include="Resources\layout\BiometricsDetailRow.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\GenericListSingleLineEditCell.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\BiometricResultDetail.axml" />
-    <AndroidResource Include="Resources\layout\BiometricResultDetailRow.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\BiometricResultDetailListHeader.axml" />
-    <AndroidResource Include="Resources\layout\IncentiveSummaryPage.axml" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\LargeCheck.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\LargeWhiteCheck.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\LargeX.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\LargeCheck.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\LargeWhiteCheck.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\LargeX.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\LargeCheck.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\LargeWhiteCheck.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\LargeX.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\Main.axml" />
-    <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\drawable\cardButtonBorder.xml" />
-    <AndroidResource Include="Resources\drawable\ic_arrow_right.png" />
-    <AndroidResource Include="Resources\drawable\ic_checkmark_green.png" />
-    <AndroidResource Include="Resources\drawable\ic_email.png" />
-    <AndroidResource Include="Resources\drawable\ic_health_pro_example.png" />
-    <AndroidResource Include="Resources\drawable\ic_heart.png" />
-    <AndroidResource Include="Resources\drawable\ic_logo_short.png" />
-    <AndroidResource Include="Resources\drawable\ic_medice_green.png" />
-    <AndroidResource Include="Resources\drawable\ic_menu.png" />
-    <AndroidResource Include="Resources\drawable\ic_money_red.png" />
-    <AndroidResource Include="Resources\drawable\ic_phone.png" />
-    <AndroidResource Include="Resources\drawable\ic_text.png" />
-    <AndroidResource Include="Resources\drawable\ic_tooth.png" />
-    <AndroidResource Include="Resources\layout\CardButton.axml" />
-    <AndroidResource Include="Resources\layout\DefaultCard.axml" />
-    <AndroidResource Include="Resources\layout\HamburgerMenuItem.axml" />
-    <AndroidResource Include="Resources\layout\Home.axml" />
-    <AndroidResource Include="Resources\layout\HamburgerMenuLayout.axml" />
-    <AndroidResource Include="Resources\values\attr.xml" />
-    <AndroidResource Include="Resources\values\styles.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
-    <XamarinComponentReference Include="AndHUD">
-      <Version>1.3.1</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="GCMClient">
-      <Version>1.0</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
     <XamarinComponentReference Include="modernhttpclient">
       <Version>2.1.5</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="PagerSlidingTabStrip">
-      <Version>1.0.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="xamandroidsupportv13-18">
@@ -511,10 +159,6 @@
       <Project>{82D90133-B8A7-4810-B2C4-661808A0062B}</Project>
       <Name>Droid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shared.API\Shared.Business.csproj">
-      <Project>{AD9AC37D-DF2D-4B68-B421-AC2F8C2AE3B4}</Project>
-      <Name>Shared.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shared.Bootstrapper\Shared.Bootstrapper.csproj">
       <Project>{8238DFDC-C0D3-425C-919D-24A958297403}</Project>
       <Name>Shared.Bootstrapper</Name>
@@ -523,373 +167,22 @@
       <Project>{CF876A71-9E29-4F7C-ABC7-BE9FE04E47B4}</Project>
       <Name>Shared.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shared.Repository\Shared.Repository.csproj">
-      <Project>{4F95195C-0B8D-46F2-93A5-E5BBAB30BB8D}</Project>
-      <Name>Shared.Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shared.VM\Shared.VM.csproj">
       <Project>{8BA73740-09B9-4923-8D33-B4539FAB205F}</Project>
       <Name>Shared.VM</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\splash_centered.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\CompassOrangeButton.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\CompassBlueButton.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\temp_splash_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Stethicon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_magn.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\RoundBorderTextView.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ProgressBar.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\welcome.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\welcome.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\welcome.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\HelloIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\HelloIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\HelloIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Success.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_Plus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Dots.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\anim\slide_up_dialog.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\anim\slide_out_dialog.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Med2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Med1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\procedures.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\CompassFlatWhiteEditText.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\FamForm.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\home.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\home.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\home.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\Home_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Home_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Home_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\Incentives.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Incentives.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\Incentives_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Incentives.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Incentives_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Incentives_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\IncentiveCoins.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\GreenCheckBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\GreenCheckBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\GreenCheckBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\GreenCheckedCircle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\GreenCheckedCircle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\GreenCheckedCircle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\OrangeClock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\OrangeClock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\OrangeClock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\EmptyCheckBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\EmptyCheckBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\EmptyCheckBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\EmptyCircle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\EmptyCircle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\EmptyCircle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\recommendaction_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\recommendaction.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\recommendaction.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\recommendaction.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\recommendaction_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\recommendaction_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\greenTriangle.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\greenRectangle.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\blueRectangle.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\blueTriangle.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\RecommendedHeart.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Settings_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Prescription.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Calendar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\CostEst.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\CostEst_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\DoctorRec.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\DoctorRec_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\HealthPro.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\HealthPro_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\Insurance.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\Insurance_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\MedRev_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\MedRev.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\Prescription.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\Prescription_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\Search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\Search_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\CostEst.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\CostEst_selected..png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\DoctorRec.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\DoctorRec_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\HealthPro.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\HealthPro_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Insurance.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Insurance_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\MedRev.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\MedRev_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Prescription_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Search_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\CostEst.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\CostEst_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\DoctorRec.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\DoctorRec_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\HealthPro.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\HealthPro_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Insurance_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Insurance.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\MedRev.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\MedRev_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Prescription_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Search_selected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\Prescription.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Clipboard.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\Conditions.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\listDivider.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
+    <Folder Include="Resources\anim\" />
     <Folder Include="Resources\drawable-hdpi\" />
-    <Folder Include="UIHelpers\Home\" />
+    <Folder Include="Resources\drawable-mdpi\" />
+    <Folder Include="Resources\drawable-xhdpi\" />
+    <Folder Include="Resources\drawable-xxhdpi\" />
+    <Folder Include="Resources\drawable\" />
+    <Folder Include="Resources\layout\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>

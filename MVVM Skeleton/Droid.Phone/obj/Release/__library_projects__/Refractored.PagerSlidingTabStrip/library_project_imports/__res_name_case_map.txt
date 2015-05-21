@@ -1,4 +1,0 @@
-drawable/background_tab.xml;drawable/background_tab.xml
-layout/tab.axml;layout/tab.xml
-values/attrs.xml;values/attrs.xml
-values/colors.xml;values/colors.xml

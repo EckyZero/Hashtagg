@@ -1,11 +1,10 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using ModernHttpClient;
 using Shared.Common;
 
 namespace iOS
 {
-    public class HttpClientHelper : BaseService, IHttpClientHelper
+	public class HttpClientHelper : IHttpClientHelper
 	{
 		private HttpMessageHandler _handler;
 

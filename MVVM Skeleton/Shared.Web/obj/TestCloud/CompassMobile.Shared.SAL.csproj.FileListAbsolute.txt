@@ -1,5 +1,0 @@
-C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid.Phone\bin\Debug\CompassMobile.Shared.SAL.dll.config
-C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid.Phone\bin\Debug\CompassMobile.Shared.SAL.dll
-C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.SAL\obj\TestCloud\CompassMobile.Shared.SAL.csproj.App.config
-C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.SAL\obj\TestCloud\CompassMobile.Shared.SAL.csprojResolveAssemblyReference.cache
-C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.SAL\obj\TestCloud\CompassMobile.Shared.SAL.dll

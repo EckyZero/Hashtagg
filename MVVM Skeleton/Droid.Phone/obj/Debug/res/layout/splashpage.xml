@@ -1,1 +1,0 @@
-<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent" android:background="#6FA9DC" xmlns:android="http://schemas.android.com/apk/res/android"><ImageView android:src="@drawable/logo" android:layout_centerInParent="true" android:layout_width="215.0dp" android:layout_height="225dp" android:id="@+id/SplashScreenLogo" /></RelativeLayout>

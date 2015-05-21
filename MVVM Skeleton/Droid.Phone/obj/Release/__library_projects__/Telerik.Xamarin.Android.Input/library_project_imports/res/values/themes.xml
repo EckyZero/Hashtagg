@@ -1,1 +1,0 @@
-<resources><style name="Theme.CalendarTheme" parent="android:Theme.Light"><item name="calendarStyle">@style/CalendarDefaultStyle</item></style></resources>

@@ -6,9 +6,9 @@
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{04815E0A-0E38-4A0F-A821-530C371CD2DA}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CompassMobile.iOS</RootNamespace>
+    <RootNamespace>iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>CompassMobile.iOS</AssemblyName>
+    <AssemblyName>iOS</AssemblyName>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -33,19 +33,15 @@
     <Reference Include="BTProgressHUD">
       <HintPath>..\Components\btprogresshud-1.15\lib\ios-unified\BTProgressHUD.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Data.Sqlcipher, Version=3.2.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\sqlcipher-for-xamarin-ios-3.2.1.1\lib\ios-unified\Mono.Data.Sqlcipher.dll</HintPath>
-    </Reference>
-    <Reference Include="PDRating">
-      <HintPath>..\Components\pdreview-2.0.1\lib\ios-unified\PDRating.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\packages\Unity.3.5.1404.0\lib\portable-net45+wp80+win8+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlcipher">
+      <HintPath>..\Components\sqlcipher-for-xamarin-ios-3.2.1.1\lib\ios-unified\Mono.Data.Sqlcipher.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -56,6 +52,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\portable-windows8+net40+wp8+sl5+MonoAndroid+MonoTouch\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.9.1.107\lib\Xamarin.iOS10\Xamarin.Insights.dll</HintPath>
+    </Reference>
+    <Reference Include="PLCrashReporterUnifiedBinding">
+      <HintPath>..\packages\Xamarin.Insights.1.9.1.107\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
     </Reference>
     <Reference Include="GalaSoft.MvvmLight">
       <HintPath>..\packages\MvvmLightLibs.5.1.1.0\lib\xamarin.ios10\GalaSoft.MvvmLight.dll</HintPath>
@@ -69,90 +71,37 @@
     <Reference Include="Telerik.Xamarin.iOS">
       <HintPath>..\ThirdParty\Telerik\iOS\Telerik.Xamarin.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Auth0Client.iOS">
-      <HintPath>..\Components\Auth0Client-0.4.2\lib\ios-unified\Auth0Client.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Components\Auth0Client-0.4.2\lib\ios-unified\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Auth.iOS">
-      <HintPath>..\Components\Auth0Client-0.4.2\lib\ios-unified\Xamarin.Auth.iOS.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OS Services\AppUpgradeService.cs" />
-    <Compile Include="OS Services\BaseService.cs" />
-    <Compile Include="OS Services\ConnectivityService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ApplicationLayer\App.cs" />
     <Compile Include="Utils\Device.cs" />
     <Compile Include="OS Services\ExtendedNavigationService.cs" />
     <Compile Include="OS Services\ExtendedDialogService.cs" />
     <Compile Include="Utils\DateExtensions.cs" />
-    <Compile Include="Controls\PSFloatingTextControl\PSFloatingDateTimeControl.cs" />
-    <Compile Include="Controls\PSFloatingTextControl\PSFloatingPickerControl.cs" />
-    <Compile Include="Controls\PSFloatingTextControl\PSFloatingTextControl.cs" />
-    <Compile Include="Controls\PSFloatingTextControl\PSFloatingTextControl.designer.cs">
-      <DependentUpon>PSFloatingTextControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\PSPinControl\PSPinControl.cs" />
-    <Compile Include="Controls\PSPinControl\PSPinControl.designer.cs">
-      <DependentUpon>PSPinControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\PSFloatingTextControl\PSFloatingToolbarControl.cs" />
-    <Compile Include="Controls\PSPinControl\EventArgs\PSPinControlEventArgs.cs" />
-    <Compile Include="Controls\PSFloatingTextControl\EventArgs\PSFloatingDateTimeControlEventArgs.cs" />
-    <Compile Include="Controls\PSFloatingTextControl\EventArgs\PSFloatingPickerControlEventArgs.cs" />
     <Compile Include="OS Services\iOSSecureDatabase.cs" />
     <Compile Include="OS Services\iOSSecureKeyValueStore.cs" />
     <Compile Include="Utils\ColorExtensions.cs" />
     <Compile Include="Utils\ImageExtensions.cs" />
     <Compile Include="OS Services\HudService.cs" />
     <Compile Include="Utils\ViewControllerExtensions.cs" />
-    <Compile Include="Controls\PSProgressView\PSProgressView.cs" />
-    <Compile Include="Controls\PSProgressView\PSProgressView.designer.cs">
-      <DependentUpon>PSProgressView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\PSPromptButton\PSPromptButton.cs" />
-    <Compile Include="Controls\PSPromptButton\PSPromptButton.designer.cs">
-      <DependentUpon>PSPromptButton.cs</DependentUpon>
-    </Compile>
+    <Compile Include="OS Services\iOSBrowserService.cs" />
     <Compile Include="Utils\TableViewExtensions.cs" />
     <Compile Include="OS Services\ExtendedObservableTableViewController.cs" />
     <Compile Include="OS Services\HttpClientHelper.cs" />
-    <Compile Include="Controls\PSSearchBar\PSSearchBar.cs" />
     <Compile Include="OS Services\Geolocator.cs" />
     <Compile Include="OS Services\DispatcherService.cs" />
     <Compile Include="Utils\NotificationExtensions.cs" />
-    <Compile Include="Controls\PSCompassButton.cs" />
-    <Compile Include="Utils\NavigationControllerExtensions.cs" />
-    <Compile Include="Utils\BarButtonItemExtensions.cs" />
-    <Compile Include="Utils\ButtonExtensions.cs" />
-    <Compile Include="Controls\PSSegmentedControl\PSSegmentedControl.cs" />
-    <Compile Include="Controls\PSSegmentedControl\PSSegmentedControl.designer.cs">
-      <DependentUpon>PSSegmentedControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OS Services\NotificationService.cs" />
-    <Compile Include="OS Services\AuthenticationService.cs" />
-    <Compile Include="Utils\CloudNotificationConstants.cs" />
-    <Compile Include="Utils\ViewExtensions.cs" />
-    <Compile Include="Controls\Map\DoctorRecommendationAnnotation.cs" />
-    <Compile Include="OS Services\PhoneService.cs" />
-    <Compile Include="OS Services\MapService.cs" />
-    <Compile Include="Utils\ToolbarExtensions.cs" />
-    <Compile Include="Utils\LabelExtensions.cs" />
-    <Compile Include="Utils\MapExtensions.cs" />
-    <Compile Include="Controls\FeedbackPopup\FeedbackPopup.cs" />
-    <Compile Include="Controls\ExtendedTextView\ExtendedTextView.cs" />
-    <Compile Include="Controls\Map\RecommendationAnnotation.cs" />
-    <Compile Include="Controls\Map\FacilityRecommendationAnnotation.cs" />
-    <Compile Include="OS Services\EmailService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <XamarinComponentReference Include="btprogresshud">
+      <Visible>False</Visible>
+      <Version>1.15</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="modernhttpclient">
       <Version>2.2.0</Version>
       <Visible>False</Visible>
@@ -161,36 +110,9 @@
       <Version>3.2.1.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
-    <XamarinComponentReference Include="btprogresshud">
-      <Version>1.15</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="Auth0Client">
-      <Version>0.4.2</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="pdreview">
-      <Version>2.0.1</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="ApplicationLayer\" />
-    <Folder Include="Controls\PSListCell\" />
-    <Folder Include="Controls\PSPullDownControl\" />
-  </ItemGroup>
-  <ItemGroup>
-    <InterfaceDefinition Include="Controls\PSFloatingTextControl\PSFloatingTextControl.xib" />
-    <InterfaceDefinition Include="Controls\PSPinControl\PSPinControl.xib" />
-    <InterfaceDefinition Include="Controls\PSProgressView\PSProgressView.xib" />
-    <InterfaceDefinition Include="Controls\PSPromptButton\PSPromptButton.xib" />
-    <InterfaceDefinition Include="Controls\PSSegmentedControl\PSSegmentedControl.xib" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Shared.API\Shared.Business.csproj">
-      <Project>{AD9AC37D-DF2D-4B68-B421-AC2F8C2AE3B4}</Project>
-      <Name>Shared.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shared.Common\Shared.Common.csproj">
       <Project>{CF876A71-9E29-4F7C-ABC7-BE9FE04E47B4}</Project>
       <Name>Shared.Common</Name>
@@ -198,10 +120,6 @@
     <ProjectReference Include="..\Shared.VM\Shared.VM.csproj">
       <Project>{8BA73740-09B9-4923-8D33-B4539FAB205F}</Project>
       <Name>Shared.VM</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shared.Repository\Shared.Repository.csproj">
-      <Project>{4F95195C-0B8D-46F2-93A5-E5BBAB30BB8D}</Project>
-      <Name>Shared.Repository</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

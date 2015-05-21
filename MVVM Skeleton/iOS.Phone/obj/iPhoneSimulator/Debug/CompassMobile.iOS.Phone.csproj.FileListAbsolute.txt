@@ -1,3 +1,0 @@
-C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.iOS.Phone\obj\iPhoneSimulator\Debug\
-C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.iOS.Phone\obj\iPhoneSimulator\Debug\CompassMobile.iOS.Phone.csprojResolveAssemblyReference.cache
-C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.iOS.Phone\obj\iPhoneSimulator\Debug\CompassMobile.iOS.Phone.csproj.CompassMobileiOSPhone.exe.config

@@ -1,6 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Views;
 using Shared.Common;
-using GalaSoft.MvvmLight.Views;
 
 namespace iOS
 {

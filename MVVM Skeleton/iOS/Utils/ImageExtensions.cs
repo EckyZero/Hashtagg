@@ -1,6 +1,5 @@
-﻿using System;
+﻿using CoreGraphics;
 using UIKit;
-using CoreGraphics;
 
 namespace iOS
 {
@@ -32,16 +31,6 @@ namespace iOS
 				UIGraphics.EndImageContext();
 			}
 			return coloredImage;
-		}
-
-		public static UIImage ScaleToSize(this UIImage image, CGSize size)
-		{
-			UIGraphics.BeginImageContextWithOptions (size, false, 0.0f);
-			image.Draw (new CGRect (0, 0, size.Width, size.Height));
-			image = UIGraphics.GetImageFromCurrentImageContext ();
-			UIGraphics.EndImageContext ();
-
-			return image;
 		}
 	}
 }

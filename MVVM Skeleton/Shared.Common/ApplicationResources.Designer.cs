@@ -71,38 +71,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Accredited facility.
-        /// </summary>
-        public static string AccreditedFacility {
-            get {
-                return ResourceManager.GetString("AccreditedFacility", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Actions.
-        /// </summary>
-        public static string Actions {
-            get {
-                return ResourceManager.GetString("Actions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Add a family member.
         /// </summary>
         public static string AddAFamilyMember {
             get {
                 return ResourceManager.GetString("AddAFamilyMember", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Add another procedure.
-        /// </summary>
-        public static string AddAnotherProcedure {
-            get {
-                return ResourceManager.GetString("AddAnotherProcedure", resourceCulture);
             }
         }
         
@@ -125,15 +98,6 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add to &quot;My Doctors&quot;.
-        /// </summary>
-        public static string AddToMyDoctors {
-            get {
-                return ResourceManager.GetString("AddToMyDoctors", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Oops! It looks like this username already exists. Please login with your existing username and password. If you think we might have gotten confused, just send us an email to portal@compassphs.com..
         /// </summary>
         public static string AlreadyRegisteredMessage {
@@ -152,29 +116,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Any.
-        /// </summary>
-        public static string Any {
-            get {
-                return ResourceManager.GetString("Any", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Attestation.
         /// </summary>
         public static string Attestation {
             get {
                 return ResourceManager.GetString("Attestation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Be the first to review this doctor.
-        /// </summary>
-        public static string BeTheFirstToReview {
-            get {
-                return ResourceManager.GetString("BeTheFirstToReview", resourceCulture);
             }
         }
         
@@ -202,24 +148,6 @@ namespace Shared.Common {
         public static string CalendarTitle {
             get {
                 return ResourceManager.GetString("CalendarTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Call doctor.
-        /// </summary>
-        public static string CallDoctor {
-            get {
-                return ResourceManager.GetString("CallDoctor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Call facility.
-        /// </summary>
-        public static string CallFacility {
-            get {
-                return ResourceManager.GetString("CallFacility", resourceCulture);
             }
         }
         
@@ -287,15 +215,6 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Comments.
-        /// </summary>
-        public static string Comments {
-            get {
-                return ResourceManager.GetString("Comments", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Completed - Nice Work!.
         /// </summary>
         public static string Completed {
@@ -341,15 +260,6 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Conditions.
-        /// </summary>
-        public static string Conditions {
-            get {
-                return ResourceManager.GetString("Conditions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Confirm Password.
         /// </summary>
         public static string ConfirmPassword {
@@ -364,24 +274,6 @@ namespace Shared.Common {
         public static string CongratsOnCompleting {
             get {
                 return ResourceManager.GetString("CongratsOnCompleting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You may have a need we can&apos;t accomodate for via the app. Want to reach out directly to your Health Pro?.
-        /// </summary>
-        public static string ContactHealthProAlertMessage {
-            get {
-                return ResourceManager.GetString("ContactHealthProAlertMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Contact My Health Pro.
-        /// </summary>
-        public static string ContactMyHealthPro {
-            get {
-                return ResourceManager.GetString("ContactMyHealthPro", resourceCulture);
             }
         }
         
@@ -409,15 +301,6 @@ namespace Shared.Common {
         public static string DateCompleted {
             get {
                 return ResourceManager.GetString("DateCompleted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You edited your preferences. Would you like us to save these edits for future searches?.
-        /// </summary>
-        public static string DocRecPreferencesEditedAlertMessage {
-            get {
-                return ResourceManager.GetString("DocRecPreferencesEditedAlertMessage", resourceCulture);
             }
         }
         
@@ -467,29 +350,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Doctor Preferences.
-        /// </summary>
-        public static string DoctorPreferences {
-            get {
-                return ResourceManager.GetString("DoctorPreferences", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Search Doctor&apos;s name.
         /// </summary>
         public static string DoctorPromptSearchPlaceholder {
             get {
                 return ResourceManager.GetString("DoctorPromptSearchPlaceholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Doesn&apos;t Matter.
-        /// </summary>
-        public static string DoesntMatter {
-            get {
-                return ResourceManager.GetString("DoesntMatter", resourceCulture);
             }
         }
         
@@ -512,137 +377,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This Entry Already Exists.
-        /// </summary>
-        public static string DuplicateAddMessage {
-            get {
-                return ResourceManager.GetString("DuplicateAddMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Duplicate Entry.
-        /// </summary>
-        public static string DuplicateAddTitle {
-            get {
-                return ResourceManager.GetString("DuplicateAddTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This doctor was already added to your list.
-        /// </summary>
-        public static string DuplicateDoctorAdd {
-            get {
-                return ResourceManager.GetString("DuplicateDoctorAdd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Doctor Already Exists.
-        /// </summary>
-        public static string DuplicateDoctorAddTitle {
-            get {
-                return ResourceManager.GetString("DuplicateDoctorAddTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit family member.
-        /// </summary>
-        public static string EditAFamilyMember {
-            get {
-                return ResourceManager.GetString("EditAFamilyMember", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit Doctor Preferences.
-        /// </summary>
-        public static string EditDoctorPreferences {
-            get {
-                return ResourceManager.GetString("EditDoctorPreferences", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit Facility Preferences.
-        /// </summary>
-        public static string EditFacilityPreferences {
-            get {
-                return ResourceManager.GetString("EditFacilityPreferences", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please edit your preferences for doctors.
-        /// </summary>
-        public static string EditHeaderTextDoctorPreferences {
-            get {
-                return ResourceManager.GetString("EditHeaderTextDoctorPreferences", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please edit your preferences for facilities.
-        /// </summary>
-        public static string EditHeaderTextFacilityPreferences {
-            get {
-                return ResourceManager.GetString("EditHeaderTextFacilityPreferences", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit Username.
-        /// </summary>
-        public static string EditUsername {
-            get {
-                return ResourceManager.GetString("EditUsername", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://membertest.compassphs.com/#!/request-username-reset.
-        /// </summary>
-        public static string EditUsernameTestURL {
-            get {
-                return ResourceManager.GetString("EditUsernameTestURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://member.compassphs.com/#!/request-username-reset.
-        /// </summary>
-        public static string EditUsernameURL {
-            get {
-                return ResourceManager.GetString("EditUsernameURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Either.
-        /// </summary>
-        public static string Either {
-            get {
-                return ResourceManager.GetString("Either", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Email.
-        /// </summary>
-        public static string Email {
-            get {
-                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
@@ -665,47 +404,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search a facility name.
-        /// </summary>
-        public static string FacilityLookupPlaceholder {
-            get {
-                return ResourceManager.GetString("FacilityLookupPlaceholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Facility Preferences.
-        /// </summary>
-        public static string FacilityPreferences {
-            get {
-                return ResourceManager.GetString("FacilityPreferences", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Facility Privileges.
-        /// </summary>
-        public static string FacilityPrivileges {
-            get {
-                return ResourceManager.GetString("FacilityPrivileges", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Female.
         /// </summary>
         public static string Female {
             get {
                 return ResourceManager.GetString("Female", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 50 - 59.
-        /// </summary>
-        public static string Fifties {
-            get {
-                return ResourceManager.GetString("Fifties", resourceCulture);
             }
         }
         
@@ -719,74 +422,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Find Doctors near.
-        /// </summary>
-        public static string FindDoctorsNear {
-            get {
-                return ResourceManager.GetString("FindDoctorsNear", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Find Facilities near.
-        /// </summary>
-        public static string FindFacilitiesNear {
-            get {
-                return ResourceManager.GetString("FindFacilitiesNear", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to First Name.
         /// </summary>
         public static string FirstName {
             get {
                 return ResourceManager.GetString("FirstName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://membertest.compassphs.com/#!/passwordresetrequestform.
-        /// </summary>
-        public static string ForgotPasswordTestURL {
-            get {
-                return ResourceManager.GetString("ForgotPasswordTestURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://member.compassphs.com/#!/passwordresetrequestform.
-        /// </summary>
-        public static string ForgotPasswordURL {
-            get {
-                return ResourceManager.GetString("ForgotPasswordURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://membertest.compassphs.com/#!/request-username-reset.
-        /// </summary>
-        public static string ForgotUsernameTestURL {
-            get {
-                return ResourceManager.GetString("ForgotUsernameTestURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://member.compassphs.com/#!/request-username-reset.
-        /// </summary>
-        public static string ForgotUsernameURL {
-            get {
-                return ResourceManager.GetString("ForgotUsernameURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 40 - 49.
-        /// </summary>
-        public static string Forties {
-            get {
-                return ResourceManager.GetString("Forties", resourceCulture);
             }
         }
         
@@ -809,83 +449,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uh oh! An error was encountered completing this request. Please try again..
-        /// </summary>
-        public static string GenericError {
-            get {
-                return ResourceManager.GetString("GenericError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to We didn&apos;t find any results for.
-        /// </summary>
-        public static string GenericLookupErrorMessage {
-            get {
-                return ResourceManager.GetString("GenericLookupErrorMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Uh oh! It looks like you aren&apos;t connected to the internet. Please connect to Wi-Fi or a cellular network and try again..
-        /// </summary>
-        public static string GenericOffline {
-            get {
-                return ResourceManager.GetString("GenericOffline", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Oops! We could not retrieve your location. Please go to your phone&apos;s Settings page and enable locations services..
-        /// </summary>
-        public static string GeolocationDisabledMessage {
-            get {
-                return ResourceManager.GetString("GeolocationDisabledMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Access to location denied.
-        /// </summary>
-        public static string GeolocationDisabledTitle {
-            get {
-                return ResourceManager.GetString("GeolocationDisabledTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Oops! We could not retrieve your location. Please try again..
-        /// </summary>
-        public static string GeolocationErrorMessage {
-            get {
-                return ResourceManager.GetString("GeolocationErrorMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Error Retrieving Location.
-        /// </summary>
-        public static string GeolocationErrorTitle {
-            get {
-                return ResourceManager.GetString("GeolocationErrorTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to A blood glucose test measures the amount of a type of sugar, called glucose, in your blood. Glucose comes from carbohydrate foods. It is the main source of energy used by the body..
         /// </summary>
         public static string GlucoseDefiniton {
             get {
                 return ResourceManager.GetString("GlucoseDefiniton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Great! Have any others?.
-        /// </summary>
-        public static string GreatHaveAnyOthers {
-            get {
-                return ResourceManager.GetString("GreatHaveAnyOthers", resourceCulture);
             }
         }
         
@@ -913,15 +481,6 @@ namespace Shared.Common {
         public static string HealthDetailsConditionListAddButtonTitle {
             get {
                 return ResourceManager.GetString("HealthDetailsConditionListAddButtonTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Everyone can benefit from a little guidance. Based on the personal health history you’ve entered, let’s look at proactive ways to take care of you..
-        /// </summary>
-        public static string HealthDetailsConditionListHeader {
-            get {
-                return ResourceManager.GetString("HealthDetailsConditionListHeader", resourceCulture);
             }
         }
         
@@ -962,15 +521,6 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Everyone can benefit from a little guidance. Based on your upcoming procedures and tests, let’s look at proactive ways to take care of you..
-        /// </summary>
-        public static string HealthDetailsProcedureListHeader {
-            get {
-                return ResourceManager.GetString("HealthDetailsProcedureListHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Surgical procedure, mammogram, MRI, endoscopy, etc..
         /// </summary>
         public static string HealthDetailsProcedurePromptBody {
@@ -991,8 +541,8 @@ namespace Shared.Common {
         /// <summary>
         ///   Looks up a localized string similar to This information allows us to:
         ///• Identify risks before they become unmanagable
-        ///• Keep a record of scheduled procedures or tests
-        ///• Check off one of your incentive activities.
+        ///• Provide a record of progress
+        ///• Check off one of your incentives to save.
         /// </summary>
         public static string HealthDetailsProcedurePromptFooter {
             get {
@@ -1006,15 +556,6 @@ namespace Shared.Common {
         public static string HealthDetailsProcedurePromptHeader {
             get {
                 return ResourceManager.GetString("HealthDetailsProcedurePromptHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Curious about how to be a bit more proactive? Here are easy preventive ways to monitor your health..
-        /// </summary>
-        public static string HealthDetailsResultListHeader {
-            get {
-                return ResourceManager.GetString("HealthDetailsResultListHeader", resourceCulture);
             }
         }
         
@@ -1042,33 +583,6 @@ namespace Shared.Common {
         public static string HealthDetailsResultPromptHeader {
             get {
                 return ResourceManager.GetString("HealthDetailsResultPromptHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hey, I&apos;m {0}, and yes, I promise I&apos;m real! If you get a questionable medical bill, need doctor recommendations, or just have a general healthcare question the team is here to help you..
-        /// </summary>
-        public static string HealthProPromptContext {
-            get {
-                return ResourceManager.GetString("HealthProPromptContext", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hours Unknown.
-        /// </summary>
-        public static string HoursUnknown {
-            get {
-                return ResourceManager.GetString("HoursUnknown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to I&apos;ve Done This Already.
-        /// </summary>
-        public static string IHaveDoneThisAlready {
-            get {
-                return ResourceManager.GetString("IHaveDoneThisAlready", resourceCulture);
             }
         }
         
@@ -1181,15 +695,6 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In-network.
-        /// </summary>
-        public static string InNetwork {
-            get {
-                return ResourceManager.GetString("InNetwork", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Last 4 of SSN.
         /// </summary>
         public static string LastFourSocial {
@@ -1240,24 +745,6 @@ namespace Shared.Common {
         public static string LetsGetVerificationDetailsWithProcedure {
             get {
                 return ResourceManager.GetString("LetsGetVerificationDetailsWithProcedure", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to If you aren’t sure how to spell the name of your location, try typing in the first few letters. We will provide hints as you type to help you out..
-        /// </summary>
-        public static string LocationLookupErrorDetailMessage {
-            get {
-                return ResourceManager.GetString("LocationLookupErrorDetailMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Provide search location.
-        /// </summary>
-        public static string LocationLookupPlaceholder {
-            get {
-                return ResourceManager.GetString("LocationLookupPlaceholder", resourceCulture);
             }
         }
         
@@ -1415,42 +902,6 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to mi.
-        /// </summary>
-        public static string Mi {
-            get {
-                return ResourceManager.GetString("Mi", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to more.
-        /// </summary>
-        public static string More {
-            get {
-                return ResourceManager.GetString("More", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to More doctors near you.
-        /// </summary>
-        public static string MoreDoctorsNearYou {
-            get {
-                return ResourceManager.GetString("MoreDoctorsNearYou", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to More facilities near you.
-        /// </summary>
-        public static string MoreFacilitiesNearYou {
-            get {
-                return ResourceManager.GetString("MoreFacilitiesNearYou", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to My Biometric Results.
         /// </summary>
         public static string MyBiometricResults {
@@ -1478,29 +929,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Doctors.
-        /// </summary>
-        public static string MyDoctors {
-            get {
-                return ResourceManager.GetString("MyDoctors", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to My Doctor&apos;s name is....
         /// </summary>
         public static string MyDoctorsNameIs {
             get {
                 return ResourceManager.GetString("MyDoctorsNameIs", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MY FACILITIES.
-        /// </summary>
-        public static string MyFacilities {
-            get {
-                return ResourceManager.GetString("MyFacilities", resourceCulture);
             }
         }
         
@@ -1523,38 +956,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Health Pro.
-        /// </summary>
-        public static string MyHealthPro {
-            get {
-                return ResourceManager.GetString("MyHealthPro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to My Incentives.
         /// </summary>
         public static string MyIncentives {
             get {
                 return ResourceManager.GetString("MyIncentives", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to My Phone Number.
-        /// </summary>
-        public static string MyPhoneNumber {
-            get {
-                return ResourceManager.GetString("MyPhoneNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to network.
-        /// </summary>
-        public static string Network {
-            get {
-                return ResourceManager.GetString("Network", resourceCulture);
             }
         }
         
@@ -1586,38 +992,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Ratings.
-        /// </summary>
-        public static string NoRatings {
-            get {
-                return ResourceManager.GetString("NoRatings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Someone’s eager! The portal excites us, too. It looks like your Compass membership hasn’t started yet, or we are unable to match your information to an account in our system. Not to worry, your Health Pro consultant will email you as soon are you are eligible to log in. If you think this is an error, just send a message to portal@compassphs.com..
         /// </summary>
         public static string NotActiveMessage {
             get {
                 return ResourceManager.GetString("NotActiveMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No Thanks.
-        /// </summary>
-        public static string NoThanks {
-            get {
-                return ResourceManager.GetString("NoThanks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Compass Mobile.
-        /// </summary>
-        public static string NotificationTitle {
-            get {
-                return ResourceManager.GetString("NotificationTitle", resourceCulture);
             }
         }
         
@@ -1640,42 +1019,6 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These doctors are ranked by distance. Quality factors can vary between them..
-        /// </summary>
-        public static string OtherDoctorCriteriaExplanation {
-            get {
-                return ResourceManager.GetString("OtherDoctorCriteriaExplanation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to These facilities are ranked by distance. Quality factors can vary between them..
-        /// </summary>
-        public static string OtherFacilityCriteriaExplanation {
-            get {
-                return ResourceManager.GetString("OtherFacilityCriteriaExplanation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Other Reason.
-        /// </summary>
-        public static string OtherReason {
-            get {
-                return ResourceManager.GetString("OtherReason", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Out of network.
-        /// </summary>
-        public static string OutOfNetwork {
-            get {
-                return ResourceManager.GetString("OutOfNetwork", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Parent.
         /// </summary>
         public static string Parent {
@@ -1685,7 +1028,7 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Domestic Partner.
+        ///   Looks up a localized string similar to Partner.
         /// </summary>
         public static string Partner {
             get {
@@ -1717,24 +1060,6 @@ namespace Shared.Common {
         public static string Pet {
             get {
                 return ResourceManager.GetString("Pet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Phone.
-        /// </summary>
-        public static string Phone {
-            get {
-                return ResourceManager.GetString("Phone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Phone Number.
-        /// </summary>
-        public static string PhoneNumber {
-            get {
-                return ResourceManager.GetString("PhoneNumber", resourceCulture);
             }
         }
         
@@ -1859,7 +1184,7 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Let Compass compare medication prices and explore lower-costing options for you.
+        ///   Looks up a localized string similar to Taking control of what you spend on Prescriptions can be difficult. Let us help you out by telling us what you are currently taking..
         /// </summary>
         public static string PrescriptionPromptListHeader {
             get {
@@ -1940,7 +1265,7 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search procedure name.
+        ///   Looks up a localized string similar to Ex. Colonoscopy.
         /// </summary>
         public static string ProcedureLookupPlaceholder {
             get {
@@ -1976,47 +1301,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Procedures.
-        /// </summary>
-        public static string Procedures {
-            get {
-                return ResourceManager.GetString("Procedures", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rate Doctor.
-        /// </summary>
-        public static string RateDoctor {
-            get {
-                return ResourceManager.GetString("RateDoctor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Read and sign below.
         /// </summary>
         public static string ReadAndSignBelow {
             get {
                 return ResourceManager.GetString("ReadAndSignBelow", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Recommended Actions.
-        /// </summary>
-        public static string Recommendations {
-            get {
-                return ResourceManager.GetString("Recommendations", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Oops! We could not get you the recommendations your requested. Please try searching again..
-        /// </summary>
-        public static string RecommendationsSearchError {
-            get {
-                return ResourceManager.GetString("RecommendationsSearchError", resourceCulture);
             }
         }
         
@@ -2035,24 +1324,6 @@ namespace Shared.Common {
         public static string RecommendationSummaryTitle {
             get {
                 return ResourceManager.GetString("RecommendationSummaryTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Recommended doctors.
-        /// </summary>
-        public static string RecommendedDoctors {
-            get {
-                return ResourceManager.GetString("RecommendedDoctors", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Recommended facilities.
-        /// </summary>
-        public static string RecommendedFacilities {
-            get {
-                return ResourceManager.GetString("RecommendedFacilities", resourceCulture);
             }
         }
         
@@ -2102,92 +1373,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove from &quot;My Doctors&quot;.
-        /// </summary>
-        public static string RemoveFromMyDoctors {
-            get {
-                return ResourceManager.GetString("RemoveFromMyDoctors", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Reset Password.
-        /// </summary>
-        public static string ResetPassword {
-            get {
-                return ResourceManager.GetString("ResetPassword", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Results.
-        /// </summary>
-        public static string Results {
-            get {
-                return ResourceManager.GetString("Results", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to reviews.
-        /// </summary>
-        public static string Reviews {
-            get {
-                return ResourceManager.GetString("Reviews", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Save.
-        /// </summary>
-        public static string Save {
-            get {
-                return ResourceManager.GetString("Save", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Save it.
         /// </summary>
         public static string SaveIt {
             get {
                 return ResourceManager.GetString("SaveIt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Schedule appt with Health Pro.
-        /// </summary>
-        public static string ScheduleApptWithHealthPro {
-            get {
-                return ResourceManager.GetString("ScheduleApptWithHealthPro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search.
-        /// </summary>
-        public static string Search {
-            get {
-                return ResourceManager.GetString("Search", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search a Doctor&apos;s name.
-        /// </summary>
-        public static string SearchADoctorsName {
-            get {
-                return ResourceManager.GetString("SearchADoctorsName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search City, State or Zip.
-        /// </summary>
-        public static string SearchCityStateZip {
-            get {
-                return ResourceManager.GetString("SearchCityStateZip", resourceCulture);
             }
         }
         
@@ -2219,33 +1409,6 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 60+.
-        /// </summary>
-        public static string SixtiesPlus {
-            get {
-                return ResourceManager.GetString("SixtiesPlus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to If you aren’t sure how to spell the name of your specialty, try typing in the first few letters. We will provide hints as you type to help you out..
-        /// </summary>
-        public static string SpecialtyLookupErrorDetailMessage {
-            get {
-                return ResourceManager.GetString("SpecialtyLookupErrorDetailMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Specialty name.
-        /// </summary>
-        public static string SpecialtyLookupPlaceholder {
-            get {
-                return ResourceManager.GetString("SpecialtyLookupPlaceholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Spouse.
         /// </summary>
         public static string Spouse {
@@ -2260,51 +1423,6 @@ namespace Shared.Common {
         public static string Submit {
             get {
                 return ResourceManager.GetString("Submit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to http://member.compassphs.com/#!/support.
-        /// </summary>
-        public static string SupportURL {
-            get {
-                return ResourceManager.GetString("SupportURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sure.
-        /// </summary>
-        public static string Sure {
-            get {
-                return ResourceManager.GetString("Sure", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lastly, tell us about your preferences for doctors.
-        /// </summary>
-        public static string TellUsAboutDoctorPreferences {
-            get {
-                return ResourceManager.GetString("TellUsAboutDoctorPreferences", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lastly, tell us about your preferences for facilities.
-        /// </summary>
-        public static string TellUsAboutFacilityPreferences {
-            get {
-                return ResourceManager.GetString("TellUsAboutFacilityPreferences", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 30 - 39.
-        /// </summary>
-        public static string Thirties {
-            get {
-                return ResourceManager.GetString("Thirties", resourceCulture);
             }
         }
         
@@ -2354,25 +1472,6 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Here are the top doctors that match your criteria.
-        ///    Premier doctors are exceptional because of their reasonable costs and consistently high quality of care..
-        /// </summary>
-        public static string TopDoctorCriteriaExplanation {
-            get {
-                return ResourceManager.GetString("TopDoctorCriteriaExplanation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Below are the best options we found based on everything you told us. See more detail about each one listed under each option..
-        /// </summary>
-        public static string TopFacilityCriteriaExplanation {
-            get {
-                return ResourceManager.GetString("TopFacilityCriteriaExplanation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Transgender.
         /// </summary>
         public static string Transgender {
@@ -2400,56 +1499,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unknown.
-        /// </summary>
-        public static string Unknown {
-            get {
-                return ResourceManager.GetString("Unknown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to MY UPCOMING PROCEDURES &amp; TESTS.
         /// </summary>
         public static string UpcomingProcedures {
             get {
                 return ResourceManager.GetString("UpcomingProcedures", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to An Upgrade of the Application is recommended, would you like to upgrade now?.
-        /// </summary>
-        public static string UpgradeRecommendedMessage {
-            get {
-                return ResourceManager.GetString("UpgradeRecommendedMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to An Upgrade Recommended.
-        /// </summary>
-        public static string UpgradeRecommendedTitle {
-            get {
-                return ResourceManager.GetString("UpgradeRecommendedTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to An Upgrade of the Application is required to continue.
-        /// </summary>
-        public static string UpgradeRequiredMessage {
-            get {
-                return ResourceManager.GetString("UpgradeRequiredMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to An Upgrade Required.
-        /// </summary>
-        public static string UpgradeRequiredTitle {
-            get {
-                return ResourceManager.GetString("UpgradeRequiredTitle", resourceCulture);
             }
         }
         
@@ -2499,29 +1553,11 @@ namespace Shared.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to years of experience.
-        /// </summary>
-        public static string YearsOfExperience {
-            get {
-                return ResourceManager.GetString("YearsOfExperience", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
         public static string Yes {
             get {
                 return ResourceManager.GetString("Yes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 0 reviews.  Be first to review..
-        /// </summary>
-        public static string ZeroReviewsBeTheFirstToReview {
-            get {
-                return ResourceManager.GetString("ZeroReviewsBeTheFirstToReview", resourceCulture);
             }
         }
     }

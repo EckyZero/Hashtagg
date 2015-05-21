@@ -1,11 +1,11 @@
 ﻿using System;
-using Shared.Common;
-using Security;
 using Foundation;
+using Security;
+using Shared.Common;
 
 namespace iOS
 {
-    public class iOSSecureKeyValueStore : BaseService, ISecureKeyValueStore
+	public class iOSSecureKeyValueStore : ISecureKeyValueStore
 	{
 		public void Store (string key, string value)
 		{

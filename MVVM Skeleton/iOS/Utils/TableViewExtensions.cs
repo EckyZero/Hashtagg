@@ -1,9 +1,9 @@
 ﻿using System;
-using UIKit;
-using CoreGraphics;
-using Foundation;
 using System.Collections.Generic;
 using System.Linq;
+using CoreGraphics;
+using Foundation;
+using UIKit;
 
 namespace iOS
 {
@@ -44,7 +44,6 @@ namespace iOS
 
 			return isScrolledToBottom;
 		}
-			
 
 //		public static void SizeHeaderToFitTextView(this UITableView tableView, UITextView textView, bool ignoreNewLineCharacters = true, float customOffset = 0.0f)
 //		{
@@ -92,16 +91,13 @@ namespace iOS
 			nfloat sumHeight = 0f;
 			foreach (UILabel label in labels)
 			{
-				if(!String.IsNullOrWhiteSpace(label.Text))
-				{
-					label.Text = FormatString (ignoreNewLineCharacters, label.Text);
-					var nstext = new NSString (label.Text);
-					var firstAttributes = new UIStringAttributes {
-						Font = label.Font,
-					};
-					var temp = nstext.GetBoundingRect (new CGSize (label.Frame.Width, 0), NSStringDrawingOptions.UsesLineFragmentOrigin, firstAttributes, null);
-					sumHeight += temp.Height;	
-				}
+				label.Text = FormatString (ignoreNewLineCharacters, label.Text);
+				var nstext = new NSString (label.Text);
+				var firstAttributes = new UIStringAttributes {
+					Font = label.Font,
+				};
+				var temp = nstext.GetBoundingRect (new CGSize (label.Frame.Width, 0), NSStringDrawingOptions.UsesLineFragmentOrigin, firstAttributes, null);
+				sumHeight += temp.Height;
 			}
 
 			var viewsThatAreAlighedToTheLeftOfTheScreen = tableView.TableHeaderView.Subviews.Where (v=> v.Frame.Left <=  (tableView.TableHeaderView.Frame.GetMidX()/2f)).OrderBy(v=> v.Frame.Top).ToList();
@@ -119,18 +115,15 @@ namespace iOS
 			
 		private static string FormatString (bool ignoreNewLineCharacters, string text)
 		{
-			if(!String.IsNullOrWhiteSpace(text))
+			if(ignoreNewLineCharacters)
 			{
-				if(ignoreNewLineCharacters)
-				{
-					text = text.Replace ("\\n", "");
-					text = text.Replace ("\\r", "");
-				}
-				else 
-				{
-					text = text.Replace ("\\n", "\n");
-					text = text.Replace ("\\r", "\r");
-				}	
+				text = text.Replace ("\\n", "");
+				text = text.Replace ("\\r", "");
+			}
+			else 
+			{
+				text = text.Replace ("\\n", "\n");
+				text = text.Replace ("\\r", "\r");
 			}
 			return text;
 		}

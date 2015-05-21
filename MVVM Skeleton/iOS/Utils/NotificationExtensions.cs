@@ -1,7 +1,7 @@
 ﻿using System;
+using CoreGraphics;
 using Foundation;
 using UIKit;
-using CoreGraphics;
 
 namespace iOS
 {

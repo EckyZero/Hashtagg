@@ -1,34 +1,16 @@
 ﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.Support.V4.Widget;
-using Android.Content.Res;
-using Android.Graphics.Drawables;
-using Android.Graphics;
 using Android.Locations;
+using Android.OS;
 using Droid.Activities;
-using Droid.OS_Services;
-using Shared.Common;
 using Microsoft.Practices.Unity;
-using Shared.BL;
-using Shared.Common.Logging;
+using Shared.Common;
 
 namespace Droid
 {
 
     public abstract class BaseActivity : Activity, IBaseActivity
     {
-        protected ILogger _logger;
-
         protected DispatcherService _dispatchService;
 
         protected ExtendedNavigationService _navigationService;
@@ -40,16 +22,6 @@ namespace Droid
         protected BrowserService _browserService;
 
         protected Geolocator _geoLocator;
-
-		protected AppUpgradeService _appUpgradeService;
-
-        protected ConnectivityService _connectivityService;
-
-		protected PhoneService _phoneService;
-
-		protected MapService _mapService;
-
-		protected EmailService _emailService;
 
         public virtual void Dismiss()
         {
@@ -104,17 +76,6 @@ namespace Droid
             _browserService = IocContainer.GetContainer().Resolve<IBrowserService>() as BrowserService;
 
             _geoLocator = IocContainer.GetContainer().Resolve<IGeolocator>() as Geolocator;
-
-            _appUpgradeService = IocContainer.GetContainer().Resolve<IAppUpgradeService>() as AppUpgradeService;
-
-            _connectivityService = IocContainer.GetContainer().Resolve<IConnectivityService>() as ConnectivityService;
-
-			_phoneService  = IocContainer.GetContainer().Resolve<IPhoneService>() as PhoneService;
-
-			_mapService  = IocContainer.GetContainer().Resolve<IMapService>() as MapService;
-
-			_emailService  = IocContainer.GetContainer().Resolve<IEmailService>() as EmailService;
-			//TODO: why are we casting above?
         }
 
         private void RegServices()
@@ -124,13 +85,9 @@ namespace Droid
             _hudService.RegisterActivity(this);
             _browserService.RegisterActivity(this);
             _geoLocator.RegisterActivity(this);
-            _appUpgradeService.RegisterActivity(this);
-			_connectivityService.RegisterActivity(this);
-			_phoneService.RegisterActivity(this);
-			_mapService.RegisterActivity(this);
         }
 
-        public void OnLocationChanged(Android.Locations.Location location)
+        public void OnLocationChanged(Location location)
         {
             _geoLocator.LocationChanged(location);
         }
