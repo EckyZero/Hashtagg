@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
     Microsoft ResX Schema
@@ -220,7 +220,7 @@
     <value>Ex. Colonoscopy</value>
   </data>
   <data name="ProcedureLookupPlaceholder" xml:space="preserve">
-    <value>Ex. Colonoscopy</value>
+    <value>Search procedure name</value>
   </data>
   <data name="ProcedureLookupErrorMessage" xml:space="preserve">
     <value>We didn't find any results for</value>
@@ -246,13 +246,19 @@
   <data name="NoCardsFound" xml:space="preserve">
     <value>No Cards Found</value>
   </data>
-  <data name="CheckInternetConnection" xml:space="preserve">
+    <data name="RateDoctor" xml:space="preserve">
+    <value>Rate Doctor</value>
+  </data>
+    <data name="CheckInternetConnection" xml:space="preserve">
     <value>Check Your Internet Connection.</value>
   </data>
   <data name="DoctorLookupErrorMessage" xml:space="preserve">
     <value>We didn't find any results for</value>
   </data>
   <data name="PrescriptionLookupErrorMessage" xml:space="preserve">
+    <value>We didn't find any results for</value>
+  </data>
+  <data name="GenericLookupErrorMessage" xml:space="preserve">
     <value>We didn't find any results for</value>
   </data>
   <data name="DoctorLookupSearchErrorMessage" xml:space="preserve">
@@ -264,11 +270,20 @@
   <data name="PrescriptionLookupErrorDetailMessage" xml:space="preserve">
     <value>If you aren’t sure how to spell the name of your medication, try typing in the first few letters. We will provide hints as you type to help you out.</value>
   </data>
+  <data name="SpecialtyLookupErrorDetailMessage" xml:space="preserve">
+    <value>If you aren’t sure how to spell the name of your specialty, try typing in the first few letters. We will provide hints as you type to help you out.</value>
+  </data>
   <data name="DoctorLookupPlaceholder" xml:space="preserve">
     <value>Search Doctor's name</value>
   </data>
   <data name="PrescriptionLookupPlaceholder" xml:space="preserve">
     <value>Search prescription's name</value>
+  </data>
+  <data name="SpecialtyLookupPlaceholder" xml:space="preserve">
+    <value>Specialty name</value>
+  </data>
+  <data name="LocationLookupPlaceholder" xml:space="preserve">
+    <value>Provide search location</value>
   </data>
   <data name="PrescriptionPromptPlaceholder" xml:space="preserve">
     <value>Ex. Ezetimbe (Zetia)</value>
@@ -342,8 +357,11 @@
   <data name="AddAFamilyMember" xml:space="preserve">
     <value>Add a family member</value>
   </data>
+  <data name="EditAFamilyMember" xml:space="preserve">
+    <value>Edit family member</value>
+  </data>
   <data name="Partner" xml:space="preserve">
-    <value>Partner</value>
+    <value>Domestic Partner</value>
   </data>
   <data name="Child" xml:space="preserve">
     <value>Child</value>
@@ -386,6 +404,9 @@
   </data>
   <data name="RecommendationSummarySubtitle" xml:space="preserve">
     <value>Being healthy is worth more than money. Here's some things everyone should do for their own sake.</value>
+  </data>
+  <data name="Recommendations" xml:space="preserve">
+    <value>Recommended Actions</value>
   </data>
   <data name="MyIncentives" xml:space="preserve">
     <value>My Incentives</value>
@@ -489,6 +510,9 @@
   <data name="MyHealthDetails" xml:space="preserve">
     <value>My Health Details</value>
   </data>
+  <data name="MyDoctors" xml:space="preserve">
+    <value>My Doctors</value>
+  </data>
   <data name="HealthDetailsProcedurePromptHeader" xml:space="preserve">
     <value>Tell us about any upcoming procedures or tests.</value>
   </data>
@@ -498,8 +522,8 @@
   <data name="HealthDetailsProcedurePromptFooter" xml:space="preserve">
     <value>This information allows us to:
 • Identify risks before they become unmanagable
-• Provide a record of progress
-• Check off one of your incentives to save</value>
+• Keep a record of scheduled procedures or tests
+• Check off one of your incentive activities</value>
   </data>
   <data name="PrescriptionsPromptNotAdded" xml:space="preserve">
     <value>You have not added any medications yet.</value>
@@ -520,7 +544,7 @@
     <value>My Medications</value>
   </data>
   <data name="PrescriptionPromptListHeader" xml:space="preserve">
-    <value>Taking control of what you spend on Prescriptions can be difficult. Let us help you out by telling us what you are currently taking.</value>
+    <value>Let Compass compare medication prices and explore lower-costing options for you</value>
   </data>
   <data name="PrescriptionPromptListAddButtonTitle" xml:space="preserve">
     <value>Add another prescription</value>
@@ -594,7 +618,7 @@
   <data name="ConditionLookupErrorDetailMessage" xml:space="preserve">
     <value>If you aren’t sure how to spell the name of your condition, try typing in the first few letters. We will provide hints as you type to help you out.</value>
   </data>
-	<data name="HealthDetailsResultPromptHeader" xml:space="preserve">
+  <data name="HealthDetailsResultPromptHeader" xml:space="preserve">
     <value>Curious about how to be a bit more proactive?</value>
   </data>
   <data name="HealthDetailsResultPromptBody" xml:space="preserve">
@@ -620,5 +644,303 @@
   </data>
   <data name="WaistCirumferenceDefinition" xml:space="preserve">
     <value>Your waist size is a clue to whether you're at high risk for type 2 diabetes, high blood pressure, high cholesterol, and heart disease.</value>
+  </data>
+  <data name="SupportURL" xml:space="preserve">
+    <value>http://member.compassphs.com/#!/support</value>
+  </data>
+  <data name="ForgotPasswordURL" xml:space="preserve">
+    <value>https://member.compassphs.com/#!/passwordresetrequestform</value>
+  </data>
+  <data name="ForgotUsernameURL" xml:space="preserve">
+    <value>https://member.compassphs.com/#!/request-username-reset</value>
+  </data>
+  <data name="EditUsernameURL" xml:space="preserve">
+    <value>https://member.compassphs.com/#!/request-username-reset</value>
+  </data>
+  <data name="ForgotPasswordTestURL" xml:space="preserve">
+    <value>https://membertest.compassphs.com/#!/passwordresetrequestform</value>
+  </data>
+  <data name="EditUsernameTestURL" xml:space="preserve">
+    <value>https://membertest.compassphs.com/#!/request-username-reset</value>
+  </data>
+  <data name="ForgotUsernameTestURL" xml:space="preserve">
+    <value>https://membertest.compassphs.com/#!/request-username-reset</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="EditUsername" xml:space="preserve">
+    <value>Edit Username</value>
+  </data>
+  <data name="Conditions" xml:space="preserve">
+    <value>Conditions</value>
+  </data>
+  <data name="Procedures" xml:space="preserve">
+    <value>Procedures</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="OtherReason" xml:space="preserve">
+    <value>Other Reason</value>
+  </data>
+  <data name="Any" xml:space="preserve">
+    <value>Any</value>
+  </data>
+  <data name="DoesntMatter" xml:space="preserve">
+    <value>Doesn't Matter</value>
+  </data>
+  <data name="Thirties" xml:space="preserve">
+    <value>30 - 39</value>
+  </data>
+  <data name="Forties" xml:space="preserve">
+    <value>40 - 49</value>
+  </data>
+  <data name="Fifties" xml:space="preserve">
+    <value>50 - 59</value>
+  </data>
+  <data name="SixtiesPlus" xml:space="preserve">
+    <value>60+</value>
+  </data>
+  <data name="Either" xml:space="preserve">
+    <value>Either</value>
+  </data>
+  <data name="DoctorPreferences" xml:space="preserve">
+    <value>Doctor Preferences</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="FindDoctorsNear" xml:space="preserve">
+    <value>Find Doctors near</value>
+  </data>
+  <data name="SearchCityStateZip" xml:space="preserve">
+    <value>Search City, State or Zip</value>
+  </data>
+  <data name="TellUsAboutDoctorPreferences" xml:space="preserve">
+    <value>Lastly, tell us about your preferences for doctors</value>
+  </data>
+  <data name="ContactHealthProAlertMessage" xml:space="preserve">
+    <value>You may have a need we can't accomodate for via the app. Want to reach out directly to your Health Pro?</value>
+  </data>
+  <data name="NoThanks" xml:space="preserve">
+    <value>No Thanks</value>
+  </data>
+  <data name="GreatHaveAnyOthers" xml:space="preserve">
+    <value>Great! Have any others?</value>
+  </data>
+  <data name="AddAnotherProcedure" xml:space="preserve">
+    <value>Add another procedure</value>
+  </data>
+  <data name="NotificationTitle" xml:space="preserve">
+    <value>Compass Mobile</value>
+  </data>
+  <data name="DuplicateDoctorAddTitle" xml:space="preserve">
+    <value>Doctor Already Exists</value>
+  </data>
+  <data name="DuplicateDoctorAdd" xml:space="preserve">
+    <value>This doctor was already added to your list</value>
+  </data>
+  <data name="YearsOfExperience" xml:space="preserve">
+    <value>years of experience</value>
+  </data>
+  <data name="Reviews" xml:space="preserve">
+    <value>reviews</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>more</value>
+  </data>
+  <data name="MoreDoctorsNearYou" xml:space="preserve">
+    <value>More doctors near you</value>
+  </data>
+  <data name="MoreFacilitiesNearYou" xml:space="preserve">
+    <value>More facilities near you</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="AddToMyDoctors" xml:space="preserve">
+    <value>Add to "My Doctors"</value>
+  </data>
+  <data name="RemoveFromMyDoctors" xml:space="preserve">
+    <value>Remove from "My Doctors"</value>
+  </data>
+  <data name="CallDoctor" xml:space="preserve">
+    <value>Call doctor</value>
+  </data>
+  <data name="ScheduleApptWithHealthPro" xml:space="preserve">
+    <value>Schedule appt with Health Pro</value>
+  </data>
+  <data name="RecommendedDoctors" xml:space="preserve">
+    <value>Recommended doctors</value>
+  </data>
+  <data name="RecommendedFacilities" xml:space="preserve">
+    <value>Recommended facilities</value>
+  </data>
+  <data name="TopDoctorCriteriaExplanation" xml:space="preserve">
+    <value>Here are the top doctors that match your criteria.
+    Premier doctors are exceptional because of their reasonable costs and consistently high quality of care.</value>
+  </data>
+  <data name="TopFacilityCriteriaExplanation" xml:space="preserve">
+    <value>Below are the best options we found based on everything you told us. See more detail about each one listed under each option.</value>
+  </data>
+  <data name="OtherDoctorCriteriaExplanation" xml:space="preserve">
+    <value>These doctors are ranked by distance. Quality factors can vary between them.</value>
+  </data>
+  <data name="OtherFacilityCriteriaExplanation" xml:space="preserve">
+    <value>These facilities are ranked by distance. Quality factors can vary between them.</value>
+  </data>
+  <data name="GeolocationDisabledTitle" xml:space="preserve">
+    <value>Access to location denied</value>
+  </data>
+  <data name="GeolocationDisabledMessage" xml:space="preserve">
+    <value>Oops! We could not retrieve your location. Please go to your phone's Settings page and enable locations services.</value>
+  </data>
+  <data name="GeolocationErrorTitle" xml:space="preserve">
+    <value>Error Retrieving Location</value>
+  </data>
+  <data name="GeolocationErrorMessage" xml:space="preserve">
+    <value>Oops! We could not retrieve your location. Please try again.</value>
+  </data>
+  <data name="LocationLookupErrorDetailMessage" xml:space="preserve">
+    <value>If you aren’t sure how to spell the name of your location, try typing in the first few letters. We will provide hints as you type to help you out.</value>
+  </data>
+  <data name="DuplicateAddMessage" xml:space="preserve">
+    <value>This Entry Already Exists</value>
+  </data>
+  <data name="DuplicateAddTitle" xml:space="preserve">
+    <value>Duplicate Entry</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="InNetwork" xml:space="preserve">
+    <value>In-network</value>
+  </data>
+  <data name="OutOfNetwork" xml:space="preserve">
+    <value>Out of network</value>
+  </data>
+  <data name="UpgradeRequiredMessage" xml:space="preserve">
+    <value>An Upgrade of the Application is required to continue</value>
+  </data>
+  <data name="UpgradeRequiredTitle" xml:space="preserve">
+    <value>An Upgrade Required</value>
+  </data>
+  <data name="UpgradeRecommendedMessage" xml:space="preserve">
+    <value>An Upgrade of the Application is recommended, would you like to upgrade now?</value>
+  </data>
+  <data name="UpgradeRecommendedTitle" xml:space="preserve">
+    <value>An Upgrade Recommended</value>
+  </data>
+  <data name="Mi" xml:space="preserve">
+    <value>mi</value>
+  </data>
+  <data name="FacilityPrivileges" xml:space="preserve">
+    <value>Facility Privileges</value>
+  </data>
+  <data name="GenericError" xml:space="preserve">
+    <value>Uh oh! An error was encountered completing this request. Please try again.</value>
+  </data>
+  <data name="GenericOffline" xml:space="preserve">
+    <value>Uh oh! It looks like you aren't connected to the internet. Please connect to Wi-Fi or a cellular network and try again.</value>
+  </data>
+  <data name="Network" xml:space="preserve">
+    <value>network</value>
+  </data>
+  <data name="FacilityLookupPlaceholder" xml:space="preserve">
+    <value>Search a facility name</value>
+  </data>
+  <data name="EditDoctorPreferences" xml:space="preserve">
+    <value>Edit Doctor Preferences</value>
+  </data>
+  <data name="EditHeaderTextDoctorPreferences" xml:space="preserve">
+    <value>Please edit your preferences for doctors</value>
+  </data>
+  <data name="Sure" xml:space="preserve">
+    <value>Sure</value>
+  </data>
+  <data name="DocRecPreferencesEditedAlertMessage" xml:space="preserve">
+    <value>You edited your preferences. Would you like us to save these edits for future searches?</value>
+  </data>
+  <data name="EditFacilityPreferences" xml:space="preserve">
+    <value>Edit Facility Preferences</value>
+  </data>
+  <data name="FacilityPreferences" xml:space="preserve">
+    <value>Facility Preferences</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="SearchADoctorsName" xml:space="preserve">
+    <value>Search a Doctor's name</value>
+  </data>
+  <data name="EditHeaderTextFacilityPreferences" xml:space="preserve">
+    <value>Please edit your preferences for facilities</value>
+  </data>
+  <data name="TellUsAboutFacilityPreferences" xml:space="preserve">
+    <value>Lastly, tell us about your preferences for facilities</value>
+  </data>
+  <data name="FindFacilitiesNear" xml:space="preserve">
+    <value>Find Facilities near</value>
+  </data>
+  <data name="RecommendationsSearchError" xml:space="preserve">
+    <value>Oops! We could not get you the recommendations your requested. Please try searching again.</value>
+  </data>
+  <data name="BeTheFirstToReview" xml:space="preserve">
+    <value>Be the first to review this doctor</value>
+  </data>
+  <data name="ZeroReviewsBeTheFirstToReview" xml:space="preserve">
+    <value>0 reviews.  Be first to review.</value>
+  </data>
+  <data name="HealthDetailsConditionListHeader" xml:space="preserve">
+    <value>Everyone can benefit from a little guidance. Based on the personal health history you’ve entered, let’s look at proactive ways to take care of you.</value>
+  </data>
+  <data name="HealthDetailsProcedureListHeader" xml:space="preserve">
+    <value>Everyone can benefit from a little guidance. Based on your upcoming procedures and tests, let’s look at proactive ways to take care of you.</value>
+  </data>
+  <data name="HealthDetailsResultListHeader" xml:space="preserve">
+    <value>Curious about how to be a bit more proactive? Here are easy preventive ways to monitor your health.</value>
+  </data>
+  <data name="IHaveDoneThisAlready" xml:space="preserve">
+    <value>I've Done This Already</value>
+  </data>
+  <data name="MyPhoneNumber" xml:space="preserve">
+    <value>My Phone Number</value>
+  </data>
+  <data name="AccreditedFacility" xml:space="preserve">
+    <value>Accredited facility</value>
+  </data>
+  <data name="CallFacility" xml:space="preserve">
+    <value>Call facility</value>
+  </data>
+  <data name="NoRatings" xml:space="preserve">
+    <value>No Ratings</value>
+  </data>
+  <data name="MyFacilities" xml:space="preserve">
+    <value>MY FACILITIES</value>
+  </data>
+  <data name="HealthProPromptContext" xml:space="preserve">
+    <value>Hey, I'm {0}, and yes, I promise I'm real! If you get a questionable medical bill, need doctor recommendations, or just have a general healthcare question the team is here to help you.</value>
+  </data>
+  <data name="MyHealthPro" xml:space="preserve">
+    <value>My Health Pro</value>
+  </data>
+  <data name="ContactMyHealthPro" xml:space="preserve">
+    <value>Contact My Health Pro</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="HoursUnknown" xml:space="preserve">
+    <value>Hours Unknown</value>
   </data>
 </root>

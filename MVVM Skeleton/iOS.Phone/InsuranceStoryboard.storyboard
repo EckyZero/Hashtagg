@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--Insurance Controller-->
+        <scene sceneID="Ody-M7-feW">
+            <objects>
+                <viewController restorationIdentifier="InsuranceController" storyboardIdentifier="InsuranceController" id="vMx-ap-ajd" customClass="InsuranceController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hFh-S7-4xc"/>
+                        <viewControllerLayoutGuide type="bottom" id="jiq-An-a3b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LJx-4m-FzJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6b-4z-1pt" userLabel="MedicalContainer">
+                                <rect key="frame" x="0.0" y="29" width="320" height="475"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.95294117649999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="spk-5t-dBL" kind="embed" id="qNU-no-oBb"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="68O-nU-qgB" userLabel="DentalContainer">
+                                <rect key="frame" x="0.0" y="29" width="320" height="475"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.95294117649999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="5rI-vu-XH5" kind="embed" id="DOX-wD-R2F"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZCA-gb-dwq" userLabel="VisionContainer">
+                                <rect key="frame" x="0.0" y="29" width="320" height="475"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.95294117649999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="NJA-K4-apy" kind="embed" id="DmF-9f-Sq6"/>
+                                </connections>
+                            </containerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rsv-py-gL9" customClass="SDSegmentedControl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.95294117649999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JZO-Q5-ijU"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Medical"/>
+                                    <segment title="Dental"/>
+                                    <segment title="Vision"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.95294117649999999" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="68O-nU-qgB" firstAttribute="top" secondItem="rsv-py-gL9" secondAttribute="bottom" constant="1" id="12e-oD-5QB"/>
+                            <constraint firstItem="ZCA-gb-dwq" firstAttribute="top" secondItem="rsv-py-gL9" secondAttribute="bottom" constant="1" id="3Cb-3L-vCN"/>
+                            <constraint firstAttribute="trailing" secondItem="ZCA-gb-dwq" secondAttribute="trailing" id="7SD-z0-GBA"/>
+                            <constraint firstItem="jiq-An-a3b" firstAttribute="top" secondItem="z6b-4z-1pt" secondAttribute="bottom" id="F23-A8-ZhM"/>
+                            <constraint firstAttribute="trailing" secondItem="rsv-py-gL9" secondAttribute="trailing" id="Ihk-mv-Qnw"/>
+                            <constraint firstItem="rsv-py-gL9" firstAttribute="leading" secondItem="LJx-4m-FzJ" secondAttribute="leading" id="JaF-fd-lcX"/>
+                            <constraint firstItem="68O-nU-qgB" firstAttribute="leading" secondItem="LJx-4m-FzJ" secondAttribute="leading" id="Vv3-s1-JHh"/>
+                            <constraint firstItem="jiq-An-a3b" firstAttribute="top" secondItem="68O-nU-qgB" secondAttribute="bottom" id="ZcH-Z8-j04"/>
+                            <constraint firstItem="z6b-4z-1pt" firstAttribute="top" secondItem="rsv-py-gL9" secondAttribute="bottom" constant="1" id="aht-T7-nnX"/>
+                            <constraint firstItem="rsv-py-gL9" firstAttribute="top" secondItem="hFh-S7-4xc" secondAttribute="bottom" id="fLM-Ob-haj"/>
+                            <constraint firstAttribute="trailing" secondItem="z6b-4z-1pt" secondAttribute="trailing" id="lQD-ML-9YM"/>
+                            <constraint firstItem="jiq-An-a3b" firstAttribute="top" secondItem="ZCA-gb-dwq" secondAttribute="bottom" id="mdN-pi-0Ms"/>
+                            <constraint firstAttribute="trailing" secondItem="68O-nU-qgB" secondAttribute="trailing" id="n2j-mc-gwV"/>
+                            <constraint firstItem="z6b-4z-1pt" firstAttribute="leading" secondItem="LJx-4m-FzJ" secondAttribute="leading" id="p5j-Mk-YME"/>
+                            <constraint firstItem="ZCA-gb-dwq" firstAttribute="leading" secondItem="LJx-4m-FzJ" secondAttribute="leading" id="u8o-No-Av7"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="ConditionView" destination="68O-nU-qgB" id="9c8-LR-zfM"/>
+                        <outlet property="ProcedureView" destination="ZCA-gb-dwq" id="Kcs-Ct-8tO"/>
+                        <outlet property="ResultView" destination="z6b-4z-1pt" id="35w-FZ-Rg5"/>
+                        <outlet property="SegmentedControl" destination="rsv-py-gL9" id="f6r-Ef-Uc4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bVQ-mc-rct" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279" y="569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ulS-gX-blp">
+            <objects>
+                <navigationController id="spk-5t-dBL" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jR7-SW-ZvH"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="i1E-IF-RGq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xYh-IJ-0MT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="6.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="J3C-FX-wcU">
+            <objects>
+                <viewController id="AzL-xc-WdM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GAD-W1-FQv"/>
+                        <viewControllerLayoutGuide type="bottom" id="RSv-SY-AFZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qmJ-2K-AbC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HLY-5g-B6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1167" y="53"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pF2-IR-9GN">
+            <objects>
+                <navigationController id="NJA-K4-apy" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ny9-Ub-f57">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oSj-A6-sdC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="1073.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iud-F6-sNq">
+            <objects>
+                <navigationController id="5rI-vu-XH5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6DA-hn-sk9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UbS-Hg-wYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="542.5"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

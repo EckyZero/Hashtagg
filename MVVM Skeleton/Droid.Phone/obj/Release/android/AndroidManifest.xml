@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0" android:installLocation="auto" package="com.compassphs.healthprocloud.android" android:versionCode="5">
+  <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="21" />
+  <application android:label="CompassMobile.Droid.Phone" android:theme="@style/HideTitleAndActionBar" android:icon="@drawable/icon" android:debuggable="false" android:name="compassmobile.droid.phone.MainApplication">
+    <activity android:label="CalendarActivity" android:name="compassmobile.droid.phone.activities.CalendarActivity" />
+    <activity android:label="ConfirmPINResetActivity" android:windowSoftInputMode="stateAlwaysVisible|adjustResize" android:name="compassmobile.droid.phone.activities.ConfirmPINResetActivity" />
+    <activity android:label="ConfirmPINActivity" android:windowSoftInputMode="stateAlwaysVisible|adjustResize" android:name="compassmobile.droid.phone.activities.ConfirmPINActivity" />
+    <activity android:label="CreatePINResetActivity" android:windowSoftInputMode="stateAlwaysVisible|adjustResize" android:name="compassmobile.droid.phone.activities.CreatePINResetActivity" />
+    <activity android:label="DependentInformationActivity" android:parentActivityName="compassmobile.droid.phone.activities.DependentPromptActivity" android:name="compassmobile.droid.phone.activities.DependentInformationActivity" />
+    <activity android:label="DependentPromptActivity" android:name="compassmobile.droid.phone.activities.DependentPromptActivity" />
+    <activity android:label="DependentPromptListActivity" android:name="compassmobile.droid.phone.activities.DependentPromptListActivity" />
+    <activity android:label="EnterPINResetActivity" android:windowSoftInputMode="stateAlwaysVisible|adjustResize" android:name="compassmobile.droid.phone.activities.EnterPINResetActivity" />
+    <activity android:label="GenericConditionsLookupActivity" android:name="compassmobile.droid.phone.activities.GenericConditionsLookupActivity" />
+    <activity android:label="GenericPrescriptionInformationActivity" android:name="compassmobile.droid.phone.activities.GenericPrescriptionInformationActivity" />
+    <activity android:label="GenericPrescriptionLookupActivity" android:name="compassmobile.droid.phone.activities.GenericPrescriptionLookupActivity" />
+    <activity android:label="GenericProcedureInformationActivity" android:windowSoftInputMode="stateHidden|adjustPan" android:name="compassmobile.droid.phone.activities.GenericProcedureInformationActivity" />
+    <activity android:label="GenericProcedureLookupActivity" android:name="compassmobile.droid.phone.activities.GenericProcedureLookupActivity" />
+    <activity android:label="HamburgerMenuActivity" android:name="compassmobile.droid.phone.activities.HamburgerMenuActivity" />
+    <activity android:label="IncentiveCompletedAttestationActivity" android:name="compassmobile.droid.phone.activities.incentives.markascompleted.IncentiveCompletedAttestationActivity" />
+    <activity android:label="IncentiveCompletedInformationActivity" android:name="compassmobile.droid.phone.activities.incentives.markascompleted.IncentiveCompletedInformationActivity" />
+    <activity android:label="IncentiveCantCompleteAttestationActivity" android:name="compassmobile.droid.phone.activities.incentives.markcannotcomplete.IncentiveCantCompleteAttestationActivity" />
+    <activity android:label="InventiveCantCompleteDoctorVerifyActivity" android:name="compassmobile.droid.phone.activities.incentives.markcannotcomplete.InventiveCantCompleteDoctorVerifyActivity" />
+    <activity android:label="IncentivesCantCompleteReasonPromptActivity" android:name="compassmobile.droid.phone.activities.incentives.markcannotcomplete.IncentiveCantCompleteReasonPromptActivity" />
+    <activity android:label="IncentivesCantCompletePromptActivity" android:windowSoftInputMode="stateHidden|adjustResize" android:name="compassmobile.droid.phone.activities.incentives.markcannotcomplete.IncentivesCantCompletePromptActivity" />
+    <activity android:label="IncentivesCompletedPromptActivity" android:name="compassmobile.droid.phone.activities.incentives.markascompleted.IncentiveCompletedPromptActivity" />
+    <activity android:label="IncentiveActionDetail" android:name="compassmobile.droid.phone.activities.IncentiveActionDetailActivity" />
+    <activity android:label="IncentiveDetail" android:name="compassmobile.droid.phone.activities.IncentiveDetailActivity" />
+    <activity android:label="CreatePINActivity" android:windowSoftInputMode="stateAlwaysVisible|adjustResize" android:name="compassmobile.droid.phone.activities.CreatePINActivity" />
+    <activity android:label="DoctorLookupActivity" android:name="compassmobile.droid.phone.activities.DoctorLookupActivity" />
+    <activity android:label="DoctorPromptActivity" android:name="compassmobile.droid.phone.activities.DoctorPromptActivity" />
+    <activity android:label="DoctorPromptListActivity" android:name="compassmobile.droid.phone.activities.DoctorPromptListActivity" />
+    <activity android:label="EnterPINActivity" android:windowSoftInputMode="stateAlwaysVisible|adjustResize" android:name="compassmobile.droid.phone.activities.EnterPINActivity" />
+    <activity android:label="GetStartedActivity" android:name="compassmobile.droid.phone.activities.GetStartedActivity" />
+    <activity android:label="LoginActivity" android:parentActivityName="compassmobile.droid.phone.activities.GetStartedActivity" android:windowSoftInputMode="stateHidden|adjustPan" android:name="compassmobile.droid.phone.activities.LoginActivity" />
+    <activity android:label="PrescriptionInformationActivity" android:windowSoftInputMode="stateHidden|adjustPan" android:name="compassmobile.droid.phone.activities.PrescriptionInformationActivity" />
+    <activity android:label="PrescriptionLookupActivity" android:name="compassmobile.droid.phone.activities.PrescriptionLookupActivity" />
+    <activity android:label="PrescriptionPromptActivity" android:name="compassmobile.droid.phone.activities.PrescriptionPromptActivity" />
+    <activity android:label="PrescriptionPromptListActivity" android:name="compassmobile.droid.phone.activities.PrescriptionPromptListActivity" />
+    <activity android:label="ProcedureInformationActivity" android:windowSoftInputMode="stateHidden|adjustPan" android:name="compassmobile.droid.phone.activities.ProcedureInformationActivity" />
+    <activity android:label="ProcedureLookupActivity" android:name="compassmobile.droid.phone.activities.ProcedureLookupActivity" />
+    <activity android:label="ProcedurePromptActivity" android:name="compassmobile.droid.phone.activities.ProcedurePromptActivity" />
+    <activity android:label="ProcedurePromptListActivity" android:name="compassmobile.droid.phone.activities.ProcedurePromptListActivity" />
+    <activity android:label="RegisterActivity" android:parentActivityName="compassmobile.droid.phone.activities.GetStartedActivity" android:name="compassmobile.droid.phone.activities.RegisterActivity" />
+    <activity android:label="SettingsDependentInformationActivity" android:name="compassmobile.droid.phone.activities.SettingsDependentInformationActivity" />
+    <activity android:label="Compass Mobile" android:screenOrientation="portrait" android:name="compassmobile.droid.phone.activities.SplashActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity android:label="TooltipActivity" android:name="compassmobile.droid.phone.activities.TooltipActivity" />
+    <receiver android:name="compassmobile.droid.phone.os_services.gcm.GcmOfflineBroadcastReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+      </intent-filter>
+    </receiver>
+    <receiver android:permission="com.google.android.c2dm.permission.SEND" android:name="compassmobile.droid.phone.os_services.gcm.GcmBroadcastReceiver">
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="com.compassphs.healthprocloud.android" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <category android:name="com.compassphs.healthprocloud.android" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="com.google.android.gcm.intent.RETRY" />
+        <category android:name="com.compassphs.healthprocloud.android" />
+      </intent-filter>
+    </receiver>
+    <service android:name="compassmobile.droid.phone.os_services.gcm.GcmService" />
+    <activity android:label="BiometricResultsActivity" android:name="compassmobile.droid.phone.BiometricResultsActivity" />
+    <activity android:label="BiometricResultDetailActivity" android:name="compassmobile.droid.phone.BiometricResultDetailActivity" />
+    <activity android:label="IncentiveSummaryActivity" android:name="compassmobile.droid.phone.IncentiveSummaryActivity" />
+    <activity android:label="BrowserActivity" android:name="compassmobile.droid.phone.activities.BrowserActivity" />
+    <activity android:label="Web Authenticator" android:name="xamarin.auth.FormAuthenticatorActivity" />
+    <activity android:label="Web Authenticator" android:name="xamarin.auth.WebAuthenticatorActivity" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.compassphs.healthprocloud.android.mono.MonoRuntimeProvider.__mono_init__" />
+  </application>
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.GET_TASKS" />
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.BATTERY_STATS" />
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <uses-permission android:name="android.permission.READ_LOGS" />
+  <uses-permission android:name="android.permission.CALL_PHONE" />
+  <permission android:name="com.compassphs.healthprocloud.android.permission.C2D_MESSAGE" />
+  <uses-permission android:name="com.compassphs.healthprocloud.android.permission.C2D_MESSAGE" />
+  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+  <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+</manifest>

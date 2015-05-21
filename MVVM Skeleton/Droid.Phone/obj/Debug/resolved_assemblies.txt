@@ -1,0 +1,99 @@
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid.Phone\bin\Debug\CompassMobile.Droid.Phone.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\Components\AndHUD-1.3.1\lib\android\AndHUD.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\AutoMapper.3.3.1\lib\MonoAndroid\AutoMapper.Android.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\AutoMapper.3.3.1\lib\MonoAndroid\AutoMapper.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid\bin\Debug\CompassMobile.Droid.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.BL\bin\Debug\CompassMobile.Shared.BL.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.Bootstrapper\bin\Debug\CompassMobile.Shared.Bootstrapper.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.Common\bin\Debug\CompassMobile.Shared.Common.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.DAL\bin\Debug\CompassMobile.Shared.DAL.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.VM\bin\Debug\CompassMobile.Shared.VM.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\MvvmLightLibs.5.1.1.0\lib\monoandroid1\GalaSoft.MvvmLight.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\MvvmLightLibs.5.1.1.0\lib\monoandroid1\GalaSoft.MvvmLight.Extras.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\MvvmLightLibs.5.1.1.0\lib\monoandroid1\GalaSoft.MvvmLight.Platform.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\Components\GCMClient-1.0\lib\android\GCM.Client.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\Unity.3.5.1404.0\lib\portable-net45+wp80+win8+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\Components\modernhttpclient-2.1.5\lib\android\ModernHttpClient.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v4.1\Mono.Android.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v4.1\Mono.Android.Export.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\Components\sqlcipher-for-xamarin-android-3.2.1.1\lib\android\Mono.Data.Sqlcipher.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\mscorlib.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\Components\modernhttpclient-2.1.5\lib\android\OkHttp.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\Refractored.PagerSlidingTabStrip.1.0.1\lib\MonoAndroid10\Refractored.PagerSlidingTabStrip.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.Core.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.Xml.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\ThirdParty\Telerik\Android\Telerik.Xamarin.Android.Common.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\ThirdParty\Telerik\Android\Telerik.Xamarin.Android.Input.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\Xamarin.Android.Support.v13.21.0.3.0\lib\MonoAndroid32\Xamarin.Android.Support.v13.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\Xamarin.Android.Support.v4.21.0.3.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\Xamarin.Android.Support.v7.AppCompat.21.0.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\Xamarin.Android.Support.v7.RecyclerView.21.0.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.RecyclerView.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\packages\Xamarin.Insights.1.9.1.107\lib\MonoAndroid10\Xamarin.Insights.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Collections.Concurrent.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Collections.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.ComponentModel.Annotations.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.ComponentModel.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.ComponentModel.EventBasedAsync.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Diagnostics.Contracts.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Diagnostics.Debug.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Diagnostics.Tools.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Diagnostics.Tracing.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Dynamic.Runtime.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Globalization.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.IO.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Linq.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Linq.Expressions.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Linq.Parallel.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Linq.Queryable.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Net.NetworkInformation.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Net.Primitives.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Net.Requests.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.ObjectModel.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Reflection.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Reflection.Emit.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Reflection.Emit.ILGeneration.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Reflection.Emit.Lightweight.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Reflection.Extensions.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Reflection.Primitives.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Resources.ResourceManager.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Runtime.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Runtime.Extensions.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Runtime.InteropServices.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Runtime.InteropServices.WindowsRuntime.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Runtime.Numerics.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Runtime.Serialization.Json.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Runtime.Serialization.Primitives.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Runtime.Serialization.Xml.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Security.Principal.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.ServiceModel.Http.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.ServiceModel.Primitives.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.ServiceModel.Security.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Text.Encoding.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Text.Encoding.Extensions.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Text.RegularExpressions.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Threading.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Threading.Tasks.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Threading.Tasks.Parallel.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Threading.Timer.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Xml.ReaderWriter.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Xml.XDocument.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Xml.XmlSerializer.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.Net.Http.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid.Phone\bin\Debug\Auth0Client.Android.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid.Phone\bin\Debug\Xamarin.Auth.Android.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.Json.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid.Phone\bin\Debug\CompassMobile.Shared.SAL.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.Data.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Mono.Data.Tds.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Mono.Security.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.Transactions.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.Runtime.Serialization.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.ComponentModel.DataAnnotations.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.ComponentModel.Composition.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.Numerics.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.ServiceModel.dll
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\System.Xml.Linq.dll

@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string></string>
+	<string>com.compassphs.healthprocloud</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.2.6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string></string>
+	<string>7.0</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -36,18 +36,41 @@
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>CFBundleIconFiles</key>
-	<array/>
+	<array>
+		<string>Icon@2x.png</string>
+		<string>Icon.png</string>
+		<string>Icon-60@2x.png</string>
+		<string>Icon-Small@2x.png</string>
+		<string>Icon-Small.png</string>
+		<string>Icon-Small-40@2x.png</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
+		<string>remote-notification</string>
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Compass uses your location to provide more accurate search results. </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Compass uses your location to provide more accurate search results. </string>
 	<key>CFBundleDisplayName</key>
-	<string></string>
+	<string>HealthPro Cloud</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.0.1</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>MKDirectionsRequest</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.maps.directionsrequest</string>
+			</array>
+		</dict>
+	</array>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array>
+		<string>MKDirectionsModeCar</string>
+	</array>
 </dict>
 </plist>

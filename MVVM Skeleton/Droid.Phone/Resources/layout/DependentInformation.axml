@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/DependentInformationToolbar"
+        layout="@layout/Toolbar" />
+    <Droid.Controls.ParallaxScrollView
+        android:layout_below="@id/DependentInformationToolbar"
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        custom:parallaxOffset=".3">
+    <!-- Background -->
+        <RelativeLayout
+            android:id="@+id/DependentInformationBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F7F3DE">
+            <RelativeLayout
+                android:id="@+id/DependentInformationBackgroundContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/DependentInformationImage"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/FamForm"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:layout_centerInParent="true" />
+                <Droid.Controls.PSTextView
+                    android:id="@+id/DependentInformationTitle"
+                    android:layout_below="@+id/DependentInformationImage"
+                    custom:customFont="Fonts/ShadowsIntoLightTwo-Regular.ttf"
+                    android:textSize="28sp"
+                    android:textColor="#555555"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Excellent, Tell us about them."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="30dp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    <!-- Foreground -->
+        <Droid.Controls.ObservableScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:layout_gravity="center">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/DependentInformationInputs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <View
+                        android:id="@+id/DependentInformationMatchBackground"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:background="#00000000" />
+                    <RelativeLayout
+                        android:layout_below="@+id/DependentInformationMatchBackground"
+                        android:id="@+id/DependentInformationInputFields"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="1dp"
+                        android:background="#ECE4B7">
+                        <Droid.Controls.FloatLabeledEditText
+                            android:id="@+id/DependentInformationFirstName"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            android:background="@drawable/CompassFlatWhiteEditText"
+                            custom:fletTextAppearance="@style/floatlabelededittext">
+                            <EditText
+                                android:inputType="textPersonName"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="First Name"
+                                android:background="#00000000"
+                                android:textSize="16sp"
+                                android:textColor="#555555"
+                                android:textColorHint="#A9A9A9" />
+                            <ImageView
+                                android:padding="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center_vertical" />
+                        </Droid.Controls.FloatLabeledEditText>
+                        <Droid.Controls.FloatLabeledEditText
+                            android:layout_marginTop="1dp"
+                            android:id="@+id/DependentInformationLastName"
+                            android:layout_below="@+id/DependentInformationFirstName"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            android:background="@drawable/CompassFlatWhiteEditText"
+                            custom:fletTextAppearance="@style/floatlabelededittext">
+                            <EditText
+                                android:inputType="textPersonName"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Last Name"
+                                android:background="#00000000"
+                                android:textSize="16sp"
+                                android:textColor="#555555"
+                                android:textColorHint="#A9A9A9" />
+                            <ImageView
+                                android:padding="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center_vertical" />
+                        </Droid.Controls.FloatLabeledEditText>
+                        <Droid.Controls.FloatLabeledEditText
+                            android:layout_marginTop="1dp"
+                            android:id="@+id/DependentInformationEmail"
+                            android:layout_below="@+id/DependentInformationLastName"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            android:background="@drawable/CompassFlatWhiteEditText"
+                            custom:fletTextAppearance="@style/floatlabelededittext">
+                            <EditText
+                                android:inputType="textEmailAddress"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Email Address"
+                                android:background="#00000000"
+                                android:textSize="16sp"
+                                android:textColor="#555555"
+                                android:imeOptions="actionDone"
+                                android:textColorHint="#A9A9A9" />
+                            <ImageView
+                                android:padding="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center_vertical" />
+                        </Droid.Controls.FloatLabeledEditText>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_below="@id/DependentInformationEmail"
+                            android:background="#F7F3DE"
+                            android:id="@+id/DependentInformationInvite">
+                            <Droid.Controls.PSTextView
+                                android:text="Send them an Invite?"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/DependentInformationInviteTextView"
+                                android:textSize="16sp"
+                                custom:customFont="Fonts/CenturyGothicBold.ttf"
+                                android:textColor="#555555"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="5dp" />
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:imeOptions="actionDone"
+                                android:id="@+id/DependentInformationInviteCheckBox"
+                                android:paddingRight="10dp" />
+                        </LinearLayout>
+                        <Droid.Controls.FloatLabeledEditText
+                            android:layout_marginTop="1dp"
+                            android:id="@+id/DependentInformationBirthdate"
+                            android:layout_below="@+id/DependentInformationInvite"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            custom:fletDisplayToolTip="true"
+                            custom:fletDatePicker="true"
+                            android:background="@drawable/CompassFlatWhiteEditText"
+                            custom:fletTextAppearance="@style/floatlabelededittext">
+                            <EditText
+                                android:focusableInTouchMode="false"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Birthdate"
+                                android:background="#00000000"
+                                android:textSize="16sp"
+                                android:textColor="#555555"
+                                android:textColorHint="#A9A9A9" />
+                            <ImageView
+                                android:padding="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center_vertical" />
+                        </Droid.Controls.FloatLabeledEditText>
+                        <Droid.Controls.FloatLabeledEditText
+                            android:layout_marginTop="1dp"
+                            android:id="@+id/DependentInformationSocial"
+                            android:layout_below="@+id/DependentInformationBirthdate"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            custom:fletDisplayToolTip="true"
+                            android:background="@drawable/CompassFlatWhiteEditText"
+                            custom:fletTextAppearance="@style/floatlabelededittext">
+                            <EditText
+                                android:maxLength="4"
+                                android:inputType="numberPassword"
+                                android:imeOptions="actionDone"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Last 4 of SSN"
+                                android:background="#00000000"
+                                android:textSize="16sp"
+                                android:textColor="#555555"
+                                android:textColorHint="#A9A9A9" />
+                            <ImageView
+                                android:padding="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center_vertical" />
+                        </Droid.Controls.FloatLabeledEditText>
+                        <Droid.Controls.FloatLabeledEditText
+                            android:layout_marginTop="1dp"
+                            android:id="@+id/DependentInformationGender"
+                            android:layout_below="@+id/DependentInformationSocial"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            custom:fletCustomPicker="true"
+                            android:background="@drawable/CompassFlatWhiteEditText"
+                            custom:fletTextAppearance="@style/floatlabelededittext">
+                            <EditText
+                                android:focusableInTouchMode="false"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Gender"
+                                android:background="#00000000"
+                                android:textSize="16sp"
+                                android:textColor="#555555"
+                                android:textColorHint="#A9A9A9" />
+                            <ImageView
+                                android:padding="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center_vertical" />
+                        </Droid.Controls.FloatLabeledEditText>
+                        <Droid.Controls.FloatLabeledEditText
+                            android:layout_marginTop="1dp"
+                            android:id="@+id/DependentInformationRelationship"
+                            android:layout_below="@+id/DependentInformationGender"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            custom:fletCustomPicker="true"
+                            android:background="@drawable/CompassFlatWhiteEditText"
+                            custom:fletTextAppearance="@style/floatlabelededittext">
+                            <EditText
+                                android:focusableInTouchMode="false"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Relationship"
+                                android:background="#00000000"
+                                android:textSize="16sp"
+                                android:textColor="#555555"
+                                android:textColorHint="#A9A9A9" />
+                            <ImageView
+                                android:padding="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center_vertical" />
+                        </Droid.Controls.FloatLabeledEditText>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_below="@id/DependentInformationRelationship"
+                            android:background="#F7F3DE"
+                            android:id="@+id/DependentInformationPrimaryDecisionMaker">
+                            <Droid.Controls.PSTextView
+                                android:text="Primary Decision Maker?"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/DependentInformationDecisionMakerTextView"
+                                android:layout_weight="1"
+                                android:textSize="16sp"
+                                custom:customFont="Fonts/CenturyGothicBold.ttf"
+                                android:textColor="#555555"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="5dp" />
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/DependentInformationDecisionMakerCheckBox"
+                                android:imeOptions="actionDone"
+                                android:paddingRight="10dp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_below="@+id/DependentInformationInputs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <Droid.Controls.PSButton
+                        android:text="Add Them"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:id="@+id/DependentInformationLetsGoButton"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/CompassOrangeButton"
+                        android:layout_margin="30dp"
+                        android:textColor="#FFFFFF"
+                        custom:customFont="Fonts/FuturaStd-Bold.ttf"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                    <Droid.Controls.PSButton
+                        android:background="#00000000"
+                        android:text="Cancel"
+                        android:layout_marginBottom="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/DependentInformationCancelButton"
+                        android:layout_below="@+id/DependentInformationLetsGoButton"
+                        android:textColor="#3D89CC"
+                        custom:customFont="Fonts/Futura-Book.ttf"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </RelativeLayout>
+        </Droid.Controls.ObservableScrollView>
+    </Droid.Controls.ParallaxScrollView>
+</RelativeLayout>

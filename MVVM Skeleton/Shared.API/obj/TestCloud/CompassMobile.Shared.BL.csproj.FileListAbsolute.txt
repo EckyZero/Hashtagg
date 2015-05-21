@@ -1,0 +1,4 @@
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid.Phone\bin\Debug\CompassMobile.Shared.BL.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.BL\obj\TestCloud\CompassMobile.Shared.BL.csprojResolveAssemblyReference.cache
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.BL\obj\TestCloud\CompassMobile.Shared.BL.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid.Phone\bin\Debug\CompassMobile.Shared.BL.dll.config

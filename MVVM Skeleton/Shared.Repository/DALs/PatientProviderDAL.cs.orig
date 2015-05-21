@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using CompassMobile.Shared.Common;
+
+namespace CompassMobile.Shared.DAL
+{
+	public class PatientProviderDAL : BaseDAL<PatientProvider>, IPatientProviderDAL
+	{
+		public PatientProvider Read(int patientProviderId)
+		{
+			var patientProvider = Database.Query<PatientProvider> ().Where (p => p.Id == patientProviderId).FirstOrDefault();
+
+			return patientProvider;
+		}
+<<<<<<< HEAD
+
+		public List<PatientProvider> ReadAll()
+		{
+			var patientProviders = Database.Query<PatientProvider> ().ToList ();
+
+			return patientProviders;
+		}
+
+		public void Create (PatientProvider patientProvider)
+		{
+			Database.Insert (patientProvider);
+		}
+
+		public void CreateAll(List<PatientProvider> patientProviders)
+		{
+			Database.InsertAll (patientProviders);
+		}
+
+		public void CreateOrUpdate(PatientProvider patientProvider)
+		{
+			Database.InsertOrReplace (patientProvider);
+		}
+
+		public void CreateOrUpdateAll(List<PatientProvider> patientProviders)
+		{
+			Database.InsertOrReplaceAll (patientProviders);
+		}
+
+		public void Update (PatientProvider patientProvider)
+		{
+			Database.Update (patientProvider);
+		}
+
+		public int Delete (PatientProvider patientProvider)
+		{
+			return Database.Delete (patientProvider);
+		}
+
+		public int DeleteSelected(List<PatientProvider> patientProviders)
+		{
+			var count = 0;
+
+			foreach(PatientProvider patientProvider in patientProviders)
+			{
+				count += Delete (patientProvider);
+			}
+			return count;
+		}
+
+		public int DeleteAll ()
+		{
+			return Database.DeleteAll<PatientProvider> ();
+		}
+=======
+>>>>>>> cef01428b1ce54a19bab6375d7cc47725aa78031
+	}
+}

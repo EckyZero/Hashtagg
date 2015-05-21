@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using GalaSoft.MvvmLight.Views;
 using Shared.Common;
 using UIKit;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace iOS
 {
@@ -104,11 +105,17 @@ namespace iOS
 
 					if (item.CreateControllerAction != null)
 					{
+						System.Diagnostics.Debug.WriteLine ("CONTROLLER: " + controller);
+						System.Diagnostics.Debug.WriteLine ("PARAM: " + parameter);
+						System.Diagnostics.Debug.WriteLine ("ITEM: " + item);
 						controller = item.CreateControllerAction(parameter);
 					}
 						
-					CurrentNavigationController().PresentViewControllerAsync (controller, true);
-					CurrentPageKey = pageKey;
+					if(controller != null)
+					{
+						CurrentNavigationController().PresentViewControllerAsync (controller, true);
+						CurrentPageKey = pageKey;	
+					}
 				}
 				else
 				{
@@ -123,7 +130,12 @@ namespace iOS
 
 		public void GoBack()
 		{
-			CurrentNavigationController ().PopViewController (true);
+			var nav = CurrentNavigationController ();
+
+			if(nav != null)
+			{
+				nav.PopViewController (true);	
+			}
 		}
 
 		public void NavigateTo(string pageKey)
@@ -156,8 +168,11 @@ namespace iOS
 						controller = item.CreateControllerAction(parameter);
 					}
 						
-					CurrentNavigationController().PushViewController(controller, true);
-					CurrentPageKey = pageKey;
+					if(controller != null)
+					{
+						CurrentNavigationController().PushViewController (controller, true);
+						CurrentPageKey = pageKey;	
+					}
 				}
 				else
 				{
@@ -216,15 +231,33 @@ namespace iOS
 
 		public void DismissPage()
 		{
-			_navigation.DismissViewController (true, null);
+			CurrentNavigationController().DismissViewController (true, null);
 		}
 
-		private UINavigationController CurrentNavigationController ()
+		public UINavigationController CurrentNavigationController ()
 		{
-			var controller = UIApplication.SharedApplication.KeyWindow.RootViewController;
-			var destController = controller.FindViewControllerClass(typeof(UINavigationController)) as UINavigationController;
+			var controller = UIApplication.SharedApplication.KeyWindow.RootViewController as UINavigationController;
 
-			return destController;
+
+			UINavigationController destController = null;
+
+			if(controller != null)
+			{
+				destController = (UINavigationController)controller.FindViewControllerClass(typeof(UINavigationController));
+				System.Diagnostics.Debug.WriteLine ("NOT NULL SO CONTROLLER " + controller + ", DESTCONTROLLER " + destController);
+			}
+			else
+			{
+				destController = _navigation;
+			}
+			if(destController == null)
+			{
+				// Need this if the KeyWindow gets reset (possible to happen if an alert or actionSheet is presented)
+				_navigation = (UINavigationController)UIApplication.SharedApplication.Windows [0].RootViewController;
+				destController = _navigation;
+			}
+
+			return destController;	
 		}
 	}
 }

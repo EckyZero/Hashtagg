@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="timessquare">
+  <name>TimesSquare Calendar</name>
+  <publisher>Square Inc.</publisher>
+  <publisher-url>https://github.com/square/objc-TimesSquare</publisher-url>
+  <version>1.0.5</version>
+  <summary>A well-designed calendar for your iOS app.</summary>
+  <screenshots>
+    <img src="screenshots/screenshot1.png" title="screenshot1" />
+  </screenshots>
+  <samples>
+    <sample id="TimesSquareiOSSample-Classic">
+      <name>iOS Classic Sample</name>
+      <summary>iOS Classic Sample</summary>
+    </sample>
+    <sample id="TimesSquareiOSSample">
+      <name>iOS Unified Sample</name>
+      <summary>iOS Unified Sample</summary>
+    </sample>
+  </samples>
+</component>

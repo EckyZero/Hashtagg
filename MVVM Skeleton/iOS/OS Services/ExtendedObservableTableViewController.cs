@@ -22,6 +22,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using Foundation;
 using UIKit;
+using System.Collections.ObjectModel;
 
 namespace iOS
 {
@@ -443,8 +444,11 @@ namespace iOS
 
 					if (coll != null)
 					{
-						var obj = coll[indexPath.Row];
-						_controller.BindCell(cell, obj, indexPath);
+						if (coll.Count > indexPath.Row)
+						{
+							var obj = coll[indexPath.Row];
+							_controller.BindCell(cell, obj, indexPath);
+						}
 					}
 
 					return cell;

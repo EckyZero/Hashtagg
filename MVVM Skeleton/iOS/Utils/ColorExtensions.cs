@@ -1,6 +1,7 @@
-﻿using CoreGraphics;
-using Shared.Common;
+﻿using System;
 using UIKit;
+using CoreGraphics;
+using Shared.Common;
 
 namespace iOS
 {
@@ -23,7 +24,7 @@ namespace iOS
 
 		public static UIColor ToUIColor(this PSColor color)
 		{
-			var uiColor = UIColor.FromRGBA (color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A);
+            var uiColor = UIColor.FromRGBA(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f, color.A / 255.0f);
 
 			return uiColor;
 		}

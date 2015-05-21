@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="CenturyGothic.ttf">
+            <string>CenturyGothic</string>
+            <string>CenturyGothic</string>
+            <string>CenturyGothic</string>
+        </mutableArray>
+        <mutableArray key="CenturyGothicBold.ttf">
+            <string>CenturyGothic-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PSListCell">
+            <connections>
+                <outlet property="ActionButton" destination="yGU-VG-lba" id="qYu-MQ-zCc"/>
+                <outlet property="ContentLabel" destination="2M5-ra-axS" id="Oh4-Yt-igI"/>
+                <outlet property="FooterLabel" destination="agW-fK-HTQ" id="IIU-z2-WcL"/>
+                <outlet property="HeaderLabel" destination="tou-OP-LYE" id="xXl-n6-UkJ"/>
+                <outlet property="SecondFooterLabel" destination="Tt8-Fz-VtD" id="ysT-xj-wkf"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PSListCell" id="cxk-wN-pdQ" customClass="PSListCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specialty" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tou-OP-LYE">
+                        <rect key="frame" x="15" y="25" width="247" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="247" id="1Kb-BM-HeA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="CenturyGothic-Bold" family="Century Gothic" pointSize="12"/>
+                        <color key="textColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGU-VG-lba">
+                        <rect key="frame" x="270" y="0.0" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="jaA-qg-eYE"/>
+                            <constraint firstAttribute="width" constant="50" id="qlz-FN-sW6"/>
+                        </constraints>
+                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" image="Dots.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doctor Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2M5-ra-axS">
+                        <rect key="frame" x="15" y="42" width="255" height="22.5"/>
+                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="18"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 N Address Town, ST 88340" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agW-fK-HTQ">
+                        <rect key="frame" x="15" y="65" width="290" height="17.5"/>
+                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="14"/>
+                        <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KR1-T5-fpp">
+                        <rect key="frame" x="0.0" y="104.5" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.92549019610000005" green="0.89411764709999997" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="kfe-Ma-kYr"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tt8-Fz-VtD">
+                        <rect key="frame" x="15" y="80" width="290" height="18"/>
+                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="14"/>
+                        <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="agW-fK-HTQ" secondAttribute="trailing" constant="15" id="2Ff-mW-fsl"/>
+                    <constraint firstAttribute="trailing" secondItem="KR1-T5-fpp" secondAttribute="trailing" id="3iA-xF-Kzr"/>
+                    <constraint firstItem="yGU-VG-lba" firstAttribute="leading" secondItem="tou-OP-LYE" secondAttribute="trailing" constant="8" id="6Cs-hr-BTj"/>
+                    <constraint firstAttribute="centerY" secondItem="2M5-ra-axS" secondAttribute="centerY" id="CII-Ma-tUH"/>
+                    <constraint firstItem="tou-OP-LYE" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="15" id="Gom-q9-pnD"/>
+                    <constraint firstItem="yGU-VG-lba" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" id="LYO-z5-i5T"/>
+                    <constraint firstItem="yGU-VG-lba" firstAttribute="leading" secondItem="2M5-ra-axS" secondAttribute="trailing" id="Mg4-OS-svd"/>
+                    <constraint firstItem="2M5-ra-axS" firstAttribute="top" secondItem="tou-OP-LYE" secondAttribute="bottom" constant="2" id="WbJ-3I-l0C"/>
+                    <constraint firstItem="Tt8-Fz-VtD" firstAttribute="leading" secondItem="agW-fK-HTQ" secondAttribute="leading" id="Wid-CA-tvx"/>
+                    <constraint firstItem="2M5-ra-axS" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="15" id="cbE-c3-UGY"/>
+                    <constraint firstAttribute="trailing" secondItem="yGU-VG-lba" secondAttribute="trailing" id="duW-fu-kph"/>
+                    <constraint firstAttribute="bottom" secondItem="KR1-T5-fpp" secondAttribute="bottom" id="eAq-QM-pKc"/>
+                    <constraint firstItem="agW-fK-HTQ" firstAttribute="top" secondItem="2M5-ra-axS" secondAttribute="bottom" constant="1" id="fPi-xU-f0y"/>
+                    <constraint firstItem="agW-fK-HTQ" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="15" id="hT0-dz-yca"/>
+                    <constraint firstItem="KR1-T5-fpp" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" id="mr0-N5-IDb"/>
+                    <constraint firstItem="Tt8-Fz-VtD" firstAttribute="bottom" secondItem="YTl-1W-gDM" secondAttribute="bottomMargin" id="qiW-kY-B2h"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <point key="canvasLocation" x="293" y="447"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Dots.png" width="5" height="23"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

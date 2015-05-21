@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="CenturyGothic.ttf">
+            <string>CenturyGothic</string>
+            <string>CenturyGothic</string>
+        </mutableArray>
+        <mutableArray key="CenturyGothicBold.ttf">
+            <string>CenturyGothic-Bold</string>
+        </mutableArray>
+        <mutableArray key="Futura-Book-Bold.ttf">
+            <string>Futura_Book-Bold</string>
+            <string>Futura_Book-Bold</string>
+            <string>Futura_Book-Bold</string>
+        </mutableArray>
+        <mutableArray key="Futura-Book.ttf">
+            <string>Futura-Book</string>
+            <string>Futura-Book</string>
+            <string>Futura-Book</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DependentListCell">
+            <connections>
+                <outlet property="ActionButton" destination="Vh2-BD-Y7h" id="Glw-gZ-yfG"/>
+                <outlet property="Body" destination="RvD-jO-RY5" id="s4M-Q4-718"/>
+                <outlet property="ContentFieldOne" destination="QO8-ui-GMA" id="HHy-Cn-DwC"/>
+                <outlet property="ContentFieldOneLabel" destination="Fs9-mD-uLL" id="5j3-Ev-EQd"/>
+                <outlet property="ContentFieldThree" destination="fra-Qw-erZ" id="XHJ-Ky-fN8"/>
+                <outlet property="ContentFieldThreeLabel" destination="6xC-Sz-HT7" id="g4L-3r-gdu"/>
+                <outlet property="ContentFieldTwo" destination="LNm-gO-Uce" id="KwS-at-bxp"/>
+                <outlet property="ContentFieldTwoLabel" destination="RH7-rm-1KP" id="2WN-rX-RGz"/>
+                <outlet property="Header" destination="wUB-vb-XGn" id="fSz-lz-apT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DependentListCell" id="cxk-wN-pdQ" customClass="DependentListCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vh2-BD-Y7h">
+                        <rect key="frame" x="270" y="0.0" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="Jxn-kO-XnM"/>
+                            <constraint firstAttribute="width" constant="50" id="eTM-A6-qB8"/>
+                        </constraints>
+                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" image="Dots.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dependent Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvD-jO-RY5">
+                        <rect key="frame" x="25" y="29" width="245" height="18"/>
+                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="14"/>
+                        <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KxB-nj-zMm">
+                        <rect key="frame" x="0.0" y="128" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.92549019610000005" green="0.89411764709999997" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="aLw-bl-D5f"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJR-AT-AR2">
+                        <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="14"/>
+                        <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fs9-mD-uLL">
+                        <rect key="frame" x="25" y="57" width="29" height="11"/>
+                        <fontDescription key="fontDescription" name="Futura_Book-Bold" family="Futura_Book-Bold" pointSize="12"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Birthdate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RH7-rm-1KP">
+                        <rect key="frame" x="25" y="78" width="49" height="11"/>
+                        <fontDescription key="fontDescription" name="Futura_Book-Bold" family="Futura_Book-Bold" pointSize="12"/>
+                        <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xC-Sz-HT7">
+                        <rect key="frame" x="25" y="99" width="40" height="11"/>
+                        <fontDescription key="fontDescription" name="Futura_Book-Bold" family="Futura_Book-Bold" pointSize="12"/>
+                        <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email@placeholder.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QO8-ui-GMA">
+                        <rect key="frame" x="89" y="55" width="226" height="16"/>
+                        <fontDescription key="fontDescription" name="Futura-Book" family="Futura Bk" pointSize="12"/>
+                        <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01/01/1960" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNm-gO-Uce">
+                        <rect key="frame" x="89" y="76" width="226" height="16"/>
+                        <fontDescription key="fontDescription" name="Futura-Book" family="Futura Bk" pointSize="12"/>
+                        <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specialty" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUB-vb-XGn">
+                        <rect key="frame" x="25" y="10" width="245" height="13"/>
+                        <fontDescription key="fontDescription" name="CenturyGothic-Bold" family="Century Gothic" pointSize="10"/>
+                        <color key="textColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender Placeholder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fra-Qw-erZ">
+                        <rect key="frame" x="89" y="97" width="104" height="16"/>
+                        <fontDescription key="fontDescription" name="Futura-Book" family="Futura Bk" pointSize="12"/>
+                        <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RH7-rm-1KP" firstAttribute="leading" secondItem="6xC-Sz-HT7" secondAttribute="leading" id="0Dk-ET-jI6"/>
+                    <constraint firstAttribute="trailing" secondItem="QO8-ui-GMA" secondAttribute="trailing" constant="5" id="4Cx-Zd-jZU"/>
+                    <constraint firstAttribute="bottom" secondItem="KxB-nj-zMm" secondAttribute="bottom" id="5G7-Hn-hI5"/>
+                    <constraint firstItem="QO8-ui-GMA" firstAttribute="centerY" secondItem="Fs9-mD-uLL" secondAttribute="centerY" id="8zq-9v-yWb"/>
+                    <constraint firstItem="RH7-rm-1KP" firstAttribute="top" secondItem="Fs9-mD-uLL" secondAttribute="bottom" constant="10" id="C8w-D2-otz"/>
+                    <constraint firstItem="Fs9-mD-uLL" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="25" id="Cj5-MJ-dpK"/>
+                    <constraint firstItem="KxB-nj-zMm" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" id="D20-W0-Xtb"/>
+                    <constraint firstItem="wUB-vb-XGn" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="25" id="En1-zv-IvP"/>
+                    <constraint firstAttribute="trailing" secondItem="KxB-nj-zMm" secondAttribute="trailing" id="FSE-fN-hH5"/>
+                    <constraint firstItem="fra-Qw-erZ" firstAttribute="leading" secondItem="LNm-gO-Uce" secondAttribute="leading" id="IGL-G2-j2I"/>
+                    <constraint firstItem="QO8-ui-GMA" firstAttribute="leading" secondItem="RH7-rm-1KP" secondAttribute="trailing" constant="15" id="NAR-kQ-sh1"/>
+                    <constraint firstItem="RH7-rm-1KP" firstAttribute="leading" secondItem="Fs9-mD-uLL" secondAttribute="leading" id="POp-Um-eY5"/>
+                    <constraint firstAttribute="trailing" secondItem="LNm-gO-Uce" secondAttribute="trailing" constant="5" id="QhF-Xa-TAe"/>
+                    <constraint firstItem="Fs9-mD-uLL" firstAttribute="top" secondItem="RvD-jO-RY5" secondAttribute="bottom" constant="10" id="TZx-KZ-qPV"/>
+                    <constraint firstItem="RvD-jO-RY5" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="25" id="VtK-rX-A5F"/>
+                    <constraint firstAttribute="trailing" secondItem="Vh2-BD-Y7h" secondAttribute="trailing" id="W4f-OH-dbF"/>
+                    <constraint firstItem="RH7-rm-1KP" firstAttribute="centerY" secondItem="LNm-gO-Uce" secondAttribute="centerY" id="WFo-eN-UOr"/>
+                    <constraint firstItem="Vh2-BD-Y7h" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" id="Zeo-8S-FpZ"/>
+                    <constraint firstItem="6xC-Sz-HT7" firstAttribute="top" secondItem="RH7-rm-1KP" secondAttribute="bottom" constant="10" id="dUY-hZ-cDh"/>
+                    <constraint firstItem="QO8-ui-GMA" firstAttribute="leading" secondItem="LNm-gO-Uce" secondAttribute="leading" id="eHR-RT-vSf"/>
+                    <constraint firstItem="fra-Qw-erZ" firstAttribute="centerY" secondItem="6xC-Sz-HT7" secondAttribute="centerY" id="ff1-td-k4R"/>
+                    <constraint firstItem="Vh2-BD-Y7h" firstAttribute="leading" secondItem="wUB-vb-XGn" secondAttribute="trailing" id="fxn-Ix-oHG"/>
+                    <constraint firstItem="wUB-vb-XGn" firstAttribute="width" secondItem="RvD-jO-RY5" secondAttribute="width" id="lWv-3a-eJL"/>
+                    <constraint firstItem="RvD-jO-RY5" firstAttribute="top" secondItem="wUB-vb-XGn" secondAttribute="bottom" constant="6" id="uNn-6p-jxf"/>
+                    <constraint firstItem="wUB-vb-XGn" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="10" id="zwX-2C-R4x"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="512" y="325"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Dots.png" width="5" height="23"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

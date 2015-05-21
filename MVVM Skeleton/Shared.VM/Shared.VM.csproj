@@ -31,19 +31,29 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <ItemGroup />
   <ItemGroup>
-    <Compile Include="ViewModelLocator.cs" />
-    <Compile Include="ViewModelStore.cs" />
-    <Compile Include="VMs\SharedViewModelBase.cs" />
+    <Compile Include="VMs\Base\SharedViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared.Common\Shared.Common.csproj">
       <Project>{CF876A71-9E29-4F7C-ABC7-BE9FE04E47B4}</Project>
       <Name>Shared.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shared.API\Shared.Business.csproj">
+      <Project>{AD9AC37D-DF2D-4B68-B421-AC2F8C2AE3B4}</Project>
+      <Name>Shared.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared.Repository\Shared.Repository.csproj">
+      <Project>{4F95195C-0B8D-46F2-93A5-E5BBAB30BB8D}</Project>
+      <Name>Shared.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared.Web\Shared.Web.csproj">
+      <Project>{ECDC4193-57B0-4089-8100-59D1117C86FC}</Project>
+      <Name>Shared.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -55,9 +65,6 @@
     </Reference>
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\portable-windows8+net40+wp8+sl5+MonoAndroid+MonoTouch\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Insights">
-      <HintPath>..\packages\Xamarin.Insights.1.9.1.107\lib\portable-win+net40+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.dll</HintPath>
     </Reference>
     <Reference Include="GalaSoft.MvvmLight">
       <HintPath>..\packages\MvvmLightLibs.5.1.1.0\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.dll</HintPath>

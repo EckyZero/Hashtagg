@@ -2,7 +2,7 @@
 
 namespace Shared.Common
 {
-	public class OSServiceException : Exception
+	public class OSServiceException : BaseException
 	{
 		public OSServiceException()
 		{

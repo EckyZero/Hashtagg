@@ -1,13 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Android.App;
+using Android.Content;
 using Android.Locations;
 using Android.OS;
+using Android.Runtime;
 using Android.Support.V7.App;
-using Microsoft.Practices.Unity;
+using Android.Views;
+using Android.Widget;
+using Droid.OS_Services;
+using Shared.BL;
+using GalaSoft.MvvmLight.Views;
 using Shared.Common;
+using Shared.Common.Logging;
+using Microsoft.Practices.Unity;
 
 namespace Droid.Activities
 {
     public class ActionBarBaseActivity : ActionBarActivity, IBaseActivity
     {
+        protected ILogger _logger;
+
         protected DispatcherService _dispatchService;
 
         protected ExtendedNavigationService _navigationService;
@@ -19,6 +35,16 @@ namespace Droid.Activities
         protected BrowserService _browserService;
 
         protected Geolocator _geoLocator;
+
+		protected AppUpgradeService _appUpgradeService;
+
+        protected ConnectivityService _connectivityService;
+
+		protected PhoneService _phoneService;
+
+		protected MapService _mapService;
+
+		protected EmailService _emailService;
 
         public virtual void Dismiss()
         {
@@ -72,7 +98,16 @@ namespace Droid.Activities
             _browserService = IocContainer.GetContainer().Resolve<IBrowserService>() as BrowserService;
 
             _geoLocator = IocContainer.GetContainer().Resolve<IGeolocator>() as Geolocator;
-            
+
+            _appUpgradeService = IocContainer.GetContainer().Resolve<IAppUpgradeService>() as AppUpgradeService;
+
+            _connectivityService = IocContainer.GetContainer().Resolve<IConnectivityService>() as ConnectivityService;
+
+			_phoneService  = IocContainer.GetContainer().Resolve<IPhoneService>() as PhoneService;
+
+			_mapService  = IocContainer.GetContainer().Resolve<IMapService>() as MapService;
+
+			_emailService  = IocContainer.GetContainer().Resolve<IEmailService>() as EmailService;
         }
 
         private void RegServices()
@@ -82,9 +117,13 @@ namespace Droid.Activities
             _hudService.RegisterActivity(this);
             _browserService.RegisterActivity(this);
             _geoLocator.RegisterActivity(this);
+            _appUpgradeService.RegisterActivity(this);
+			_connectivityService.RegisterActivity(this);
+			_phoneService.RegisterActivity(this);
+			_mapService.RegisterActivity(this);
         }
 
-        public void OnLocationChanged(Location location)
+        public void OnLocationChanged(Android.Locations.Location location)
         {
             _geoLocator.LocationChanged(location);
         }

@@ -1,5 +1,8 @@
-﻿using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Unity;
+﻿using System;
+using Microsoft.Practices.ServiceLocation;
+using Shared.Common.Logging;
+using Shared.VM;
+using UnityServiceLocator = Microsoft.Practices.Unity.UnityServiceLocator;
 
 namespace Shared.Bootstrapper
 {
@@ -9,8 +12,8 @@ namespace Shared.Bootstrapper
 		{
 			ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(container));
 
-			// container.RegisterType<IHomeViewModel, HomeViewModel> ();
+            // Logging
+		    container.RegisterType<ILogger, Logger>();
 		}
 	}
 }
-

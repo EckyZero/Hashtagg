@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PSProgressView">
+            <connections>
+                <outlet property="Label" destination="gXd-4A-vG2" id="lht-GI-2ke"/>
+                <outlet property="LabelLeadingConstraint" destination="uSX-ED-Cio" id="qHv-Mg-piE"/>
+                <outlet property="LabelWidthConstraint" destination="vkh-oV-ypZ" id="9ff-fu-nGx"/>
+                <outlet property="ProgressView" destination="Ebh-pd-NWa" id="sNO-cd-sWy"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="293" height="19"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="progress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXd-4A-vG2">
+                    <rect key="frame" x="8" y="2" width="50" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="vkh-oV-ypZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="10"/>
+                    <color key="textColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <progressView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ebh-pd-NWa">
+                    <rect key="frame" x="66" y="4" width="219" height="10"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="Dqh-C7-BXq"/>
+                    </constraints>
+                    <color key="progressTintColor" red="0.85098039219999999" green="0.86666666670000003" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </progressView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="Ebh-pd-NWa" secondAttribute="centerY" id="4J9-uh-xsh"/>
+                <constraint firstItem="Ebh-pd-NWa" firstAttribute="leading" secondItem="gXd-4A-vG2" secondAttribute="trailing" constant="8" id="7EF-Cs-hYn"/>
+                <constraint firstAttribute="centerY" secondItem="gXd-4A-vG2" secondAttribute="centerY" constant="1" id="FEO-9e-skS"/>
+                <constraint firstAttribute="trailing" secondItem="Ebh-pd-NWa" secondAttribute="trailing" constant="8" id="eNB-7k-aSt"/>
+                <constraint firstItem="gXd-4A-vG2" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="8" id="uSX-ED-Cio"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="306.5" y="143.5"/>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

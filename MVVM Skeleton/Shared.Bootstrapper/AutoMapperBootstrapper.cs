@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
+using Shared.Common;
 
 namespace Shared.Bootstrapper
 {
@@ -7,9 +9,7 @@ namespace Shared.Bootstrapper
 	{
 		public static void MapTypes()
 		{
-			// Model to DTO
 
-			// DTO to Model
 		}
 	}
 

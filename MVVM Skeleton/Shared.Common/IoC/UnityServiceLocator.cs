@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
+using System.Collections.Generic;
 
 namespace Shared.Common
 {
-	// From http://www.codeproject.com/Tips/655515/Integrating-Unity-Container-with-MVVM-Light-Framew
-	public class UnityServiceLocator : IServiceLocator
+	
+    // You should be able to change the IoC container here if you want. You should not need to.
+
+    
+    // From http://www.codeproject.com/Tips/655515/Integrating-Unity-Container-with-MVVM-Light-Framew
+    public class UnityServiceLocator : IServiceLocator
 	{
 		private readonly IUnityContainer _unityContainer; 
 

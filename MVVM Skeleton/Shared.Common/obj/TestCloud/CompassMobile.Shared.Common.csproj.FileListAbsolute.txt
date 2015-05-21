@@ -1,0 +1,6 @@
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid.Phone\bin\Debug\CompassMobile.Shared.Common.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.Common\obj\TestCloud\CompassMobile.Shared.Common.csprojResolveAssemblyReference.cache
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.Common\obj\TestCloud\CompassMobile.Shared.Common.ApplicationResources.resources
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.Common\obj\TestCloud\CompassMobile.Shared.Common.csproj.GenerateResource.Cache
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.Common\obj\TestCloud\CompassMobile.Shared.Common.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid.Phone\bin\Debug\CompassMobile.Shared.Common.dll.config

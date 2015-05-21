@@ -1,4 +1,6 @@
-﻿namespace Shared.Common
+﻿using System;
+
+namespace Shared.Common
 {
 	public interface ISecureKeyValueStore
 	{

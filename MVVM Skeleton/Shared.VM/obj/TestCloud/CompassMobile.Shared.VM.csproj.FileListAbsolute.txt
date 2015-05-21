@@ -1,0 +1,4 @@
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid.Phone\bin\Debug\CompassMobile.Shared.VM.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.VM\obj\TestCloud\CompassMobile.Shared.VM.csprojResolveAssemblyReference.cache
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Shared.VM\obj\TestCloud\CompassMobile.Shared.VM.dll
+C:\Users\luis.lafer-sousa\Compass-Mobile\CompassMobile.Droid.Phone\bin\Debug\CompassMobile.Shared.VM.dll.config

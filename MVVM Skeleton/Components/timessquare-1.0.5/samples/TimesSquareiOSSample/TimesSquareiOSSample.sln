@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesSquareiOSSample", "TimesSquareiOSSample.csproj", "{476AFD17-1D2F-42FE-A23B-0519322E97BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{476AFD17-1D2F-42FE-A23B-0519322E97BC}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{476AFD17-1D2F-42FE-A23B-0519322E97BC}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{476AFD17-1D2F-42FE-A23B-0519322E97BC}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{476AFD17-1D2F-42FE-A23B-0519322E97BC}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{476AFD17-1D2F-42FE-A23B-0519322E97BC}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{476AFD17-1D2F-42FE-A23B-0519322E97BC}.Debug|iPhone.Build.0 = Debug|iPhone
+		{476AFD17-1D2F-42FE-A23B-0519322E97BC}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{476AFD17-1D2F-42FE-A23B-0519322E97BC}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{476AFD17-1D2F-42FE-A23B-0519322E97BC}.Release|iPhone.ActiveCfg = Release|iPhone
+		{476AFD17-1D2F-42FE-A23B-0519322E97BC}.Release|iPhone.Build.0 = Release|iPhone
+		{476AFD17-1D2F-42FE-A23B-0519322E97BC}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{476AFD17-1D2F-42FE-A23B-0519322E97BC}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{D7AEFBBB-92D4-4425-8671-9BD1FD4156DA}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{D7AEFBBB-92D4-4425-8671-9BD1FD4156DA}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{D7AEFBBB-92D4-4425-8671-9BD1FD4156DA}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{D7AEFBBB-92D4-4425-8671-9BD1FD4156DA}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{D7AEFBBB-92D4-4425-8671-9BD1FD4156DA}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{D7AEFBBB-92D4-4425-8671-9BD1FD4156DA}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{D7AEFBBB-92D4-4425-8671-9BD1FD4156DA}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{D7AEFBBB-92D4-4425-8671-9BD1FD4156DA}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{D7AEFBBB-92D4-4425-8671-9BD1FD4156DA}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{D7AEFBBB-92D4-4425-8671-9BD1FD4156DA}.Release|iPhone.Build.0 = Release|Any CPU
+		{D7AEFBBB-92D4-4425-8671-9BD1FD4156DA}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{D7AEFBBB-92D4-4425-8671-9BD1FD4156DA}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = TimesSquareiOSSample.csproj
+	EndGlobalSection
+EndGlobal

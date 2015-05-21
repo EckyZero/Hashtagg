@@ -1,26 +1,31 @@
 ﻿using System;
-using Foundation;
 using MessageUI;
-using Shared.Common;
+using Foundation;
 using UIKit;
+using Shared.Common;
 
 namespace iOS
 {
 	public static class Device
 	{
-		public static MFMailComposeViewController Email (string[] recipients, string subject)
-		{
+		public static nfloat KeyboardHeight = 216; // Default value. Should be override if we need something more accurate
+
+        public static MFMailComposeViewController Email (string[] recipients, string subject)
+        {
 			var mailController = new MFMailComposeViewController ();
 
 			mailController.SetToRecipients (recipients);
 			mailController.SetSubject (subject);
 
-			mailController.Finished += ( object s, MFComposeResultEventArgs e) => {
-				e.Controller.DismissViewController (true, null);
-			};
+            mailController.Finished += MailControllerFinished;
 
-			return mailController;
-		}
+            return mailController;
+        }
+ 
+        private static void MailControllerFinished(object s, MFComposeResultEventArgs e)
+        {
+            e.Controller.DismissViewController(true, null);
+        }
 
 		public static void Call (string number)
 		{

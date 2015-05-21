@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <RelativeLayout
+        android:id="@+id/browser_topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#70AADD"
+        android:layout_alignParentTop="true"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+        <ImageButton
+            android:id="@+id/browser_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_refresh"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:scaleType="centerInside" />
+        <Droid.Controls.PSTextView
+            android:id="@+id/browser_title"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            custom:customFont="Fonts/Futura-Book-Bold.ttf"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:ellipsize="end"
+            android:layout_width="wrap_content"
+            android:maxWidth="200dp"
+            android:maxLines="1" />
+        <ImageButton
+            android:id="@+id/browser_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_cancel"
+            android:background="@android:color/transparent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:scaleType="centerInside"
+            android:clickable="true" />
+    </RelativeLayout>
+    <WebView
+        android:id="@+id/browser_webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/browser_topBar"
+        android:layout_above="@+id/browser_bottomBar" />
+    <RelativeLayout
+        android:id="@+id/browser_bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#70AADD"
+        android:layout_alignParentBottom="true">
+        <LinearLayout
+            android:id="@+id/browser_navButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+            <ImageButton
+                android:id="@+id/browser_backButon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_back"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:scaleType="centerInside" />
+            <ImageButton
+                android:id="@+id/browser_forwardButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_forward"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:scaleType="centerInside" />
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/browser_acitivityIndicator"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:indeterminateOnly="true"
+            android:keepScreenOn="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="CenturyGothic.ttf">
+            <string>CenturyGothic</string>
+            <string>CenturyGothic</string>
+            <string>CenturyGothic</string>
+            <string>CenturyGothic</string>
+            <string>CenturyGothic</string>
+        </mutableArray>
+        <mutableArray key="CenturyGothicBold.ttf">
+            <string>CenturyGothic-Bold</string>
+            <string>CenturyGothic-Bold</string>
+            <string>CenturyGothic-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FacilityBioCell">
+            <connections>
+                <outlet property="AccreditedLabel" destination="Gr0-Qb-P09" id="Zf5-Uo-pud"/>
+                <outlet property="ActionButton" destination="VFi-DF-5MQ" id="BHf-Mf-GAM"/>
+                <outlet property="CostTitleLabel" destination="iV2-nm-uzI" id="d07-EW-pyr"/>
+                <outlet property="CostValueLabel" destination="SLP-HZ-WTM" id="Chw-JV-gLK"/>
+                <outlet property="DistanceLabel" destination="ATM-Fn-Gbb" id="pyG-ZD-3jL"/>
+                <outlet property="MainImageView" destination="pUu-Yk-4b1" id="HQU-su-S22"/>
+                <outlet property="MoreLabel" destination="oqf-pJ-Yet" id="Bqy-Wq-n6K"/>
+                <outlet property="NameLabel" destination="msj-GD-0CO" id="g7n-3Q-rSD"/>
+                <outlet property="SeperatorView" destination="KDZ-Gg-fVj" id="Ipd-0y-Agr"/>
+                <outlet property="SideView" destination="MEG-WO-4vU" id="8KE-iJ-IL1"/>
+                <outlet property="SubtitleLabel" destination="QVZ-HY-8on" id="gFz-hI-YKl"/>
+                <outlet property="SuperlativeImageView" destination="gw7-j9-cLv" id="og6-uu-xew"/>
+                <outlet property="SuperlativeLabel" destination="FrV-eS-dRm" id="ugf-DB-qJV"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZl-1y-Sd3">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEG-WO-4vU">
+                            <rect key="frame" x="0.0" y="1" width="10" height="137"/>
+                            <color key="backgroundColor" red="0.81176470590000005" green="0.83529411760000005" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="10" id="ugQ-OV-2Hk"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f84-kQ-cmB">
+                            <rect key="frame" x="0.0" y="138" width="320" height="1"/>
+                            <color key="backgroundColor" red="0.92549019610000005" green="0.89411764709999997" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="gQx-yo-ips"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIu-8L-Q4m">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                            <color key="backgroundColor" red="0.92549019610000005" green="0.89411764709999997" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="zJp-Px-86Z"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Out of Pocket" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iV2-nm-uzI">
+                            <rect key="frame" x="25" y="54" width="40" height="25"/>
+                            <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="10"/>
+                            <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Imaging center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVZ-HY-8on">
+                            <rect key="frame" x="80" y="36" width="179" height="14"/>
+                            <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="11"/>
+                            <color key="textColor" red="0.56470588239999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Imaging Experts of Texas" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msj-GD-0CO">
+                            <rect key="frame" x="80" y="13" width="214" height="18"/>
+                            <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="14"/>
+                            <color key="textColor" red="0.42745098040000001" green="0.6705882353" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="$1260" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLP-HZ-WTM">
+                            <rect key="frame" x="28" y="80" width="34" height="15"/>
+                            <fontDescription key="fontDescription" name="CenturyGothic-Bold" family="Century Gothic" pointSize="12"/>
+                            <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFi-DF-5MQ">
+                            <rect key="frame" x="245" y="1" width="75" height="75"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="75" id="eoT-a7-LFx"/>
+                                <constraint firstAttribute="height" constant="75" id="x8Q-ay-q5R"/>
+                            </constraints>
+                            <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
+                            <state key="normal" image="Dots.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="5.2 mi" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATM-Fn-Gbb">
+                            <rect key="frame" x="267" y="49" width="38" height="16"/>
+                            <fontDescription key="fontDescription" name="CenturyGothic-Bold" family="Century Gothic" pointSize="13"/>
+                            <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="away" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qw1-sg-5cZ">
+                            <rect key="frame" x="277" y="63" width="28" height="13"/>
+                            <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="10"/>
+                            <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="OrangeWarningTriangle.png" translatesAutoresizingMaskIntoConstraints="NO" id="gw7-j9-cLv">
+                            <rect key="frame" x="80" y="94" width="18" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="18" id="40N-0b-jC8"/>
+                                <constraint firstAttribute="height" constant="18" id="8Cg-p8-lls"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDZ-Gg-fVj">
+                            <rect key="frame" x="80" y="87" width="230" height="1"/>
+                            <color key="backgroundColor" red="0.92549019610000005" green="0.89411764709999997" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="j1h-BL-hAm"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="+ 2 more" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqf-pJ-Yet">
+                            <rect key="frame" x="106" y="113" width="40" height="12"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="10"/>
+                            <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="29 years experience" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrV-eS-dRm">
+                            <rect key="frame" x="106" y="96" width="199" height="14"/>
+                            <fontDescription key="fontDescription" name="CenturyGothic-Bold" family="Century Gothic" pointSize="11"/>
+                            <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Facility_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="pUu-Yk-4b1">
+                            <rect key="frame" x="25" y="11" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="7OB-sV-o35"/>
+                                <constraint firstAttribute="height" constant="40" id="dWi-9H-ctR"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Accredited facility" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gr0-Qb-P09">
+                            <rect key="frame" x="80" y="57" width="90" height="13"/>
+                            <fontDescription key="fontDescription" name="CenturyGothic" family="Century Gothic" pointSize="10"/>
+                            <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Qw1-sg-5cZ" firstAttribute="top" secondItem="ATM-Fn-Gbb" secondAttribute="bottom" constant="-2" id="1jc-ca-yJt"/>
+                        <constraint firstItem="iV2-nm-uzI" firstAttribute="centerX" secondItem="SLP-HZ-WTM" secondAttribute="centerX" id="2Wm-8P-VKt"/>
+                        <constraint firstItem="ATM-Fn-Gbb" firstAttribute="leading" secondItem="QVZ-HY-8on" secondAttribute="trailing" constant="8" id="3Vx-yX-uXY"/>
+                        <constraint firstItem="KDZ-Gg-fVj" firstAttribute="top" secondItem="Gr0-Qb-P09" secondAttribute="bottom" constant="17" id="54I-F5-DTk"/>
+                        <constraint firstItem="pUu-Yk-4b1" firstAttribute="leading" secondItem="iV2-nm-uzI" secondAttribute="leading" id="6NM-r7-F8x"/>
+                        <constraint firstAttribute="trailing" secondItem="ZIu-8L-Q4m" secondAttribute="trailing" id="AQM-uW-D0W"/>
+                        <constraint firstItem="FrV-eS-dRm" firstAttribute="top" secondItem="KDZ-Gg-fVj" secondAttribute="bottom" constant="8" id="E5N-o2-5Mi"/>
+                        <constraint firstItem="KDZ-Gg-fVj" firstAttribute="leading" secondItem="gw7-j9-cLv" secondAttribute="leading" id="F05-ny-aOy"/>
+                        <constraint firstItem="ATM-Fn-Gbb" firstAttribute="top" secondItem="VFi-DF-5MQ" secondAttribute="bottom" constant="-27" id="GVQ-HJ-BBS"/>
+                        <constraint firstItem="KDZ-Gg-fVj" firstAttribute="trailing" secondItem="VFi-DF-5MQ" secondAttribute="trailing" constant="-10" id="Gn1-Lo-MUM"/>
+                        <constraint firstItem="KDZ-Gg-fVj" firstAttribute="centerY" relation="greaterThanOrEqual" secondItem="SLP-HZ-WTM" secondAttribute="centerY" priority="750" id="IqS-T5-FNX"/>
+                        <constraint firstAttribute="trailing" secondItem="VFi-DF-5MQ" secondAttribute="trailing" id="Kk4-KS-sTf"/>
+                        <constraint firstItem="msj-GD-0CO" firstAttribute="top" secondItem="ZIu-8L-Q4m" secondAttribute="bottom" constant="12" id="MSz-WW-BMY"/>
+                        <constraint firstItem="MEG-WO-4vU" firstAttribute="top" secondItem="ZIu-8L-Q4m" secondAttribute="bottom" id="NT1-1q-cmw"/>
+                        <constraint firstItem="QVZ-HY-8on" firstAttribute="top" secondItem="msj-GD-0CO" secondAttribute="bottom" constant="5" id="Nug-GA-0mP"/>
+                        <constraint firstItem="Gr0-Qb-P09" firstAttribute="leading" secondItem="KDZ-Gg-fVj" secondAttribute="leading" id="OCn-E1-zVX"/>
+                        <constraint firstItem="Gr0-Qb-P09" firstAttribute="top" relation="greaterThanOrEqual" secondItem="QVZ-HY-8on" secondAttribute="bottom" priority="750" constant="7" id="P1e-yk-Z5R"/>
+                        <constraint firstItem="ATM-Fn-Gbb" firstAttribute="trailing" secondItem="Qw1-sg-5cZ" secondAttribute="trailing" id="RAS-82-5Mw"/>
+                        <constraint firstItem="Gr0-Qb-P09" firstAttribute="leading" secondItem="QVZ-HY-8on" secondAttribute="leading" id="RIW-Qa-avG"/>
+                        <constraint firstItem="MEG-WO-4vU" firstAttribute="leading" secondItem="VZl-1y-Sd3" secondAttribute="leading" id="VCk-2N-Edp"/>
+                        <constraint firstItem="gw7-j9-cLv" firstAttribute="centerY" secondItem="FrV-eS-dRm" secondAttribute="centerY" id="WPh-wG-nyq"/>
+                        <constraint firstAttribute="bottom" secondItem="f84-kQ-cmB" secondAttribute="bottom" id="Wlu-2Y-wFC"/>
+                        <constraint firstItem="ATM-Fn-Gbb" firstAttribute="trailing" secondItem="VFi-DF-5MQ" secondAttribute="trailing" constant="-15" id="XCh-1q-TPn"/>
+                        <constraint firstItem="ZIu-8L-Q4m" firstAttribute="leading" secondItem="VZl-1y-Sd3" secondAttribute="leading" id="ZsC-xK-RVT"/>
+                        <constraint firstItem="f84-kQ-cmB" firstAttribute="leading" secondItem="VZl-1y-Sd3" secondAttribute="leading" id="aSR-JL-zHy"/>
+                        <constraint firstItem="pUu-Yk-4b1" firstAttribute="leading" secondItem="MEG-WO-4vU" secondAttribute="trailing" constant="15" id="cTb-Il-0zq"/>
+                        <constraint firstItem="pUu-Yk-4b1" firstAttribute="trailing" secondItem="iV2-nm-uzI" secondAttribute="trailing" id="eOE-sL-ceF"/>
+                        <constraint firstItem="FrV-eS-dRm" firstAttribute="leading" secondItem="gw7-j9-cLv" secondAttribute="trailing" constant="8" id="eaw-iS-Ip5"/>
+                        <constraint firstItem="KDZ-Gg-fVj" firstAttribute="trailing" secondItem="FrV-eS-dRm" secondAttribute="trailing" constant="5" id="ety-XE-iCE"/>
+                        <constraint firstItem="VFi-DF-5MQ" firstAttribute="top" secondItem="ZIu-8L-Q4m" secondAttribute="bottom" id="ffI-k3-0r6"/>
+                        <constraint firstItem="f84-kQ-cmB" firstAttribute="top" secondItem="MEG-WO-4vU" secondAttribute="bottom" id="gsy-gx-YsL"/>
+                        <constraint firstItem="oqf-pJ-Yet" firstAttribute="leading" secondItem="FrV-eS-dRm" secondAttribute="leading" id="hQi-x5-zf5"/>
+                        <constraint firstItem="msj-GD-0CO" firstAttribute="leading" secondItem="QVZ-HY-8on" secondAttribute="leading" id="hjH-6v-9mW"/>
+                        <constraint firstItem="msj-GD-0CO" firstAttribute="leading" secondItem="pUu-Yk-4b1" secondAttribute="trailing" constant="15" id="it2-ay-kgN"/>
+                        <constraint firstItem="oqf-pJ-Yet" firstAttribute="top" secondItem="FrV-eS-dRm" secondAttribute="bottom" constant="3" id="kTN-zG-jQv"/>
+                        <constraint firstItem="SLP-HZ-WTM" firstAttribute="top" secondItem="iV2-nm-uzI" secondAttribute="bottom" constant="1" id="nug-fE-0ZI"/>
+                        <constraint firstItem="ZIu-8L-Q4m" firstAttribute="top" secondItem="VZl-1y-Sd3" secondAttribute="top" id="uSb-Gt-OQZ"/>
+                        <constraint firstAttribute="trailing" secondItem="msj-GD-0CO" secondAttribute="trailing" constant="26" id="vGc-ER-3Se"/>
+                        <constraint firstItem="iV2-nm-uzI" firstAttribute="top" secondItem="pUu-Yk-4b1" secondAttribute="bottom" constant="3" id="wb9-1E-pvR"/>
+                        <constraint firstAttribute="trailing" secondItem="f84-kQ-cmB" secondAttribute="trailing" id="yOG-fy-Na9"/>
+                        <constraint firstItem="f84-kQ-cmB" firstAttribute="top" secondItem="oqf-pJ-Yet" secondAttribute="bottom" constant="13" id="yiN-Ct-9DV"/>
+                        <constraint firstItem="msj-GD-0CO" firstAttribute="top" secondItem="pUu-Yk-4b1" secondAttribute="top" constant="2" id="zgJ-ll-nlM"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="VZl-1y-Sd3" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="AZq-1C-LKb"/>
+                <constraint firstAttribute="bottom" secondItem="VZl-1y-Sd3" secondAttribute="bottom" id="JaJ-aX-i1d"/>
+                <constraint firstAttribute="trailing" secondItem="VZl-1y-Sd3" secondAttribute="trailing" id="Zim-3Q-P7I"/>
+                <constraint firstItem="VZl-1y-Sd3" firstAttribute="top" secondItem="1" secondAttribute="top" id="vCV-Zo-UUn"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="285" y="221.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Dots.png" width="5" height="23"/>
+        <image name="Facility_1.png" width="57" height="57"/>
+        <image name="OrangeWarningTriangle.png" width="25" height="22"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
