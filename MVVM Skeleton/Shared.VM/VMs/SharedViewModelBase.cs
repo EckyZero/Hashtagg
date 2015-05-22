@@ -1,12 +1,19 @@
-﻿using System.Threading.Tasks;
+﻿using System;
 using GalaSoft.MvvmLight;
+using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
+using System.Globalization;
+using System.Threading.Tasks;
 using Shared.Common;
 
 namespace Shared.VM
 {
 	public abstract class SharedViewModelBase : ViewModelBase
-	{
+    {
+        protected ILogger _logger;
+        
+        protected IConnectivityService _connectivityService;
+
 		protected IDispatcherService _dispatchService;
 
 		protected IExtendedNavigationService _navigationService;
@@ -17,20 +24,20 @@ namespace Shared.VM
 
 		protected IBrowserService _browserService;
 
+		protected IPhoneService _phoneService;
+
+		protected IMapService _mapService;
+
+		protected IEmailService _emailService;
+
 		public SharedViewModelBase ()
-		{
+        {
 			InitServices ();
 
 			InitCommands();
 		}
 
 		protected abstract void InitCommands();
-
-		public virtual async Task DidLoad () { }
-
-		public virtual async Task WillAppear() { }
-
-		public virtual async Task WillDisappear () { }
 
 		private void InitServices()
 		{
@@ -43,7 +50,17 @@ namespace Shared.VM
 			_browserService = IocContainer.GetContainer().Resolve<IBrowserService> ();
 
 			_dispatchService = IocContainer.GetContainer ().Resolve<IDispatcherService> ();
+
+            _logger = IocContainer.GetContainer().Resolve<ILogger>();
+			
+			_phoneService = IocContainer.GetContainer().Resolve<IPhoneService> ();
+
+			_mapService = IocContainer.GetContainer ().Resolve<IMapService> ();
+
+		    _connectivityService = IocContainer.GetContainer().Resolve<IConnectivityService>();
+
+			_emailService = IocContainer.GetContainer().Resolve<IEmailService> ();
 		}
-	}
+    }
 }
 

@@ -46,12 +46,9 @@ namespace iOS
 
 		public static void Alert (UIViewController controller, string title, string message)
 		{
-			UIAlertAction action = UIAlertAction.Create(ApplicationResources.Ok, UIAlertActionStyle.Cancel, null);
+			UIAlertAction action = UIAlertAction.Create("OK", UIAlertActionStyle.Cancel, null);
 			UIAlertController alert = UIAlertController.Create(title, message, UIAlertControllerStyle.Alert);
 
-//			alert.TExtC
-
-//			alert.View.TintColor = UIColor.Red;
 			alert.Title = title;
 			alert.Message = message;
 

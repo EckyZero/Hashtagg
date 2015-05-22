@@ -1,15 +1,26 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.App;
+using Android.Views;
+using Android.Widget;
 using Microsoft.Practices.Unity;
-using Shared.Bootstrapper;
+using Org.Apache.Http.Conn;
+using Xamarin;
 using Shared.Common;
 using Shared.VM;
-using Xamarin;
+using Shared.Bootstrapper;
+using Droid;
 
-namespace Droid.Phone
+namespace CompassMobile.Droid.Phone
 {
     #if DEBUG
     [Application(Debuggable=true)]
@@ -18,6 +29,8 @@ namespace Droid.Phone
     #endif
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
     {
+        private ILogger _logger;
+
         private int _sessionDepth = 0;
 
         private static ViewModelLocator _locator;
@@ -37,13 +50,16 @@ namespace Droid.Phone
         public MainApplication(IntPtr handle, JniHandleOwnership transfer)
             : base(handle, transfer)
         {
+            _logger = new Logger();
+
             AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
             {
-                Xamarin.Insights.Report(args.Exception as Exception, ReportSeverity.Error);
+                args.Handled = false;
+                _logger.Log(args.Exception as Exception, LogType.ERROR);
             };
             AppDomain.CurrentDomain.UnhandledException += (s, e) =>
             {
-                Xamarin.Insights.Report(e.ExceptionObject as Exception,ReportSeverity.Error);
+                _logger.Log(e.ExceptionObject as Exception, LogType.ERROR);
             };
         }
 
@@ -58,36 +74,35 @@ namespace Droid.Phone
 
         private void Init()
         {
-            Insights.Initialize(Settings.XamarinInsightsApiKey, Application.Context);
-
             IocBootstrapper.RegisterTypes(IocContainer.GetContainer());
             AutoMapperBootstrapper.MapTypes();
 
             _locator = new ViewModelLocator();
             _store = new ViewModelStore();
 
-            IocContainer.GetContainer().RegisterType<ISecureDatabase, AndroidSecureDatabase>();
+			IocContainer.GetContainer().RegisterInstance<ISecureDatabase>(new AndroidSecureDatabase());
             IocContainer.GetContainer().RegisterType<IHttpClientHelper, HttpClientHelper>();
             IocContainer.GetContainer().RegisterInstance<IExtendedNavigationService>(ConfigureNav());
             IocContainer.GetContainer().RegisterInstance<IExtendedDialogService>(new ExtendedDialogService());
             IocContainer.GetContainer().RegisterInstance<IHudService>(new HudService());
+            IocContainer.GetContainer().RegisterInstance<IConnectivityService>(new ConnectivityService());
             IocContainer.GetContainer().RegisterInstance<IBrowserService>(new BrowserService());
             IocContainer.GetContainer().RegisterInstance<IGeolocator>(new Geolocator());
             IocContainer.GetContainer().RegisterInstance<IDispatcherService>(new DispatcherService());
+			IocContainer.GetContainer().RegisterInstance<IPhoneService> (new PhoneService());
+			IocContainer.GetContainer().RegisterInstance<IMapService> (new MapService());
+			IocContainer.GetContainer().RegisterInstance<IEmailService> (new EmailService());
         }
 
         private static ExtendedNavigationService ConfigureNav()
         {
             var nav = new ExtendedNavigationService();
 
-            //nav.Configure(ViewModelLocator.HOME_KEY, typeof (HomeActivity));
-
 			return nav;
 		}
 
         public void OnActivityCreated(Activity activity, Bundle savedInstanceState)
         {
-            activity.RequestedOrientation = ScreenOrientation.Portrait;
         }
 
         public void OnActivityDestroyed(Activity activity)
@@ -110,7 +125,6 @@ namespace Droid.Phone
         {
             if (_sessionDepth == 0)
             {
-                // resuming from background
             }
             _sessionDepth++;
         }
@@ -123,7 +137,6 @@ namespace Droid.Phone
             }
             if (_sessionDepth == 0)
             {
-                // going to background
             }
         }
     }

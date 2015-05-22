@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿using System;
+using GalaSoft.MvvmLight.Views;
 
 namespace Shared.Common
 {

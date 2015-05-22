@@ -1,12 +1,12 @@
-﻿using System.Threading.Tasks;
-using CompassMobile.Shared.Common;
-using CoreLocation;
+﻿using System;
 using Shared.Common;
+using CoreLocation;
+using System.Threading.Tasks;
 using UIKit;
 
 namespace iOS
 {
-	public class Geolocator : IGeolocator
+    public class Geolocator : BaseService, IGeolocator
 	{
 		private bool _is8orGreater;
 
@@ -28,6 +28,11 @@ namespace iOS
 
 			_locMgr.LocationsUpdated += HandleLocationsUpdated;
 
+		}
+
+		public bool IsDeniedFromUsingGeoLocation()
+		{
+			return CLLocationManager.Status == CLAuthorizationStatus.Denied;
 		}
 
 		public async Task<GeoLocation> GetCurrentLocation(){

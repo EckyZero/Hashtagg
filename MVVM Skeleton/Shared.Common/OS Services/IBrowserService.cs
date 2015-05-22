@@ -1,8 +1,11 @@
-﻿namespace Shared.Common
+﻿using System;
+using System.Threading.Tasks;
+
+namespace Shared.Common
 {
 	public interface IBrowserService
 	{
-		void OpenUrl(string url);
+	    Task OpenUrl(string url);
 	}
 }
 

@@ -1,6 +1,17 @@
-using Android.Locations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace Droid.Activities
+using Android.App;
+using Android.Content;
+using Android.Locations;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+
+namespace Droid
 {
     public interface IBaseActivity : ILocationListener
     {
@@ -9,7 +20,5 @@ namespace Droid.Activities
         string NextPageKey { get; set; }
 
         void GoBack();
-
-        void Dismiss();
     }
 }

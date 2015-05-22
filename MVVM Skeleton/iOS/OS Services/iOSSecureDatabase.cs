@@ -1,143 +1,113 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Shared.Common;
 using SQLite;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
+using Microsoft.Practices.Unity;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace iOS
 {
-	public class iOSSecureDatabase : ISecureDatabase
+    public class iOSSecureDatabase : BaseService, ISecureDatabase
 	{
-		public int Delete<T> (T model, object primaryKey)
-		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.Delete<T>(primaryKey);
-			}
-		}
-
 		private const string _databaseName = "ProjectCompass.sqlite";
 		private const string _keyName = "SqlCipher"; 
+		private object _lock = new object ();
 
 		public iOSSecureDatabase()
 		{
 			System.Diagnostics.Debug.WriteLine("Database Created");
 		}
-			
+
+		private SQLiteConnection _database;
+		SQLiteConnection Database { 
+			get {
+				return GetDb ();
+			} 
+		}
+
+
 		public int CreateTable<T>()
 		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.CreateTable<T>();
-			}
+			return Database.CreateTable<T>();
 		}
 
 		public int Insert(object model)
 		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.Insert(model);
-			}
+			return Database.Insert(model);
 		}
 
 
 		public int InsertAll(IEnumerable models)
 		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.InsertAll(models);
-			}
+			return Database.InsertAll(models);
 		}
 
 		public int InsertOrReplace(object model)
 		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.InsertOrReplace(model);
-			}
+			return Database.InsertOrReplace(model);
 		}
 
 		public int InsertOrReplaceAll(IEnumerable models)
 		{
 			int updatedRowsCount = 0;
-			using (SQLiteConnection db = GetDb())
+			Database.RunInTransaction(() =>
 			{
-				db.RunInTransaction(() =>
-					{
-						foreach (object model in models)
-						{
-							updatedRowsCount += db.InsertOrReplace(model);
-						}
-					});
-			}
+				foreach (object model in models)
+				{
+					updatedRowsCount += Database.InsertOrReplace(model);
+				}
+			});
 
 			return updatedRowsCount;
 		}
 
 		public int Delete<T>(T model) where T : IIdentifiable
 		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.Delete<T>(model.Id);
-			}
+			return Database.Delete<T>(model.Id);
+		}
+
+		public int Delete<T> (T model, object primaryKey)
+		{
+			return Database.Delete<T>(primaryKey);
 		}
 
 		public int DeleteAll<T>()
 		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.DeleteAll<T>();
-			}
+			return Database.DeleteAll<T>();
 		}
 
 		public int Update(object model)
 		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.Update(model);
-			}
+			return Database.Update(model);
 		}
 
 		public int UpdateAll(IEnumerable models)
 		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.UpdateAll(models);
-			}
+			return Database.UpdateAll(models);
 		}
 
 		public T Query<T>(int id) where T : IIdentifiable, new()
 		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.Table<T>().FirstOrDefault(item => item.Id == id);
-			}
+			return Database.Table<T>().FirstOrDefault(item => item.Id == id);
 		}
 
 		public IEnumerable<T> Query<T>() where T : new()
 		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.Table<T>().ToList();
-			}
+			return Database.Table<T>().ToList();
 		}
 
 		public IEnumerable<T> QueryWithSql<T>(string sql, params object[] bindings) where T : new()
 		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.Query<T>(sql, bindings);
-			}
+			return Database.Query<T>(sql, bindings);
 		}
 
 		public int ExecuteWithSql(string sql, params object[] bindings)
 		{
-			using (SQLiteConnection db = GetDb())
-			{
-				return db.Execute(sql, bindings);
-			}
+			return Database.Execute(sql, bindings);
 		}
 
 		public void SeedTable<T>()
@@ -147,10 +117,25 @@ namespace iOS
 
 		private SQLiteConnection GetDb()
 		{
+			lock (_lock) {
+
+				if (_database != null) {
+					//TODO: may need to check if database connection is still open. However, there's no method that 
+					// has furnishes that feature at the SQLITE.NET level. We may need to figure this out using some other way (if at all needed)
+					return _database;
+				} else {
+					_database = CreateSqlConnection ();
+					return _database;
+				}
+			}
+		}
+
+		private SQLiteConnection CreateSqlConnection()
+		{
 			#if DEBUG
 			var db = new SQLiteConnection(GetDbPath()); //no password for debugging
 			#else
-			var keystore = Shared.App.IocContainer.Resolve<ISecureKeyValueStore>();
+			var keystore = IocContainer.GetContainer().Resolve<ISecureKeyValueStore>();
 			var encryptionKey = keystore.Retrieve(_keyName);
 
 			if(encryptionKey == null){
@@ -173,6 +158,14 @@ namespace iOS
 		{
 			return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), _databaseName);
 		}
+
+        public static void DeleteDatabase()
+        {
+            var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), _databaseName);
+
+            if (File.Exists(filePath))
+                File.Delete(filePath);
+        }
 	}
 }
 

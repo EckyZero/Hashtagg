@@ -1,7 +1,7 @@
 using Android.Graphics;
 using Shared.Common;
 
-namespace Droid.Phone.UIHelpers
+namespace Droid.Phone
 {
     public static class ColorExtensions
     {

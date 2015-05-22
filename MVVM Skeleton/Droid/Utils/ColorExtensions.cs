@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -13,11 +14,11 @@ using Shared.Common;
 
 namespace Droid
 {
-    public class DispatcherService : BaseService, IDispatcherService
+    public static class ColorExtensions
     {
-        public void InvokeOnMainThread(Action action)
+        public static Color ToDroidColor(this PSColor color)
         {
-            Application.SynchronizationContext.Post(state => action.Invoke(),Application.Context);
+            return new Color(color.R, color.G, color.B, color.A);
         }
     }
 }

@@ -37,6 +37,9 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AndHUD">
+      <HintPath>..\Components\AndHUD-1.3.1\lib\android\AndHUD.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper.Android">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\MonoAndroid\AutoMapper.Android.dll</HintPath>
     </Reference>
@@ -94,22 +97,35 @@
     <Compile Include="Activities\IBaseActivity.cs" />
     <Compile Include="OS Services\BaseService.cs" />
     <Compile Include="OS Services\BrowserService.cs" />
+    <Compile Include="OS Services\ConnectivityService.cs" />
     <Compile Include="OS Services\DispatcherService.cs" />
+    <Compile Include="OS Services\EmailService.cs" />
+    <Compile Include="OS Services\ExtendedDialogService.cs" />
+    <Compile Include="OS Services\ExtendedNavigationService.cs" />
     <Compile Include="OS Services\Geolocator.cs" />
     <Compile Include="OS Services\HttpClientHelper.cs" />
     <Compile Include="OS Services\HudService.cs" />
+    <Compile Include="OS Services\MapService.cs" />
+    <Compile Include="OS Services\PhoneService.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="OS Services\ExtendedDialogService.cs" />
-    <Compile Include="OS Services\ExtendedNavigationService.cs" />
     <Compile Include="OS Services\AndroidSecureDatabase.cs" />
+    <Compile Include="Utils\ColorExtensions.cs" />
+    <Compile Include="Utils\DroidHelper.cs" />
+    <Compile Include="Utils\UIUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Resources\AboutResources.txt" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
+    <XamarinComponentReference Include="AndHUD">
+      <Visible>False</Visible>
+      <Version>1.3.1</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="modernhttpclient">
       <Version>2.1.5</Version>
       <Visible>False</Visible>
@@ -147,10 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
-    <Folder Include="Resources\drawable-hdpi\" />
-    <Folder Include="Resources\drawable-mdpi\" />
-    <Folder Include="Resources\drawable-xhdpi\" />
-    <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable\" />
     <Folder Include="Resources\Values-v11\" />
     <Folder Include="Resources\values\" />

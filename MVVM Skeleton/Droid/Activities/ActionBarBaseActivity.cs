@@ -1,13 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Android.App;
+using Android.Content;
 using Android.Locations;
 using Android.OS;
+using Android.Runtime;
 using Android.Support.V7.App;
+using Android.Views;
+using Android.Widget;
+using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.Unity;
 using Shared.Common;
 
-namespace Droid.Activities
+namespace Droid
 {
     public class ActionBarBaseActivity : ActionBarActivity, IBaseActivity
     {
+        protected ILogger _logger;
+
         protected DispatcherService _dispatchService;
 
         protected ExtendedNavigationService _navigationService;
@@ -20,19 +33,17 @@ namespace Droid.Activities
 
         protected Geolocator _geoLocator;
 
-        public virtual void Dismiss()
-        {
-            GoBack();
-        }
+        protected ConnectivityService _connectivityService;
+
+		protected PhoneService _phoneService;
+
+		protected MapService _mapService;
+
+		protected EmailService _emailService;
 
         public virtual void GoBack()
         {
             this.OnBackPressed();
-        }
-
-        protected override void OnStop()
-        {
-            base.OnStop();
         }
 
         protected override void OnResume()
@@ -72,7 +83,14 @@ namespace Droid.Activities
             _browserService = IocContainer.GetContainer().Resolve<IBrowserService>() as BrowserService;
 
             _geoLocator = IocContainer.GetContainer().Resolve<IGeolocator>() as Geolocator;
-            
+
+            _connectivityService = IocContainer.GetContainer().Resolve<IConnectivityService>() as ConnectivityService;
+
+			_phoneService  = IocContainer.GetContainer().Resolve<IPhoneService>() as PhoneService;
+
+			_mapService  = IocContainer.GetContainer().Resolve<IMapService>() as MapService;
+
+			_emailService  = IocContainer.GetContainer().Resolve<IEmailService>() as EmailService;
         }
 
         private void RegServices()
@@ -82,9 +100,12 @@ namespace Droid.Activities
             _hudService.RegisterActivity(this);
             _browserService.RegisterActivity(this);
             _geoLocator.RegisterActivity(this);
+			_connectivityService.RegisterActivity(this);
+			_phoneService.RegisterActivity(this);
+			_mapService.RegisterActivity(this);
         }
 
-        public void OnLocationChanged(Location location)
+        public void OnLocationChanged(Android.Locations.Location location)
         {
             _geoLocator.LocationChanged(location);
         }

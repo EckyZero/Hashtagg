@@ -11,16 +11,6 @@ namespace Droid
 		{
 		}
 
-		public void Present(string pageKey, object parameter = null)
-		{
-			NavigateTo(pageKey,parameter);
-		}
-
-		public void DismissPage()
-		{
-            Activity.Dismiss();
-		}
-
         /// <summary>
         /// The key that is returned by the <see cref="CurrentPageKey"/> property
         /// when the current Activiy is the root activity.
@@ -98,6 +88,59 @@ namespace Droid
 
                 var intent = new Intent(_activity, _pagesByKey[pageKey]);
 
+                if (parameter != null)
+                {
+                    lock (_parametersByKey)
+                    {
+                        var guid = Guid.NewGuid().ToString();
+                        _parametersByKey.Add(guid, parameter);
+                        intent.PutExtra(ParameterKeyName, guid);
+                    }
+                }
+
+                _activity.StartActivity(intent);
+                Activity.NextPageKey = pageKey;
+            }
+        }
+        /// <summary>
+        /// Displays a new page corresponding to the given key,
+        /// and passes a parameter to the new page.
+        /// Make sure to call the <see cref="Configure"/>
+        /// method first.
+        /// </summary>
+        /// <param name="pageKey">The key corresponding to the page
+        /// that should be displayed.</param>
+        /// <param name="parameter">The parameter that should be passed
+        /// to the new page.</param>
+        /// <param name="flags">This parameter should be passed if you need intent flags</param>
+        /// <exception cref="ArgumentException">When this method is called for 
+        /// a key that has not been configured earlier.</exception>
+        public void NavigateTo(string pageKey, object parameter, ActivityFlags[] flags = null)
+        {
+            if (_activity == null)
+            {
+                throw new InvalidOperationException("No CurrentActivity found");
+            }
+
+            lock (_pagesByKey)
+            {
+                if (!_pagesByKey.ContainsKey(pageKey))
+                {
+                    throw new ArgumentException(
+                        string.Format(
+                            "No such page: {0}. Did you forget to call NavigationService.Configure?",
+                            pageKey),
+                        "pageKey");
+                }
+
+                var intent = new Intent(_activity, _pagesByKey[pageKey]);
+                if (flags != null)
+                {
+                    foreach (var flag in flags)
+                    {
+                        intent.AddFlags(flag);
+                    }
+                }
                 if (parameter != null)
                 {
                     lock (_parametersByKey)

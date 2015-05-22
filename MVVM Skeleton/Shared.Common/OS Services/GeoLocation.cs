@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CompassMobile.Shared.Common
+namespace Shared.Common
 {
     public class GeoLocation
     {

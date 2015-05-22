@@ -1,9 +1,12 @@
-﻿namespace Shared.Common
+﻿using System;
+using System.Threading.Tasks;
+
+namespace Shared.Common
 {
 	public interface IHudService
 	{
 	    void Show(string message = "");
-		void Dismiss();
+	    void Dismiss();
 	}
 }
 

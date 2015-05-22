@@ -42,9 +42,9 @@
 		<string>location</string>
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Compass uses your location to provide more accurate search results. </string>
+	<string>We use your location to provide more accurate search results. </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Compass uses your location to provide more accurate search results. </string>
+	<string>We use your location to provide more accurate search results. </string>
 	<key>CFBundleDisplayName</key>
 	<string></string>
 	<key>CFBundleShortVersionString</key>
