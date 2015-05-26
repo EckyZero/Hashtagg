@@ -28,6 +28,8 @@
     </MtouchI18n>
     <MtouchSdkVersion>8.1</MtouchSdkVersion>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
+    <MtouchExtraArgs>--linkskip=mscorlib</MtouchExtraArgs>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -113,10 +115,6 @@
     <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Calabash, Version=14.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.14.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="ModernHttpClient">
       <HintPath>..\Components\modernhttpclient-2.1.5\lib\ios-unified\ModernHttpClient.dll</HintPath>
     </Reference>
@@ -154,9 +152,11 @@
     <Reference Include="PLCrashReporterUnifiedBinding">
       <HintPath>..\packages\Xamarin.Insights.1.9.1.107\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.UITest, Version=0.7.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Calabash, Version=14.1.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.14.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.UITest, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Xamarin.UITest.0.7.2\lib\Xamarin.UITest.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
