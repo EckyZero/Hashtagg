@@ -4,6 +4,7 @@ using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using Xamarin;
+using CompassMobile.iOS.Phone;
 
 namespace iOS.Phone
 {
@@ -13,13 +14,21 @@ namespace iOS.Phone
 	[Register ("AppDelegate")]
 	public partial class AppDelegate : UIApplicationDelegate
 	{
+		public override UIWindow Window { get; set; }
+
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
 			#if DEBUG
 			Calabash.Start();
 			#endif
 
-			return base.FinishedLaunching(application,launchOptions);
+			var controller = new HomeController ();
+
+			Window = new UIWindow (UIScreen.MainScreen.Bounds);
+			Window.RootViewController = controller;
+			Window.MakeKeyAndVisible ();
+
+			return true;
 		}
 	}
 }
