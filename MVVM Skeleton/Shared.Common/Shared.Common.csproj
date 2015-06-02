@@ -58,6 +58,8 @@
     <Compile Include="Helpers\DateTimeExtensions.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Helpers\LinkedListExtensions.cs" />
+    <Compile Include="Helpers\DictionaryExtensions.cs" />
+    <Compile Include="BaseException.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

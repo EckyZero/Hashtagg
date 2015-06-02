@@ -15,9 +15,6 @@ namespace CompassMobile.iOS.Phone
 		public override void LoadView ()
 		{
 			base.LoadView ();
-
-			var nibs = NSBundle.MainBundle.LoadNib ("HomeController", this, null);
-			View = nibs.GetItem<UIView>(0);
 		}
 
 		public override void DidReceiveMemoryWarning ()
