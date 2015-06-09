@@ -158,6 +158,15 @@
     <Reference Include="PLCrashReporterUnifiedBinding">
       <HintPath>..\packages\Xamarin.Insights.1.10.2.110\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Auth.iOS">
+      <HintPath>..\Components\xamarin.social-1.1.7\lib\ios-unified\Xamarin.Auth.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Mobile">
+      <HintPath>..\Components\xamarin.social-1.1.7\lib\ios-unified\Xamarin.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Social.iOS">
+      <HintPath>..\Components\xamarin.social-1.1.7\lib\ios-unified\Xamarin.Social.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
@@ -188,6 +197,10 @@
       <Version>2.1.5</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="xamarin.social">
+      <Version>1.1.7</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iOS\iOS.csproj">
@@ -205,6 +218,10 @@
     <ProjectReference Include="..\Shared.VM\Shared.VM.csproj">
       <Project>{8BA73740-09B9-4923-8D33-B4539FAB205F}</Project>
       <Name>Shared.VM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared.Api\Shared.Api.csproj">
+      <Project>{57D15B6D-9101-4615-8FD3-87565A0BAA5B}</Project>
+      <Name>Shared.Api</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

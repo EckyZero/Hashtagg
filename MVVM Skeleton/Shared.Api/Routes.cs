@@ -4,7 +4,9 @@ namespace Shared.Api
 {
 	public class Routes
 	{
-		public const string NEWS_URL = "http://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/1.json?api-key=%@";
+		public const string TWITTER_BASE = "https://api.twitter.com/1.1";
+
+		public const string TWITTER_HOME_FEED = "/statuses/home_timeline.json";
 	}
 }
 

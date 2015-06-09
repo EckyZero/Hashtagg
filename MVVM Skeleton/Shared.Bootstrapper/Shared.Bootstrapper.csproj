@@ -64,5 +64,13 @@
       <Project>{8BA73740-09B9-4923-8D33-B4539FAB205F}</Project>
       <Name>Shared.VM</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shared.Api\Shared.Api.csproj">
+      <Project>{57D15B6D-9101-4615-8FD3-87565A0BAA5B}</Project>
+      <Name>Shared.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared.Service\Shared.Service.csproj">
+      <Project>{6BC8D2B7-7FA1-4642-873F-59357FAB0904}</Project>
+      <Name>Shared.Service</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -13,6 +13,7 @@ using Shared.Common;
 using Shared.VM;
 using Shared.Bootstrapper;
 using iOS;
+using Shared.Api;
 
 namespace iOS.Phone
 {
@@ -62,18 +63,20 @@ namespace iOS.Phone
 			_locator = new ViewModelLocator();
 			_store = new ViewModelStore ();
 
-//			IocContainer.GetContainer().RegisterInstance<ISecureDatabase>(new iOSSecureDatabase());
-//            IocContainer.GetContainer().RegisterType<IHttpClientHelper, HttpClientHelper>();
-//			IocContainer.GetContainer().RegisterInstance<IExtendedNavigationService> (ConfigureNav());
-//			IocContainer.GetContainer().RegisterType<IExtendedDialogService, ExtendedDialogService>();
-//			IocContainer.GetContainer().RegisterInstance<IHudService> (new HudService());
-//			IocContainer.GetContainer().RegisterType<IBrowserService, iOSBrowserService> ();
-//			IocContainer.GetContainer().RegisterInstance<IPhoneService> (new PhoneService());
-//			IocContainer.GetContainer().RegisterInstance<IMapService> (new MapService());
-//            IocContainer.GetContainer().RegisterInstance<IGeolocator>(new Geolocator());
-//            IocContainer.GetContainer().RegisterInstance<IConnectivityService>(new ConnectivityService());
-//			IocContainer.GetContainer().RegisterInstance<IDispatcherService>( new DispatcherService(new NSObject()));
-//			IocContainer.GetContainer().RegisterInstance<IEmailService> (new EmailService());
+			IocContainer.GetContainer ().RegisterInstance<ISocialService> (new iOSSocialService ());
+			IocContainer.GetContainer ().RegisterInstance<ILogger> (new Logger ());
+			IocContainer.GetContainer().RegisterInstance<ISecureDatabase>(new iOSSecureDatabase());
+            IocContainer.GetContainer().RegisterType<IHttpClientHelper, HttpClientHelper>();
+			IocContainer.GetContainer().RegisterInstance<IExtendedNavigationService> (ConfigureNav());
+			IocContainer.GetContainer().RegisterType<IExtendedDialogService, ExtendedDialogService>();
+			IocContainer.GetContainer().RegisterInstance<IHudService> (new HudService());
+			IocContainer.GetContainer().RegisterType<IBrowserService, iOSBrowserService> ();
+			IocContainer.GetContainer().RegisterInstance<IPhoneService> (new PhoneService());
+			IocContainer.GetContainer().RegisterInstance<IMapService> (new MapService());
+            IocContainer.GetContainer().RegisterInstance<IGeolocator>(new Geolocator());
+            IocContainer.GetContainer().RegisterInstance<IConnectivityService>(new ConnectivityService());
+			IocContainer.GetContainer().RegisterInstance<IDispatcherService>( new DispatcherService(new NSObject()));
+			IocContainer.GetContainer().RegisterInstance<IEmailService> (new EmailService());
 		}
 
 		private static ExtendedNavigationService ConfigureNav()

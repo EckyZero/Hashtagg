@@ -1,5 +1,7 @@
 ﻿using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
+using Shared.Api;
+using Shared.Service;
 
 namespace Shared.Bootstrapper
 {
@@ -9,7 +11,11 @@ namespace Shared.Bootstrapper
 		{
 			ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(container));
 
-			// container.RegisterType<IHomeViewModel, HomeViewModel> ();
+			// APIs
+			container.RegisterType<ITwitterApi, TwitterApi> ();
+
+			// Services
+			container.RegisterType<ITwitterService, TwitterService> ();
 		}
 	}
 }

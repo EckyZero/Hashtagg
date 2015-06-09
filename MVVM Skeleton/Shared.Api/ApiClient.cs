@@ -14,13 +14,19 @@ namespace Shared.Api
 	{
 		private const string DefaultMediaType = "application/json"; 
 
+		protected abstract string BASE_URL { get; }
+		protected string GET = "GET";
+		protected string POST = "POST";
+		protected string PUT = "PUT";
+		protected string DELETE = "DELETE";
+
 		private JsonSerializerSettings _jsonSettings = new JsonSerializerSettings 
 		{ 
 			ContractResolver = new CamelCasePropertyNamesContractResolver(),
 			NullValueHandling = NullValueHandling.Include
 		};
 
-		private async Task<HttpClient> CreateClient()
+		private HttpClient CreateClient()
 		{
 			return new HttpClient();
 		}
@@ -33,7 +39,7 @@ namespace Shared.Api
 
 		public async Task<T> GetAsync<T>(string relativeResource, string query = "", Func<string, T> parser = null)
 		{
-			using (var client = await CreateClient())
+			using (var client = CreateClient())
 			{
 				string response = await client.GetStringAsync (PrepareUrl (relativeResource, query)).ConfigureAwait (false);
 
@@ -72,7 +78,7 @@ namespace Shared.Api
 
 		public async Task<R> PostAsync<R> (string relativeResource, string json)
 		{
-			using (var client = await CreateClient())
+			using (var client = CreateClient())
 			{
 				var httpContent = new StringContent(json, Encoding.UTF8, DefaultMediaType);
 				var response = await client.PostAsync (PrepareUrl(relativeResource), httpContent).ConfigureAwait(false);
@@ -98,7 +104,7 @@ namespace Shared.Api
 
 		public async Task PostAsync(string relativeResource, string json)
 		{
-			using (var client = await CreateClient())
+			using (var client = CreateClient())
 			{
 				var httpContent = new StringContent(json, Encoding.UTF8, DefaultMediaType);
 				var response = await client.PostAsync (PrepareUrl(relativeResource), httpContent).ConfigureAwait(false);
@@ -125,7 +131,7 @@ namespace Shared.Api
 
 		public async Task<R> PutAsync<R> (string relativeResource, string json)
 		{
-			using (var client = await CreateClient())
+			using (var client = CreateClient())
 			{
 				var httpContent = new StringContent(json, Encoding.UTF8, DefaultMediaType);
 				var response = await client.PutAsync (PrepareUrl(relativeResource), httpContent).ConfigureAwait(false);
@@ -142,7 +148,7 @@ namespace Shared.Api
 
 		public async Task PutAsync(string relativeResource, string json)
 		{
-			using (var client = await CreateClient())
+			using (var client = CreateClient())
 			{
 				var httpContent = new StringContent(json, Encoding.UTF8, DefaultMediaType);
 				var response = await client.PutAsync (PrepareUrl(relativeResource), httpContent).ConfigureAwait(false);
@@ -156,7 +162,7 @@ namespace Shared.Api
 
 		public async Task<T> DeleteAsync<T>(string relativeResource, string query = "")
 		{
-			using (var client = await CreateClient())
+			using (var client = CreateClient())
 			{
 				var response = await client.DeleteAsync (PrepareUrl (relativeResource, query)).ConfigureAwait(false);
 				var jsonResponse = await response.Content.ReadAsStringAsync();
@@ -167,7 +173,7 @@ namespace Shared.Api
 
 		public async Task DeleteAsync(string relativeResource, string query = "")
 		{
-			using (var client = await CreateClient())
+			using (var client = CreateClient())
 			{
 				var response = await client.DeleteAsync (PrepareUrl (relativeResource, query)).ConfigureAwait(false);
 				var result = await response.Content.ReadAsStringAsync();	
@@ -204,15 +210,15 @@ namespace Shared.Api
 
 			if(query == null)
 			{
-				resource = string.Format ("{0}{1}", Routes.NEWS_URL, relativeResource);
+				resource = string.Format ("{0}{1}", BASE_URL, relativeResource);
 			}
 			else if (!relativeResource.EndsWith ("?") && !string.IsNullOrEmpty (query)) 
 			{
-				resource = string.Format ("{0}{1}?{2}", Routes.NEWS_URL, relativeResource, query);
+				resource = string.Format ("{0}{1}?{2}", BASE_URL, relativeResource, query);
 			} 
 			else 
 			{
-				resource = string.Format ("{0}{1}{2}", Routes.NEWS_URL, relativeResource, query);
+				resource = string.Format ("{0}{1}{2}", BASE_URL, relativeResource, query);
 			}
 			System.Diagnostics.Debug.WriteLine (resource);
 			return resource;
