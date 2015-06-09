@@ -62,6 +62,7 @@
     <Compile Include="BaseException.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Models\TwitterFeedItem.cs" />
+    <Compile Include="Interfaces\ISocialService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

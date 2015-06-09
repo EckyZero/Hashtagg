@@ -13,6 +13,7 @@ namespace Shared.VM
 		#region Private Variables
 
 		private ITwitterService _twitterService;
+		private ISocialService _socialService;
 		private ObservableCollection<TwitterFeedItem> _twitterFeed = new ObservableCollection<TwitterFeedItem>();
 
 		#endregion
@@ -28,6 +29,7 @@ namespace Shared.VM
 		public HomeViewModel () : base ()
 		{
 			_twitterService = IocContainer.GetContainer ().Resolve<ITwitterService> ();
+			_socialService = IocContainer.GetContainer ().Resolve<ISocialService> ();
 		}
 
 		protected override void InitCommands ()
@@ -36,6 +38,18 @@ namespace Shared.VM
 		}
 
 		private async void RefreshCommandExecute ()
+		{
+			if(await _socialService.TwitterAccountExists())
+			{
+				await GetTwitterFeed ();
+			}
+			else
+			{
+				_socialService.TwitterAuthenticationExecute (async () => await GetTwitterFeed ());
+			}
+		}
+
+		private async Task GetTwitterFeed ()
 		{
 			var twitterFeed = await _twitterService.GetHomeFeed ();
 			_twitterFeed.Clear ();

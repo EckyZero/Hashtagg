@@ -14,6 +14,7 @@ using Shared.VM;
 using Shared.Bootstrapper;
 using iOS;
 using Shared.Api;
+using Shared.Service;
 
 namespace iOS.Phone
 {

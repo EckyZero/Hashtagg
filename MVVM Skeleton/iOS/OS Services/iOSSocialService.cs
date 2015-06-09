@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UIKit;
 using System.Linq;
+using Shared.Service;
 
 namespace iOS
 {
@@ -14,7 +15,7 @@ namespace iOS
 	{
 		#region Private Variables
 
-		TwitterService _twitterService;
+		Xamarin.Social.Services.TwitterService _twitterService;
 
 		#endregion
 
@@ -22,7 +23,7 @@ namespace iOS
 
 		public iOSSocialService ()
 		{
-			_twitterService = new TwitterService() { 
+			_twitterService = new Xamarin.Social.Services.TwitterService() { 
 				ConsumerKey = Config.TWITTER_CONSUMER_KEY, 
 				ConsumerSecret = Config.TWITTER_CONSUMER_SECRET,
 				CallbackUrl = new Uri(Config.TWITTER_CALLBACK_URL)
@@ -38,22 +39,35 @@ namespace iOS
 
 			var account = AccountStore.Create ().FindAccountsForService (Config.TWITTER_SERVICE_ID).FirstOrDefault();
 			var request = _twitterService.CreateRequest (method, uri, parameters, account);
-
 			var response = await request.GetResponseAsync();
 			var result = response.GetResponseText();
 
 			return result;
 		}
 
-		public void TwitterAuthenticationUI (UIViewController presentingController, Action callback)
+		public void TwitterAuthenticationExecute (Action callback)
 		{
-			var controller = _twitterService.GetAuthenticateUI ( (account) => {
-				AccountStore.Create ().Save (account, Config.TWITTER_SERVICE_ID);
-				if(callback != null) {
-					callback();
-				}
-			});
+			var presentingController = UIApplication.SharedApplication.KeyWindow.RootViewController;
+			var controller = _twitterService.GetAuthenticateUI ( (account) => 
+				{
+					AccountStore.Create ().Save (account, Config.TWITTER_SERVICE_ID);
+					presentingController.DismissViewController(true, () => 
+						{
+							if(callback != null) 
+							{
+								callback();
+							}	
+						});
+				});
 			presentingController.PresentViewController (controller, true, null);
+		}
+
+		public async Task<bool> TwitterAccountExists ()
+		{
+			var accounts = await _twitterService.GetAccountsAsync ();
+			var exists = (accounts != null) && accounts.Any();
+
+			return exists;
 		}
 
 		#endregion
