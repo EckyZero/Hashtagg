@@ -2,13 +2,31 @@
 
 namespace Shared.VM
 {
-	public abstract class BaseCardViewModel
+	public enum CardType
 	{
-		
+		Header,
+		Image,
+		NoImage
+	}
 
-		public BaseCardViewModel ()
+	public abstract class BaseCardViewModel : SharedViewModelBase
+	{
+		#region Member Properties
+
+		public abstract CardType CardType { get; }
+
+		#endregion
+
+		#region Methods
+
+		public BaseCardViewModel () {}
+			
+		protected override void InitCommands ()
 		{
+			
 		}
+
+		#endregion
 	}
 }
 

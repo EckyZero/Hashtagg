@@ -1,4 +1,5 @@
 ﻿using System;
+using GalaSoft.MvvmLight.Command;
 
 namespace Shared.VM
 {
@@ -13,7 +14,12 @@ namespace Shared.VM
 	{
 		#region Member Properties
 
-		public abstract SocialType Type { get; }
+		public override CardType CardType 
+		{
+			get { return String.IsNullOrWhiteSpace (ImageUrl) ? CardType.NoImage : CardType.Image; }
+		}
+
+		public abstract SocialType SocialType { get; }
 		public abstract string ImageUrl { get; }
 		public abstract string UserImageUrl { get; }
 		public abstract string UserName { get; }
@@ -27,9 +33,52 @@ namespace Shared.VM
 
 		#endregion
 
+		#region Commands
+
+		public RelayCommand SelectCommand { get; private set; }
+		public RelayCommand LikeCommand { get; private set; }
+		public RelayCommand CommentCommand { get; private set; }
+		public RelayCommand ShareCommand { get; private set; }
+
+		#endregion
+
+		#region Methods
+
 		public BaseContentCardViewModel ()
 		{
 		}
+
+		protected override void InitCommands ()
+		{
+			base.InitCommands ();
+
+			SelectCommand = new RelayCommand (SelectCommandExecute);
+			LikeCommand = new RelayCommand (LikeCommandExecute);
+			CommentCommand = new RelayCommand (CommentCommandExecute);
+			ShareCommand = new RelayCommand (ShareCommandExecute);
+		}
+
+		private void SelectCommandExecute ()
+		{
+			// TODO: Repond to card selection
+		}
+
+		private void LikeCommandExecute ()
+		{
+			// TODO: Repond to like selection
+		}
+
+		private void CommentCommandExecute ()
+		{
+			// TODO: Repond to comment selection
+		}
+
+		private void ShareCommandExecute ()
+		{
+			// TODO: Repond to share selection
+		}
+
+		#endregion
 	}
 }
 

@@ -63,6 +63,9 @@
     <Compile Include="Config.cs" />
     <Compile Include="Interfaces\ISocialService.cs" />
     <Compile Include="Models\Tweet.cs" />
+    <Compile Include="ApplicationResources.Designer.cs">
+      <DependentUpon>ApplicationResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -87,5 +90,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ApplicationResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

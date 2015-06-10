@@ -5,6 +5,7 @@ using Microsoft.Practices.Unity;
 using System.Globalization;
 using System.Threading.Tasks;
 using Shared.Common;
+using Shared.Service;
 
 namespace Shared.VM
 {
@@ -60,6 +61,66 @@ namespace Shared.VM
 		    _connectivityService = IocContainer.GetContainer().Resolve<IConnectivityService>();
 
 			_emailService = IocContainer.GetContainer().Resolve<IEmailService> ();
+		}
+
+		protected async Task OnError()
+		{
+			await _dialogService.ShowMessage(ApplicationResources.GenericError, ApplicationResources.Error);
+		}
+
+		protected async Task OnNoConnection()
+		{
+			await _dialogService.ShowMessage(ApplicationResources.GenericOffline, ApplicationResources.CurrentlyOffline);
+		}
+
+		protected async Task<bool> ProcessResponse<T>(ServiceResponse<T> response, bool showDialog = true)
+		{
+			if (response.ResponseType == ServiceResponseType.ERROR)
+			{
+				if (showDialog)
+				{
+					await OnError();
+				}
+				return false;
+			}
+			else if (response.ResponseType == ServiceResponseType.NO_CONNECTION)
+			{
+				if (showDialog)
+				{
+					await OnNoConnection();
+				}
+				return false;
+			}
+			else if (response.ResponseType == ServiceResponseType.SUCCESS)
+			{
+				return true;
+			}
+			return false;
+		}
+
+		protected async Task<bool> ProcessResponse(ServiceResponseType response, bool showDialog = true)
+		{
+			if (response == ServiceResponseType.ERROR)
+			{
+				if (showDialog)
+				{
+					await OnError();
+				}
+				return false;
+			}
+			else if (response == ServiceResponseType.NO_CONNECTION)
+			{
+				if (showDialog)
+				{
+					await OnNoConnection();
+				}
+				return false;
+			}
+			else if (response == ServiceResponseType.SUCCESS)
+			{
+				return true;
+			}
+			return false;
 		}
     }
 }

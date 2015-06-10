@@ -62,7 +62,13 @@ namespace Shared.VM
 
 		private async Task GetTwitterFeed ()
 		{
-			_tweets = await _twitterService.GetHomeFeed ();
+			var response = new ServiceResponse<ObservableCollection<Tweet>> ();
+
+			response = await _twitterService.GetHomeFeed ();	
+
+//			if(await Process)
+			_tweets = response.Result;
+			CardViewModels.Clear ();
 
 			foreach(Tweet tweet in _tweets)
 			{

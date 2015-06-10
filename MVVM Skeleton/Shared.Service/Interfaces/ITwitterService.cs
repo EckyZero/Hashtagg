@@ -8,7 +8,7 @@ namespace Shared.Service
 {
 	public interface ITwitterService
 	{
-		Task<ObservableCollection<Tweet>> GetHomeFeed ();
+		Task<ServiceResponse<ObservableCollection<Tweet>>> GetHomeFeed ();
 	}
 }
 

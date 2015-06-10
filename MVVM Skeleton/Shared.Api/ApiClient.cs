@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Shared.Common;
 using System.Text;
 using System.Net;
+using Microsoft.Practices.Unity;
 
 namespace Shared.Api
 {
@@ -19,6 +20,8 @@ namespace Shared.Api
 		protected string POST = "POST";
 		protected string PUT = "PUT";
 		protected string DELETE = "DELETE";
+
+		protected ILogger Logger;
 
 		private JsonSerializerSettings _jsonSettings = new JsonSerializerSettings 
 		{ 
@@ -33,6 +36,7 @@ namespace Shared.Api
 
 		public ApiClient()
 		{
+			Logger = IocContainer.GetContainer ().Resolve<ILogger> ();
 		}
 
 		#region Get

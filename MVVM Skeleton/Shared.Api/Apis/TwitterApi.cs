@@ -40,10 +40,24 @@ namespace Shared.Api
 			settings.Culture = CultureInfo.InvariantCulture;
 
 			var url = new Uri(String.Format ("{0}{1}", BASE_URL, Routes.TWITTER_HOME_FEED));
-			var response = await _socialService.TwitterRequestExecute (GET, url, null);
-			var results = JsonConvert.DeserializeObject<IList<TwitterFeedItemDto>> (response, settings);
+			var parameters = new Dictionary<string, string> () {
+				{ "exclude_replied", "true" },
+				{ "count", "200" }
+			};
 
-			return results;
+			try
+			{
+				var response = await _socialService.TwitterRequestExecute (GET, url, parameters);
+				var results = JsonConvert.DeserializeObject<IList<TwitterFeedItemDto>> (response, settings);	
+
+				return results;
+			}
+			catch (Exception e)
+			{
+				var exception = new ApiException("Failed to get tweets", e);
+				Logger.Log(exception, LogType.ERROR);
+				throw exception;
+			}
 		}
 
 		#endregion

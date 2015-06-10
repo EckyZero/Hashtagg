@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace Shared.Service
 {
-	public class TwitterService : ITwitterService
+	public class TwitterService : BaseService, ITwitterService
 	{
 		#region Private Variables
 
@@ -24,18 +24,39 @@ namespace Shared.Service
 			_twitterApi = IocContainer.GetContainer ().Resolve<ITwitterApi> ();
 		}
 
-		public async Task<ObservableCollection<Tweet>> GetHomeFeed ()
+		public async Task<ServiceResponse<ObservableCollection<Tweet>>> GetHomeFeed ()
 		{
-			var dtos = await _twitterApi.GetHomeFeed ();
+			var dtos = new List<TwitterFeedItemDto> ();
 			var models = new ObservableCollection<Tweet> ();
 
-			foreach(TwitterFeedItemDto dto in dtos)
+			try
 			{
-				var model = Mapper.Map<Tweet> (dto);
-				models.Add (model);
-			}
+				if(ConnectivityService.IsConnected)
+				{
+					dtos = await _twitterApi.GetHomeFeed () as List<TwitterFeedItemDto>;
 
-			return models;
+					foreach(TwitterFeedItemDto dto in dtos)
+					{
+						var model = Mapper.Map<Tweet> (dto);
+						models.Add (model);
+					}
+
+					return new ServiceResponse<ObservableCollection<Tweet>>(models,ServiceResponseType.SUCCESS);
+				}
+				else
+				{
+					return new ServiceResponse<ObservableCollection<Tweet>>(models,ServiceResponseType.NO_CONNECTION);
+				}
+			}
+			catch (BaseException exception)
+			{
+				return new ServiceResponse<ObservableCollection<Tweet>> (models, ServiceResponseType.ERROR);
+			}
+			catch (Exception exception)
+			{
+				Logger.Log (new ServiceException ("Error getting tweets", exception), LogType.ERROR);
+				return new ServiceResponse<ObservableCollection<Tweet>> (models, ServiceResponseType.ERROR);
+			}
 		}
 
 		#endregion

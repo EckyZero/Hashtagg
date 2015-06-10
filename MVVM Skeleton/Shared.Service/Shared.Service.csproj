@@ -33,6 +33,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\TwitterService.cs" />
     <Compile Include="Interfaces\ITwitterService.cs" />
+    <Compile Include="ServiceResponse.cs" />
+    <Compile Include="BaseService.cs" />
+    <Compile Include="ServiceException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

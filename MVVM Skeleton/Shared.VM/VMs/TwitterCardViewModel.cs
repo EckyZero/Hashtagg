@@ -13,7 +13,7 @@ namespace Shared.VM
 
 		#region Member Properties
 
-		public override SocialType Type
+		public override SocialType SocialType
 		{
 			get { return SocialType.Twitter; }
 		}
