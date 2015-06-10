@@ -45,6 +45,8 @@
     <Compile Include="Dtos\Twitter\TwitterFeedItemMetaDataDto.cs" />
     <Compile Include="Dtos\Twitter\TwitterFeedItemMetaDataMediumDto.cs" />
     <Compile Include="Dtos\Twitter\TwitterFeedItemRetweetedStatusDto.cs" />
+    <Compile Include="Dtos\Twitter\TwitterHashTagDto.cs" />
+    <Compile Include="Dtos\Twitter\TwitterFeedItemExtendedEntityDto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

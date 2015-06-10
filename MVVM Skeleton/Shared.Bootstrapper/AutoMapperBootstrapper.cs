@@ -13,10 +13,30 @@ namespace Shared.Bootstrapper
 		public static void MapTypes()
 		{
 			// Model to DTO
-			Mapper.CreateMap<TwitterFeedItem, TwitterFeedItemDto>();
+			Mapper.CreateMap<Tweet, TwitterFeedItemDto>();
 
 			// DTO to Model
-			Mapper.CreateMap<TwitterFeedItemDto, TwitterFeedItem>();
+			Mapper.CreateMap<TwitterFeedItemDto, Tweet>()
+				.ForMember(model => model.RetweetCount,
+					opts => opts.MapFrom(dto => dto.Retweet_Count))
+				.ForMember(model => model.FavoriteCount,
+					opts => opts.MapFrom(dto => dto.Favorite_Count))
+				.ForMember(model => model.FavoritedByUser,
+					opts => opts.MapFrom(dto => dto.Favorited))
+				.ForMember(model => model.RetweetedByUser,
+					opts => opts.MapFrom(dto => dto.Retweeted))
+				.ForMember(model => model.UserId,
+					opts => opts.MapFrom(dto => dto.User.Id))
+				.ForMember(model => model.UserName,
+					opts => opts.MapFrom(dto => dto.User.Name))
+				.ForMember(model => model.UserScreenName,
+					opts => opts.MapFrom(dto => dto.User.Screen_Name))
+				.ForMember(model => model.UserLocation,
+					opts => opts.MapFrom(dto => dto.User.Location))
+				.ForMember(model => model.UserUrl,
+					opts => opts.MapFrom(dto => dto.User.Url))
+				.ForMember(model => model.ProfileImageUrl,
+					opts => opts.MapFrom(dto => dto.User.Profile_Image_Url));
 		}
 	}
 }

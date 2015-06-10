@@ -5,9 +5,8 @@ namespace Shared.Api
 {
 	public class TwitterFeedItemMetaDataMediumDto
 	{
-		public double Id { get; set; }
+		public long Id { get; set; }
 		public string Id_Str { get; set; }
-		public List<int> Indices { get; set; }
 		public string Media_Url { get; set; }
 		public string Media_Url_Https { get; set; }
 		public string Url { get; set; }
@@ -17,6 +16,7 @@ namespace Shared.Api
 
 		public TwitterFeedItemMetaDataMediumDto ()
 		{
+
 		}
 	}
 }

@@ -4,8 +4,8 @@ namespace Shared.Api
 {
 	public class TwitterFeedItemRetweetedStatusDto
 	{
-		public string Created_At { get; set; }
-		public double Id { get; set; }
+		public DateTime Created_At { get; set; }
+		public long Id { get; set; }
 		public string Id_Str { get; set; }
 		public string Text { get; set; }
 		public string Source { get; set; }

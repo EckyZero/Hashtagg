@@ -5,6 +5,7 @@ using Shared.Common;
 using Shared.Api;
 using Microsoft.Practices.Unity;
 using AutoMapper;
+using System.Collections.ObjectModel;
 
 namespace Shared.Service
 {
@@ -23,14 +24,14 @@ namespace Shared.Service
 			_twitterApi = IocContainer.GetContainer ().Resolve<ITwitterApi> ();
 		}
 
-		public async Task<IList<TwitterFeedItem>> GetHomeFeed ()
+		public async Task<ObservableCollection<Tweet>> GetHomeFeed ()
 		{
 			var dtos = await _twitterApi.GetHomeFeed ();
-			var models = new List<TwitterFeedItem> ();
+			var models = new ObservableCollection<Tweet> ();
 
 			foreach(TwitterFeedItemDto dto in dtos)
 			{
-				var model = Mapper.Map<TwitterFeedItem> (dto);
+				var model = Mapper.Map<Tweet> (dto);
 				models.Add (model);
 			}
 

@@ -14,7 +14,7 @@ namespace Shared.VM
 
 		private ITwitterService _twitterService;
 		private ISocialService _socialService;
-		private ObservableCollection<TwitterFeedItem> _twitterFeed = new ObservableCollection<TwitterFeedItem>();
+		private ObservableCollection<Tweet> _tweets = new ObservableCollection<Tweet>();
 
 		#endregion
 
@@ -51,13 +51,7 @@ namespace Shared.VM
 
 		private async Task GetTwitterFeed ()
 		{
-			var twitterFeed = await _twitterService.GetHomeFeed ();
-			_twitterFeed.Clear ();
-
-			foreach (TwitterFeedItem item in twitterFeed)
-			{
-				_twitterFeed.Add (item);
-			}
+			_tweets = await _twitterService.GetHomeFeed ();
 		}
 
 		#endregion

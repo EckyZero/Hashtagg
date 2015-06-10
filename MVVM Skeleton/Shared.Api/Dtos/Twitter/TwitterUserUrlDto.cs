@@ -5,7 +5,7 @@ namespace Shared.Api
 {
 	public class TwitterUserUrlDto
 	{
-		public List<TwitterUserUrlDto> urls { get; set; }
+		public List<TwitterUserUrlDto> Urls { get; set; }
 
 		public TwitterUserUrlDto ()
 		{
