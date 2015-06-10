@@ -11,13 +11,14 @@ namespace Shared.Common
 		public int FavoriteCount { get; set; }
 		public bool IsFavoritedByUser { get; set; }
 		public bool IsRetweetedByUser { get; set; }
+		public string ImageUrl { get; set; }
 
 		public long UserId { get; set; }
 		public string UserName { get; set; }
 		public string UserScreenName { get; set; }
 		public string UserLocation { get; set; }
 		public string UserUrl { get; set; }
-		public string ProfileImageUrl { get; set; }
+		public string UserImageUrl { get; set; }
 
 		public Tweet ()
 		{

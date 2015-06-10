@@ -15,6 +15,17 @@ namespace Shared.VM
 		private ITwitterService _twitterService;
 		private ISocialService _socialService;
 		private ObservableCollection<Tweet> _tweets = new ObservableCollection<Tweet>();
+		private ObservableCollection<BaseCardViewModel> _cardViewModels = new ObservableCollection<BaseCardViewModel> ();
+
+		#endregion
+
+		#region Member Properties
+
+		public ObservableCollection<BaseCardViewModel> CardViewModels 
+		{
+			get { return _cardViewModels; }
+			set { _cardViewModels = value; }
+		}
 
 		#endregion
 
@@ -52,6 +63,12 @@ namespace Shared.VM
 		private async Task GetTwitterFeed ()
 		{
 			_tweets = await _twitterService.GetHomeFeed ();
+
+			foreach(Tweet tweet in _tweets)
+			{
+				var viewModel = new TwitterCardViewModel (tweet);
+				CardViewModels.Add (viewModel);
+			}
 		}
 
 		#endregion

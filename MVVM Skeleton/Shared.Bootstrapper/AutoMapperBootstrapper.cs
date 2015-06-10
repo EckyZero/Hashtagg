@@ -5,6 +5,7 @@ using UnityServiceLocator = Microsoft.Practices.Unity.UnityServiceLocator;
 using Microsoft.Practices.Unity;
 using Shared.Common;
 using Shared.Api;
+using System.Linq;
 
 namespace Shared.Bootstrapper
 {
@@ -21,9 +22,9 @@ namespace Shared.Bootstrapper
 					opts => opts.MapFrom(dto => dto.Retweet_Count))
 				.ForMember(model => model.FavoriteCount,
 					opts => opts.MapFrom(dto => dto.Favorite_Count))
-				.ForMember(model => model.FavoritedByUser,
+				.ForMember(model => model.IsFavoritedByUser,
 					opts => opts.MapFrom(dto => dto.Favorited))
-				.ForMember(model => model.RetweetedByUser,
+				.ForMember(model => model.IsRetweetedByUser,
 					opts => opts.MapFrom(dto => dto.Retweeted))
 				.ForMember(model => model.UserId,
 					opts => opts.MapFrom(dto => dto.User.Id))
@@ -35,8 +36,10 @@ namespace Shared.Bootstrapper
 					opts => opts.MapFrom(dto => dto.User.Location))
 				.ForMember(model => model.UserUrl,
 					opts => opts.MapFrom(dto => dto.User.Url))
-				.ForMember(model => model.ProfileImageUrl,
-					opts => opts.MapFrom(dto => dto.User.Profile_Image_Url));
+				.ForMember(model => model.UserImageUrl,
+					opts => opts.MapFrom(dto => dto.User.Profile_Image_Url))
+				.ForMember(model => model.ImageUrl,
+					opts => opts.MapFrom(dto => (dto.Entities != null && dto.Entities.Media != null) ? dto.Entities.Media.FirstOrDefault( m => m.Type.Equals("photo")).Media_Url : String.Empty));
 		}
 	}
 }
