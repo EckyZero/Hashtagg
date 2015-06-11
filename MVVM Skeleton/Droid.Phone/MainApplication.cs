@@ -80,6 +80,7 @@ namespace CompassMobile.Droid.Phone
             _locator = new ViewModelLocator();
             _store = new ViewModelStore();
 
+			IocContainer.GetContainer().RegisterInstance<ILogger> (new Logger ());
 			IocContainer.GetContainer().RegisterInstance<ISecureDatabase>(new AndroidSecureDatabase());
             IocContainer.GetContainer().RegisterType<IHttpClientHelper, HttpClientHelper>();
             IocContainer.GetContainer().RegisterInstance<IExtendedNavigationService>(ConfigureNav());
@@ -92,6 +93,7 @@ namespace CompassMobile.Droid.Phone
 			IocContainer.GetContainer().RegisterInstance<IPhoneService> (new PhoneService());
 			IocContainer.GetContainer().RegisterInstance<IMapService> (new MapService());
 			IocContainer.GetContainer().RegisterInstance<IEmailService> (new EmailService());
+			IocContainer.GetContainer ().RegisterInstance<ISocialService> (new AndroidSocialService ());
         }
 
         private static ExtendedNavigationService ConfigureNav()

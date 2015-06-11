@@ -20,7 +20,7 @@ namespace Droid
 
         protected Activity _activity;
 
-        protected IBaseActivity Activity
+        public IBaseActivity Activity
         {
             get { return _activity as IBaseActivity; }
         }
