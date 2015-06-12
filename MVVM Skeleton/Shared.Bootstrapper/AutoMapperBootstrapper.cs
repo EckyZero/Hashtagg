@@ -18,6 +18,8 @@ namespace Shared.Bootstrapper
 
 			// DTO to Model
 			Mapper.CreateMap<TwitterFeedItemDto, Tweet>()
+				.ForMember(model => model.CreatedAt,
+					opts => opts.MapFrom(dto => dto.Created_At))
 				.ForMember(model => model.RetweetCount,
 					opts => opts.MapFrom(dto => dto.Retweet_Count))
 				.ForMember(model => model.FavoriteCount,

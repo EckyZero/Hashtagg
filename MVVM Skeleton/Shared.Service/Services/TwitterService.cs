@@ -6,6 +6,7 @@ using Shared.Api;
 using Microsoft.Practices.Unity;
 using AutoMapper;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Shared.Service
 {
@@ -26,22 +27,26 @@ namespace Shared.Service
 
 		public async Task<ServiceResponse<ObservableCollection<Tweet>>> GetHomeFeed ()
 		{
-			var dtos = new List<TwitterFeedItemDto> ();
 			var models = new ObservableCollection<Tweet> ();
 
 			try
 			{
 				if(ConnectivityService.IsConnected)
 				{
-					dtos = await _twitterApi.GetHomeFeed () as List<TwitterFeedItemDto>;
+					var dtos = await _twitterApi.GetHomeFeed () as List<TwitterFeedItemDto>;
 
 					foreach(TwitterFeedItemDto dto in dtos)
 					{
 						var model = Mapper.Map<Tweet> (dto);
 						models.Add (model);
 					}
+					var tempModels = models
+						.OrderByDescending(t => t.CreatedAt)
+						.ThenByDescending(t => t.RetweetCount)
+						.ThenByDescending(t => t.FavoriteCount);
+					var orderModels = new ObservableCollection<Tweet>(tempModels);
 
-					return new ServiceResponse<ObservableCollection<Tweet>>(models,ServiceResponseType.SUCCESS);
+					return new ServiceResponse<ObservableCollection<Tweet>>(orderModels,ServiceResponseType.SUCCESS);
 				}
 				else
 				{
