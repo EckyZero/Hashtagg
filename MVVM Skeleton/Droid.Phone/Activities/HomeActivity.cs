@@ -16,7 +16,7 @@ using GalaSoft.MvvmLight.Helpers;
 namespace Droid.Phone
 {
 	[Activity (Label = "HomeActivity",  MainLauncher = true)]			
-	public class HomeActivity : Activity
+	public class HomeActivity : ActionBarBaseActivity
 	{
 		#region Private Variables
 

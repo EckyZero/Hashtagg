@@ -38,7 +38,7 @@ namespace Droid
 				parameters = new Dictionary<string,string> ();
 			}
 
-			var activity = _navigationService.Activity as Activity;
+			var activity = _navigationService.GetCurrentActivity ();
 			var account = AccountStore.Create (activity).FindAccountsForService (Config.TWITTER_SERVICE_ID).FirstOrDefault();
 			var request = _twitterService.CreateRequest (method, uri, parameters, account);
 			var response = await request.GetResponseAsync();
@@ -49,18 +49,21 @@ namespace Droid
 
 		public void TwitterAuthenticationExecute (Action callback)
 		{
-			var activity = _navigationService.Activity as Activity;
+			var activity = _navigationService.GetCurrentActivity ();
 			var intent = _twitterService.GetAuthenticateUI (activity, (account) => 
 				{
 					AccountStore.Create (activity).Save (account, Config.TWITTER_SERVICE_ID);
-					_navigationService.GoBack();
+					if(callback != null)
+					{
+						callback();	
+					}
 				});
 			activity.StartActivity (intent);
 		}
 
 		public async Task<bool> TwitterAccountExists ()
 		{
-			var activity = _navigationService.Activity as Activity;
+			var activity = _navigationService.GetCurrentActivity ();
 			var accounts = await _twitterService.GetAccountsAsync (activity);
 			var exists = (accounts != null) && accounts.Any();
 

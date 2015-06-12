@@ -20,7 +20,7 @@ namespace Droid
 
         protected Activity _activity;
 
-        public IBaseActivity Activity
+        protected IBaseActivity Activity
         {
             get { return _activity as IBaseActivity; }
         }
@@ -34,5 +34,10 @@ namespace Droid
         {
             _logger = IocContainer.GetContainer().Resolve<ILogger>();
         }
+
+		public Activity GetCurrentActivity()
+		{
+			return _activity;
+		}
     }
 }

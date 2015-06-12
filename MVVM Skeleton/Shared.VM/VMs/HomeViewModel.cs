@@ -66,14 +66,17 @@ namespace Shared.VM
 
 			response = await _twitterService.GetHomeFeed ();	
 
-//			if(await Process)
-			_tweets = response.Result;
-			CardViewModels.Clear ();
-
-			foreach(Tweet tweet in _tweets)
+			if(await ProcessResponse(response))
 			{
-				var viewModel = new TwitterCardViewModel (tweet);
-				CardViewModels.Add (viewModel);
+				_tweets = response.Result;	
+
+				CardViewModels.Clear ();
+
+				foreach(Tweet tweet in _tweets)
+				{
+					var viewModel = new TwitterCardViewModel (tweet);
+					CardViewModels.Add (viewModel);
+				}
 			}
 		}
 
