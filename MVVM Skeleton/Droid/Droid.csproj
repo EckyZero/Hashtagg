@@ -118,7 +118,7 @@
     <Compile Include="Utils\ColorExtensions.cs" />
     <Compile Include="Utils\DroidHelper.cs" />
     <Compile Include="Utils\UIUtil.cs" />
-    <Compile Include="OS Services\AndroidSocialService.cs" />
+    <Compile Include="OS Services\AndroidTwitterHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

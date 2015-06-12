@@ -12,7 +12,7 @@ namespace Shared.Api
 	{
 		#region Private Properties
 
-		ISocialService _socialService;
+		ITwitterHelper _twitterHelper;
 
 		#endregion
 
@@ -29,7 +29,7 @@ namespace Shared.Api
 
 		public TwitterApi ()
 		{
-			_socialService = IocContainer.GetContainer ().Resolve<ISocialService> ();
+			_twitterHelper = IocContainer.GetContainer ().Resolve<ITwitterHelper> ();
 		}
 
 		public async Task<IList<TwitterFeedItemDto>> GetHomeFeed()
@@ -46,7 +46,7 @@ namespace Shared.Api
 
 			try
 			{
-				var response = await _socialService.TwitterRequestExecute (GET, url, parameters);
+				var response = await _twitterHelper.TwitterRequestExecute (GET, url, parameters);
 				var results = JsonConvert.DeserializeObject<IList<TwitterFeedItemDto>> (response, settings);	
 
 				return results;

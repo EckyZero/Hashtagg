@@ -13,7 +13,7 @@ namespace Shared.VM
 		#region Private Variables
 
 		private ITwitterService _twitterService;
-		private ISocialService _socialService;
+		private ITwitterHelper _twitterHelper;
 		private ObservableCollection<Tweet> _tweets = new ObservableCollection<Tweet>();
 		private ObservableCollection<BaseCardViewModel> _cardViewModels = new ObservableCollection<BaseCardViewModel> ();
 
@@ -40,7 +40,7 @@ namespace Shared.VM
 		public HomeViewModel () : base ()
 		{
 			_twitterService = IocContainer.GetContainer ().Resolve<ITwitterService> ();
-			_socialService = IocContainer.GetContainer ().Resolve<ISocialService> ();
+			_twitterHelper = IocContainer.GetContainer ().Resolve<ITwitterHelper> ();
 		}
 
 		protected override void InitCommands ()
@@ -50,13 +50,13 @@ namespace Shared.VM
 
 		private async void RefreshCommandExecute ()
 		{
-			if(await _socialService.TwitterAccountExists())
+			if(await _twitterHelper.TwitterAccountExists())
 			{
 				await GetTwitterFeed ();
 			}
 			else
 			{
-				_socialService.TwitterAuthenticationExecute (async () => await GetTwitterFeed ());
+				_twitterHelper.TwitterAuthenticationExecute (async () => await GetTwitterFeed ());
 			}
 		}
 

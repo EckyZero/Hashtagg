@@ -61,11 +61,11 @@
     <Compile Include="Helpers\DictionaryExtensions.cs" />
     <Compile Include="BaseException.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Interfaces\ISocialService.cs" />
     <Compile Include="Models\Tweet.cs" />
     <Compile Include="ApplicationResources.Designer.cs">
       <DependentUpon>ApplicationResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ITwitterHelper.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

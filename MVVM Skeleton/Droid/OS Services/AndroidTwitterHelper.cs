@@ -10,20 +10,19 @@ using Microsoft.Practices.Unity;
 
 namespace Droid
 {
-	public class AndroidSocialService : ISocialService
+	public class AndroidTwitterHelper : ITwitterHelper
 	{
 		#region Private Variables
 
 		Xamarin.Social.Services.TwitterService _twitterService;
-		ExtendedNavigationService _navigationService;
+		Activity _activity;
 
 		#endregion
 
 		#region Methods
 
-		public AndroidSocialService ()
+		public AndroidTwitterHelper ()
 		{
-			_navigationService = IocContainer.GetContainer().Resolve<IExtendedNavigationService>() as ExtendedNavigationService;
 			_twitterService = new Xamarin.Social.Services.TwitterService() { 
 				ConsumerKey = Config.TWITTER_CONSUMER_KEY, 
 				ConsumerSecret = Config.TWITTER_CONSUMER_SECRET,
@@ -37,9 +36,8 @@ namespace Droid
 			{
 				parameters = new Dictionary<string,string> ();
 			}
-
-			var activity = _navigationService.GetCurrentActivity ();
-			var account = AccountStore.Create (activity).FindAccountsForService (Config.TWITTER_SERVICE_ID).FirstOrDefault();
+				
+			var account = AccountStore.Create (_activity).FindAccountsForService (Config.TWITTER_SERVICE_ID).FirstOrDefault();
 			var request = _twitterService.CreateRequest (method, uri, parameters, account);
 			var response = await request.GetResponseAsync();
 			var result = response.GetResponseText();
@@ -49,25 +47,28 @@ namespace Droid
 
 		public void TwitterAuthenticationExecute (Action callback)
 		{
-			var activity = _navigationService.GetCurrentActivity ();
-			var intent = _twitterService.GetAuthenticateUI (activity, (account) => 
+			var intent = _twitterService.GetAuthenticateUI (_activity, (account) => 
 				{
-					AccountStore.Create (activity).Save (account, Config.TWITTER_SERVICE_ID);
+					AccountStore.Create (_activity).Save (account, Config.TWITTER_SERVICE_ID);
 					if(callback != null)
 					{
 						callback();	
 					}
 				});
-			activity.StartActivity (intent);
+			_activity.StartActivity (intent);
 		}
 
 		public async Task<bool> TwitterAccountExists ()
 		{
-			var activity = _navigationService.GetCurrentActivity ();
-			var accounts = await _twitterService.GetAccountsAsync (activity);
+			var accounts = await _twitterService.GetAccountsAsync (_activity);
 			var exists = (accounts != null) && accounts.Any();
 
 			return exists;
+		}
+
+		internal void RegisterActivity(Activity activity)
+		{
+			_activity = activity;
 		}
 			
 		#endregion

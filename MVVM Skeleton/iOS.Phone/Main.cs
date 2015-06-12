@@ -64,7 +64,7 @@ namespace iOS.Phone
 			_locator = new ViewModelLocator();
 			_store = new ViewModelStore ();
 
-			IocContainer.GetContainer ().RegisterInstance<ISocialService> (new iOSSocialService ());
+			IocContainer.GetContainer ().RegisterInstance<ITwitterHelper> (new iOSTwitterHelper ());
 			IocContainer.GetContainer ().RegisterInstance<ILogger> (new Logger ());
 			IocContainer.GetContainer().RegisterInstance<ISecureDatabase>(new iOSSecureDatabase());
             IocContainer.GetContainer().RegisterType<IHttpClientHelper, HttpClientHelper>();

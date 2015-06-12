@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Common
 {
-	public interface ISocialService
+	public interface ITwitterHelper
 	{
 		Task<string> TwitterRequestExecute (string method, Uri uri, IDictionary<string,string> parameters);
 		void TwitterAuthenticationExecute (Action callback);

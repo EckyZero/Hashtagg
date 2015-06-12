@@ -41,6 +41,8 @@ namespace Droid
 
 		protected EmailService _emailService;
 
+		protected AndroidTwitterHelper _twitterService;
+
         public virtual void GoBack()
         {
             this.OnBackPressed();
@@ -91,6 +93,10 @@ namespace Droid
 			_mapService  = IocContainer.GetContainer().Resolve<IMapService>() as MapService;
 
 			_emailService  = IocContainer.GetContainer().Resolve<IEmailService>() as EmailService;
+
+			_twitterService = IocContainer.GetContainer ().Resolve<ITwitterHelper> () as AndroidTwitterHelper;
+
+				
         }
 
         private void RegServices()
@@ -103,6 +109,7 @@ namespace Droid
 			_connectivityService.RegisterActivity(this);
 			_phoneService.RegisterActivity(this);
 			_mapService.RegisterActivity(this);
+			_twitterService.RegisterActivity (this);
         }
 
         public void OnLocationChanged(Android.Locations.Location location)

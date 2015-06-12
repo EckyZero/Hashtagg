@@ -11,7 +11,7 @@ using Shared.Service;
 
 namespace iOS
 {
-	public class iOSSocialService : ISocialService
+	public class iOSTwitterHelper : ITwitterHelper
 	{
 		#region Private Variables
 
@@ -21,7 +21,7 @@ namespace iOS
 
 		#region Methods
 
-		public iOSSocialService ()
+		public iOSTwitterHelper ()
 		{
 			_twitterService = new Xamarin.Social.Services.TwitterService() { 
 				ConsumerKey = Config.TWITTER_CONSUMER_KEY, 

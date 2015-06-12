@@ -34,10 +34,5 @@ namespace Droid
         {
             _logger = IocContainer.GetContainer().Resolve<ILogger>();
         }
-
-		public Activity GetCurrentActivity()
-		{
-			return _activity;
-		}
     }
 }
