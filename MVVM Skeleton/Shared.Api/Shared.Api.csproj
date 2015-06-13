@@ -63,6 +63,7 @@
     <Compile Include="Dtos\Facebook\FacebookPlaceDto.cs" />
     <Compile Include="Dtos\Facebook\FacebookLocationDto.cs" />
     <Compile Include="Dtos\Facebook\FacebookToFromDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookActionDto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

@@ -54,9 +54,9 @@ namespace Shared.VM
 
 		private async void RefreshCommandExecute ()
 		{
-			_facebookHelper.Authenticate( async () => {
+//			_facebookHelper.Authenticate( async () => {
 				await GetFacebookFeed();
-				});
+//				});
 //			await GetTwitterFeed ();
 //			await GetFacebookFeed ();
 		}

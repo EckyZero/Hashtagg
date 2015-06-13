@@ -50,7 +50,10 @@ namespace iOS
 			var presentingController = UIApplication.SharedApplication.KeyWindow.RootViewController;
 			var controller = _twitterService.GetAuthenticateUI ( (account) => 
 				{
-					AccountStore.Create ().Save (account, Config.TWITTER_SERVICE_ID);
+					if(account != null)
+					{
+						AccountStore.Create ().Save (account, Config.TWITTER_SERVICE_ID);	
+					}
 					presentingController.DismissViewController(true, () => 
 						{
 							if(callback != null) 

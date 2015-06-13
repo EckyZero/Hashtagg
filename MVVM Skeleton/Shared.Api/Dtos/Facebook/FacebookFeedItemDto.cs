@@ -14,15 +14,15 @@ namespace Shared.Api
 		public string Name { get; set; }
 		public string Description { get; set; }
 		public string Type { get; set; }
-		public string Created_Time { get; set; }
-		public string Updated_Time { get; set; }
+		public DateTime Created_Time { get; set; }
+		public DateTime Updated_Time { get; set; }
 		public bool Is_Hidden { get; set; }
 		public bool Is_Expired { get; set; }
 		public FacebookLikeResponseDto Likes { get; set; }
 		public string Message { get; set; }
 		public List<FacebookPropertyDto> Properties { get; set; }
 		public string Icon { get; set; }
-		public List<Action> Actions { get; set; }
+		public List<FacebookActionDto> Actions { get; set; }
 		public string Status_Type { get; set; }
 		public string Object_Id { get; set; }
 		public FacebookSharesDto Shares { get; set; }

@@ -50,9 +50,9 @@ namespace Shared.Service
 			{
 				return new ServiceResponse<ObservableCollection<FacebookPost>> (models, ServiceResponseType.ERROR);
 			}
-			catch (Exception exception)
+			catch (Exception e)
 			{
-				Logger.Log (new ServiceException ("Error getting facebook posts", exception), LogType.ERROR);
+				Logger.Log (new ServiceException ("Error getting facebook posts", e), LogType.ERROR);
 				return new ServiceResponse<ObservableCollection<FacebookPost>> (models, ServiceResponseType.ERROR);
 			} 
 		}

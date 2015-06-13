@@ -16,6 +16,8 @@ namespace Shared.Common
 		public string ImageUrl { get; set; }
 		public string LinkUrl { get; set; }
 		public int ShareCount { get; set; }
+		public string LikeUrl { get; set; }
+		public string CommentUrl { get; set; }
 
 		public bool IsLikedByUser 
 		{

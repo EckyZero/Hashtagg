@@ -21,8 +21,10 @@ namespace iOS
 		public iOSFacebookHelper ()
 		{
 			_facebookService = new Xamarin.Social.Services.FacebookService () {
-				ClientId = Config.FACEBOOK_CLIENT_ID
-//				ClientSecret = Config.FACEBOOK_CLIENT_SECRET,
+				ClientId = Config.FACEBOOK_CLIENT_ID,
+				ClientSecret = Config.FACEBOOK_SECRET,
+				RedirectUrl = new Uri(Config.FACEBOOK_REDIRECT_URL),
+				Scope = Config.FACEBOOK_SCOPE
 			};
 		}
 
@@ -33,7 +35,7 @@ namespace iOS
 				parameters = new Dictionary<string,string> ();
 			}
 			var account = AccountStore.Create ().FindAccountsForService (Config.FACEBOOK_SERVICE_ID).FirstOrDefault();
-			var request = _facebookService.CreateRequest (method, uri, parameters);
+			var request = _facebookService.CreateRequest (method, uri, parameters, account);
 			var response = await request.GetResponseAsync ();
 			var result = response.GetResponseText ();
 
@@ -45,7 +47,10 @@ namespace iOS
 			var presentingController = UIApplication.SharedApplication.KeyWindow.RootViewController;
 			var controller = _facebookService.GetAuthenticateUI ( (account) => 
 				{
-					AccountStore.Create ().Save (account, Config.TWITTER_SERVICE_ID);
+					if(account != null)
+					{
+						AccountStore.Create ().Save (account, Config.FACEBOOK_SERVICE_ID);	
+					}
 					presentingController.DismissViewController(true, () => 
 						{
 							if(callback != null) 
