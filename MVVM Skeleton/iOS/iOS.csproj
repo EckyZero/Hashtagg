@@ -106,6 +106,7 @@
     <Compile Include="OS Services\DispatcherService.cs" />
     <Compile Include="Utils\NotificationExtensions.cs" />
     <Compile Include="OS Services\iOSTwitterHelper.cs" />
+    <Compile Include="OS Services\iOSFacebookHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

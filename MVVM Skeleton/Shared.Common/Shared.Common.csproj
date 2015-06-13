@@ -66,6 +66,10 @@
       <DependentUpon>ApplicationResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ITwitterHelper.cs" />
+    <Compile Include="Interfaces\IFacebookHelper.cs" />
+    <Compile Include="Models\FacebookPost.cs" />
+    <Compile Include="Models\FacebookUser.cs" />
+    <Compile Include="Models\FacebookComment.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

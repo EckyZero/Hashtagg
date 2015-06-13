@@ -16,6 +16,11 @@ namespace Shared.VM
 		{
 			get { return CardType.Header; }
 		}
+
+		public override SocialType SocialType 
+		{
+			get { return SocialType.None; }
+		}
 			
 		public string Time 
 		{ 

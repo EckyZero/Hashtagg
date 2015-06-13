@@ -33,7 +33,7 @@ namespace Shared.Service
 			{
 				if(ConnectivityService.IsConnected)
 				{
-					var dtos = await _twitterApi.GetHomeFeed () as List<TwitterFeedItemDto>;
+					var dtos = await _twitterApi.GetHomeFeed ();
 
 					foreach(TwitterFeedItemDto dto in dtos)
 					{

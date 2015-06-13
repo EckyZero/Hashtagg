@@ -13,6 +13,9 @@ namespace CompassMobile.iOS.Phone
 	partial class HomeController
 	{
 		[Outlet]
+		UIKit.UIButton FacebookButton { get; set; }
+
+		[Outlet]
 		UIKit.UIButton TwitterButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
@@ -20,6 +23,11 @@ namespace CompassMobile.iOS.Phone
 			if (TwitterButton != null) {
 				TwitterButton.Dispose ();
 				TwitterButton = null;
+			}
+
+			if (FacebookButton != null) {
+				FacebookButton.Dispose ();
+				FacebookButton = null;
 			}
 		}
 	}

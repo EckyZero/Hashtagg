@@ -10,7 +10,7 @@ namespace Shared.Api
 {
 	public class TwitterApi : ApiClient, ITwitterApi
 	{
-		#region Private Properties
+		#region Private Variables
 
 		ITwitterHelper _twitterHelper;
 
@@ -32,7 +32,7 @@ namespace Shared.Api
 			_twitterHelper = IocContainer.GetContainer ().Resolve<ITwitterHelper> ();
 		}
 
-		public async Task<IList<TwitterFeedItemDto>> GetHomeFeed()
+		public async Task<List<TwitterFeedItemDto>> GetHomeFeed()
 		{
 			var settings = new JsonSerializerSettings ();
 
@@ -46,8 +46,8 @@ namespace Shared.Api
 
 			try
 			{
-				var response = await _twitterHelper.TwitterRequestExecute (GET, url, parameters);
-				var results = JsonConvert.DeserializeObject<IList<TwitterFeedItemDto>> (response, settings);	
+				var response = await _twitterHelper.ExecuteRequest (GET, url, parameters);
+				var results = JsonConvert.DeserializeObject<List<TwitterFeedItemDto>> (response, settings);	
 
 				return results;
 			}

@@ -5,6 +5,7 @@ using Microsoft.Practices.Unity;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
+using System.Linq;
 
 namespace Shared.VM
 {
@@ -14,7 +15,8 @@ namespace Shared.VM
 
 		private ITwitterService _twitterService;
 		private ITwitterHelper _twitterHelper;
-		private ObservableCollection<Tweet> _tweets = new ObservableCollection<Tweet>();
+		private IFacebookHelper _facebookHelper;
+		private IFacebookService _facebookService;
 		private ObservableCollection<BaseCardViewModel> _cardViewModels = new ObservableCollection<BaseCardViewModel> ();
 
 		#endregion
@@ -41,6 +43,8 @@ namespace Shared.VM
 		{
 			_twitterService = IocContainer.GetContainer ().Resolve<ITwitterService> ();
 			_twitterHelper = IocContainer.GetContainer ().Resolve<ITwitterHelper> ();
+			_facebookService = IocContainer.GetContainer ().Resolve<IFacebookService> ();
+			_facebookHelper = IocContainer.GetContainer ().Resolve<IFacebookHelper> ();
 		}
 
 		protected override void InitCommands ()
@@ -50,32 +54,61 @@ namespace Shared.VM
 
 		private async void RefreshCommandExecute ()
 		{
-			if(await _twitterHelper.TwitterAccountExists())
+			_facebookHelper.Authenticate( async () => {
+				await GetFacebookFeed();
+				});
+//			await GetTwitterFeed ();
+//			await GetFacebookFeed ();
+		}
+
+		private async Task GetFacebookFeed ()
+		{
+			if( await _facebookHelper.AccountExists())
 			{
-				await GetTwitterFeed ();
-			}
-			else
-			{
-				_twitterHelper.TwitterAuthenticationExecute (async () => await GetTwitterFeed ());
+				var response = new ServiceResponse<ObservableCollection<FacebookPost>> ();
+
+				response = await _facebookService.GetHomeFeed ();
+
+				if(await ProcessResponse(response))
+				{
+					var viewModelsToRemove = CardViewModels.Where (vm => vm.SocialType == SocialType.Facebook);
+
+					foreach(BaseCardViewModel viewModel in viewModelsToRemove)
+					{
+						CardViewModels.Remove (viewModel);
+					}
+
+					foreach(FacebookPost post in response.Result)
+					{
+//						var viewModel = new FacebookCardViewModel (post);
+//						CardViewModels.Add (viewModel);
+					}
+				}
 			}
 		}
 
 		private async Task GetTwitterFeed ()
 		{
-			var response = new ServiceResponse<ObservableCollection<Tweet>> ();
-
-			response = await _twitterService.GetHomeFeed ();	
-
-			if(await ProcessResponse(response))
+			if(await _twitterHelper.AccountExists())
 			{
-				_tweets = response.Result;	
+				var response = new ServiceResponse<ObservableCollection<Tweet>> ();
 
-				CardViewModels.Clear ();
+				response = await _twitterService.GetHomeFeed ();	
 
-				foreach(Tweet tweet in _tweets)
+				if(await ProcessResponse(response))
 				{
-					var viewModel = new TwitterCardViewModel (tweet);
-					CardViewModels.Add (viewModel);
+					var viewModelsToRemove = CardViewModels.Where ( vm => vm.SocialType == SocialType.Twitter);
+
+					foreach(BaseCardViewModel viewModel in viewModelsToRemove)
+					{
+						CardViewModels.Remove (viewModel);
+					}
+
+					foreach(Tweet tweet in response.Result)
+					{
+						var viewModel = new TwitterCardViewModel (tweet);
+						CardViewModels.Add (viewModel);
+					}
 				}
 			}
 		}

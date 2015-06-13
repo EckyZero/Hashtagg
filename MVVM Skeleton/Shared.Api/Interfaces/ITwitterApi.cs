@@ -6,7 +6,7 @@ namespace Shared.Api
 {
 	public interface ITwitterApi
 	{
-		Task<IList<TwitterFeedItemDto>> GetHomeFeed();
+		Task<List<TwitterFeedItemDto>> GetHomeFeed();
 	}
 }
 

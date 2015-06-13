@@ -36,6 +36,8 @@
     <Compile Include="ServiceResponse.cs" />
     <Compile Include="BaseService.cs" />
     <Compile Include="ServiceException.cs" />
+    <Compile Include="Services\FacebookService.cs" />
+    <Compile Include="Interfaces\IFacebookService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

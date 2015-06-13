@@ -13,9 +13,11 @@ namespace Shared.Bootstrapper
 
 			// APIs
 			container.RegisterType<ITwitterApi, TwitterApi> ();
+			container.RegisterType<IFacebookApi, FacebookApi> ();
 
 			// Services
 			container.RegisterType<ITwitterService, TwitterService> ();
+			container.RegisterType<IFacebookService, FacebookService> ();
 		}
 	}
 }

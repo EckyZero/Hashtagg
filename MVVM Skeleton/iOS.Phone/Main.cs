@@ -64,8 +64,7 @@ namespace iOS.Phone
 			_locator = new ViewModelLocator();
 			_store = new ViewModelStore ();
 
-			IocContainer.GetContainer ().RegisterInstance<ITwitterHelper> (new iOSTwitterHelper ());
-			IocContainer.GetContainer ().RegisterInstance<ILogger> (new Logger ());
+			IocContainer.GetContainer().RegisterInstance<ILogger> (new Logger ());
 			IocContainer.GetContainer().RegisterInstance<ISecureDatabase>(new iOSSecureDatabase());
             IocContainer.GetContainer().RegisterType<IHttpClientHelper, HttpClientHelper>();
 			IocContainer.GetContainer().RegisterInstance<IExtendedNavigationService> (ConfigureNav());
@@ -78,6 +77,8 @@ namespace iOS.Phone
             IocContainer.GetContainer().RegisterInstance<IConnectivityService>(new ConnectivityService());
 			IocContainer.GetContainer().RegisterInstance<IDispatcherService>( new DispatcherService(new NSObject()));
 			IocContainer.GetContainer().RegisterInstance<IEmailService> (new EmailService());
+			IocContainer.GetContainer().RegisterInstance<ITwitterHelper> (new iOSTwitterHelper ());
+			IocContainer.GetContainer().RegisterInstance<IFacebookHelper> (new iOSFacebookHelper ());
 		}
 
 		private static ExtendedNavigationService ConfigureNav()

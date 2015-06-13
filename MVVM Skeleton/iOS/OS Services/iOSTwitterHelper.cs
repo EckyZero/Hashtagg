@@ -30,7 +30,7 @@ namespace iOS
 			};	
 		}
 
-		public async Task<string> TwitterRequestExecute (string method, Uri uri, IDictionary<string, string> parameters)
+		public async Task<string> ExecuteRequest (string method, Uri uri, IDictionary<string, string> parameters = null)
 		{
 			if(parameters == null)
 			{
@@ -45,7 +45,7 @@ namespace iOS
 			return result;
 		}
 
-		public void TwitterAuthenticationExecute (Action callback)
+		public void Authenticate (Action callback)
 		{
 			var presentingController = UIApplication.SharedApplication.KeyWindow.RootViewController;
 			var controller = _twitterService.GetAuthenticateUI ( (account) => 
@@ -62,7 +62,7 @@ namespace iOS
 			presentingController.PresentViewController (controller, true, null);
 		}
 
-		public async Task<bool> TwitterAccountExists ()
+		public async Task<bool> AccountExists ()
 		{
 			var accounts = await _twitterService.GetAccountsAsync ();
 			var exists = (accounts != null) && accounts.Any();

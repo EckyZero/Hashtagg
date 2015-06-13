@@ -4,14 +4,14 @@ namespace Shared.Common
 {
 	public class Tweet
 	{
-		public long Id { get; set; }
+		public string Id { get; set; }
 		public DateTime CreatedAt { get; set; }
 		public string Text { get; set; }
-		public int RetweetCount { get; set; }
-		public int FavoriteCount { get; set; }
+		public string ImageUrl { get; set; }
 		public bool IsFavoritedByUser { get; set; }
 		public bool IsRetweetedByUser { get; set; }
-		public string ImageUrl { get; set; }
+		public int RetweetCount { get; set; }
+		public int FavoriteCount { get; set; }
 
 		public long UserId { get; set; }
 		public string UserName { get; set; }

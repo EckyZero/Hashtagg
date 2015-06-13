@@ -7,7 +7,7 @@ namespace Shared.VM
 	{
 		Facebook,
 		Twitter,
-		Flickr
+		None
 	}
 
 	public abstract class BaseContentCardViewModel : BaseCardViewModel
@@ -18,8 +18,7 @@ namespace Shared.VM
 		{
 			get { return String.IsNullOrWhiteSpace (ImageUrl) ? CardType.NoImage : CardType.Image; }
 		}
-
-		public abstract SocialType SocialType { get; }
+			
 		public abstract string ImageUrl { get; }
 		public abstract string UserImageUrl { get; }
 		public abstract string UserName { get; }

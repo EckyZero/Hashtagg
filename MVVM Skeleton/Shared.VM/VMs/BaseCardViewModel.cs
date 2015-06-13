@@ -14,6 +14,7 @@ namespace Shared.VM
 		#region Member Properties
 
 		public abstract CardType CardType { get; }
+		public abstract SocialType SocialType { get; }
 
 		#endregion
 
