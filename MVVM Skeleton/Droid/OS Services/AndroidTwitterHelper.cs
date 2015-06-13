@@ -30,7 +30,7 @@ namespace Droid
 			};	
 		}
 
-		public async Task<string> TwitterRequestExecute (string method, Uri uri, System.Collections.Generic.IDictionary<string, string> parameters)
+		public async Task<string> ExecuteRequest (string method, Uri uri, System.Collections.Generic.IDictionary<string, string> parameters)
 		{
 			if(parameters == null)
 			{
@@ -45,20 +45,23 @@ namespace Droid
 			return result;
 		}
 
-		public void TwitterAuthenticationExecute (Action callback)
+		public void Authenticate (Action callback)
 		{
 			var intent = _twitterService.GetAuthenticateUI (_activity, (account) => 
 				{
-					AccountStore.Create (_activity).Save (account, Config.TWITTER_SERVICE_ID);
-					if(callback != null)
+					if(account != null)
 					{
-						callback();	
+						AccountStore.Create (_activity).Save (account, Config.TWITTER_SERVICE_ID);	
+						if(callback != null)
+						{
+							callback();	
+						}
 					}
 				});
 			_activity.StartActivity (intent);
 		}
 
-		public async Task<bool> TwitterAccountExists ()
+		public async Task<bool> AccountExists ()
 		{
 			var accounts = await _twitterService.GetAccountsAsync (_activity);
 			var exists = (accounts != null) && accounts.Any();

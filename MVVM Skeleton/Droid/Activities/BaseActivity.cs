@@ -44,7 +44,9 @@ namespace Droid
 
         protected EmailService _emailService;
 
-		protected AndroidTwitterHelper _twitterService;
+		protected AndroidTwitterHelper _twitterHelper;
+
+		protected AndroidFacebookHelper _facebookHelper;
 
         public virtual void GoBack()
         {
@@ -97,7 +99,7 @@ namespace Droid
 
             _emailService = IocContainer.GetContainer().Resolve<IEmailService>() as EmailService;
 
-			_twitterService = IocContainer.GetContainer().Resolve<ITwitterHelper>() as AndroidTwitterHelper;
+			_twitterHelper = IocContainer.GetContainer().Resolve<ITwitterHelper>() as AndroidTwitterHelper;
         }
 
         private void RegServices()
@@ -110,7 +112,8 @@ namespace Droid
             _connectivityService.RegisterActivity(this);
             _phoneService.RegisterActivity(this);
             _mapService.RegisterActivity(this);
-			_twitterService.RegisterActivity (this);
+			_twitterHelper.RegisterActivity (this);
+			_facebookHelper.RegisterActivity (this);
         }
 
         public void OnLocationChanged(Android.Locations.Location location)

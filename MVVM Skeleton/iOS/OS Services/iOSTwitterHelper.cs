@@ -53,14 +53,12 @@ namespace iOS
 					if(account != null)
 					{
 						AccountStore.Create ().Save (account, Config.TWITTER_SERVICE_ID);	
-					}
-					presentingController.DismissViewController(true, () => 
+						if(callback != null) 
 						{
-							if(callback != null) 
-							{
-								callback();
-							}	
-						});
+							callback();
+						}
+					}
+					presentingController.DismissViewController(true, null);
 				});
 			presentingController.PresentViewController (controller, true, null);
 		}

@@ -4,21 +4,22 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Xamarin.Auth;
 using System.Linq;
-using UIKit;
+using Android.App;
 
-namespace iOS
+namespace Droid
 {
-	public class iOSFacebookHelper : IFacebookHelper
+	public class AndroidFacebookHelper : IFacebookHelper
 	{
 		#region Private Variables
 
 		Xamarin.Social.Services.FacebookService _facebookService;
+		Activity _activity;
 
 		#endregion
 
 		#region Methods
 
-		public iOSFacebookHelper ()
+		public AndroidFacebookHelper ()
 		{
 			_facebookService = new Xamarin.Social.Services.FacebookService () {
 				ClientId = Config.FACEBOOK_CLIENT_ID,
@@ -34,7 +35,7 @@ namespace iOS
 			{
 				parameters = new Dictionary<string,string> ();
 			}
-			var account = AccountStore.Create ().FindAccountsForService (Config.FACEBOOK_SERVICE_ID).FirstOrDefault();
+			var account = AccountStore.Create (_activity).FindAccountsForService (Config.FACEBOOK_SERVICE_ID).FirstOrDefault();
 			var request = _facebookService.CreateRequest (method, uri, parameters, account);
 			var response = await request.GetResponseAsync ();
 			var result = response.GetResponseText ();
@@ -44,29 +45,31 @@ namespace iOS
 
 		public void Authenticate (Action callback)
 		{
-			var presentingController = UIApplication.SharedApplication.KeyWindow.RootViewController;
-			var controller = _facebookService.GetAuthenticateUI ( (account) => 
+			var intent = _facebookService.GetAuthenticateUI (_activity, (account) => 
 				{
 					if(account != null)
 					{
-						AccountStore.Create ().Save (account, Config.FACEBOOK_SERVICE_ID);	
+						AccountStore.Create (_activity).Save (account, Config.FACEBOOK_SERVICE_ID);	
 						if(callback != null) 
 						{
 							callback();
-						}	
+						}
 					}
-					presentingController.DismissViewController(true, null);
 				});
-			
-			presentingController.PresentViewController (controller, true, null);
+			_activity.StartActivity (intent);
 		}
 
 		public async Task<bool> AccountExists ()
 		{
-			var accounts = await _facebookService.GetAccountsAsync ();
+			var accounts = await _facebookService.GetAccountsAsync (_activity);
 			var exists = (accounts != null) && accounts.Any();
 
 			return exists;
+		}
+
+		internal void RegisterActivity(Activity activity)
+		{
+			_activity = activity;
 		}
 
 		#endregion

@@ -94,6 +94,7 @@ namespace CompassMobile.Droid.Phone
 			IocContainer.GetContainer().RegisterInstance<IMapService> (new MapService());
 			IocContainer.GetContainer().RegisterInstance<IEmailService> (new EmailService());
 			IocContainer.GetContainer ().RegisterInstance<ITwitterHelper> (new AndroidTwitterHelper ());
+			IocContainer.GetContainer ().RegisterInstance<IFacebookHelper> (new AndroidFacebookHelper ());
         }
 
         private static ExtendedNavigationService ConfigureNav()

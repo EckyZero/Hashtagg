@@ -119,6 +119,7 @@
     <Compile Include="Utils\DroidHelper.cs" />
     <Compile Include="Utils\UIUtil.cs" />
     <Compile Include="OS Services\AndroidTwitterHelper.cs" />
+    <Compile Include="OS Services\AndroidFacebookHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
