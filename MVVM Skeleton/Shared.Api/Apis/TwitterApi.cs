@@ -54,7 +54,7 @@ namespace Shared.Api
 			catch (Exception e)
 			{
 				var exception = new ApiException("Failed to get tweets", e);
-				Logger.Log(exception, LogType.ERROR);
+				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
 		}

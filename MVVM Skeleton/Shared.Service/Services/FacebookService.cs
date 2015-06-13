@@ -29,7 +29,7 @@ namespace Shared.Service
 
 			try
 			{
-				if(ConnectivityService.IsConnected)
+				if(_connectivityService.IsConnected)
 				{
 					var dtos = await _facebookApi.GetHomeFeed();
 
@@ -52,7 +52,7 @@ namespace Shared.Service
 			}
 			catch (Exception e)
 			{
-				Logger.Log (new ServiceException ("Error getting facebook posts", e), LogType.ERROR);
+				_logger.Log (new ServiceException ("Error getting facebook posts", e), LogType.ERROR);
 				return new ServiceResponse<ObservableCollection<FacebookPost>> (models, ServiceResponseType.ERROR);
 			} 
 		}

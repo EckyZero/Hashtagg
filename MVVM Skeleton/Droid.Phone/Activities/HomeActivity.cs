@@ -21,6 +21,7 @@ namespace Droid.Phone
 		#region Private Variables
 
 		HomeViewModel _viewModel = new HomeViewModel();
+		Button _refreshButton;
 		Button _twitterButton;
 		Button _facebookButton;
 
@@ -33,6 +34,7 @@ namespace Droid.Phone
 			base.OnCreate (bundle);
 			SetContentView(Resource.Layout.Home);
 
+			_refreshButton = FindViewById<Button> (Resource.Id.RefreshButton);
 			_twitterButton = FindViewById<Button> (Resource.Id.TwitterButton);
 			_facebookButton = FindViewById<Button> (Resource.Id.FacebookButton);
 
@@ -47,8 +49,9 @@ namespace Droid.Phone
 
 		private void InitBindings ()
 		{
-			_twitterButton.SetCommand("Click", _viewModel.RefreshCommand);
-			_facebookButton.SetCommand ("Click", _viewModel.RefreshCommand);
+			_refreshButton.SetCommand("Click", _viewModel.RefreshCommand);
+			_twitterButton.SetCommand("Click", _viewModel.TwitterCommand);
+			_facebookButton.SetCommand ("Click", _viewModel.FacebookCommand);
 		}
 
 		#endregion

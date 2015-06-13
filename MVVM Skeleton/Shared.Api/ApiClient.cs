@@ -21,7 +21,7 @@ namespace Shared.Api
 		protected string PUT = "PUT";
 		protected string DELETE = "DELETE";
 
-		protected ILogger Logger;
+		protected ILogger _logger;
 
 		private JsonSerializerSettings _jsonSettings = new JsonSerializerSettings 
 		{ 
@@ -36,7 +36,7 @@ namespace Shared.Api
 
 		public ApiClient()
 		{
-			Logger = IocContainer.GetContainer ().Resolve<ILogger> ();
+			_logger = IocContainer.GetContainer ().Resolve<ILogger> ();
 		}
 
 		#region Get

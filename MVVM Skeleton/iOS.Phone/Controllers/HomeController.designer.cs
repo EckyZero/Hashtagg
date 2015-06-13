@@ -16,18 +16,26 @@ namespace CompassMobile.iOS.Phone
 		UIKit.UIButton FacebookButton { get; set; }
 
 		[Outlet]
+		UIKit.UIButton RefreshButton { get; set; }
+
+		[Outlet]
 		UIKit.UIButton TwitterButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (FacebookButton != null) {
+				FacebookButton.Dispose ();
+				FacebookButton = null;
+			}
+
 			if (TwitterButton != null) {
 				TwitterButton.Dispose ();
 				TwitterButton = null;
 			}
 
-			if (FacebookButton != null) {
-				FacebookButton.Dispose ();
-				FacebookButton = null;
+			if (RefreshButton != null) {
+				RefreshButton.Dispose ();
+				RefreshButton = null;
 			}
 		}
 	}

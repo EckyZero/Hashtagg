@@ -33,11 +33,6 @@ namespace Shared.VM
 			get { return _tweet.UserName; }
 		}
 
-		public override string UserScreenName 
-		{
-			get { return _tweet.UserScreenName; }
-		}
-
 		public override string SocialMediaImage 
 		{
 			get { return "Twitter_Icon.png"; }
@@ -66,6 +61,11 @@ namespace Shared.VM
 		public override DateTime CreatedAt 
 		{
 			get { return _tweet.CreatedAt; }
+		}
+
+		public string UserScreenName 
+		{
+			get { return _tweet.UserScreenName; }
 		}
 
 		#endregion

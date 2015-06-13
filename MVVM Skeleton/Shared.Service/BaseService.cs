@@ -8,15 +8,15 @@ namespace Shared.Service
 	{
 		#region Private Variables
 
-		protected ILogger Logger;
-		protected IConnectivityService ConnectivityService;
+		protected ILogger _logger;
+		protected IConnectivityService _connectivityService;
 
 		#endregion
 
 		public BaseService ()
 		{
-			Logger = IocContainer.GetContainer().Resolve<ILogger>();
-			ConnectivityService = IocContainer.GetContainer().Resolve<IConnectivityService>();
+			_logger = IocContainer.GetContainer().Resolve<ILogger>();
+			_connectivityService = IocContainer.GetContainer().Resolve<IConnectivityService>();
 		}
 	}
 }

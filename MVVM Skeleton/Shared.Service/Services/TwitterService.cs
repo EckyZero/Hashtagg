@@ -31,7 +31,7 @@ namespace Shared.Service
 
 			try
 			{
-				if(ConnectivityService.IsConnected)
+				if(_connectivityService.IsConnected)
 				{
 					var dtos = await _twitterApi.GetHomeFeed ();
 
@@ -59,7 +59,7 @@ namespace Shared.Service
 			}
 			catch (Exception exception)
 			{
-				Logger.Log (new ServiceException ("Error getting tweets", exception), LogType.ERROR);
+				_logger.Log (new ServiceException ("Error getting tweets", exception), LogType.ERROR);
 				return new ServiceResponse<ObservableCollection<Tweet>> (models, ServiceResponseType.ERROR);
 			}
 		}

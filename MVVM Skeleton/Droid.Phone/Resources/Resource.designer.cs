@@ -1417,6 +1417,9 @@ namespace Droid.Phone
 			// aapt resource value: 0x7f07004f
 			public const int HomeLayout = 2131165263;
 			
+			// aapt resource value: 0x7f070052
+			public const int RefreshButton = 2131165266;
+			
 			// aapt resource value: 0x7f070050
 			public const int TwitterButton = 2131165264;
 			
@@ -1537,14 +1540,14 @@ namespace Droid.Phone
 			// aapt resource value: 0x7f07002a
 			public const int list_item = 2131165226;
 			
-			// aapt resource value: 0x7f070054
-			public const int loadingImage = 2131165268;
-			
-			// aapt resource value: 0x7f070052
-			public const int loadingProgressBar = 2131165266;
-			
 			// aapt resource value: 0x7f070055
-			public const int loadingProgressWheel = 2131165269;
+			public const int loadingImage = 2131165269;
+			
+			// aapt resource value: 0x7f070053
+			public const int loadingProgressBar = 2131165267;
+			
+			// aapt resource value: 0x7f070056
+			public const int loadingProgressWheel = 2131165270;
 			
 			// aapt resource value: 0x7f07000b
 			public const int middle = 2131165195;
@@ -1645,8 +1648,8 @@ namespace Droid.Phone
 			// aapt resource value: 0x7f070033
 			public const int textSpacerNoButtons = 2131165235;
 			
-			// aapt resource value: 0x7f070053
-			public const int textViewStatus = 2131165267;
+			// aapt resource value: 0x7f070054
+			public const int textViewStatus = 2131165268;
 			
 			// aapt resource value: 0x7f07002c
 			public const int title = 2131165228;

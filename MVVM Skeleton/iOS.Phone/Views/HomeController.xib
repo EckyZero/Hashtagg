@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeController">
             <connections>
                 <outlet property="FacebookButton" destination="7Hb-FK-1yy" id="1J7-2k-Bbx"/>
+                <outlet property="RefreshButton" destination="cYj-5r-7Id" id="Izq-Ie-E9G"/>
                 <outlet property="TwitterButton" destination="Gcd-C3-Bv1" id="C3C-jD-7CI"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
             </connections>
@@ -29,6 +30,12 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Hb-FK-1yy">
                     <rect key="frame" x="244" y="25" width="68" height="30"/>
                     <state key="normal" title="Facebook">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYj-5r-7Id">
+                    <rect key="frame" x="137" y="25" width="53" height="30"/>
+                    <state key="normal" title="Refresh">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>

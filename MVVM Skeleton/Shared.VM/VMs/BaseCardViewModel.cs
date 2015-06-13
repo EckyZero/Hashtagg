@@ -20,7 +20,7 @@ namespace Shared.VM
 
 		#region Methods
 
-		public BaseCardViewModel () {}
+		protected BaseCardViewModel () {}
 			
 		protected override void InitCommands ()
 		{

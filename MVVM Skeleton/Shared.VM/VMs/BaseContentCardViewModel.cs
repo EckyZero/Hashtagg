@@ -22,7 +22,6 @@ namespace Shared.VM
 		public abstract string ImageUrl { get; }
 		public abstract string UserImageUrl { get; }
 		public abstract string UserName { get; }
-		public abstract string UserScreenName { get; }
 		public abstract string SocialMediaImage { get; }
 		public abstract string Text { get; }
 		public abstract int? LikeCount { get; }
@@ -43,9 +42,7 @@ namespace Shared.VM
 
 		#region Methods
 
-		public BaseContentCardViewModel ()
-		{
-		}
+		protected BaseContentCardViewModel () { }
 
 		protected override void InitCommands ()
 		{

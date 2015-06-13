@@ -41,6 +41,7 @@
     <Compile Include="VMs\TwitterCardViewModel.cs" />
     <Compile Include="VMs\BaseContentCardViewModel.cs" />
     <Compile Include="VMs\HeaderCardViewModel.cs" />
+    <Compile Include="VMs\FacebookCardViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared.Common\Shared.Common.csproj">

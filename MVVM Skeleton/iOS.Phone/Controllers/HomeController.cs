@@ -22,9 +22,6 @@ namespace CompassMobile.iOS.Phone
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-
-			TwitterButton.SetCommand ("TouchUpInside", _viewModel.RefreshCommand);
-			FacebookButton.SetCommand ("TouchUpInside", _viewModel.RefreshCommand);
 	
 			InitUI ();
 			InitBindings ();
@@ -37,7 +34,9 @@ namespace CompassMobile.iOS.Phone
 
 		private void InitBindings ()
 		{
-			
+			RefreshButton.SetCommand ("TouchUpInside", _viewModel.RefreshCommand);
+			TwitterButton.SetCommand ("TouchUpInside", _viewModel.TwitterCommand);
+			FacebookButton.SetCommand ("TouchUpInside", _viewModel.FacebookCommand);
 		}
 	}
 }

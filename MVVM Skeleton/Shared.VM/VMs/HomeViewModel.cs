@@ -34,6 +34,8 @@ namespace Shared.VM
 		#region Commands
 
 		public RelayCommand RefreshCommand { get; private set; }
+		public RelayCommand TwitterCommand { get; private set; }
+		public RelayCommand FacebookCommand { get; private set; }
 
 		#endregion
 
@@ -50,15 +52,24 @@ namespace Shared.VM
 		protected override void InitCommands ()
 		{
 			RefreshCommand = new RelayCommand (RefreshCommandExecute);
+			TwitterCommand = new RelayCommand (TwitterCommandExecute);
+			FacebookCommand = new RelayCommand (FacebookCommandExecute);
 		}
 
 		private async void RefreshCommandExecute ()
 		{
-//			_facebookHelper.Authenticate( async () => {
-				await GetFacebookFeed();
-//				});
-//			await GetTwitterFeed ();
-//			await GetFacebookFeed ();
+			await GetFacebookFeed();
+			await GetTwitterFeed ();
+		}
+
+		private void TwitterCommandExecute ()
+		{
+			_twitterHelper.Authenticate (async () => await _twitterService.GetHomeFeed() );
+		}
+
+		private void FacebookCommandExecute ()
+		{
+			_facebookHelper.Authenticate (async () => await _facebookService.GetHomeFeed() );
 		}
 
 		private async Task GetFacebookFeed ()
@@ -80,8 +91,8 @@ namespace Shared.VM
 
 					foreach(FacebookPost post in response.Result)
 					{
-//						var viewModel = new FacebookCardViewModel (post);
-//						CardViewModels.Add (viewModel);
+						var viewModel = new FacebookCardViewModel (post);
+						CardViewModels.Add (viewModel);
 					}
 				}
 			}
