@@ -1,60 +1,115 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.Widget;
 using Android.Views;
 using Android.Widget;
+using Microsoft.Practices.Unity;
+using Android.Graphics;
+using Android.Support.V4.App;
+using Android.Support.V7.Widget;
+using ActionBarDrawerToggle = Android.Support.V7.App.ActionBarDrawerToggle;
+using Fragment = Android.Support.V4.App.Fragment;
+using FragmentManager = Android.Support.V4.App.FragmentManager;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
+using Droid;
 using Shared.VM;
-using GalaSoft.MvvmLight.Helpers;
 
 namespace Droid.Phone
 {
 	[Activity (Label = "HomeActivity",  MainLauncher = true)]			
-	public class HomeActivity : ActionBarBaseActivity
+	public class HamburgerMenuActivity : ActionBarBaseActivity
 	{
-		#region Private Variables
+		private ActionBarDrawerToggle _drawerToggle;
 
-		HomeViewModel _viewModel = new HomeViewModel();
-		Button _refreshButton;
-		Button _twitterButton;
-		Button _facebookButton;
+		private Toolbar _toolbar;
 
-		#endregion
+		private DrawerLayout _drawerLayout;
 
-		#region Methods
+		private ListView _drawerList;
 
-		protected override void OnCreate (Bundle bundle)
+
+		protected override void OnCreate(Bundle savedInstanceState)
 		{
-			base.OnCreate (bundle);
-			SetContentView(Resource.Layout.Home);
+			// Must change theme to support the toolbar
+			//SetTheme(Resource.Style.MyTheme);
+			base.OnCreate(savedInstanceState);
+			SetContentView(Resource.Layout.HamburgerLayout);
 
-			_refreshButton = FindViewById<Button> (Resource.Id.RefreshButton);
-			_twitterButton = FindViewById<Button> (Resource.Id.TwitterButton);
-			_facebookButton = FindViewById<Button> (Resource.Id.FacebookButton);
+			_toolbar = FindViewById<Toolbar>(Resource.Id.hamburgerMenu_toolbar);
+			SetSupportActionBar(_toolbar);
+			SupportActionBar.SetDisplayShowTitleEnabled(true);
 
-			InitUI ();
-			InitBindings ();
+			OnCreateFragmentSetup ();
+
+			SetupMenu();
 		}
 
-		private void InitUI ()
+		protected virtual void OnCreateFragmentSetup()
 		{
-			
+			GetAndNavigateFragment();
 		}
 
-		private void InitBindings ()
+		protected override void OnNewIntent (Intent intent)
 		{
-			_refreshButton.SetCommand("Click", _viewModel.RefreshCommand);
-			_twitterButton.SetCommand("Click", _viewModel.TwitterCommand);
-			_facebookButton.SetCommand ("Click", _viewModel.FacebookCommand);
+			base.OnNewIntent (intent);
 		}
 
-		#endregion
+		private async void GetAndNavigateFragment()
+		{
+			SupportActionBar.Title = string.Empty;
+
+			Fragment next = await GetMenuFragment();
+
+			if (next != null)
+			{
+				SupportFragmentManager.BeginTransaction()
+					.Replace(Resource.Id.hamburgerMenu_content, next)
+					.Commit();
+			}
+		}
+
+		private void SetupMenu()
+		{
+
+			_drawerLayout = FindViewById<DrawerLayout>(Resource.Id.hamburgerMenu_layout);
+			_drawerList = FindViewById<ListView>(Resource.Id.hamburgerMenu_menu);
+
+			//_drawerList.AddHeaderView(LayoutInflater.Inflate(Resource.Layout.Header,_drawerList,false));
+
+			//_drawerList.Adapter = adapter;
+			//_drawerList.ItemClick += DrawerListOnItemClick;
+
+			_drawerToggle = new ActionBarDrawerToggle(this,_drawerLayout,_toolbar,Resource.String.abc_action_bar_home_description,Resource.String.abc_toolbar_collapse_description);
+			_drawerLayout.SetDrawerListener(_drawerToggle);
+			_drawerToggle.SyncState();
+		}
+
+
+
+		private void DrawerListOnItemClick(object sender, AdapterView.ItemClickEventArgs itemClickEventArgs)
+		{
+			ItemSelected(itemClickEventArgs.Position);
+		}
+
+		private async void ItemSelected(int position)
+		{
+		}
+
+		private async Task<Android.Support.V4.App.Fragment> GetMenuFragment()
+		{
+			var homeFrag = new HomeFragment (new HomeViewModel ());
+			return homeFrag;
+		}
+
+		//Dissable Hardware Back
+		public override void OnBackPressed() { }
 	}
 }
-

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/HomeHeaderMainLayout"
+    android:background="#ffeaeff1">
+    <ImageView
+        android:src="@drawable/header_temp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView1"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter" />
+    <Button
+        android:id="@+id/TwitterButton"
+        android:text="Twitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView1" />
+    <Button
+        android:id="@+id/FacebookButton"
+        android:text="Facebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/TwitterButton"
+        android:layout_below="@id/imageView1" />
+    <Button
+        android:id="@+id/RefreshButton"
+        android:text="Refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/FacebookButton"
+        android:layout_below="@id/imageView1" />
+</RelativeLayout>
