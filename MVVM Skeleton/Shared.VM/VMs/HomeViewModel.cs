@@ -82,7 +82,7 @@ namespace Shared.VM
 
 			if(OrderBy == OrderBy.Time)
 			{
-				allViewModels = new ObservableRangeCollection<BaseContentCardViewModel> (allViewModels.OrderByDescending (vm => vm.OrderBy));
+				allViewModels = new ObservableRangeCollection<BaseContentCardViewModel> (allViewModels.OrderByDescending (vm => vm.OrderByDateTime));
 			}
 
 			CardViewModels.Clear ();

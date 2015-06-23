@@ -58,7 +58,7 @@ namespace Shared.VM
 			get { return _tweet.RetweetCount; }
 		}
 
-		public override DateTime OrderBy 
+		public override DateTime OrderByDateTime 
 		{
 			get { return _tweet.CreatedAt; }
 		}

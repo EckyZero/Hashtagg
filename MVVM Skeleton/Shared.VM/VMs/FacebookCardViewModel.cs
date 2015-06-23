@@ -62,7 +62,7 @@ namespace Shared.VM
 			get { return _facebookPost.ShareCount; }
 		}
 
-		public override DateTime OrderBy 
+		public override DateTime OrderByDateTime 
 		{
 			get { return _facebookPost.UpdatedAt; }
 		}
