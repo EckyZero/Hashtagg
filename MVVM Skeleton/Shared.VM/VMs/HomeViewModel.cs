@@ -9,21 +9,34 @@ using System.Linq;
 
 namespace Shared.VM
 {
+	public enum OrderBy
+	{
+		Popularity,
+		Time
+	}
+
 	public class HomeViewModel : SharedViewModelBase
 	{
 		#region Private Variables
 
+		private OrderBy _orderBy = OrderBy.Time;
 		private ITwitterService _twitterService;
 		private ITwitterHelper _twitterHelper;
 		private IFacebookHelper _facebookHelper;
 		private IFacebookService _facebookService;
-		private ObservableCollection<BaseCardViewModel> _cardViewModels = new ObservableCollection<BaseCardViewModel> ();
+		private ObservableRangeCollection<BaseCardViewModel> _cardViewModels = new ObservableRangeCollection<BaseCardViewModel> ();
 
 		#endregion
 
 		#region Member Properties
 
-		public ObservableCollection<BaseCardViewModel> CardViewModels 
+		public OrderBy OrderBy
+		{
+			get { return _orderBy; }
+			set { _orderBy = value; }
+		}
+
+		public ObservableRangeCollection<BaseCardViewModel> CardViewModels 
 		{
 			get { return _cardViewModels; }
 			set { _cardViewModels = value; }
@@ -58,8 +71,22 @@ namespace Shared.VM
 
 		private async void RefreshCommandExecute ()
 		{
-			await GetFacebookFeed();
-			await GetTwitterFeed ();
+			var facebookViewModels = await GetFacebookFeed();
+			var twitterViewModels = await GetTwitterFeed ();
+			var allViewModels = new ObservableRangeCollection<BaseContentCardViewModel> ();
+
+			// TODO: Need to further develop this system of ordering
+			// Need to be able to toggle between popularity and time
+			allViewModels.AddRange (facebookViewModels);
+			allViewModels.AddRange (twitterViewModels);
+
+			if(OrderBy == OrderBy.Time)
+			{
+				allViewModels = new ObservableRangeCollection<BaseContentCardViewModel> (allViewModels.OrderByDescending (vm => vm.OrderBy));
+			}
+
+			CardViewModels.Clear ();
+			CardViewModels.AddRange (allViewModels);
 		}
 
 		private void TwitterCommandExecute ()
@@ -72,9 +99,11 @@ namespace Shared.VM
 			_facebookHelper.Authenticate (async () => await _facebookService.GetHomeFeed() );
 		}
 
-		private async Task GetFacebookFeed ()
+		private async Task<ObservableCollection<FacebookCardViewModel>> GetFacebookFeed ()
 		{
-			if( await _facebookHelper.AccountExists())
+			var viewModels = new ObservableCollection<FacebookCardViewModel> ();
+
+			if(await _facebookHelper.AccountExists())
 			{
 				var response = new ServiceResponse<ObservableCollection<FacebookPost>> ();
 
@@ -82,24 +111,20 @@ namespace Shared.VM
 
 				if(await ProcessResponse(response))
 				{
-					var viewModelsToRemove = CardViewModels.Where (vm => vm.SocialType == SocialType.Facebook);
-
-					foreach(BaseCardViewModel viewModel in viewModelsToRemove)
-					{
-						CardViewModels.Remove (viewModel);
-					}
-
 					foreach(FacebookPost post in response.Result)
 					{
 						var viewModel = new FacebookCardViewModel (post);
-						CardViewModels.Add (viewModel);
+						viewModels.Add (viewModel);
 					}
 				}
 			}
+			return viewModels;
 		}
 
-		private async Task GetTwitterFeed ()
+		private async Task<ObservableCollection<TwitterCardViewModel>> GetTwitterFeed ()
 		{
+			var viewModels = new ObservableCollection<TwitterCardViewModel> ();
+
 			if(await _twitterHelper.AccountExists())
 			{
 				var response = new ServiceResponse<ObservableCollection<Tweet>> ();
@@ -108,20 +133,14 @@ namespace Shared.VM
 
 				if(await ProcessResponse(response))
 				{
-					var viewModelsToRemove = CardViewModels.Where ( vm => vm.SocialType == SocialType.Twitter);
-
-					foreach(BaseCardViewModel viewModel in viewModelsToRemove)
-					{
-						CardViewModels.Remove (viewModel);
-					}
-
 					foreach(Tweet tweet in response.Result)
 					{
 						var viewModel = new TwitterCardViewModel (tweet);
-						CardViewModels.Add (viewModel);
+						viewModels.Add (viewModel);
 					}
 				}
 			}
+			return viewModels;
 		}
 
 		#endregion

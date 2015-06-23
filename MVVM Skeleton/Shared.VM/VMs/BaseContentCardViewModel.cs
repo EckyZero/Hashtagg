@@ -27,7 +27,7 @@ namespace Shared.VM
 		public abstract int? LikeCount { get; }
 		public abstract int? CommentCount { get; }
 		public abstract int? ShareCount { get; }
-		public abstract DateTime CreatedAt { get; }
+		public abstract DateTime OrderBy { get; }
 
 		#endregion
 
