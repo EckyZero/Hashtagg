@@ -34,11 +34,6 @@ namespace Shared.Api
 
 		public async Task<FacebookResponseDto> GetHomeFeed ()
 		{
-//			var settings = new JsonSerializerSettings ();
-//
-//			settings.DateFormatString = "yyyy-MM-dd\\THH:mm:ssK";
-//			settings.Culture = CultureInfo.InvariantCulture;
-
 			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.FACEBOOK_HOME_FEED));
 			var parameters = new Dictionary<string, string> () {
 				{ "limit", "10" }
@@ -47,7 +42,7 @@ namespace Shared.Api
 			try
 			{
 				var response = await _facebookHelper.ExecuteRequest(GET, url, parameters);
-				var results = JsonConvert.DeserializeObject<FacebookResponseDto>(response/*, settings*/);
+				var results = JsonConvert.DeserializeObject<FacebookResponseDto>(response);
 
 				return results;
 			}

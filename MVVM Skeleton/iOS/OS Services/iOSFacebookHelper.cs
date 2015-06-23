@@ -39,7 +39,7 @@ namespace iOS
 			var response = await request.GetResponseAsync ();
 			var result = response.GetResponseText ();
 
-			return result;
+			return result;	
 		}
 
 		public void Authenticate (Action callback)

@@ -59,7 +59,7 @@ namespace Shared.VM
 		private async void RefreshCommandExecute ()
 		{
 			await GetFacebookFeed();
-			//await GetTwitterFeed ();
+			await GetTwitterFeed ();
 		}
 
 		private void TwitterCommandExecute ()
