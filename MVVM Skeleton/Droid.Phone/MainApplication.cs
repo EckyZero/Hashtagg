@@ -20,7 +20,7 @@ using Shared.VM;
 using Shared.Bootstrapper;
 using Droid;
 
-namespace CompassMobile.Droid.Phone
+namespace Droid.Phone
 {
     #if DEBUG
     [Application(Debuggable=true)]

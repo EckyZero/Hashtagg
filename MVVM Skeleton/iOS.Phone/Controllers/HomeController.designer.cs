@@ -7,35 +7,35 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace CompassMobile.iOS.Phone
+namespace iOS.Phone
 {
 	[Register ("HomeController")]
 	partial class HomeController
 	{
 		[Outlet]
-		UIKit.UIButton FacebookButton { get; set; }
+		UIKit.UIView HeaderView { get; set; }
 
 		[Outlet]
-		UIKit.UIButton RefreshButton { get; set; }
+		UIKit.UIView ProfileView { get; set; }
 
 		[Outlet]
-		UIKit.UIButton TwitterButton { get; set; }
+		UIKit.UITableView TableView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (FacebookButton != null) {
-				FacebookButton.Dispose ();
-				FacebookButton = null;
+			if (HeaderView != null) {
+				HeaderView.Dispose ();
+				HeaderView = null;
 			}
 
-			if (TwitterButton != null) {
-				TwitterButton.Dispose ();
-				TwitterButton = null;
+			if (ProfileView != null) {
+				ProfileView.Dispose ();
+				ProfileView = null;
 			}
 
-			if (RefreshButton != null) {
-				RefreshButton.Dispose ();
-				RefreshButton = null;
+			if (TableView != null) {
+				TableView.Dispose ();
+				TableView = null;
 			}
 		}
 	}

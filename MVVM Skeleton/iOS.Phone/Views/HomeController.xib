@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7706"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeController">
             <connections>
-                <outlet property="FacebookButton" destination="7Hb-FK-1yy" id="1J7-2k-Bbx"/>
-                <outlet property="RefreshButton" destination="cYj-5r-7Id" id="Izq-Ie-E9G"/>
-                <outlet property="TwitterButton" destination="Gcd-C3-Bv1" id="C3C-jD-7CI"/>
+                <outlet property="HeaderView" destination="xDT-sK-aSE" id="eDW-b0-xUc"/>
+                <outlet property="ProfileView" destination="wRi-mZ-8Jm" id="QEb-ac-otw"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
             </connections>
         </placeholder>
@@ -17,30 +16,30 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Mn8-m9-8DT">
-                    <rect key="frame" x="0.0" y="87" width="320" height="481"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcd-C3-Bv1">
-                    <rect key="frame" x="8" y="25" width="46" height="30"/>
-                    <state key="normal" title="Twitter">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Hb-FK-1yy">
-                    <rect key="frame" x="244" y="25" width="68" height="30"/>
-                    <state key="normal" title="Facebook">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYj-5r-7Id">
-                    <rect key="frame" x="137" y="25" width="53" height="30"/>
-                    <state key="normal" title="Refresh">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xDT-sK-aSE">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="102"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="102" id="DGg-rk-kpj"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRi-mZ-8Jm">
+                    <rect key="frame" x="136" y="78" width="48" height="48"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="D3E-vZ-mkh"/>
+                        <constraint firstAttribute="height" constant="48" id="dUl-LQ-eKr"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="xDT-sK-aSE" firstAttribute="centerY" secondItem="wRi-mZ-8Jm" secondAttribute="centerY" constant="-51" id="HBl-49-juN"/>
+                <constraint firstAttribute="trailing" secondItem="xDT-sK-aSE" secondAttribute="trailing" id="IuB-Ok-rJH"/>
+                <constraint firstItem="xDT-sK-aSE" firstAttribute="centerX" secondItem="wRi-mZ-8Jm" secondAttribute="centerX" id="N0G-4e-laX"/>
+                <constraint firstItem="xDT-sK-aSE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hIi-8T-I4m"/>
+                <constraint firstItem="xDT-sK-aSE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rZ7-jY-wQe"/>
+            </constraints>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

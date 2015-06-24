@@ -6,7 +6,7 @@
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{89E087F1-CE85-443F-8AA9-ABB0867BEE41}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CompassMobile.iOS.Phone</RootNamespace>
+    <RootNamespace>iOS.Phone</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <AssemblyName>CompassMobileiOSPhone</AssemblyName>
@@ -185,6 +185,13 @@
     <Compile Include="Controllers\HomeController.designer.cs">
       <DependentUpon>HomeController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cells\NoImageHomeCell.cs" />
+    <Compile Include="Cells\NoImageHomeCell.designer.cs">
+      <DependentUpon>NoImageHomeCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\HomeTableControllerCell.cs" />
+    <Compile Include="Controllers\HomeTableControllerSource.cs" />
+    <Compile Include="Controllers\HomeTableController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -232,9 +239,12 @@
     <Folder Include="Resources\" />
     <Folder Include="Controllers\" />
     <Folder Include="Views\" />
+    <Folder Include="Cells\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <InterfaceDefinition Include="Views\HomeController.xib" />
+    <InterfaceDefinition Include="Cells\NoImageHomeCell.xib" />
+    <InterfaceDefinition Include="Home.storyboard" />
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@ using Social;
 using Shared.VM;
 using GalaSoft.MvvmLight.Helpers;
 
-namespace CompassMobile.iOS.Phone
+namespace iOS.Phone
 {
 	public partial class HomeController : UIViewController
 	{
@@ -34,9 +34,9 @@ namespace CompassMobile.iOS.Phone
 
 		private void InitBindings ()
 		{
-			RefreshButton.SetCommand ("TouchUpInside", _viewModel.RefreshCommand);
-			TwitterButton.SetCommand ("TouchUpInside", _viewModel.TwitterCommand);
-			FacebookButton.SetCommand ("TouchUpInside", _viewModel.FacebookCommand);
+//			RefreshButton.SetCommand ("TouchUpInside", _viewModel.RefreshCommand);
+//			TwitterButton.SetCommand ("TouchUpInside", _viewModel.TwitterCommand);
+//			FacebookButton.SetCommand ("TouchUpInside", _viewModel.FacebookCommand);
 		}
 	}
 }

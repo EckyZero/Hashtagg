@@ -4,7 +4,7 @@ using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using Xamarin;
-using CompassMobile.iOS.Phone;
+using CoreGraphics;
 
 namespace iOS.Phone
 {
