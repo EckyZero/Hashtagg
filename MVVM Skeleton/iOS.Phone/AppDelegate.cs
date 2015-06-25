@@ -22,7 +22,8 @@ namespace iOS.Phone
 			Calabash.Start();
 			#endif
 
-			var controller = new HomeController ();
+			var storyboard = UIStoryboard.FromName ("Home", null);
+			var controller = storyboard.InstantiateInitialViewController ();
 
 			Window = new UIWindow (UIScreen.MainScreen.Bounds);
 			Window.RootViewController = controller;

@@ -107,6 +107,8 @@
     <Compile Include="Utils\NotificationExtensions.cs" />
     <Compile Include="OS Services\iOSTwitterHelper.cs" />
     <Compile Include="OS Services\iOSFacebookHelper.cs" />
+    <Compile Include="Utils\PSObservableTableSource.cs" />
+    <Compile Include="BaseCell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

@@ -12,9 +12,9 @@ namespace Shared.VM
 
 		#region Member Properties
 
-		public override CardType CardType 
+		public override ListItemType ListItemType 
 		{
-			get { return CardType.Header; }
+			get { return ListItemType.Header; }
 		}
 
 		public override SocialType SocialType 

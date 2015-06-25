@@ -189,8 +189,6 @@
     <Compile Include="Cells\NoImageHomeCell.designer.cs">
       <DependentUpon>NoImageHomeCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HomeTableControllerCell.cs" />
-    <Compile Include="Controllers\HomeTableControllerSource.cs" />
     <Compile Include="Controllers\HomeTableController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -238,12 +236,10 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Views\" />
     <Folder Include="Cells\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <InterfaceDefinition Include="Views\HomeController.xib" />
     <InterfaceDefinition Include="Cells\NoImageHomeCell.xib" />
     <InterfaceDefinition Include="Home.storyboard" />
   </ItemGroup>

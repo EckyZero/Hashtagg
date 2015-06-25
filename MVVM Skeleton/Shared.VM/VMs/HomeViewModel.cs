@@ -24,7 +24,7 @@ namespace Shared.VM
 		private ITwitterHelper _twitterHelper;
 		private IFacebookHelper _facebookHelper;
 		private IFacebookService _facebookService;
-		private ObservableRangeCollection<BaseCardViewModel> _cardViewModels = new ObservableRangeCollection<BaseCardViewModel> ();
+		private ObservableRangeCollection<IListItem> _cardViewModels = new ObservableRangeCollection<IListItem> ();
 
 		#endregion
 
@@ -36,7 +36,7 @@ namespace Shared.VM
 			set { _orderBy = value; }
 		}
 
-		public ObservableRangeCollection<BaseCardViewModel> CardViewModels 
+		public ObservableRangeCollection<IListItem> CardViewModels 
 		{
 			get { return _cardViewModels; }
 			set { _cardViewModels = value; }

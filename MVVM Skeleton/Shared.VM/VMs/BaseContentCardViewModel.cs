@@ -14,9 +14,9 @@ namespace Shared.VM
 	{
 		#region Member Properties
 
-		public override CardType CardType 
+		public override ListItemType ListItemType 
 		{
-			get { return String.IsNullOrWhiteSpace (ImageUrl) ? CardType.NoImage : CardType.Image; }
+			get { return String.IsNullOrWhiteSpace (ImageUrl) ? ListItemType.NoImage : ListItemType.Image; }
 		}
 			
 		public abstract string ImageUrl { get; }

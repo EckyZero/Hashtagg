@@ -5,28 +5,49 @@ using Foundation;
 using UIKit;
 using iOS;
 using Shared.VM;
+using Shared.Common;
+using System.Threading.Tasks;
 
 namespace iOS.Phone
 {
-	public class HomeTableController : ExtendedObservableTableViewController<BaseCardViewModel>
+	[Register ("HomeTableController")]
+	public class HomeTableController : ExtendedObservableTableViewController<IListItem>
 	{
+		#region Private Variables
+
+		private PSObservableTableSource<IListItem> _source;
+
+		#endregion
+
+		#region Member Properties
+
+		public ObservableRangeCollection<IListItem> Collection { get; set; }
+		public Task<Action<UITableView>> OnPullToRefresh { get; set; }
+
+		#endregion
+
 		#region Methods
 
-		public HomeTableController () : base ()
+		public HomeTableController (IntPtr handle) : base (handle)
 		{
 		}
 
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			
-			// Register the TableView's data source
-			TableView.Source = new HomeTableControllerSource ();
+
+			RefreshControl = new UIRefreshControl();
+			RefreshControl.ValueChanged += HandleValueChanged;
 		}
 
 		public override void ConfigureDelegates ()
 		{
-			
+			_source = new PSObservableTableSource<IListItem> (this, Collection);
+		}
+
+		private void HandleValueChanged (object sender, EventArgs e)
+		{
+//			if(OnPullToRefresh != )
 		}
 
 		#endregion

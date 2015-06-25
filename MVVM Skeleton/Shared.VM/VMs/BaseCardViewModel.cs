@@ -2,19 +2,14 @@
 
 namespace Shared.VM
 {
-	public enum CardType
-	{
-		Header,
-		Image,
-		NoImage
-	}
-
-	public abstract class BaseCardViewModel : SharedViewModelBase
+	public abstract class BaseCardViewModel : SharedViewModelBase, IListItem
 	{
 		#region Member Properties
 
-		public abstract CardType CardType { get; }
+		public abstract ListItemType ListItemType { get; }
 		public abstract SocialType SocialType { get; }
+
+		public Action<IListItem> OnSelected { get; set; }
 
 		#endregion
 
@@ -28,6 +23,13 @@ namespace Shared.VM
 		}
 
 		#endregion
+
+		public void Selected ()
+		{
+			if(OnSelected != null) {
+				OnSelected (this);
+			}
+		}
 	}
 }
 
