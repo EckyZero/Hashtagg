@@ -4,14 +4,15 @@ using UIKit;
 using Foundation;
 using Shared.Common;
 using CoreGraphics;
+using System.Collections.Generic;
 
 namespace iOS
 {
-	public class PSObservableTableSource<T>
+	public class PSObservableTableSource<IListItem>
 	{
 		#region Private Variables
 
-		ExtendedObservableTableViewController<T> _controller;
+		ExtendedObservableTableViewController<IListItem> _controller;
 		ObservableRangeCollection<IListItem> _collection;
 
 		#endregion
@@ -24,7 +25,7 @@ namespace iOS
 			}
 		}
 
-		public Action<UITableViewCell, T, NSIndexPath> BindCellDelegate {
+		public Action<UITableViewCell, IListItem, NSIndexPath> BindCellDelegate {
 			get { return _controller.BindCellDelegate; }
 			set { _controller.BindCellDelegate = value; } 
 		}
@@ -61,7 +62,7 @@ namespace iOS
 
 		#endregion
 
-		public PSObservableTableSource (ExtendedObservableTableViewController<T> controller, ObservableRangeCollection<IListItem> collection)
+		public PSObservableTableSource (ExtendedObservableTableViewController<IListItem> controller, ObservableRangeCollection<IListItem> collection)
 		{
 			_controller = controller;
 			_collection = collection;
@@ -71,6 +72,7 @@ namespace iOS
 
 		private void InitBindings ()
 		{
+			_controller.DataSource = new List<IListItem>(_collection);
 			_controller.SelectionChanged += OnSelectionChanged;
 
 			InitBindCellDelegate ();
@@ -92,7 +94,7 @@ namespace iOS
 
 		private void InitBindCellDelegate ()
 		{
-			BindCellDelegate = ((UITableViewCell cell, T model, NSIndexPath indexPath) => {
+			BindCellDelegate = ((UITableViewCell cell, IListItem model, NSIndexPath indexPath) => {
 			
 				var item = _collection[indexPath.Row];
 				var baseCell = cell as BaseCell;
@@ -108,7 +110,7 @@ namespace iOS
 			CreateCellDelegate = ((NSString id, UITableView tableView, NSIndexPath indexPath) => {
 
 				var item = _collection[indexPath.Row];
-				var identifier = BaseCell.GetIdentifier(item);
+				var identifier = item.ListItemType.ToString();
 				var cell = tableView.DequeueReusableCell(identifier) as BaseCell;
 
 				return cell;

@@ -6,7 +6,7 @@ namespace Shared.VM
 	{
 		#region Member Properties
 
-		public abstract ListItemType ListItemType { get; }
+		public abstract ListItemType ListItemType { get; set; }
 		public abstract SocialType SocialType { get; }
 
 		public Action<IListItem> OnSelected { get; set; }

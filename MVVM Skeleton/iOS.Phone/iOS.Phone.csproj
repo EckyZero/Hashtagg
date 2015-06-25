@@ -190,6 +190,10 @@
       <DependentUpon>NoImageHomeCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeTableController.cs" />
+    <Compile Include="Cells\DefaultCell.cs" />
+    <Compile Include="Cells\DefaultCell.designer.cs">
+      <DependentUpon>DefaultCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

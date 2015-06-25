@@ -22,7 +22,7 @@ namespace iOS.Phone
 		#region Member Properties
 
 		public ObservableRangeCollection<IListItem> Collection { get; set; }
-		public Task<Action<UITableView>> OnPullToRefresh { get; set; }
+		public Action<UIRefreshControl> OnPullToRefresh { get; set; }
 
 		#endregion
 
@@ -47,7 +47,9 @@ namespace iOS.Phone
 
 		private void HandleValueChanged (object sender, EventArgs e)
 		{
-//			if(OnPullToRefresh != )
+			if(OnPullToRefresh != null) {
+				OnPullToRefresh(RefreshControl);
+			}
 		}
 
 		#endregion

@@ -13,6 +13,9 @@ namespace iOS.Phone
 	partial class HomeController
 	{
 		[Outlet]
+		UIKit.UIButton FacebookButton { get; set; }
+
+		[Outlet]
 		UIKit.UIView HeaderView { get; set; }
 
 		[Outlet]
@@ -20,6 +23,9 @@ namespace iOS.Phone
 
 		[Outlet]
 		UIKit.UITableView TableView { get; set; }
+
+		[Outlet]
+		UIKit.UIButton TwitterButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -36,6 +42,16 @@ namespace iOS.Phone
 			if (TableView != null) {
 				TableView.Dispose ();
 				TableView = null;
+			}
+
+			if (TwitterButton != null) {
+				TwitterButton.Dispose ();
+				TwitterButton = null;
+			}
+
+			if (FacebookButton != null) {
+				FacebookButton.Dispose ();
+				FacebookButton = null;
 			}
 		}
 	}

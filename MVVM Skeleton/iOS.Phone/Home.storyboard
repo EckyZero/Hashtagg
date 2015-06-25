@@ -24,6 +24,20 @@
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oac-2S-kcF">
                                 <rect key="frame" x="0.0" y="64" width="320" height="102"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jt5-3c-CEH">
+                                        <rect key="frame" x="27" y="64" width="68" height="30"/>
+                                        <state key="normal" title="Facebook">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cZ-Dn-Za0">
+                                        <rect key="frame" x="27" y="31" width="46" height="30"/>
+                                        <state key="normal" title="Twitter">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" id="MmB-Rw-1NZ"/>
@@ -42,6 +56,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nUC-xX-Jev"/>
+                    <connections>
+                        <outlet property="FacebookButton" destination="Jt5-3c-CEH" id="bMf-A8-JiU"/>
+                        <outlet property="TwitterButton" destination="8cZ-Dn-Za0" id="g7r-uy-SHr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLv-Ja-6yZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,15 +69,49 @@
         <scene sceneID="D4x-ZN-Uzp">
             <objects>
                 <tableViewController id="479-Fv-hah" customClass="HomeTableController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gSf-9q-DyM">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="115" sectionHeaderHeight="22" sectionFooterHeight="22" id="gSf-9q-DyM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="402"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3A3-le-V5L">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3A3-le-V5L" id="0HE-Al-GnO">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Default" rowHeight="172" id="DdG-kl-YYN" customClass="DefaultCell">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DdG-kl-YYN" id="MN0-6a-W5I">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2q5-aI-gzd">
+                                            <rect key="frame" x="8" y="39" width="304" height="133"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1o-bd-CUg">
+                                            <rect key="frame" x="8" y="171" width="304" height="1"/>
+                                            <color key="backgroundColor" red="0.92156862750000001" green="0.25490196079999999" blue="0.19215686269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="tUp-6h-XJO"/>
+                                            </constraints>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dXO-hc-AOq">
+                                            <rect key="frame" x="240" y="20" width="38" height="38"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="38" id="Ex1-nY-u1Z"/>
+                                                <constraint firstAttribute="height" constant="38" id="a2T-ww-Afk"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="dXO-hc-AOq" secondAttribute="trailing" constant="42" id="MEP-dr-Fd7"/>
+                                        <constraint firstAttribute="trailing" secondItem="2q5-aI-gzd" secondAttribute="trailing" constant="8" id="MTg-T7-9Xf"/>
+                                        <constraint firstItem="2q5-aI-gzd" firstAttribute="trailing" secondItem="S1o-bd-CUg" secondAttribute="trailing" id="QyR-oH-epn"/>
+                                        <constraint firstAttribute="bottom" secondItem="S1o-bd-CUg" secondAttribute="bottom" id="ZIv-ll-w7X"/>
+                                        <constraint firstItem="2q5-aI-gzd" firstAttribute="bottom" secondItem="S1o-bd-CUg" secondAttribute="bottom" id="ZgM-FI-SKT"/>
+                                        <constraint firstItem="2q5-aI-gzd" firstAttribute="top" secondItem="dXO-hc-AOq" secondAttribute="bottom" constant="-19" id="gM9-tl-L5r"/>
+                                        <constraint firstItem="2q5-aI-gzd" firstAttribute="top" secondItem="MN0-6a-W5I" secondAttribute="top" constant="39" id="gNk-e0-2i3"/>
+                                        <constraint firstItem="2q5-aI-gzd" firstAttribute="leading" secondItem="MN0-6a-W5I" secondAttribute="leading" constant="8" id="jhA-d4-mtZ"/>
+                                        <constraint firstItem="2q5-aI-gzd" firstAttribute="leading" secondItem="S1o-bd-CUg" secondAttribute="leading" id="qnj-s7-Pry"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

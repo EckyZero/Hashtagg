@@ -10,31 +10,14 @@ namespace iOS
 
 		protected BaseCell () : base () { }
 
-		public void Configure (IListItem viewModel)
+		public void Configure (IListItem item)
 		{
-			ConfigureSubviews (viewModel);
+			ConfigureSubviews (item);
 
 			ContentView.LayoutIfNeeded ();
 		}
 
-		protected abstract void ConfigureSubviews (IListItem viewModel);
-
-		public static string GetIdentifier(IListItem viewModel)
-		{
-			var identifer = "";
-
-			switch (viewModel.ListItemType)
-			{
-			case ListItemType.Image:
-				break;
-			case ListItemType.NoImage:
-				break;
-			case ListItemType.Header:
-				break;
-			}
-
-			return identifer;
-		}
+		protected abstract void ConfigureSubviews (IListItem item);
 
 		#endregion
 	}

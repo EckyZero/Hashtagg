@@ -28,6 +28,12 @@ namespace Shared.VM
 
 		#endregion
 
+		#region Actions
+
+		public Action RequestCompleted { get; set; }
+
+		#endregion
+
 		#region Member Properties
 
 		public OrderBy OrderBy
@@ -87,6 +93,10 @@ namespace Shared.VM
 
 			CardViewModels.Clear ();
 			CardViewModels.AddRange (allViewModels);
+
+			if(RequestCompleted != null) {
+				RequestCompleted ();
+			}
 		}
 
 		private void TwitterCommandExecute ()

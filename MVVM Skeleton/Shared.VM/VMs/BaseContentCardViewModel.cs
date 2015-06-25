@@ -12,11 +12,17 @@ namespace Shared.VM
 
 	public abstract class BaseContentCardViewModel : BaseCardViewModel
 	{
+		#region Private Variables
+
+		private ListItemType _listItemType = ListItemType.Default;
+
+		#endregion
+
 		#region Member Properties
 
-		public override ListItemType ListItemType 
-		{
-			get { return String.IsNullOrWhiteSpace (ImageUrl) ? ListItemType.NoImage : ListItemType.Image; }
+		public override ListItemType ListItemType {
+			get { return _listItemType; }
+			set { _listItemType = value; } 
 		}
 			
 		public abstract string ImageUrl { get; }

@@ -5,13 +5,13 @@ namespace Shared.VM
 	public enum ListItemType
 	{
 		Header,
-		Image,
-		NoImage
+		Default,
+		Timeline
 	}
 	public interface IListItem
 	{
 		Action<IListItem> OnSelected { get; set; }
-		ListItemType ListItemType { get; }
+		ListItemType ListItemType { get; set; }
 
 		void Selected ();
 	}
