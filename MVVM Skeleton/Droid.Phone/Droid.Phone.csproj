@@ -14,7 +14,7 @@
     <AndroidApplication>True</AndroidApplication>
     <AssemblyName>Droid.Phone</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>

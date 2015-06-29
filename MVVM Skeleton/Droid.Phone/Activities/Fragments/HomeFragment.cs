@@ -39,7 +39,7 @@ namespace Droid.Phone
 			_listLayout = viewGroup.FindViewById<ListView> (Resource.Id.HomeListView);
 			var header = inflater.Inflate (Resource.Layout.HomeHeader, null, false);
 			_listLayout.AddHeaderView(header);
-			_listLayout.Adapter = new HomeListAdapter<BaseCardViewModel> (_viewModel.CardViewModels,  inflater, _listLayout);
+			_listLayout.Adapter = new HomeListAdapter<IListItem> (_viewModel.CardViewModels,  inflater, _listLayout);
 			// Use this to return your custom view for this Fragment
 			// return inflater.Inflate(Resource.Layout.YourFragment, container, false);
 			_refreshButton = header.FindViewById<Button> (Resource.Id.RefreshButton);
@@ -51,7 +51,7 @@ namespace Droid.Phone
 			return viewGroup;
 		}
 
-		private class HomeListAdapter<T> : ObservableAdapter<T>
+        private class HomeListAdapter<T> : ObservableAdapter<T> where T : IListItem
 		{
 			LayoutInflater _inflater;
 			ListView _listView;
@@ -66,11 +66,66 @@ namespace Droid.Phone
 
 			private View GetCell(int position, T vm, View convertView)
 			{
+                
+                switch (vm.ListItemType)
+                {
+                    case ListItemType.Default:
+                        return ProcessSocialCard(position, vm as BaseContentCardViewModel, convertView);
+                }
 				var cell = _inflater.Inflate(Resource.Layout.TwitterCell, _listView, false);
 				var label = cell.FindViewById<TextView>(Resource.Id.TweetCellTweetBody);
 				label.Text = vm.ToString();
 				return cell;
 			}
+
+            private class TwitterViewHolder : Java.Lang.Object
+            {
+                
+            }
+
+            private class FacebookViewHolder : Java.Lang.Object
+            {
+
+            }
+
+            private View ProcessSocialCard(int position, BaseContentCardViewModel cardViewModel, View convertView)
+            {
+                switch (cardViewModel.SocialType)
+                {
+                    case SocialType.Facebook:
+                        return ProcessFacebook(position, cardViewModel as FacebookCardViewModel, convertView);
+                        break;
+                    case SocialType.Twitter:
+                        return ProcessTwitter(position, cardViewModel as TwitterCardViewModel, convertView);
+                        break;
+                    case SocialType.None:
+                        throw new NotImplementedException();
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                        break;
+                }          
+            }
+
+            private View ProcessFacebook(int position, FacebookCardViewModel fbVm, View convertView)
+            {
+                if ( convertView == null || convertView.Id != Resource.Id.TweetCellMainLayout)
+                    convertView = _inflater.Inflate(Resource.Layout.TwitterCell, null, false);
+                convertView.FindViewById<TextView>(Resource.Id.TweetCellTweetBody).Text = fbVm.Text;
+
+                return convertView;
+            }
+
+            private View ProcessTwitter(int position, TwitterCardViewModel tVm, View convertView)
+            {
+                if (convertView == null || convertView.Id != Resource.Id.TweetCellMainLayout)
+                    convertView = _inflater.Inflate(Resource.Layout.TwitterCell, null, false);
+
+                convertView.FindViewById<TextView>(Resource.Id.TweetCellTweetBody).Text = tVm.Text;
+
+                return convertView;
+            }
+
 		}
 	}
 }
