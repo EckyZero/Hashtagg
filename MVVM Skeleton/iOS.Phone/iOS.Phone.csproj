@@ -185,10 +185,6 @@
     <Compile Include="Controllers\HomeController.designer.cs">
       <DependentUpon>HomeController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cells\NoImageHomeCell.cs" />
-    <Compile Include="Cells\NoImageHomeCell.designer.cs">
-      <DependentUpon>NoImageHomeCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\HomeTableController.cs" />
     <Compile Include="Cells\DefaultCell.cs" />
     <Compile Include="Cells\DefaultCell.designer.cs">
@@ -244,7 +240,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <InterfaceDefinition Include="Cells\NoImageHomeCell.xib" />
     <InterfaceDefinition Include="Home.storyboard" />
   </ItemGroup>
   <ItemGroup>

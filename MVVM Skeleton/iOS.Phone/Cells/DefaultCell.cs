@@ -4,13 +4,29 @@ using System;
 
 using Foundation;
 using UIKit;
+using Shared.VM;
 
 namespace iOS.Phone
 {
-	public partial class DefaultCell : UITableViewCell
+	public partial class DefaultCell : BaseCell
 	{
+		#region Variables
+
+		private BaseContentCardViewModel _viewModel;
+
+		#endregion
+
+		#region Methods
+
 		public DefaultCell (IntPtr handle) : base (handle)
 		{
 		}
+
+		protected override void ConfigureSubviews (IListItem item)
+		{
+			_viewModel = item as BaseContentCardViewModel;
+		}
+
+		#endregion
 	}
 }

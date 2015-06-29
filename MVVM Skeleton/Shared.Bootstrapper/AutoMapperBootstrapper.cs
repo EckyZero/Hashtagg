@@ -63,9 +63,9 @@ namespace Shared.Bootstrapper
 				.ForMember (model => model.Comments,
 					opts => opts.MapFrom (dto => (dto.Comments != null) ? dto.Comments.Data : new List<FacebookCommentDto> ()))
 				.ForMember (model => model.CommentUrl,
-					opts => opts.MapFrom (dto => (dto.Actions != null) ? dto.Actions.FirstOrDefault (a => a.Name.Equals("Comment")).Link : String.Empty))
+					opts => opts.MapFrom (dto => (dto.Actions != null &&dto.Actions.FirstOrDefault (a => a.Name.Equals("Comment")) != null) ? dto.Actions.FirstOrDefault (a => a.Name.Equals("Comment")).Link : String.Empty))
 				.ForMember (model => model.LikeUrl,
-					opts => opts.MapFrom (dto => (dto.Actions != null) ? dto.Actions.FirstOrDefault (a => a.Name.Equals("Like")).Link : String.Empty));
+					opts => opts.MapFrom (dto => (dto.Actions != null && dto.Actions.FirstOrDefault (a => a.Name.Equals("Like")) != null) ? dto.Actions.FirstOrDefault (a => a.Name.Equals("Like")).Link : String.Empty));
 			Mapper.CreateMap<FacebookToFromDto, FacebookUser> ();
 			Mapper.CreateMap<FacebookLikeDto, FacebookUser> ();
 			Mapper.CreateMap<FacebookCommentDto, FacebookComment> ()
