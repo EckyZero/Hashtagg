@@ -247,4 +247,20 @@
     <InterfaceDefinition Include="Cells\NoImageHomeCell.xib" />
     <InterfaceDefinition Include="Home.storyboard" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Instagram%402x.png" />
+    <BundleResource Include="Resources\Instagram%403x.png" />
+    <BundleResource Include="Resources\Facebook%402x.png" />
+    <BundleResource Include="Resources\Facebook%403x.png" />
+    <BundleResource Include="Resources\Google+%402x.png" />
+    <BundleResource Include="Resources\Google+%403x.png" />
+    <BundleResource Include="Resources\Twitter%402x.png" />
+    <BundleResource Include="Resources\Twitter%403x.png" />
+    <BundleResource Include="Resources\Menu Button%402x.png" />
+    <BundleResource Include="Resources\Menu Button%403x.png" />
+    <BundleResource Include="Resources\New Post Button%402x.png" />
+    <BundleResource Include="Resources\New Post Button%403x.png" />
+    <BundleResource Include="Resources\Profile Image default%402x.png" />
+    <BundleResource Include="Resources\Profile Image default%403x.png" />
+  </ItemGroup>
 </Project>

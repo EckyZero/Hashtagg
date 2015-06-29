@@ -2,16 +2,16 @@
 
 namespace Shared.VM
 {
-	public enum RowItemType
+	public enum ListItemType
 	{
 		Header,
 		Default,
 		Timeline
 	}
-	public interface IRowItem
+	public interface IListItem
 	{
-		Action<IRowItem> OnSelected { get; set; }
-		RowItemType ListItemType { get; set; }
+		Action<IListItem> OnSelected { get; set; }
+		ListItemType ListItemType { get; set; }
 
 		void Selected ();
 	}

@@ -42,7 +42,7 @@
     <Compile Include="VMs\BaseContentCardViewModel.cs" />
     <Compile Include="VMs\HeaderCardViewModel.cs" />
     <Compile Include="VMs\FacebookCardViewModel.cs" />
-    <Compile Include="VMs\BaseListItemViewModel.cs" />
+    <Compile Include="Interfaces\IListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared.Common\Shared.Common.csproj">
@@ -78,4 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
 </Project>
