@@ -9,6 +9,7 @@ namespace iOS
 		#region Methods
 
 		protected BaseCell () : base () { }
+		protected BaseCell (IntPtr handle) : base (handle) { }
 
 		public void Configure (IListItem item)
 		{

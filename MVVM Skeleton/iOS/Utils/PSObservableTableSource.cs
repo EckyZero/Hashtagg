@@ -1,19 +1,20 @@
 ﻿using System;
-using Shared.VM;
 using UIKit;
 using Foundation;
 using Shared.Common;
 using CoreGraphics;
 using System.Collections.Generic;
+using System.Collections;
+using Shared.VM;
 
 namespace iOS
 {
-	public class PSObservableTableSource<IListItem>
+	public class PSObservableTableSource<T> where T : IListItem
 	{
 		#region Private Variables
 
-		ExtendedObservableTableViewController<IListItem> _controller;
-		ObservableRangeCollection<IListItem> _collection;
+		ExtendedObservableTableViewController<T> _controller;
+		ObservableRangeCollection<T> _collection;
 
 		#endregion
 
@@ -25,7 +26,7 @@ namespace iOS
 			}
 		}
 
-		public Action<UITableViewCell, IListItem, NSIndexPath> BindCellDelegate {
+		public Action<UITableViewCell, T, NSIndexPath> BindCellDelegate {
 			get { return _controller.BindCellDelegate; }
 			set { _controller.BindCellDelegate = value; } 
 		}
@@ -62,7 +63,7 @@ namespace iOS
 
 		#endregion
 
-		public PSObservableTableSource (ExtendedObservableTableViewController<IListItem> controller, ObservableRangeCollection<IListItem> collection)
+		public PSObservableTableSource (ExtendedObservableTableViewController<T> controller, ObservableRangeCollection<T> collection)
 		{
 			_controller = controller;
 			_collection = collection;
@@ -72,7 +73,7 @@ namespace iOS
 
 		private void InitBindings ()
 		{
-			_controller.DataSource = new List<IListItem>(_collection);
+			_controller.DataSource = _collection;
 			_controller.SelectionChanged += OnSelectionChanged;
 
 			InitBindCellDelegate ();
@@ -87,16 +88,15 @@ namespace iOS
 
 		private void OnSelectionChanged (object sender, EventArgs e)
 		{
-			var item = sender as IListItem;
-
+			var item = (IListItem)sender;
 			item.Selected ();
 		}
 
 		private void InitBindCellDelegate ()
 		{
-			BindCellDelegate = ((UITableViewCell cell, IListItem model, NSIndexPath indexPath) => {
+			BindCellDelegate = ((UITableViewCell cell, T model, NSIndexPath indexPath) => {
 			
-				var item = _collection[indexPath.Row];
+				var item = (IListItem)_collection[indexPath.Row];
 				var baseCell = cell as BaseCell;
 
 				baseCell.Configure(item);
@@ -111,7 +111,7 @@ namespace iOS
 
 				var item = _collection[indexPath.Row];
 				var identifier = item.ListItemType.ToString();
-				var cell = tableView.DequeueReusableCell(identifier) as BaseCell;
+				var cell = tableView.DequeueReusableCell(identifier);
 
 				return cell;
 			});
