@@ -60,22 +60,22 @@ namespace Shared.VM
 			ShareCommand = new RelayCommand (ShareCommandExecute);
 		}
 
-		private void SelectCommandExecute ()
+		protected virtual void SelectCommandExecute ()
 		{
 			// TODO: Repond to card selection
 		}
 
-		private void LikeCommandExecute ()
+		protected virtual void LikeCommandExecute ()
 		{
 			// TODO: Repond to like selection
 		}
 
-		private void CommentCommandExecute ()
+		protected virtual void CommentCommandExecute ()
 		{
 			// TODO: Repond to comment selection
 		}
 
-		private void ShareCommandExecute ()
+		protected virtual void ShareCommandExecute ()
 		{
 			// TODO: Repond to share selection
 		}

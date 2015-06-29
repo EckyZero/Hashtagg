@@ -21,6 +21,7 @@ namespace iOS.Phone
 
 		#region Member Properties
 
+//		public TableView
 		public ObservableRangeCollection<IListItem> Collection { get; set; }
 		public Action<UIRefreshControl> OnPullToRefresh { get; set; }
 
