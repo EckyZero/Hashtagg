@@ -13,25 +13,19 @@
                         <viewControllerLayoutGuide type="bottom" id="3o1-Mw-RFT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kFD-Vb-S3j">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9a-jh-Q0d">
-                                <rect key="frame" x="0.0" y="166" width="320" height="402"/>
-                                <connections>
-                                    <segue destination="479-Fv-hah" kind="embed" id="HOp-Q1-par"/>
-                                </connections>
-                            </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oac-2S-kcF">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oac-2S-kcF">
                                 <rect key="frame" x="0.0" y="64" width="320" height="102"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jt5-3c-CEH">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jt5-3c-CEH">
                                         <rect key="frame" x="27" y="64" width="68" height="30"/>
                                         <state key="normal" title="Facebook">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cZ-Dn-Za0">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cZ-Dn-Za0">
                                         <rect key="frame" x="27" y="31" width="46" height="30"/>
                                         <state key="normal" title="Twitter">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,24 +34,41 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="8cZ-Dn-Za0" secondAttribute="trailing" constant="247" id="5bz-UM-Meb"/>
+                                    <constraint firstItem="8cZ-Dn-Za0" firstAttribute="top" secondItem="oac-2S-kcF" secondAttribute="top" constant="31" id="EGc-4W-zsu"/>
                                     <constraint firstAttribute="height" constant="102" id="MmB-Rw-1NZ"/>
+                                    <constraint firstItem="8cZ-Dn-Za0" firstAttribute="leading" secondItem="oac-2S-kcF" secondAttribute="leading" constant="27" id="Uht-qZ-q6p"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jt5-3c-CEH" secondAttribute="trailing" constant="225" id="XQn-xN-Qan"/>
+                                    <constraint firstItem="Jt5-3c-CEH" firstAttribute="top" secondItem="8cZ-Dn-Za0" secondAttribute="bottom" constant="3" id="bq5-LV-TdJ"/>
+                                    <constraint firstItem="Jt5-3c-CEH" firstAttribute="leading" secondItem="oac-2S-kcF" secondAttribute="leading" constant="27" id="cuJ-7B-cZf"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jt5-3c-CEH" secondAttribute="bottom" constant="8" id="mgU-Ac-Q6w"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9a-jh-Q0d">
+                                <rect key="frame" x="0.0" y="166" width="320" height="402"/>
+                                <color key="backgroundColor" red="1" green="0.72156862749999995" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="479-Fv-hah" kind="embed" id="HOp-Q1-par"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="W9a-jh-Q0d" firstAttribute="top" secondItem="oac-2S-kcF" secondAttribute="bottom" id="5IA-N8-RSN"/>
                             <constraint firstItem="oac-2S-kcF" firstAttribute="leading" secondItem="kFD-Vb-S3j" secondAttribute="leading" id="7NC-4y-jGQ"/>
                             <constraint firstAttribute="trailing" secondItem="W9a-jh-Q0d" secondAttribute="trailing" id="BPQ-4e-Etl"/>
                             <constraint firstItem="3o1-Mw-RFT" firstAttribute="top" secondItem="W9a-jh-Q0d" secondAttribute="bottom" id="KRy-Kb-OKH"/>
                             <constraint firstAttribute="trailing" secondItem="oac-2S-kcF" secondAttribute="trailing" id="Ok9-E6-a5t"/>
                             <constraint firstItem="oac-2S-kcF" firstAttribute="top" secondItem="Vca-7a-BWk" secondAttribute="bottom" id="Wzf-xJ-EAA"/>
-                            <constraint firstItem="W9a-jh-Q0d" firstAttribute="top" secondItem="oac-2S-kcF" secondAttribute="bottom" id="jXf-DQ-3ea"/>
                             <constraint firstItem="W9a-jh-Q0d" firstAttribute="leading" secondItem="kFD-Vb-S3j" secondAttribute="leading" id="rSs-y7-WzZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nUC-xX-Jev"/>
                     <connections>
                         <outlet property="FacebookButton" destination="Jt5-3c-CEH" id="bMf-A8-JiU"/>
+                        <outlet property="HeaderView" destination="oac-2S-kcF" id="OXH-bu-d1G"/>
+                        <outlet property="HeaderViewTopConstraint" destination="Wzf-xJ-EAA" id="MjU-s1-fya"/>
+                        <outlet property="TableViewTopConstraint" destination="5IA-N8-RSN" id="ahf-8k-8UP"/>
                         <outlet property="TwitterButton" destination="8cZ-Dn-Za0" id="g7r-uy-SHr"/>
                     </connections>
                 </viewController>
@@ -72,7 +83,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="115" sectionHeaderHeight="22" sectionFooterHeight="22" id="gSf-9q-DyM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="402"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.36470588240000001" green="0.58823529409999997" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Default" rowHeight="172" id="DdG-kl-YYN" customClass="DefaultCell">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
@@ -133,10 +144,14 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qt3-ZA-CNd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="df0-z8-8ZG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="df0-z8-8ZG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

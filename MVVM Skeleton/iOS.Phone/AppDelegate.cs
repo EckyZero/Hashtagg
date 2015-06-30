@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Xamarin;
 using CoreGraphics;
+using JASidePanels;
 
 namespace iOS.Phone
 {
@@ -15,6 +16,7 @@ namespace iOS.Phone
 	public partial class AppDelegate : UIApplicationDelegate
 	{
 		public override UIWindow Window { get; set; }
+		public JASidePanelController ContainerController { get; set; }
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
@@ -25,8 +27,14 @@ namespace iOS.Phone
 			var storyboard = UIStoryboard.FromName ("Home", null);
 			var controller = storyboard.InstantiateInitialViewController ();
 
+			ContainerController = new JASidePanelController();
+			ContainerController.ShouldDelegateAutorotateToVisiblePanel = false;
+			ContainerController.LeftPanel = new UIViewController ();
+			ContainerController.CenterPanel = controller;
+			ContainerController.RightPanel = new UIViewController ();
+
 			Window = new UIWindow (UIScreen.MainScreen.Bounds);
-			Window.RootViewController = controller;
+			Window.RootViewController = ContainerController;
 			Window.MakeKeyAndVisible ();
 
 			return true;

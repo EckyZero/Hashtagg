@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace iOS.Phone
 {
 	[Register ("HomeTableController")]
-	public class HomeTableController : ExtendedObservableTableViewController<IListItem>
+	public class HomeTableController : ExtendedObservableTableViewController<IListItem>, IUIScrollViewDelegate
 	{
 		#region Private Variables
 
@@ -24,6 +24,7 @@ namespace iOS.Phone
 //		public TableView
 		public ObservableRangeCollection<IListItem> Collection { get; set; }
 		public Action<UIRefreshControl> OnPullToRefresh { get; set; }
+//		public Action<UITableView> Scrolled { get; set; }
 
 		#endregion
 

@@ -10,6 +10,7 @@ using Shared.VM;
 using GalaSoft.MvvmLight.Helpers;
 using System.Linq;
 using Shared.Common;
+using CoreGraphics;
 
 namespace iOS.Phone
 {
@@ -18,6 +19,7 @@ namespace iOS.Phone
 		#region Private Variables
 
 		private UIRefreshControl _refreshControl;
+		private nfloat _lastY;
 
 		#endregion
 
@@ -44,7 +46,8 @@ namespace iOS.Phone
 
 		private void InitUI ()
 		{
-			
+			NavigationController.NavigationBar.SetBackgroundImage(NavigationController.NavigationBar.BarTintColor.ToImage(new CGRect(0,0,NavigationController.View.Frame.Width, NavigationController.NavigationBar.Frame.Height + 20)), UIBarPosition.Any, UIBarMetrics.Default);
+			NavigationController.NavigationBar.ShadowImage = NavigationController.NavigationBar.BarTintColor.ToImage(new CGRect(0,0, NavigationController.View.Frame.Width, 1));
 		}
 
 		private void InitBindings ()
@@ -65,6 +68,8 @@ namespace iOS.Phone
 
 				controller.Collection = ViewModel.CardViewModels;
 				controller.OnPullToRefresh = OnPullToRefresh;
+				controller.HandleScrolled = OnScrolled;
+				controller.HandleDraggingStarted = OnDraggingStarted;
 			}
 		}
 
@@ -79,6 +84,46 @@ namespace iOS.Phone
 			if(_refreshControl != null) {
 				_refreshControl.EndRefreshing ();
 			}
+		}
+
+		private void OnScrolled (UITableView tableView)
+		{
+			var point = tableView.PanGestureRecognizer.TranslationInView (tableView);
+			var difference = _lastY - point.Y;
+			var percentComplete = HeaderViewTopConstraint.Constant / -HeaderView.Frame.Height;
+
+			if(HeaderViewTopConstraint.Constant - difference <= -HeaderView.Frame.Height) 
+			{
+				// Stop the adjustment once the header view is off the screen
+				HeaderViewTopConstraint.Constant = -HeaderView.Frame.Height;
+				percentComplete = 1;
+				return;
+			}
+			else if (HeaderViewTopConstraint.Constant - difference >= 0) 
+			{
+				// Stop the adjustment once the header view is fully in view
+				HeaderViewTopConstraint.Constant = 0;
+				percentComplete = 0;
+				return;
+			}
+
+			// Adjust the constraint per the user's scroll
+			HeaderViewTopConstraint.Constant -= difference;
+
+			// TODO: May need to adjust the alpha's here for better fade in/out
+			FacebookButton.Alpha = 1 - percentComplete * 2;
+			TwitterButton.Alpha = 1 - percentComplete * 2;
+
+			// Track the current position
+			_lastY = point.Y;
+		}
+
+		private void OnDraggingStarted (UITableView tableView)
+		{
+			// Set the initial reference point for scrolling animations
+			var point = tableView.PanGestureRecognizer.TranslationInView (tableView);
+
+			_lastY = point.Y;
 		}
 	}
 }

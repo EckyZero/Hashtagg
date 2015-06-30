@@ -162,6 +162,18 @@ namespace iOS
 			set;
 		}
 
+		public Action<UITableView> HandleScrolled 
+		{
+			get;
+			set;
+		}
+
+		public Action<UITableView> HandleDraggingStarted 
+		{
+			get;
+			set;
+		}
+
 		/// <summary>
 		/// The data source of this list controller.
 		/// </summary>
@@ -313,6 +325,7 @@ namespace iOS
 		protected virtual ObservableTableSource<T> CreateSource()
 		{
 			_tableSource =  new ObservableTableSource<T>(this);
+
 			return _tableSource;
 		}
 
@@ -425,6 +438,16 @@ namespace iOS
 			public ObservableTableSource(ExtendedObservableTableViewController<T2> controller)
 			{
 				_controller = controller;
+			}
+
+			public override void Scrolled (UIScrollView scrollView)
+			{
+				_controller.HandleScrolled (scrollView as UITableView);
+			}
+
+			public override void DraggingStarted (UIScrollView scrollView)
+			{
+				_controller.HandleDraggingStarted (scrollView as UITableView);	
 			}
 
 			/// <summary>

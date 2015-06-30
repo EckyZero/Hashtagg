@@ -19,29 +19,24 @@ namespace iOS.Phone
 		UIKit.UIView HeaderView { get; set; }
 
 		[Outlet]
-		UIKit.UIView ProfileView { get; set; }
+		UIKit.NSLayoutConstraint HeaderViewTopConstraint { get; set; }
 
 		[Outlet]
-		UIKit.UITableView TableView { get; set; }
+		UIKit.NSLayoutConstraint TableViewTopConstraint { get; set; }
 
 		[Outlet]
 		UIKit.UIButton TwitterButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (FacebookButton != null) {
+				FacebookButton.Dispose ();
+				FacebookButton = null;
+			}
+
 			if (HeaderView != null) {
 				HeaderView.Dispose ();
 				HeaderView = null;
-			}
-
-			if (ProfileView != null) {
-				ProfileView.Dispose ();
-				ProfileView = null;
-			}
-
-			if (TableView != null) {
-				TableView.Dispose ();
-				TableView = null;
 			}
 
 			if (TwitterButton != null) {
@@ -49,9 +44,14 @@ namespace iOS.Phone
 				TwitterButton = null;
 			}
 
-			if (FacebookButton != null) {
-				FacebookButton.Dispose ();
-				FacebookButton = null;
+			if (HeaderViewTopConstraint != null) {
+				HeaderViewTopConstraint.Dispose ();
+				HeaderViewTopConstraint = null;
+			}
+
+			if (TableViewTopConstraint != null) {
+				TableViewTopConstraint.Dispose ();
+				TableViewTopConstraint = null;
 			}
 		}
 	}

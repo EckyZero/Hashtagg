@@ -25,6 +25,54 @@ namespace iOS
 			parrallaxView.Frame = headerImageFrame;
 		}
 
+		public static void ScrollViewWithTableView(this UITableView tableView, UIView view, NSLayoutConstraint viewTopConstraint, NSLayoutConstraint tableViewTopConstraint, bool stickToTop = true)
+		{
+			var offset = tableView.ContentOffset.Y;
+//			var headerFrame = view.Frame;
+//			var tableViewFrame = tableView.Frame;
+//
+//			var point = tableView.PanGestureRecognizer.TranslationInView (tableView) ;
+//
+//			if(point.Y <= 0 && (point.Y * -1) <= view.Frame.Height) {
+//				viewTopConstraint.Constant = point.Y;	
+//				System.Diagnostics.Debug.WriteLine ("POINT: " + point.Y);
+//			}
+//			else if (viewTopConstraint.Constant < 0 && viewTopConstraint.Constant >= -view.Frame.Height)
+//			{
+//				viewTopConstraint.Constant = point.Y;	
+//				System.Diagnostics.Debug.WriteLine ("NEW POINT: " + point.Y);
+//			}
+//			else if (point.Y > 0) {
+//				viewTopConstraint.Constant = point.Y;	
+//				System.Diagnostics.Debug.WriteLine ("NEW POINT: " + point.Y);
+//			}
+
+
+
+//			headerFrame.Y = scrollOffset;
+//			tableViewFrame.Y = scrollOffset;
+//			heaerFrame.
+//			tableViewFrame.Height -= scrollOffset:
+				
+			//			var headerFrameTopConstraint = view.Superview.Constraints.FirstOrDefault (c => c.SecondItem != null && c.SecondItem.Equals (view) && c.FirstAttribute == NSLayoutAttribute.Top);
+
+
+
+//			if(stickToTop == true) {
+//				if(-headerFrameTopConstraint.Constant < scrollOffset) {
+//					headerFrame.Y = -scrollOffset;	
+//				}
+//			} else {
+//			view.SetNeedsLayout();
+//			viewTopConstraint.Constant = -scrollOffset/2;
+//			tableViewTopConstraint.Constant = -scrollOffset / 2;
+
+//			}
+//			view.LayoutIfNeeded();
+				
+//			view.Frame = headerFrame;
+		}
+
 		public static void ScrollToBottom (this UITableView tableView, bool animated)
 		{
 			tableView.ScrollRectToVisible (new CoreGraphics.CGRect (0, tableView.ContentSize.Height - tableView.Bounds.Size.Height, tableView.Bounds.Size.Width, tableView.Bounds.Size.Height), animated);
