@@ -193,6 +193,11 @@
     <Compile Include="Cells\DefaultCell.designer.cs">
       <DependentUpon>DefaultCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\MenuController.designer.cs">
+      <DependentUpon>MenuController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ContainerController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -248,6 +253,7 @@
   <ItemGroup />
   <ItemGroup>
     <InterfaceDefinition Include="Home.storyboard" />
+    <InterfaceDefinition Include="Menu.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Instagram%402x.png" />

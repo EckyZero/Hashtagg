@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Xamarin;
 using CoreGraphics;
 using JASidePanels;
+using Shared.VM;
 
 namespace iOS.Phone
 {
@@ -24,14 +25,7 @@ namespace iOS.Phone
 			Calabash.Start();
 			#endif
 
-			var storyboard = UIStoryboard.FromName ("Home", null);
-			var controller = storyboard.InstantiateInitialViewController ();
-
-			ContainerController = new JASidePanelController();
-			ContainerController.ShouldDelegateAutorotateToVisiblePanel = false;
-			ContainerController.LeftPanel = new UIViewController ();
-			ContainerController.CenterPanel = controller;
-			ContainerController.RightPanel = new UIViewController ();
+			ContainerController = new ContainerController ();
 
 			Window = new UIWindow (UIScreen.MainScreen.Bounds);
 			Window.RootViewController = ContainerController;

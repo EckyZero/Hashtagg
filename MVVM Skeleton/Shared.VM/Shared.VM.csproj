@@ -43,6 +43,7 @@
     <Compile Include="VMs\HeaderCardViewModel.cs" />
     <Compile Include="VMs\FacebookCardViewModel.cs" />
     <Compile Include="Interfaces\IListItem.cs" />
+    <Compile Include="MenuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared.Common\Shared.Common.csproj">

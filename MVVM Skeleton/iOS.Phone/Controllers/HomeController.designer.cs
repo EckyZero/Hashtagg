@@ -13,7 +13,7 @@ namespace iOS.Phone
 	partial class HomeController
 	{
 		[Outlet]
-		UIKit.UIButton FacebookButton { get; set; }
+		UIKit.UIView AccountsView { get; set; }
 
 		[Outlet]
 		UIKit.UIView HeaderView { get; set; }
@@ -23,25 +23,12 @@ namespace iOS.Phone
 
 		[Outlet]
 		UIKit.NSLayoutConstraint TableViewTopConstraint { get; set; }
-
-		[Outlet]
-		UIKit.UIButton TwitterButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (FacebookButton != null) {
-				FacebookButton.Dispose ();
-				FacebookButton = null;
-			}
-
 			if (HeaderView != null) {
 				HeaderView.Dispose ();
 				HeaderView = null;
-			}
-
-			if (TwitterButton != null) {
-				TwitterButton.Dispose ();
-				TwitterButton = null;
 			}
 
 			if (HeaderViewTopConstraint != null) {
@@ -52,6 +39,11 @@ namespace iOS.Phone
 			if (TableViewTopConstraint != null) {
 				TableViewTopConstraint.Dispose ();
 				TableViewTopConstraint = null;
+			}
+
+			if (AccountsView != null) {
+				AccountsView.Dispose ();
+				AccountsView = null;
 			}
 		}
 	}

@@ -16,43 +16,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oac-2S-kcF">
-                                <rect key="frame" x="0.0" y="64" width="320" height="102"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jt5-3c-CEH">
-                                        <rect key="frame" x="27" y="64" width="68" height="30"/>
-                                        <state key="normal" title="Facebook">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cZ-Dn-Za0">
-                                        <rect key="frame" x="27" y="31" width="46" height="30"/>
-                                        <state key="normal" title="Twitter">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="8cZ-Dn-Za0" secondAttribute="trailing" constant="247" id="5bz-UM-Meb"/>
-                                    <constraint firstItem="8cZ-Dn-Za0" firstAttribute="top" secondItem="oac-2S-kcF" secondAttribute="top" constant="31" id="EGc-4W-zsu"/>
-                                    <constraint firstAttribute="height" constant="102" id="MmB-Rw-1NZ"/>
-                                    <constraint firstItem="8cZ-Dn-Za0" firstAttribute="leading" secondItem="oac-2S-kcF" secondAttribute="leading" constant="27" id="Uht-qZ-q6p"/>
-                                    <constraint firstAttribute="trailing" secondItem="Jt5-3c-CEH" secondAttribute="trailing" constant="225" id="XQn-xN-Qan"/>
-                                    <constraint firstItem="Jt5-3c-CEH" firstAttribute="top" secondItem="8cZ-Dn-Za0" secondAttribute="bottom" constant="3" id="bq5-LV-TdJ"/>
-                                    <constraint firstItem="Jt5-3c-CEH" firstAttribute="leading" secondItem="oac-2S-kcF" secondAttribute="leading" constant="27" id="cuJ-7B-cZf"/>
-                                    <constraint firstAttribute="bottom" secondItem="Jt5-3c-CEH" secondAttribute="bottom" constant="8" id="mgU-Ac-Q6w"/>
-                                </constraints>
-                            </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9a-jh-Q0d">
-                                <rect key="frame" x="0.0" y="166" width="320" height="402"/>
-                                <color key="backgroundColor" red="1" green="0.72156862749999995" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9a-jh-Q0d">
+                                <rect key="frame" x="0.0" y="129" width="320" height="375"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="479-Fv-hah" kind="embed" id="HOp-Q1-par"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oac-2S-kcF" userLabel="HeaderView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7OQ-0N-BWb" userLabel="HeaderContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="90.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michael Peters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCg-y6-dkO">
+                                                <rect key="frame" x="67" y="22" width="186" height="33"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="28"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="NCg-y6-dkO" secondAttribute="centerX" id="4hO-U1-aSH"/>
+                                            <constraint firstAttribute="height" constant="90.5" id="VSU-nm-nvv"/>
+                                            <constraint firstItem="NCg-y6-dkO" firstAttribute="top" secondItem="7OQ-0N-BWb" secondAttribute="top" constant="22" id="uEX-MD-7p4"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4X-4L-5hr" userLabel="AccountsView">
+                                        <rect key="frame" x="80" y="67" width="160" height="47"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1W-Ty-qzx">
+                                                <rect key="frame" x="56.5" y="0.0" width="47" height="47"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="47" id="iCA-yQ-27P"/>
+                                                    <constraint firstAttribute="height" constant="47" id="qEE-SN-rri"/>
+                                                </constraints>
+                                                <state key="normal" image="Profile Image default.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="d1W-Ty-qzx" secondAttribute="centerX" id="7x1-So-FrB"/>
+                                            <constraint firstAttribute="centerY" secondItem="d1W-Ty-qzx" secondAttribute="centerY" id="Sht-D7-Nbn"/>
+                                            <constraint firstAttribute="height" constant="47" id="cye-ZB-Lyd"/>
+                                            <constraint firstAttribute="width" constant="160" id="wlv-9s-uYG"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="7OQ-0N-BWb" firstAttribute="leading" secondItem="oac-2S-kcF" secondAttribute="leading" id="EK4-l1-fmS"/>
+                                    <constraint firstAttribute="trailing" secondItem="7OQ-0N-BWb" secondAttribute="trailing" id="Fv1-0h-pds"/>
+                                    <constraint firstAttribute="bottom" secondItem="R4X-4L-5hr" secondAttribute="bottom" constant="15" id="IYk-0Q-4Rm"/>
+                                    <constraint firstAttribute="height" constant="129" id="MmB-Rw-1NZ"/>
+                                    <constraint firstAttribute="centerX" secondItem="R4X-4L-5hr" secondAttribute="centerX" id="jcI-Ge-12R"/>
+                                    <constraint firstItem="7OQ-0N-BWb" firstAttribute="top" secondItem="oac-2S-kcF" secondAttribute="top" id="q4c-rv-veP"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.91764705882352937" green="0.93725490196078431" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="W9a-jh-Q0d" firstAttribute="top" secondItem="oac-2S-kcF" secondAttribute="bottom" id="5IA-N8-RSN"/>
                             <constraint firstItem="oac-2S-kcF" firstAttribute="leading" secondItem="kFD-Vb-S3j" secondAttribute="leading" id="7NC-4y-jGQ"/>
@@ -63,13 +88,24 @@
                             <constraint firstItem="W9a-jh-Q0d" firstAttribute="leading" secondItem="kFD-Vb-S3j" secondAttribute="leading" id="rSs-y7-WzZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nUC-xX-Jev"/>
+                    <navigationItem key="navigationItem" id="nUC-xX-Jev">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="K1a-O1-dBy">
+                            <rect key="frame" x="96" y="7" width="128" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="New"/>
+                                <segment title="Hot"/>
+                            </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" image="New Post Button.png" id="Zs8-01-7rr"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="FacebookButton" destination="Jt5-3c-CEH" id="bMf-A8-JiU"/>
+                        <outlet property="AccountsView" destination="R4X-4L-5hr" id="r4U-IC-FW7"/>
                         <outlet property="HeaderView" destination="oac-2S-kcF" id="OXH-bu-d1G"/>
                         <outlet property="HeaderViewTopConstraint" destination="Wzf-xJ-EAA" id="MjU-s1-fya"/>
                         <outlet property="TableViewTopConstraint" destination="5IA-N8-RSN" id="ahf-8k-8UP"/>
-                        <outlet property="TwitterButton" destination="8cZ-Dn-Za0" id="g7r-uy-SHr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLv-Ja-6yZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -81,9 +117,9 @@
             <objects>
                 <tableViewController id="479-Fv-hah" customClass="HomeTableController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="115" sectionHeaderHeight="22" sectionFooterHeight="22" id="gSf-9q-DyM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="402"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.36470588240000001" green="0.58823529409999997" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Default" rowHeight="172" id="DdG-kl-YYN" customClass="DefaultCell">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
@@ -111,7 +147,7 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="dXO-hc-AOq" secondAttribute="trailing" constant="42" id="MEP-dr-Fd7"/>
                                         <constraint firstAttribute="trailing" secondItem="2q5-aI-gzd" secondAttribute="trailing" constant="8" id="MTg-T7-9Xf"/>
@@ -163,6 +199,10 @@
             <point key="canvasLocation" x="244" y="401"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="New Post Button.png" width="20" height="21"/>
+        <image name="Profile Image default.png" width="60" height="60"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

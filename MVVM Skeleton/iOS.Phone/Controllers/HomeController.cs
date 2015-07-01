@@ -53,9 +53,6 @@ namespace iOS.Phone
 		private void InitBindings ()
 		{
 			ViewModel.RequestCompleted = OnRequestCompleted;
-
-			FacebookButton.SetCommand ("TouchUpInside", ViewModel.FacebookCommand);
-			TwitterButton.SetCommand ("TouchUpInside", ViewModel.TwitterCommand);
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
@@ -96,14 +93,14 @@ namespace iOS.Phone
 			{
 				// Stop the adjustment once the header view is off the screen
 				HeaderViewTopConstraint.Constant = -HeaderView.Frame.Height;
-				percentComplete = 1;
+				AccountsView.Alpha = 0;
 				return;
 			}
 			else if (HeaderViewTopConstraint.Constant - difference >= 0) 
 			{
 				// Stop the adjustment once the header view is fully in view
 				HeaderViewTopConstraint.Constant = 0;
-				percentComplete = 0;
+				AccountsView.Alpha = 1;
 				return;
 			}
 
@@ -111,8 +108,7 @@ namespace iOS.Phone
 			HeaderViewTopConstraint.Constant -= difference;
 
 			// TODO: May need to adjust the alpha's here for better fade in/out
-			FacebookButton.Alpha = 1 - percentComplete * 2;
-			TwitterButton.Alpha = 1 - percentComplete * 2;
+//			AccountsView.Alpha = 1 - percentComplete;
 
 			// Track the current position
 			_lastY = point.Y;
