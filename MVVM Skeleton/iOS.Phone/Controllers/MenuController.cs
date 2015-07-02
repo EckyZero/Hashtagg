@@ -5,6 +5,7 @@ using System;
 using Foundation;
 using UIKit;
 using Shared.VM;
+using GalaSoft.MvvmLight.Helpers;
 
 namespace iOS.Phone
 {
@@ -18,6 +19,14 @@ namespace iOS.Phone
 
 		public MenuController (IntPtr handle) : base (handle)
 		{
+		}
+
+		public override void ViewDidLoad ()
+		{
+			base.ViewDidLoad ();
+
+			FacebookButton.SetCommand ("TouchUpInside", ViewModel.FacebookCommand);
+			TwitterButton.SetCommand ("TouchUpInside", ViewModel.TwitterCommand);
 		}
 	}
 }

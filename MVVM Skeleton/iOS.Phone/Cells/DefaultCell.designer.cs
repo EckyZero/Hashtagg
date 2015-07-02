@@ -12,9 +12,95 @@ namespace iOS.Phone
 	[Register ("DefaultCell")]
 	partial class DefaultCell
 	{
+		[Outlet]
+		UIKit.UIButton CommentButton { get; set; }
+
+		[Outlet]
+		UIKit.UIView ContainerView { get; set; }
+
+		[Outlet]
+		UIKit.UILabel ContentLabel { get; set; }
+
+		[Outlet]
+		UIKit.UIButton LikeButton { get; set; }
+
+		[Outlet]
+		UIKit.UILabel NameLabel { get; set; }
+
+		[Outlet]
+		UIKit.UIImageView PhotoImageView { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint PhotoImageViewHeightConstraint { get; set; }
+
+		[Outlet]
+		UIKit.UIButton ShareButton { get; set; }
+
+		[Outlet]
+		UIKit.UIImageView SocialTypeImageView { get; set; }
+
+		[Outlet]
+		UIKit.UILabel TimeLabel { get; set; }
+
+		[Outlet]
+		UIKit.UIImageView UserImageView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (CommentButton != null) {
+				CommentButton.Dispose ();
+				CommentButton = null;
+			}
+
+			if (ContentLabel != null) {
+				ContentLabel.Dispose ();
+				ContentLabel = null;
+			}
+
+			if (LikeButton != null) {
+				LikeButton.Dispose ();
+				LikeButton = null;
+			}
+
+			if (NameLabel != null) {
+				NameLabel.Dispose ();
+				NameLabel = null;
+			}
+
+			if (PhotoImageView != null) {
+				PhotoImageView.Dispose ();
+				PhotoImageView = null;
+			}
+
+			if (PhotoImageViewHeightConstraint != null) {
+				PhotoImageViewHeightConstraint.Dispose ();
+				PhotoImageViewHeightConstraint = null;
+			}
+
+			if (ShareButton != null) {
+				ShareButton.Dispose ();
+				ShareButton = null;
+			}
+
+			if (SocialTypeImageView != null) {
+				SocialTypeImageView.Dispose ();
+				SocialTypeImageView = null;
+			}
+
+			if (TimeLabel != null) {
+				TimeLabel.Dispose ();
+				TimeLabel = null;
+			}
+
+			if (UserImageView != null) {
+				UserImageView.Dispose ();
+				UserImageView = null;
+			}
+
+			if (ContainerView != null) {
+				ContainerView.Dispose ();
+				ContainerView = null;
+			}
 		}
 	}
 }

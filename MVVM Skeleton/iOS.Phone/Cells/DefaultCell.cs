@@ -5,6 +5,8 @@ using System;
 using Foundation;
 using UIKit;
 using Shared.VM;
+using CoreGraphics;
+using SDWebImage;
 
 namespace iOS.Phone
 {
@@ -22,9 +24,30 @@ namespace iOS.Phone
 		{
 		}
 
+		public override void AwakeFromNib ()
+		{
+			base.AwakeFromNib ();
+
+			ContainerView.Layer.ShadowColor = UIColor.Black.CGColor;
+			ContainerView.Layer.ShadowOpacity = 0.15f;
+			ContainerView.Layer.ShadowOffset = new CGSize (0, 1);
+
+			UserImageView.Layer.CornerRadius = UserImageView.Frame.Height / 2;
+		}
+
 		protected override void ConfigureSubviews (IListItem item)
 		{
 			_viewModel = item as BaseContentCardViewModel;
+
+			NameLabel.Text = _viewModel.UserName;
+			ContentLabel.Text = _viewModel.Text;
+
+			PhotoImageView.Image = UIImage.FromBundle (_viewModel.SocialMediaImage);
+			SocialTypeImageView.Image = UIImage.FromBundle (_viewModel.SocialMediaImage);
+			UserImageView.SetImage (
+				url: new NSUrl (_viewModel.UserImageUrl), 
+				placeholder: UIImage.FromBundle ("Profile Image default.png")
+			);
 		}
 
 		#endregion

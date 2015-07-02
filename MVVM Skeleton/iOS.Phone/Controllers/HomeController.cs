@@ -67,6 +67,8 @@ namespace iOS.Phone
 				controller.OnPullToRefresh = OnPullToRefresh;
 				controller.HandleScrolled = OnScrolled;
 				controller.HandleDraggingStarted = OnDraggingStarted;
+
+				controller.SetEstimatedHeight (175);
 			}
 		}
 
@@ -93,14 +95,14 @@ namespace iOS.Phone
 			{
 				// Stop the adjustment once the header view is off the screen
 				HeaderViewTopConstraint.Constant = -HeaderView.Frame.Height;
-				AccountsView.Alpha = 0;
+//				AccountsView.Alpha = 0;
 				return;
 			}
 			else if (HeaderViewTopConstraint.Constant - difference >= 0) 
 			{
 				// Stop the adjustment once the header view is fully in view
 				HeaderViewTopConstraint.Constant = 0;
-				AccountsView.Alpha = 1;
+//				AccountsView.Alpha = 1;
 				return;
 			}
 
