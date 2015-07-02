@@ -41,6 +41,7 @@ namespace iOS.Phone
 
 			NameLabel.Text = _viewModel.UserName;
 			ContentLabel.Text = _viewModel.Text;
+			TimeLabel.Text = _viewModel.DisplayDateTime;
 
 			PhotoImageView.Image = UIImage.FromBundle (_viewModel.SocialMediaImage);
 			SocialTypeImageView.Image = UIImage.FromBundle (_viewModel.SocialMediaImage);

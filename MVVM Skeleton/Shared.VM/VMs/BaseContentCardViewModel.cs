@@ -1,5 +1,6 @@
 ﻿using System;
 using GalaSoft.MvvmLight.Command;
+using Shared.Common;
 
 namespace Shared.VM
 {
@@ -34,6 +35,14 @@ namespace Shared.VM
 		public abstract int? CommentCount { get; }
 		public abstract int? ShareCount { get; }
 		public abstract DateTime OrderByDateTime { get; }
+
+		public string DisplayDateTime { 
+			get { return OrderByDateTime.ToRelativeString (); }
+		}
+
+		public bool ShowImage {
+			get { return !String.IsNullOrWhiteSpace (ImageUrl); }
+		}
 
 		#endregion
 
