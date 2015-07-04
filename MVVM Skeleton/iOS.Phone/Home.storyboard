@@ -3,6 +3,22 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SanFranciscoText-Medium.otf">
+            <string>SanFranciscoText-Medium</string>
+        </mutableArray>
+        <mutableArray key="SanFranciscoText-Regular.otf">
+            <string>SanFranciscoText-Regular</string>
+        </mutableArray>
+        <mutableArray key="SanFranciscoText-Semibold.otf">
+            <string>SanFranciscoText-Semibold</string>
+            <string>SanFranciscoText-Semibold</string>
+            <string>SanFranciscoText-Semibold</string>
+        </mutableArray>
+        <mutableArray key="SanFranciscoText-Thin.otf">
+            <string>SanFranciscoText-Thin</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Home Controller-->
         <scene sceneID="WlW-lP-V0O">
@@ -30,8 +46,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="90.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michael Peters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCg-y6-dkO">
-                                                <rect key="frame" x="67" y="22" width="186" height="33"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="28"/>
+                                                <rect key="frame" x="70" y="22" width="181" height="33.5"/>
+                                                <fontDescription key="fontDescription" name="SanFranciscoText-Thin" family="San Francisco Text" pointSize="28"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -47,7 +63,7 @@
                                         <rect key="frame" x="80" y="61" width="160" height="47"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1W-Ty-qzx">
-                                                <rect key="frame" x="56.5" y="0.0" width="47" height="47"/>
+                                                <rect key="frame" x="56" y="0.0" width="47" height="47"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="47" id="iCA-yQ-27P"/>
                                                     <constraint firstAttribute="height" constant="47" id="qEE-SN-rri"/>
@@ -164,13 +180,13 @@
                                             <rect key="frame" x="8" y="188" width="304" height="123.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Susan Strong @SueStrong" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0K-Bl-upT">
-                                                    <rect key="frame" x="36" y="6" width="194" height="15.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                    <rect key="frame" x="36" y="6" width="194" height="16"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Medium" family="San Francisco Text" pointSize="13"/>
                                                     <color key="textColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 min" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PlL-0V-pmU">
-                                                    <rect key="frame" x="36" y="22" width="33.5" height="15.5"/>
+                                                    <rect key="frame" x="36" y="23" width="33.5" height="15.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                                     <color key="textColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -187,7 +203,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="Uxk-b0-GQ6"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Semibold" family="San Francisco Text" pointSize="11"/>
                                                     <state key="normal" title="Like (123)">
                                                         <color key="titleColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -195,7 +211,7 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmw-Hj-7XP">
                                                     <rect key="frame" x="117" y="98" width="93" height="25"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Semibold" family="San Francisco Text" pointSize="11"/>
                                                     <state key="normal" title="Comment (123)">
                                                         <color key="titleColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -203,20 +219,20 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gu3-IX-I55">
                                                     <rect key="frame" x="210" y="98" width="93.5" height="25"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Semibold" family="San Francisco Text" pointSize="11"/>
                                                     <state key="normal" title="Shared (123)">
                                                         <color key="titleColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Lorem ipsum dolor sit amet, consectetur adipscing elit. Praesent enim elit." translatesAutoresizingMaskIntoConstraints="NO" id="CWP-pN-93M">
-                                                    <rect key="frame" x="36" y="44.5" width="249" height="31.5"/>
+                                                    <rect key="frame" x="36" y="44" width="249" height="31.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="31.5" id="HgC-ou-D81"/>
+                                                        <constraint firstAttribute="height" constant="31.5" id="bb4-oz-eGc"/>
                                                     </constraints>
                                                     <color key="textColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                                                 </textView>
@@ -225,8 +241,9 @@
                                             <constraints>
                                                 <constraint firstItem="Gu3-IX-I55" firstAttribute="top" secondItem="aOd-o6-K6C" secondAttribute="top" id="1Xl-N7-agm"/>
                                                 <constraint firstItem="Gu3-IX-I55" firstAttribute="leading" secondItem="mmw-Hj-7XP" secondAttribute="trailing" id="2E7-le-NJY"/>
-                                                <constraint firstItem="CWP-pN-93M" firstAttribute="top" secondItem="PlL-0V-pmU" secondAttribute="bottom" constant="7" id="5t0-wK-zOE"/>
                                                 <constraint firstItem="k0K-Bl-upT" firstAttribute="leading" secondItem="2q5-aI-gzd" secondAttribute="leading" constant="36" id="CqP-aN-cFq"/>
+                                                <constraint firstItem="CWP-pN-93M" firstAttribute="top" secondItem="PlL-0V-pmU" secondAttribute="bottom" constant="5.5" id="EGu-Ch-Ssg"/>
+                                                <constraint firstItem="ajQ-5p-Fdx" firstAttribute="top" secondItem="CWP-pN-93M" secondAttribute="bottom" constant="21" id="IuL-VD-Fs0"/>
                                                 <constraint firstItem="k0K-Bl-upT" firstAttribute="leading" secondItem="PlL-0V-pmU" secondAttribute="leading" id="Myr-ra-fFB"/>
                                                 <constraint firstItem="Gu3-IX-I55" firstAttribute="width" secondItem="aOd-o6-K6C" secondAttribute="width" id="On5-Zh-iJo"/>
                                                 <constraint firstAttribute="trailing" secondItem="k0K-Bl-upT" secondAttribute="trailing" constant="74" id="PLU-sK-maC"/>
@@ -234,7 +251,6 @@
                                                 <constraint firstItem="aOd-o6-K6C" firstAttribute="leading" secondItem="ajQ-5p-Fdx" secondAttribute="leading" id="Rz9-m7-RAe"/>
                                                 <constraint firstItem="aOd-o6-K6C" firstAttribute="top" secondItem="mmw-Hj-7XP" secondAttribute="top" id="Syv-JJ-gqK"/>
                                                 <constraint firstItem="aOd-o6-K6C" firstAttribute="bottom" secondItem="mmw-Hj-7XP" secondAttribute="bottom" id="UEe-nR-yvj"/>
-                                                <constraint firstItem="ajQ-5p-Fdx" firstAttribute="top" secondItem="CWP-pN-93M" secondAttribute="bottom" constant="21" id="a2y-KP-swU"/>
                                                 <constraint firstItem="aOd-o6-K6C" firstAttribute="top" secondItem="ajQ-5p-Fdx" secondAttribute="bottom" id="a4T-wT-snl"/>
                                                 <constraint firstAttribute="trailing" secondItem="Gu3-IX-I55" secondAttribute="trailing" id="ah3-kW-mg2"/>
                                                 <constraint firstItem="Gu3-IX-I55" firstAttribute="bottom" secondItem="aOd-o6-K6C" secondAttribute="bottom" id="cla-Qs-R9F"/>
@@ -287,7 +303,7 @@
                                 <connections>
                                     <outlet property="ActivityIndicator" destination="jie-V4-OzK" id="sn8-tq-qyf"/>
                                     <outlet property="BodyTextView" destination="CWP-pN-93M" id="Vyh-O2-onD"/>
-                                    <outlet property="BodyTextViewHeightConstraint" destination="HgC-ou-D81" id="Npr-Km-Wj7"/>
+                                    <outlet property="BodyTextViewHeightConstraint" destination="bb4-oz-eGc" id="qyu-uH-8xD"/>
                                     <outlet property="CommentButton" destination="mmw-Hj-7XP" id="qwh-3T-yqb"/>
                                     <outlet property="ContainerView" destination="2q5-aI-gzd" id="AHE-dl-b9g"/>
                                     <outlet property="LikeButton" destination="aOd-o6-K6C" id="3aB-YC-v0h"/>
@@ -312,7 +328,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQR-iJ-5Vt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="776" y="1056.5"/>
+            <point key="canvasLocation" x="776" y="1056"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BCf-mQ-UNO">

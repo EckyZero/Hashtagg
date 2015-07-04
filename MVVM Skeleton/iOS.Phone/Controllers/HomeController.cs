@@ -48,6 +48,11 @@ namespace iOS.Phone
 		{
 			NavigationController.NavigationBar.SetBackgroundImage(NavigationController.NavigationBar.BarTintColor.ToImage(new CGRect(0,0,NavigationController.View.Frame.Width, NavigationController.NavigationBar.Frame.Height + 20)), UIBarPosition.Any, UIBarMetrics.Default);
 			NavigationController.NavigationBar.ShadowImage = NavigationController.NavigationBar.BarTintColor.ToImage(new CGRect(0,0, NavigationController.View.Frame.Width, 1));
+
+			var attributes = new UITextAttributes () {
+				Font = UIFont.FromName ("SanFranciscoText-Light", 13)
+			};
+			SortOrderSegmentedControl.SetTitleTextAttributes(attributes, UIControlState.Normal);
 		}
 
 		private void InitBindings ()

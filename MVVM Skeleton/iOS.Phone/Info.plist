@@ -24,12 +24,29 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>ShadowsIntoLightTwo-Regular.ttf</string>
-		<string>CenturyGothic.ttf</string>
-		<string>CenturyGothicBold.ttf</string>
-		<string>Futura-Book-Bold.ttf</string>
-		<string>Futura-Book.ttf</string>
-		<string>FuturaStd-Bold.ttf</string>
+		<string>SanFranciscoText-ThinItalic.otf</string>
+		<string>SanFranciscoText-Thin.otf</string>
+		<string>SanFranciscoText-SemiboldItalic.otf</string>
+		<string>SanFranciscoText-Semibold.otf</string>
+		<string>SanFranciscoText-RegularItalic.otf</string>
+		<string>SanFranciscoText-Regular.otf</string>
+		<string>SanFranciscoText-MediumItalic.otf</string>
+		<string>SanFranciscoText-Medium.otf</string>
+		<string>SanFranciscoText-LightItalic.otf</string>
+		<string>SanFranciscoText-Light.otf</string>
+		<string>SanFranciscoText-HeavyItalic.otf</string>
+		<string>SanFranciscoText-Heavy.otf</string>
+		<string>SanFranciscoText-BoldItalic.otf</string>
+		<string>SanFranciscoText-Bold.otf</string>
+		<string>SanFranciscoDisplay-Ultralight.otf</string>
+		<string>SanFranciscoDisplay-Thin.otf</string>
+		<string>SanFranciscoDisplay-Semibold.otf</string>
+		<string>SanFranciscoDisplay-Regular.otf</string>
+		<string>SanFranciscoDisplay-Medium.otf</string>
+		<string>SanFranciscoDisplay-Light.otf</string>
+		<string>SanFranciscoDisplay-Heavy.otf</string>
+		<string>SanFranciscoDisplay-Bold.otf</string>
+		<string>SanFranciscoDisplay-Black.otf</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
@@ -60,5 +77,7 @@
 			<string>com.parivedasolutions.projectez</string>
 		</dict>
 	</array>
+	<key>Custom Property</key>
+	<string></string>
 </dict>
 </plist>

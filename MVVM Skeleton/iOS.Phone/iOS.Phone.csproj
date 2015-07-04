@@ -280,9 +280,6 @@
     <BundleResource Include="Resources\New Post Button%403x.png" />
     <BundleResource Include="Resources\Profile Image default%402x.png" />
     <BundleResource Include="Resources\Profile Image default%403x.png" />
-    <BundleResource Include="Resources\SanFranciscoDisplay-Black.otf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
     <BundleResource Include="Resources\SanFranciscoDisplay-Bold.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
@@ -347,6 +344,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
     <BundleResource Include="Resources\SanFranciscoText-ThinItalic.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoDisplay-Black.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
   </ItemGroup>

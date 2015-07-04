@@ -26,7 +26,6 @@ namespace iOS
 			}
 			else
 			{
-				System.Diagnostics.Debug.WriteLine (String.Format ("Warning - Substring was not found in '{0}'. Setting plain text instead", fullText));
 				label.Text = fullText;
 			}
 		}
