@@ -8,7 +8,7 @@ namespace Shared.Api
 		public string Id { get; set; }
 		public FacebookToFromDto From { get; set; }
 		public string Story { get; set; }
-		public string Picture { get; set; }
+		public string Full_Picture { get; set; }
 		public string Link { get; set; }
 		public string Source { get; set; }
 		public string Name { get; set; }

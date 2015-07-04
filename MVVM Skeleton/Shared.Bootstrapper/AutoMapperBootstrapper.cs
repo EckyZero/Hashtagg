@@ -51,7 +51,7 @@ namespace Shared.Bootstrapper
 				.ForMember (model => model.Text,
 					opts => opts.MapFrom (dto => dto.Message))
 				.ForMember (model => model.ImageUrl,
-					opts => opts.MapFrom (dto => dto.Picture))
+					opts => opts.MapFrom (dto => dto.Full_Picture))
 				.ForMember (model => model.LinkUrl,
 					opts => opts.MapFrom (dto => dto.Link))
 				.ForMember (model => model.ShareCount,

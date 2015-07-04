@@ -1,5 +1,7 @@
 ﻿using System;
 using Shared.Common;
+using Shared.Service;
+using Microsoft.Practices.Unity;
 
 namespace Shared.VM
 {
@@ -8,6 +10,7 @@ namespace Shared.VM
 		#region Private Variables
 
 		private FacebookPost _facebookPost;
+		private IFacebookService _facebookService;
 
 		#endregion
 
@@ -25,9 +28,7 @@ namespace Shared.VM
 
 		public override string UserImageUrl 
 		{
-			// TODO: Facebook only returns userIds. We'll have to do a separate
-			// query to get the image
-			get { return String.Empty; }
+			get { return _facebookPost.User.Picture; }
 		}
 
 		public override string UserName
@@ -37,7 +38,7 @@ namespace Shared.VM
 
 		public override string SocialMediaImage 
 		{
-			get { return "Facebook_Icon.png"; }
+			get { return "Facebook.png"; }
 		}
 
 		public override string Text 
@@ -67,11 +68,31 @@ namespace Shared.VM
 			get { return _facebookPost.UpdatedAt; }
 		}
 
+		public override bool IsLikedByUser 
+		{
+			get { return _facebookPost.IsLikedByUser; }
+		}
+
+		public override bool IsCommentedByUser 
+		{
+			// TODO: Unsure as to how to gather this data
+			get { return false; }
+		}
+
+		public override bool IsSharedByUser 
+		{
+			// TODO: Unsure as to how to gather this data
+			get { return false; }
+		}
+			
 		#endregion
 
 		public FacebookCardViewModel (FacebookPost post)
 		{
 			_facebookPost = post;
+			_facebookService = IocContainer.GetContainer ().Resolve<IFacebookService> ();
+
+				
 		}
 	}
 }

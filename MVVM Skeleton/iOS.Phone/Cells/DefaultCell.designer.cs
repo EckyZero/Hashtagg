@@ -13,6 +13,9 @@ namespace iOS.Phone
 	partial class DefaultCell
 	{
 		[Outlet]
+		UIKit.UIActivityIndicatorView ActivityIndicator { get; set; }
+
+		[Outlet]
 		UIKit.UIButton CommentButton { get; set; }
 
 		[Outlet]
@@ -50,6 +53,11 @@ namespace iOS.Phone
 			if (CommentButton != null) {
 				CommentButton.Dispose ();
 				CommentButton = null;
+			}
+
+			if (ContainerView != null) {
+				ContainerView.Dispose ();
+				ContainerView = null;
 			}
 
 			if (ContentLabel != null) {
@@ -97,9 +105,9 @@ namespace iOS.Phone
 				UserImageView = null;
 			}
 
-			if (ContainerView != null) {
-				ContainerView.Dispose ();
-				ContainerView = null;
+			if (ActivityIndicator != null) {
+				ActivityIndicator.Dispose ();
+				ActivityIndicator = null;
 			}
 		}
 	}

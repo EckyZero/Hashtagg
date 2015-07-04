@@ -133,23 +133,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Default" rowHeight="312" id="DdG-kl-YYN" customClass="DefaultCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Default" rowHeight="312" id="DdG-kl-YYN" customClass="DefaultCell">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DdG-kl-YYN" id="MN0-6a-W5I">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nBZ-gu-v7R">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nBZ-gu-v7R">
                                             <rect key="frame" x="8" y="14" width="304" height="174"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="174" id="QXD-Ha-6W7"/>
+                                                <constraint firstAttribute="height" constant="174" id="nwk-32-EVd"/>
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2q5-aI-gzd" userLabel="ContainerView">
                                             <rect key="frame" x="8" y="188" width="304" height="123.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Susan Strong @SueStrong" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0K-Bl-upT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Susan Strong @SueStrong" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0K-Bl-upT">
                                                     <rect key="frame" x="36" y="6" width="194" height="15.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                                     <color key="textColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
@@ -243,16 +244,22 @@
                                                 <constraint firstAttribute="height" constant="24" id="nTg-Ym-rAD"/>
                                             </constraints>
                                         </imageView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jie-V4-OzK">
+                                            <rect key="frame" x="150" y="91" width="20" height="20"/>
+                                        </activityIndicatorView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.20784313730000001" green="0.40784313729999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.91764705882352937" green="0.93725490196078431" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
+                                        <constraint firstItem="jie-V4-OzK" firstAttribute="centerY" secondItem="nBZ-gu-v7R" secondAttribute="centerY" id="2PY-X1-j6d"/>
                                         <constraint firstItem="nBZ-gu-v7R" firstAttribute="leading" secondItem="2q5-aI-gzd" secondAttribute="leading" id="E5m-uG-zVJ"/>
+                                        <constraint firstItem="jie-V4-OzK" firstAttribute="centerX" secondItem="nBZ-gu-v7R" secondAttribute="centerX" id="FfW-Fa-WgZ"/>
                                         <constraint firstAttribute="trailing" secondItem="dXO-hc-AOq" secondAttribute="trailing" constant="32" id="MEP-dr-Fd7"/>
                                         <constraint firstAttribute="bottom" secondItem="2q5-aI-gzd" secondAttribute="bottom" constant="0.5" id="MPW-Ej-iMH"/>
                                         <constraint firstAttribute="trailing" secondItem="2q5-aI-gzd" secondAttribute="trailing" constant="8" id="MTg-T7-9Xf"/>
                                         <constraint firstItem="dXO-hc-AOq" firstAttribute="centerY" secondItem="ruf-VC-Mdn" secondAttribute="centerY" id="NQX-vP-P0P"/>
+                                        <constraint firstItem="dXO-hc-AOq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MN0-6a-W5I" secondAttribute="top" priority="999" constant="14" id="Qqc-iK-vbv"/>
                                         <constraint firstItem="nBZ-gu-v7R" firstAttribute="trailing" secondItem="2q5-aI-gzd" secondAttribute="trailing" id="XnR-L9-3CF"/>
-                                        <constraint firstItem="nBZ-gu-v7R" firstAttribute="top" secondItem="MN0-6a-W5I" secondAttribute="top" priority="999" constant="14" id="b8l-ax-9rg"/>
+                                        <constraint firstItem="nBZ-gu-v7R" firstAttribute="top" secondItem="MN0-6a-W5I" secondAttribute="top" priority="998" constant="14" id="b8l-ax-9rg"/>
                                         <constraint firstItem="2q5-aI-gzd" firstAttribute="top" secondItem="dXO-hc-AOq" secondAttribute="bottom" constant="-19" id="gM9-tl-L5r"/>
                                         <constraint firstItem="2q5-aI-gzd" firstAttribute="top" secondItem="nBZ-gu-v7R" secondAttribute="bottom" id="h94-0S-Qwg"/>
                                         <constraint firstItem="2q5-aI-gzd" firstAttribute="leading" secondItem="MN0-6a-W5I" secondAttribute="leading" constant="8" id="jhA-d4-mtZ"/>
@@ -260,13 +267,14 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="ActivityIndicator" destination="jie-V4-OzK" id="sn8-tq-qyf"/>
                                     <outlet property="CommentButton" destination="mmw-Hj-7XP" id="qwh-3T-yqb"/>
                                     <outlet property="ContainerView" destination="2q5-aI-gzd" id="AHE-dl-b9g"/>
                                     <outlet property="ContentLabel" destination="v9L-Cx-bic" id="cmf-pG-I9a"/>
                                     <outlet property="LikeButton" destination="aOd-o6-K6C" id="3aB-YC-v0h"/>
                                     <outlet property="NameLabel" destination="k0K-Bl-upT" id="JlR-jE-cVo"/>
                                     <outlet property="PhotoImageView" destination="nBZ-gu-v7R" id="IVc-oY-ZJT"/>
-                                    <outlet property="PhotoImageViewHeightConstraint" destination="QXD-Ha-6W7" id="ITQ-YE-iCa"/>
+                                    <outlet property="PhotoImageViewHeightConstraint" destination="nwk-32-EVd" id="fLF-LX-LYI"/>
                                     <outlet property="ShareButton" destination="Gu3-IX-I55" id="CFs-Pf-fIf"/>
                                     <outlet property="SocialTypeImageView" destination="dXO-hc-AOq" id="dE7-Xa-BBz"/>
                                     <outlet property="TimeLabel" destination="PlL-0V-pmU" id="J6J-ug-wIO"/>

@@ -26,47 +26,35 @@ namespace Shared.Common
 			const int DAY = 24 * HOUR;
 			const int MONTH = 30 * DAY;
 
-			var ts = new TimeSpan(DateTime.UtcNow.Ticks - dateTime.Ticks);
+			var ts = new TimeSpan(DateTime.Now.Ticks - dateTime.Ticks);
 			double delta = Math.Abs(ts.TotalSeconds);
+			var value = "";
 
 			if (delta < 1 * MINUTE)
 			{
-				return ts.Seconds == 1 ? "one second ago" : ts.Seconds + " seconds ago";
+				value = ts.Seconds == 1 ? "one second ago" : ts.Seconds + " seconds ago";
 			}
-			if (delta < 2 * MINUTE)
+			else if (delta < 45 * MINUTE)
 			{
-				return "a minute ago";
+				value = ts.Minutes + " min";
 			}
-			if (delta < 45 * MINUTE)
+			else if (delta < 120 * MINUTE)
 			{
-				return ts.Minutes + " minutes ago";
+				value = "1 hr";
 			}
-			if (delta < 90 * MINUTE)
+			else if (delta < 24 * HOUR)
 			{
-				return "an hour ago";
+				value = ts.Hours + " hrs";
 			}
-			if (delta < 24 * HOUR)
+			else if (delta < 48 * HOUR)
 			{
-				return ts.Hours + " hours ago";
+				value = "yesterday";
 			}
-			if (delta < 48 * HOUR)
+			else if (delta < 30 * DAY)
 			{
-				return "yesterday";
+				value = dateTime.ToString("d");
 			}
-			if (delta < 30 * DAY)
-			{
-				return ts.Days + " days ago";
-			}
-			if (delta < 12 * MONTH)
-			{
-				int months = Convert.ToInt32(Math.Floor((double)ts.Days / 30));
-				return months <= 1 ? "one month ago" : months + " months ago";
-			}
-			else
-			{
-				int years = Convert.ToInt32(Math.Floor((double)ts.Days / 365));
-				return years <= 1 ? "one year ago" : years + " years ago";
-			}
+			return value;
 		}
 	}
 }

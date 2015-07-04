@@ -15,6 +15,7 @@ namespace iOS.Phone
 		#region Variables
 
 		private BaseContentCardViewModel _viewModel;
+		private nfloat _photoImageViewDefaultHeightConstraint = 174;
 
 		#endregion
 
@@ -33,22 +34,68 @@ namespace iOS.Phone
 			ContainerView.Layer.ShadowOffset = new CGSize (0, 1);
 
 			UserImageView.Layer.CornerRadius = UserImageView.Frame.Height / 2;
+			_photoImageViewDefaultHeightConstraint = PhotoImageViewHeightConstraint.Constant;
+
+			LikeButton.TouchUpInside += LikeButton_TouchUpInside;
+			ShareButton.TouchUpInside += ShareButton_TouchUpInside;
+			CommentButton.TouchUpInside += CommentButton_TouchUpInside;
 		}
 
 		protected override void ConfigureSubviews (IListItem item)
 		{
 			_viewModel = item as BaseContentCardViewModel;
 
+			// Adjust constraints as needed
+			PhotoImageViewHeightConstraint.Constant = _viewModel.ShowImage ? _photoImageViewDefaultHeightConstraint : 0;
+
+			// Map values to UI elements
 			NameLabel.Text = _viewModel.UserName;
 			ContentLabel.Text = _viewModel.Text;
 			TimeLabel.Text = _viewModel.DisplayDateTime;
+			LikeButton.SetTitle (_viewModel.LikeButtonText, UIControlState.Normal);
+			CommentButton.SetTitle (_viewModel.CommentButtonText, UIControlState.Normal);
+			ShareButton.SetTitle (_viewModel.ShareButtonText, UIControlState.Normal);
+			NameLabel.SetHighlightText (_viewModel.UserName, _viewModel.UserName.IndexOf ("@"), UIColor.LightGray);
 
-			PhotoImageView.Image = UIImage.FromBundle (_viewModel.SocialMediaImage);
+			if(_viewModel.ShowImage) {
+				ActivityIndicator.StartAnimating ();
+			} else {
+				ActivityIndicator.StopAnimating ();
+			}
+
 			SocialTypeImageView.Image = UIImage.FromBundle (_viewModel.SocialMediaImage);
 			UserImageView.SetImage (
 				url: new NSUrl (_viewModel.UserImageUrl), 
-				placeholder: UIImage.FromBundle ("Profile Image default.png")
+				placeholder: UIImage.FromBundle (_viewModel.UserImagePlaceholder)
 			);
+
+			if (_viewModel.ShowImage) {
+				PhotoImageView.SetImage (
+					url: new NSUrl (_viewModel.ImageUrl), 
+					placeholder: UIImage.FromBundle (_viewModel.UserImagePlaceholder),
+					completionHandler: ((UIImage image, NSError error, SDImageCacheType cacheType, NSUrl imageUrl) => {
+						ActivityIndicator.Hidden = true;
+					})
+				);	
+			} else {
+				PhotoImageView.Image = null;
+			}
+				
+		}
+
+		void CommentButton_TouchUpInside (object sender, EventArgs e)
+		{
+			_viewModel.CommentCommand.Execute (null);
+		}
+
+		void ShareButton_TouchUpInside (object sender, EventArgs e)
+		{
+			_viewModel.ShareCommand.Execute (null);
+		}
+
+		void LikeButton_TouchUpInside (object sender, EventArgs e)
+		{
+			_viewModel.LikeCommand.Execute (null);
 		}
 
 		#endregion

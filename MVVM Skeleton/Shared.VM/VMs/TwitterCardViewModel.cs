@@ -30,12 +30,12 @@ namespace Shared.VM
 
 		public override string UserName 
 		{
-			get { return _tweet.UserName; }
+			get { return String.Format("{0} @{1}",_tweet.UserName, _tweet.UserScreenName); }
 		}
 
 		public override string SocialMediaImage 
 		{
-			get { return "Twitter_Icon.png"; }
+			get { return "Twitter.png"; }
 		}
 
 		public override string Text 
@@ -50,6 +50,7 @@ namespace Shared.VM
 
 		public override int? CommentCount 
 		{
+			// TODO: Unsure as to how to gather this data
 			get { return null; }
 		}
 
@@ -61,6 +62,22 @@ namespace Shared.VM
 		public override DateTime OrderByDateTime 
 		{
 			get { return _tweet.CreatedAt; }
+		}
+
+		public override bool IsLikedByUser 
+		{
+			get { return _tweet.IsFavoritedByUser; }
+		}
+
+		public override bool IsCommentedByUser 
+		{
+			// TODO: Unsure as to how to gather this data
+			get { return _tweet.IsRetweetedByUser; }
+		}
+
+		public override bool IsSharedByUser 
+		{
+			get { return _tweet.IsRetweetedByUser; }
 		}
 
 		public string UserScreenName 
