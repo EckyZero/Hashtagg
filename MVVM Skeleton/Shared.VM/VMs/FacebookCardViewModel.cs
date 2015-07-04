@@ -2,6 +2,7 @@
 using Shared.Common;
 using Shared.Service;
 using Microsoft.Practices.Unity;
+using System.Text;
 
 namespace Shared.VM
 {
@@ -10,7 +11,6 @@ namespace Shared.VM
 		#region Private Variables
 
 		private FacebookPost _facebookPost;
-		private IFacebookService _facebookService;
 
 		#endregion
 
@@ -43,9 +43,20 @@ namespace Shared.VM
 
 		public override string Text 
 		{
-			// TODO: May need to look into how the text is formatted
-			// Sometimes the main body is in a description field, sometimes a story
-			get { return _facebookPost.Text; }
+			get { 
+				var builder = new StringBuilder ();
+
+				if(!String.IsNullOrWhiteSpace(_facebookPost.Message)) {
+					builder.Append (_facebookPost.Message);
+				}
+				if(!String.IsNullOrWhiteSpace(_facebookPost.Story)) {
+					builder.AppendFormat ("{0}{1}", builder.Length == 0 ? "" : "\n\n", _facebookPost.Story);
+				}
+				if(!String.IsNullOrWhiteSpace(_facebookPost.Description)) {
+					builder.AppendFormat ("{0}{1}", builder.Length == 0 ? "" : "\n\n", _facebookPost.Description);
+				}
+				return builder.ToString ();
+			}
 		}
 
 		public override int? LikeCount 
@@ -90,9 +101,6 @@ namespace Shared.VM
 		public FacebookCardViewModel (FacebookPost post)
 		{
 			_facebookPost = post;
-			_facebookService = IocContainer.GetContainer ().Resolve<IFacebookService> ();
-
-				
 		}
 	}
 }

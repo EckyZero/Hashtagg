@@ -6,7 +6,7 @@ namespace Shared.Common
 	{
 		public string Id { get; set;}
 		public DateTime CreatedAt { get; set; }
-		public string Text { get; set; }
+		public string Message { get; set; }
 		public int LikedCount { get; set; }
 		public bool IsLikedByUser { get; set; }
 
