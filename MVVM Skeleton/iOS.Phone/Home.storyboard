@@ -170,12 +170,6 @@
                                                     <color key="textColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipscing elit. Praesent enim elit." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9L-Cx-bic">
-                                                    <rect key="frame" x="36" y="44" width="249" height="31.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
-                                                    <color key="textColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajQ-5p-Fdx">
                                                     <rect key="frame" x="24" y="97" width="280" height="1"/>
                                                     <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
@@ -210,23 +204,32 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Lorem ipsum dolor sit amet, consectetur adipscing elit. Praesent enim elit." translatesAutoresizingMaskIntoConstraints="NO" id="CWP-pN-93M">
+                                                    <rect key="frame" x="36" y="44.5" width="249" height="31.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="31.5" id="HgC-ou-D81"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                                                </textView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="Gu3-IX-I55" firstAttribute="top" secondItem="aOd-o6-K6C" secondAttribute="top" id="1Xl-N7-agm"/>
                                                 <constraint firstItem="Gu3-IX-I55" firstAttribute="leading" secondItem="mmw-Hj-7XP" secondAttribute="trailing" id="2E7-le-NJY"/>
+                                                <constraint firstItem="CWP-pN-93M" firstAttribute="top" secondItem="PlL-0V-pmU" secondAttribute="bottom" constant="7" id="5t0-wK-zOE"/>
                                                 <constraint firstItem="k0K-Bl-upT" firstAttribute="leading" secondItem="2q5-aI-gzd" secondAttribute="leading" constant="36" id="CqP-aN-cFq"/>
-                                                <constraint firstAttribute="trailing" secondItem="v9L-Cx-bic" secondAttribute="trailing" constant="19" id="DiQ-RL-DMP"/>
                                                 <constraint firstItem="k0K-Bl-upT" firstAttribute="leading" secondItem="PlL-0V-pmU" secondAttribute="leading" id="Myr-ra-fFB"/>
                                                 <constraint firstItem="Gu3-IX-I55" firstAttribute="width" secondItem="aOd-o6-K6C" secondAttribute="width" id="On5-Zh-iJo"/>
                                                 <constraint firstAttribute="trailing" secondItem="k0K-Bl-upT" secondAttribute="trailing" constant="74" id="PLU-sK-maC"/>
-                                                <constraint firstItem="v9L-Cx-bic" firstAttribute="top" secondItem="PlL-0V-pmU" secondAttribute="bottom" constant="7" id="PZo-rj-N8M"/>
                                                 <constraint firstAttribute="bottom" secondItem="aOd-o6-K6C" secondAttribute="bottom" id="Pvx-wM-XB2"/>
-                                                <constraint firstItem="PlL-0V-pmU" firstAttribute="leading" secondItem="v9L-Cx-bic" secondAttribute="leading" id="Q0Z-X8-IpD"/>
-                                                <constraint firstItem="ajQ-5p-Fdx" firstAttribute="top" secondItem="v9L-Cx-bic" secondAttribute="bottom" constant="21" id="QHn-h2-ZI1"/>
                                                 <constraint firstItem="aOd-o6-K6C" firstAttribute="leading" secondItem="ajQ-5p-Fdx" secondAttribute="leading" id="Rz9-m7-RAe"/>
                                                 <constraint firstItem="aOd-o6-K6C" firstAttribute="top" secondItem="mmw-Hj-7XP" secondAttribute="top" id="Syv-JJ-gqK"/>
                                                 <constraint firstItem="aOd-o6-K6C" firstAttribute="bottom" secondItem="mmw-Hj-7XP" secondAttribute="bottom" id="UEe-nR-yvj"/>
+                                                <constraint firstItem="ajQ-5p-Fdx" firstAttribute="top" secondItem="CWP-pN-93M" secondAttribute="bottom" constant="21" id="a2y-KP-swU"/>
                                                 <constraint firstItem="aOd-o6-K6C" firstAttribute="top" secondItem="ajQ-5p-Fdx" secondAttribute="bottom" id="a4T-wT-snl"/>
                                                 <constraint firstAttribute="trailing" secondItem="Gu3-IX-I55" secondAttribute="trailing" id="ah3-kW-mg2"/>
                                                 <constraint firstItem="Gu3-IX-I55" firstAttribute="bottom" secondItem="aOd-o6-K6C" secondAttribute="bottom" id="cla-Qs-R9F"/>
@@ -235,7 +238,9 @@
                                                 <constraint firstItem="PlL-0V-pmU" firstAttribute="top" secondItem="k0K-Bl-upT" secondAttribute="bottom" constant="1" id="lam-ce-uJu"/>
                                                 <constraint firstItem="aOd-o6-K6C" firstAttribute="width" secondItem="mmw-Hj-7XP" secondAttribute="width" id="nKb-HO-9Qi"/>
                                                 <constraint firstItem="k0K-Bl-upT" firstAttribute="top" secondItem="2q5-aI-gzd" secondAttribute="top" constant="6" id="v0y-Qe-teX"/>
+                                                <constraint firstAttribute="trailing" secondItem="CWP-pN-93M" secondAttribute="trailing" constant="19" id="vY7-sW-yZO"/>
                                                 <constraint firstAttribute="trailing" secondItem="ajQ-5p-Fdx" secondAttribute="trailing" id="xTZ-1m-maX"/>
+                                                <constraint firstItem="PlL-0V-pmU" firstAttribute="leading" secondItem="CWP-pN-93M" secondAttribute="leading" id="yWN-CE-Qeq"/>
                                             </constraints>
                                         </view>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter.png" translatesAutoresizingMaskIntoConstraints="NO" id="dXO-hc-AOq">
@@ -276,9 +281,10 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="ActivityIndicator" destination="jie-V4-OzK" id="sn8-tq-qyf"/>
+                                    <outlet property="BodyTextView" destination="CWP-pN-93M" id="Vyh-O2-onD"/>
+                                    <outlet property="BodyTextViewHeightConstraint" destination="HgC-ou-D81" id="Npr-Km-Wj7"/>
                                     <outlet property="CommentButton" destination="mmw-Hj-7XP" id="qwh-3T-yqb"/>
                                     <outlet property="ContainerView" destination="2q5-aI-gzd" id="AHE-dl-b9g"/>
-                                    <outlet property="ContentLabel" destination="v9L-Cx-bic" id="cmf-pG-I9a"/>
                                     <outlet property="LikeButton" destination="aOd-o6-K6C" id="3aB-YC-v0h"/>
                                     <outlet property="NameLabel" destination="k0K-Bl-upT" id="JlR-jE-cVo"/>
                                     <outlet property="PhotoImageView" destination="nBZ-gu-v7R" id="IVc-oY-ZJT"/>

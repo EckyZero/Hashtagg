@@ -34,6 +34,10 @@ namespace iOS.Phone
 			ContainerView.Layer.ShadowOffset = new CGSize (0, 1);
 
 			UserImageView.Layer.CornerRadius = UserImageView.Frame.Height / 2;
+			BodyTextView.TextContainer.LineFragmentPadding = 0;
+			BodyTextView.TextContainerInset = UIEdgeInsets.Zero;
+//			BodyTextView.TextContainer.HeightTracksTextView = true;
+
 			_photoImageViewDefaultHeightConstraint = PhotoImageViewHeightConstraint.Constant;
 
 			LikeButton.TouchUpInside += LikeButton_TouchUpInside;
@@ -49,8 +53,9 @@ namespace iOS.Phone
 			PhotoImageViewHeightConstraint.Constant = _viewModel.ShowImage ? _photoImageViewDefaultHeightConstraint : 0;
 
 			// Map values to UI elements
-			NameLabel.Text = _viewModel.UserName;
-			ContentLabel.Text = _viewModel.Text;
+			BodyTextView.Text = null;
+			BodyTextView.Text = _viewModel.Text;
+			BodyTextViewHeightConstraint.Constant = BodyTextView.SizeThatFits(new CGSize(BodyTextView.Frame.Width, nfloat.MaxValue)).Height;
 			TimeLabel.Text = _viewModel.DisplayDateTime;
 			LikeButton.SetTitle (_viewModel.LikeButtonText, UIControlState.Normal);
 			CommentButton.SetTitle (_viewModel.CommentButtonText, UIControlState.Normal);

@@ -16,13 +16,16 @@ namespace iOS.Phone
 		UIKit.UIActivityIndicatorView ActivityIndicator { get; set; }
 
 		[Outlet]
+		UIKit.UITextView BodyTextView { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint BodyTextViewHeightConstraint { get; set; }
+
+		[Outlet]
 		UIKit.UIButton CommentButton { get; set; }
 
 		[Outlet]
 		UIKit.UIView ContainerView { get; set; }
-
-		[Outlet]
-		UIKit.UILabel ContentLabel { get; set; }
 
 		[Outlet]
 		UIKit.UIButton LikeButton { get; set; }
@@ -50,6 +53,11 @@ namespace iOS.Phone
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (ActivityIndicator != null) {
+				ActivityIndicator.Dispose ();
+				ActivityIndicator = null;
+			}
+
 			if (CommentButton != null) {
 				CommentButton.Dispose ();
 				CommentButton = null;
@@ -58,11 +66,6 @@ namespace iOS.Phone
 			if (ContainerView != null) {
 				ContainerView.Dispose ();
 				ContainerView = null;
-			}
-
-			if (ContentLabel != null) {
-				ContentLabel.Dispose ();
-				ContentLabel = null;
 			}
 
 			if (LikeButton != null) {
@@ -105,9 +108,14 @@ namespace iOS.Phone
 				UserImageView = null;
 			}
 
-			if (ActivityIndicator != null) {
-				ActivityIndicator.Dispose ();
-				ActivityIndicator = null;
+			if (BodyTextView != null) {
+				BodyTextView.Dispose ();
+				BodyTextView = null;
+			}
+
+			if (BodyTextViewHeightConstraint != null) {
+				BodyTextViewHeightConstraint.Dispose ();
+				BodyTextViewHeightConstraint = null;
 			}
 		}
 	}
