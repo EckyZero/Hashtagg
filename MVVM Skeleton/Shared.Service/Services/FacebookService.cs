@@ -35,8 +35,14 @@ namespace Shared.Service
 
 					foreach (FacebookFeedItemDto dto in dtos.Data)
 					{
-						var model = Mapper.Map<FacebookPost> (dto);
-						models.Add(model);
+						// Facebook include an additional "fake" post each time a user shares a link
+						// These "fake" posts have categories whereas "real" posts from your friends do not
+						// We check here to make sure that only the posts from our friends make it to the feed
+						if(String.IsNullOrWhiteSpace(dto.From.Category))
+						{
+							var model = Mapper.Map<FacebookPost> (dto);
+							models.Add(model);	
+						}
 					}	
 
 					return new ServiceResponse<ObservableCollection<FacebookPost>>(models,ServiceResponseType.SUCCESS);	
