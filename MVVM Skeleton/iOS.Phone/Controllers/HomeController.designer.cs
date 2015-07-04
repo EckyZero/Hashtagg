@@ -22,10 +22,24 @@ namespace iOS.Phone
 		UIKit.NSLayoutConstraint HeaderViewTopConstraint { get; set; }
 
 		[Outlet]
+		UIKit.UILabel NameLabel { get; set; }
+
+		[Outlet]
+		UIKit.UIBarButtonItem PostBarButton { get; set; }
+
+		[Outlet]
+		UIKit.UISegmentedControl SortOrderSegmentedControl { get; set; }
+
+		[Outlet]
 		UIKit.NSLayoutConstraint TableViewTopConstraint { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (AccountsView != null) {
+				AccountsView.Dispose ();
+				AccountsView = null;
+			}
+
 			if (HeaderView != null) {
 				HeaderView.Dispose ();
 				HeaderView = null;
@@ -41,9 +55,19 @@ namespace iOS.Phone
 				TableViewTopConstraint = null;
 			}
 
-			if (AccountsView != null) {
-				AccountsView.Dispose ();
-				AccountsView = null;
+			if (NameLabel != null) {
+				NameLabel.Dispose ();
+				NameLabel = null;
+			}
+
+			if (SortOrderSegmentedControl != null) {
+				SortOrderSegmentedControl.Dispose ();
+				SortOrderSegmentedControl = null;
+			}
+
+			if (PostBarButton != null) {
+				PostBarButton.Dispose ();
+				PostBarButton = null;
 			}
 		}
 	}

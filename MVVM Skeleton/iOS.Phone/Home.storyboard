@@ -17,14 +17,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9a-jh-Q0d">
-                                <rect key="frame" x="0.0" y="129" width="320" height="375"/>
+                                <rect key="frame" x="0.0" y="90" width="320" height="414"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="479-Fv-hah" kind="embed" id="HOp-Q1-par"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oac-2S-kcF" userLabel="HeaderView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7OQ-0N-BWb" userLabel="HeaderContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="90.5"/>
@@ -44,7 +44,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4X-4L-5hr" userLabel="AccountsView">
-                                        <rect key="frame" x="80" y="67" width="160" height="47"/>
+                                        <rect key="frame" x="80" y="61" width="160" height="47"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1W-Ty-qzx">
                                                 <rect key="frame" x="56.5" y="0.0" width="47" height="47"/>
@@ -70,8 +70,8 @@
                                 <constraints>
                                     <constraint firstItem="7OQ-0N-BWb" firstAttribute="leading" secondItem="oac-2S-kcF" secondAttribute="leading" id="EK4-l1-fmS"/>
                                     <constraint firstAttribute="trailing" secondItem="7OQ-0N-BWb" secondAttribute="trailing" id="Fv1-0h-pds"/>
-                                    <constraint firstAttribute="bottom" secondItem="R4X-4L-5hr" secondAttribute="bottom" constant="15" id="IYk-0Q-4Rm"/>
-                                    <constraint firstAttribute="height" constant="129" id="MmB-Rw-1NZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="R4X-4L-5hr" secondAttribute="bottom" constant="2" id="IYk-0Q-4Rm"/>
+                                    <constraint firstAttribute="height" constant="110" id="MmB-Rw-1NZ"/>
                                     <constraint firstAttribute="centerX" secondItem="R4X-4L-5hr" secondAttribute="centerX" id="jcI-Ge-12R"/>
                                     <constraint firstItem="7OQ-0N-BWb" firstAttribute="top" secondItem="oac-2S-kcF" secondAttribute="top" id="q4c-rv-veP"/>
                                 </constraints>
@@ -79,7 +79,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.91764705882352937" green="0.93725490196078431" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="W9a-jh-Q0d" firstAttribute="top" secondItem="oac-2S-kcF" secondAttribute="bottom" id="5IA-N8-RSN"/>
+                            <constraint firstItem="W9a-jh-Q0d" firstAttribute="top" secondItem="oac-2S-kcF" secondAttribute="bottom" constant="-20" id="5IA-N8-RSN"/>
                             <constraint firstItem="oac-2S-kcF" firstAttribute="leading" secondItem="kFD-Vb-S3j" secondAttribute="leading" id="7NC-4y-jGQ"/>
                             <constraint firstAttribute="trailing" secondItem="W9a-jh-Q0d" secondAttribute="trailing" id="BPQ-4e-Etl"/>
                             <constraint firstItem="3o1-Mw-RFT" firstAttribute="top" secondItem="W9a-jh-Q0d" secondAttribute="bottom" id="KRy-Kb-OKH"/>
@@ -117,6 +117,9 @@
                         <outlet property="AccountsView" destination="R4X-4L-5hr" id="r4U-IC-FW7"/>
                         <outlet property="HeaderView" destination="oac-2S-kcF" id="OXH-bu-d1G"/>
                         <outlet property="HeaderViewTopConstraint" destination="Wzf-xJ-EAA" id="MjU-s1-fya"/>
+                        <outlet property="NameLabel" destination="NCg-y6-dkO" id="eQe-3G-APl"/>
+                        <outlet property="PostBarButton" destination="Zs8-01-7rr" id="03O-LY-VoS"/>
+                        <outlet property="SortOrderSegmentedControl" destination="K1a-O1-dBy" id="iwl-qT-KTh"/>
                         <outlet property="TableViewTopConstraint" destination="5IA-N8-RSN" id="ahf-8k-8UP"/>
                     </connections>
                 </viewController>
@@ -129,9 +132,14 @@
             <objects>
                 <tableViewController id="479-Fv-hah" customClass="HomeTableController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="333" sectionHeaderHeight="22" sectionFooterHeight="22" id="gSf-9q-DyM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="yoR-DN-kgA">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Default" rowHeight="312" id="DdG-kl-YYN" customClass="DefaultCell">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>

@@ -90,27 +90,36 @@ namespace iOS.Phone
 			var point = tableView.PanGestureRecognizer.TranslationInView (tableView);
 			var difference = _lastY - point.Y;
 			var percentComplete = HeaderViewTopConstraint.Constant / -HeaderView.Frame.Height;
+			nfloat? newConstant = null;
 
 			if(HeaderViewTopConstraint.Constant - difference <= -HeaderView.Frame.Height) 
 			{
 				// Stop the adjustment once the header view is off the screen
-				HeaderViewTopConstraint.Constant = -HeaderView.Frame.Height;
-//				AccountsView.Alpha = 0;
-				return;
+				newConstant = -HeaderView.Frame.Height;
 			}
-			else if (HeaderViewTopConstraint.Constant - difference >= 0) 
+			else if (HeaderViewTopConstraint.Constant - difference >= 0 && tableView.ContentOffset.Y <= 0) 
 			{
 				// Stop the adjustment once the header view is fully in view
-				HeaderViewTopConstraint.Constant = 0;
-//				AccountsView.Alpha = 1;
-				return;
+				newConstant = 0;
+			} 
+			else
+			{
+				if(difference <= 0 && tableView.ContentOffset.Y <= 0)
+				{
+					// Only move the header view back out if we're at the top	
+					newConstant = HeaderViewTopConstraint.Constant -= difference;
+				} 
+				else if (difference >= 0 && tableView.ContentOffset.Y >= 0)
+				{
+					// Move the header view out whenever we're scrolling down
+					newConstant = HeaderViewTopConstraint.Constant - difference;
+				}
 			}
 
 			// Adjust the constraint per the user's scroll
-			HeaderViewTopConstraint.Constant -= difference;
-
-			// TODO: May need to adjust the alpha's here for better fade in/out
-//			AccountsView.Alpha = 1 - percentComplete;
+			if(newConstant.HasValue) {
+				HeaderViewTopConstraint.Constant = newConstant.Value;	
+			}
 
 			// Track the current position
 			_lastY = point.Y;

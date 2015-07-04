@@ -72,7 +72,6 @@ namespace iOS.Phone
 			if (_viewModel.ShowImage) {
 				PhotoImageView.SetImage (
 					url: new NSUrl (_viewModel.ImageUrl), 
-					placeholder: UIImage.FromBundle (_viewModel.UserImagePlaceholder),
 					completionHandler: ((UIImage image, NSError error, SDImageCacheType cacheType, NSUrl imageUrl) => {
 						ActivityIndicator.Hidden = true;
 					})
