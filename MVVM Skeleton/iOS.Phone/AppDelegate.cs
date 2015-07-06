@@ -17,7 +17,6 @@ namespace iOS.Phone
 	public partial class AppDelegate : UIApplicationDelegate
 	{
 		public override UIWindow Window { get; set; }
-		public JASidePanelController ContainerController { get; set; }
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
@@ -25,10 +24,12 @@ namespace iOS.Phone
 			Calabash.Start();
 			#endif
 
-			ContainerController = new ContainerController ();
+			// TODO: Toggle between onboarding/home depending on if they've signed in already
+			var storyboard = UIStoryboard.FromName ("Onboarding", null);
+			var controller = storyboard.InstantiateInitialViewController ();
 
 			Window = new UIWindow (UIScreen.MainScreen.Bounds);
-			Window.RootViewController = ContainerController;
+			Window.RootViewController = controller;
 			Window.MakeKeyAndVisible ();
 
 			return true;

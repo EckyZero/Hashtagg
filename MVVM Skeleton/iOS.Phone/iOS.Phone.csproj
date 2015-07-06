@@ -200,9 +200,13 @@
     <Compile Include="Controllers\HomeTableController.designer.cs">
       <DependentUpon>HomeTableController.cs</DependentUpon>
     </Compile>
-    <Compile Include="SplashController.cs" />
-    <Compile Include="SplashController.designer.cs">
+    <Compile Include="Controllers\SplashController.cs" />
+    <Compile Include="Controllers\SplashController.designer.cs">
       <DependentUpon>SplashController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\OnboardingController.cs" />
+    <Compile Include="Controllers\OnboardingController.designer.cs">
+      <DependentUpon>OnboardingController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -265,6 +269,7 @@
     <InterfaceDefinition Include="Home.storyboard" />
     <InterfaceDefinition Include="Menu.storyboard" />
     <InterfaceDefinition Include="Splash.storyboard" />
+    <InterfaceDefinition Include="Onboarding.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Instagram%402x.png" />
