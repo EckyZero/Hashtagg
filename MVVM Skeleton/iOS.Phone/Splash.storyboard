@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="P6O-Yr-Fu9">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SanFranciscoText-Thin.otf">
+            <string>SanFranciscoText-Thin</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Splash Controller-->
+        <scene sceneID="8oz-OK-E5V">
+            <objects>
+                <viewController restorationIdentifier="SplashController" storyboardIdentifier="SplashController" id="P6O-Yr-Fu9" customClass="SplashController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iPX-cU-las"/>
+                        <viewControllerLayoutGuide type="bottom" id="CRv-LN-Hvn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uFF-C6-7i1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="App-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="zw9-aw-zJo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="569"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hashtagg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDT-EN-NZX">
+                                <rect key="frame" x="105" y="208.5" width="110" height="31.5"/>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Thin" family="San Francisco Text" pointSize="26"/>
+                                <color key="textColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="pDT-EN-NZX" secondAttribute="centerY" constant="60" id="D2y-Vp-EEK"/>
+                            <constraint firstAttribute="centerX" secondItem="pDT-EN-NZX" secondAttribute="centerX" id="zvD-RX-5yE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zbQ-aN-5eV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="248" y="389"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="App-bg.png" width="320" height="569"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

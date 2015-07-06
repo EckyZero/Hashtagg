@@ -9,7 +9,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string></string>
+	<string>8.0</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -63,7 +63,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use your location to provide more accurate search results. </string>
 	<key>CFBundleDisplayName</key>
-	<string></string>
+	<string>Hashtagg</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.0.1</string>
 	<key>CFBundleURLTypes</key>
@@ -79,5 +79,7 @@
 	</array>
 	<key>Custom Property</key>
 	<string></string>
+	<key>UILaunchStoryboardName</key>
+	<string>Splash</string>
 </dict>
 </plist>

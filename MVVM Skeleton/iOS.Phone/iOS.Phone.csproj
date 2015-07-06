@@ -200,6 +200,10 @@
     <Compile Include="Controllers\HomeTableController.designer.cs">
       <DependentUpon>HomeTableController.cs</DependentUpon>
     </Compile>
+    <Compile Include="SplashController.cs" />
+    <Compile Include="SplashController.designer.cs">
+      <DependentUpon>SplashController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -260,6 +264,7 @@
   <ItemGroup>
     <InterfaceDefinition Include="Home.storyboard" />
     <InterfaceDefinition Include="Menu.storyboard" />
+    <InterfaceDefinition Include="Splash.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Instagram%402x.png" />
