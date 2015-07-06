@@ -54,16 +54,12 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <MtouchI18n>
     </MtouchI18n>
     <IpaPackageName>
     </IpaPackageName>
-    <CodesignProvision>
-    </CodesignProvision>
-    <CodesignExtraArgs>
-    </CodesignExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -349,5 +345,13 @@
     <BundleResource Include="Resources\SanFranciscoDisplay-Black.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\Add button%402x.png" />
+    <BundleResource Include="Resources\Add button%403x.png" />
+    <BundleResource Include="Resources\Added button%402x.png" />
+    <BundleResource Include="Resources\Added button%403x.png" />
+    <BundleResource Include="Resources\Remove button%402x.png" />
+    <BundleResource Include="Resources\Remove button%403x.png" />
+    <BundleResource Include="Resources\App-bg%403x.png" />
+    <BundleResource Include="Resources\App-bg%402x.png" />
   </ItemGroup>
 </Project>

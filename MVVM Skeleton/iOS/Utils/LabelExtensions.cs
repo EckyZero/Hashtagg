@@ -10,10 +10,10 @@ namespace iOS
 		{
 			if(substringIndex != -1)
 			{
-				font = (font == null) ? UIFont.FromName (label.Font.FamilyName, label.Font.PointSize) : font;
+				font = font ?? UIFont.FromName (label.Font.FamilyName, label.Font.PointSize);
 
 				var substring = fullText.Substring (substringIndex);
-				var startIndex = fullText.IndexOf(substring);
+				var startIndex = fullText.IndexOf(substring, StringComparison.CurrentCulture);
 				var range = (reverse == true) ? new NSRange(0,startIndex) : new NSRange (startIndex, substring.Length);
 				var titleText = new NSMutableAttributedString (fullText);
 
