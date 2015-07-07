@@ -15,12 +15,18 @@ namespace iOS.Phone
 {
 	public partial class OnboardingController : UIViewController
 	{
+		#region Variables
+
+		private bool _isFirstLoad = true;
+
+		#endregion
+
 		#region Properties
 
 		public OnboardingViewModel ViewModel { get; set; }
 
 		public CGRect NavigationRect { 
-			get { return GoButton.Frame; }
+			get { return ActivityIndicator.Frame; }
 		}
 
 		#endregion
@@ -37,19 +43,27 @@ namespace iOS.Phone
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			// TODO : Resolved flickering issue
-			// Need to move to VIewDidAppear
-			// Give all UI Elements an initial alpha of 0
-			await Task.Delay(3000);
 
-			InitUI ();
-			InitBindings ();
-
+			foreach(UIView view in View.Subviews) {
+				view.Alpha = 0;
+			}
+			TitleImageView.Alpha = 1;
+			BackgroundImageView.Alpha = 1;
+			ActivityIndicator.StopAnimating ();
 		}
 
 		public override async void ViewDidAppear (bool animated)
 		{
 			base.ViewDidAppear (animated);
+
+			if(_isFirstLoad == true)
+			{
+				_isFirstLoad = false;
+				await Task.Delay(1000);
+
+				InitUI ();
+				InitBindings ();	
+			}
 		}
 
 		public override void ViewWillAppear (bool animated)
@@ -68,6 +82,8 @@ namespace iOS.Phone
 			InitSocialButton(FacebookButton);
 			InitSocialButton (TwitterButton);
 
+			var bubbleTopConstraint = 30;
+
 			GoButton.Layer.CornerRadius = 6;
 			GoButton.Layer.BorderColor = UIColor.LightGray.CGColor;
 			GoButton.Layer.BorderWidth = 1;
@@ -75,30 +91,36 @@ namespace iOS.Phone
 			// Animations
 			View.SetNeedsLayout ();
 
-			TitleImageViewTopConstraint.Constant = 120;
-//			TitleLabel.Alpha = 0;
+			TitleImageViewTopConstraint.Constant = 100;
+
 			GoButton.Enabled = false;
 			FacebookButton.Alpha = 0;
 			TwitterButton.Alpha = 0;
 			GoButton.Alpha = 0;
 			SubtitleLabel.Alpha = 0;
 
-			UIView.Animate (0.75, () => {
+			UIView.AnimateNotify (0.75, () => {
 				View.LayoutIfNeeded();
-//				TitleLabel.Alpha = 1;
 				SubtitleLabel.Alpha = 1;
-			}, () => {
-				UIView.Animate(0.5, () => {
+			}, (ic) => {
+				FacebookButton.SetNeedsLayout();
+				FacebookButtonTopConstraint.Constant = bubbleTopConstraint;
+
+				UIView.AnimateNotify (1, 0, 0.4f, 1, 0, () => {
+					FacebookButton.LayoutIfNeeded();
 					FacebookButton.Alpha = 1;			
-				}, () => {
-					UIView.Animate(0.5, () => {
+				}, (ic1) => {
+					TwitterButton.SetNeedsLayout();
+					TwitterButtonTopConstraint.Constant = bubbleTopConstraint;
+					UIView.AnimateNotify (1, 0, 0.4f, 1, 0, () => {
+						TwitterButton.LayoutIfNeeded();
 						TwitterButton.Alpha = 1;	
-					}, () => {
-						UIView.Animate(0.5, () => {
+					}, (ic2) => {
+						UIView.AnimateNotify (0.5, () => {
 							GoButton.Enabled = false;
 							GoButtonBottomConstraint.Constant = 35;
 							GoButton.Alpha = 1;	
-						});
+						}, null);
 					});
 				});
 			});
@@ -145,9 +167,17 @@ namespace iOS.Phone
 			button.TitleLabel.BackgroundColor = UIColor.Clear;
 		}
 
-		private void OnRequestHomePage(HomeViewModel viewModel)
+		private async void OnRequestHomePage(HomeViewModel viewModel)
 		{
-			var controller = new ContainerController ();
+			GoButton.Hidden = true;
+			FacebookButton.UserInteractionEnabled = false;
+			TwitterButton.UserInteractionEnabled = false;
+			ActivityIndicator.Alpha = 1;
+			ActivityIndicator.StartAnimating ();
+
+			var controller = new ContainerController (viewModel);
+
+			await Task.Delay(1000);
 
 			NavigationController.PushViewController (controller, true);
 		}
@@ -188,13 +218,15 @@ namespace iOS.Phone
 			var fromViewController = _transitionContext.GetViewControllerForKey (UITransitionContext.FromViewControllerKey) as OnboardingController;
 			var toViewController = _transitionContext.GetViewControllerForKey (UITransitionContext.ToViewControllerKey) as ContainerController;
 			var fromRect = fromViewController.NavigationRect;
+			var toRect = new CGRect (-toViewController.View.Bounds.Width / 2, -toViewController.View.Bounds.Height / 2, toViewController.View.Bounds.Width * 2, toViewController.View.Bounds.Height * 2);
 
 			//3
 			containerView.AddSubview(toViewController.View);
 
 			//4
-			var circleMaskPathInitial = UIBezierPath.FromRect(fromRect);
-			var circleMaskPathFinal = UIBezierPath.FromRect (toViewController.View.Bounds);
+			var circleMaskPathInitial = UIBezierPath.FromRoundedRect(fromRect, fromRect.Height/2);
+
+			var circleMaskPathFinal = UIBezierPath.FromRoundedRect (toRect, toRect.Height/2);
 
 			//5
 			var maskLayer = new CAShapeLayer();

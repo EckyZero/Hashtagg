@@ -8,9 +8,14 @@ namespace iOS.Phone
 {
 	public class ContainerController : JASidePanelController
 	{
+		private HomeViewModel _homeViewModel;
+
 		#region Methods
 
-		public ContainerController () { }
+		public ContainerController (HomeViewModel homeViewModel) 
+		{ 
+			_homeViewModel = homeViewModel;
+		}
 
 		public override void ViewDidLoad ()
 		{
@@ -18,14 +23,16 @@ namespace iOS.Phone
 
 			var homeBoard = UIStoryboard.FromName ("Home", null);
 			var menuBoard = UIStoryboard.FromName ("Menu", null);
-			var homeController = homeBoard.InstantiateInitialViewController ();
 			var menuController = menuBoard.InstantiateInitialViewController () as MenuController;
+			var homeNavController = homeBoard.InstantiateInitialViewController() as UINavigationController;
+			var homeController = homeNavController.TopViewController as HomeController;
 
+			homeController.ViewModel = _homeViewModel;
 			menuController.ViewModel = new MenuViewModel ();
 
 			ShouldDelegateAutorotateToVisiblePanel = false;
 			LeftPanel = menuController;
-			CenterPanel = homeController;
+			CenterPanel = homeNavController;
 		}
 
 		public override void StyleContainer (UIView container, bool animate, double duration)

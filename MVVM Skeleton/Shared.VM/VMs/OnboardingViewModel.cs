@@ -84,8 +84,12 @@ namespace Shared.VM
 
 		private void GoCommandExecute ()
 		{
+			var viewModel = new HomeViewModel ();
+
+			viewModel.RefreshCommand.Execute (null);
+
 			if(RequestHomePage != null) {
-				RequestHomePage (new HomeViewModel ());
+				RequestHomePage (viewModel);
 			}
 		}
 
