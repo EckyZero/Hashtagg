@@ -73,6 +73,14 @@ namespace Droid
 		{
 			_activity = activity;
 		}
+
+		public void DeleteAccount ()
+		{
+			var store = AccountStore.Create ();
+			var account = store.FindAccountsForService (Config.TWITTER_SERVICE_ID).FirstOrDefault();
+
+			store.Delete (account, Config.TWITTER_SERVICE_ID);
+		}
 			
 		#endregion
 	}

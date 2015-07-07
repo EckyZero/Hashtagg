@@ -25,34 +25,19 @@ namespace iOS.Phone
 		UIKit.UILabel SubtitleLabel { get; set; }
 
 		[Outlet]
-		UIKit.UILabel TitleLabel { get; set; }
+		UIKit.UIImageView TitleImageView { get; set; }
 
 		[Outlet]
-		UIKit.NSLayoutConstraint TitleLabelCenterYConstraint { get; set; }
+		UIKit.NSLayoutConstraint TitleImageViewTopConstraint { get; set; }
 
 		[Outlet]
 		UIKit.UIButton TwitterButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (TitleLabel != null) {
-				TitleLabel.Dispose ();
-				TitleLabel = null;
-			}
-
-			if (SubtitleLabel != null) {
-				SubtitleLabel.Dispose ();
-				SubtitleLabel = null;
-			}
-
 			if (FacebookButton != null) {
 				FacebookButton.Dispose ();
 				FacebookButton = null;
-			}
-
-			if (TwitterButton != null) {
-				TwitterButton.Dispose ();
-				TwitterButton = null;
 			}
 
 			if (GoButton != null) {
@@ -60,14 +45,29 @@ namespace iOS.Phone
 				GoButton = null;
 			}
 
-			if (TitleLabelCenterYConstraint != null) {
-				TitleLabelCenterYConstraint.Dispose ();
-				TitleLabelCenterYConstraint = null;
-			}
-
 			if (GoButtonBottomConstraint != null) {
 				GoButtonBottomConstraint.Dispose ();
 				GoButtonBottomConstraint = null;
+			}
+
+			if (SubtitleLabel != null) {
+				SubtitleLabel.Dispose ();
+				SubtitleLabel = null;
+			}
+
+			if (TwitterButton != null) {
+				TwitterButton.Dispose ();
+				TwitterButton = null;
+			}
+
+			if (TitleImageView != null) {
+				TitleImageView.Dispose ();
+				TitleImageView = null;
+			}
+
+			if (TitleImageViewTopConstraint != null) {
+				TitleImageViewTopConstraint.Dispose ();
+				TitleImageViewTopConstraint = null;
 			}
 		}
 	}

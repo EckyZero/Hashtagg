@@ -4,22 +4,62 @@ using System;
 
 using Foundation;
 using UIKit;
+using Shared.VM;
+using GalaSoft.MvvmLight.Helpers;
+using System.ComponentModel;
+using CoreGraphics;
+using CoreAnimation;
+using System.Threading.Tasks;
 
 namespace iOS.Phone
 {
 	public partial class OnboardingController : UIViewController
 	{
+		#region Properties
+
+		public OnboardingViewModel ViewModel { get; set; }
+
+		public CGRect NavigationRect { 
+			get { return GoButton.Frame; }
+		}
+
+		#endregion
+
 		#region Methods
 
 		public OnboardingController (IntPtr handle) : base (handle)
 		{
+			if(ViewModel == null) {
+				ViewModel = new OnboardingViewModel ();
+			}
 		}
 
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			// TODO : Resolved flickering issue
+			// Need to move to VIewDidAppear
+			// Give all UI Elements an initial alpha of 0
+			await Task.Delay(3000);
 
 			InitUI ();
+			InitBindings ();
+
+		}
+
+		public override async void ViewDidAppear (bool animated)
+		{
+			base.ViewDidAppear (animated);
+		}
+
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+
+			if(NavigationController != null) {
+				NavigationController.SetNavigationBarHidden (true, true);
+				NavigationController.Delegate = new OnboardingNavigationControllerDelegate ();
+			}
 		}
 
 		private void InitUI ()
@@ -28,14 +68,15 @@ namespace iOS.Phone
 			InitSocialButton(FacebookButton);
 			InitSocialButton (TwitterButton);
 
-			GoButton.Layer.CornerRadius = 4;
-			GoButton.Layer.BorderColor = GoButton.TitleLabel.TextColor.CGColor;
+			GoButton.Layer.CornerRadius = 6;
+			GoButton.Layer.BorderColor = UIColor.LightGray.CGColor;
 			GoButton.Layer.BorderWidth = 1;
 
 			// Animations
 			View.SetNeedsLayout ();
 
-			TitleLabelCenterYConstraint.Constant = 120;
+			TitleImageViewTopConstraint.Constant = 120;
+//			TitleLabel.Alpha = 0;
 			GoButton.Enabled = false;
 			FacebookButton.Alpha = 0;
 			TwitterButton.Alpha = 0;
@@ -43,7 +84,9 @@ namespace iOS.Phone
 			SubtitleLabel.Alpha = 0;
 
 			UIView.Animate (0.75, () => {
-				TitleLabel.LayoutIfNeeded();
+				View.LayoutIfNeeded();
+//				TitleLabel.Alpha = 1;
+				SubtitleLabel.Alpha = 1;
 			}, () => {
 				UIView.Animate(0.5, () => {
 					FacebookButton.Alpha = 1;			
@@ -52,6 +95,7 @@ namespace iOS.Phone
 						TwitterButton.Alpha = 1;	
 					}, () => {
 						UIView.Animate(0.5, () => {
+							GoButton.Enabled = false;
 							GoButtonBottomConstraint.Constant = 35;
 							GoButton.Alpha = 1;	
 						});
@@ -62,22 +106,33 @@ namespace iOS.Phone
 
 		private void InitBindings ()
 		{
-			
+			ViewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
+				if(e.PropertyName.Equals("IsFacebookSelected")) {
+					OnSocialButtonSelected(FacebookButton, ViewModel.IsFacebookSelected);
+				}
+				else if(e.PropertyName.Equals("IsTwitterSelected")) {
+					OnSocialButtonSelected(TwitterButton, ViewModel.IsTwitterSelected);
+				}
+			};
+
+			FacebookButton.SetCommand ("TouchUpInside", ViewModel.FacebookCommand);
+			TwitterButton.SetCommand ("TouchUpInside", ViewModel.TwitterCommand);
+			GoButton.SetCommand ("TouchUpInside", ViewModel.GoCommand);
+
+			ViewModel.RequestHomePage = OnRequestHomePage;
+			ViewModel.CanExecute = OnCanExecute;
 		}
 
-		private void InitSocialButton (UIButton button)
+		private void InitSocialButton (UIButton button) 
 		{
 			button.Layer.CornerRadius = button.Frame.Height / 2;
 			button.Layer.BorderWidth = 1;
 			button.Layer.BorderColor = button.TitleLabel.TextColor.CGColor;
 			button.TitleLabel.BackgroundColor = UIColor.Clear;
-			button.TouchUpInside += OnSocialButtonTouchUpInside;
 		}
 
-		private void OnSocialButtonTouchUpInside (object sender, EventArgs args)
+		private void OnSocialButtonSelected (UIButton button, bool selected)
 		{
-			var button = sender as UIButton;
-
 			button.Selected = !button.Selected;
 
 			if(button.Selected) {
@@ -90,6 +145,80 @@ namespace iOS.Phone
 			button.TitleLabel.BackgroundColor = UIColor.Clear;
 		}
 
+		private void OnRequestHomePage(HomeViewModel viewModel)
+		{
+			var controller = new ContainerController ();
+
+			NavigationController.PushViewController (controller, true);
+		}
+
+		private void OnCanExecute (bool canExecute)
+		{
+			GoButton.Enabled = canExecute;
+			GoButton.Layer.BorderColor = canExecute ? GoButton.TitleLabel.TextColor.CGColor : UIColor.LightGray.CGColor;
+		}
+
 		#endregion
+	}
+
+	public class OnboardingNavigationControllerDelegate : UINavigationControllerDelegate
+	{
+		public override IUIViewControllerAnimatedTransitioning GetAnimationControllerForOperation (UINavigationController navigationController, UINavigationControllerOperation operation, UIViewController fromViewController, UIViewController toViewController)
+		{
+			return new OnboardingTransitionAnimator ();
+		}
+	}
+
+	public class OnboardingTransitionAnimator : UIViewControllerAnimatedTransitioning
+	{
+		IUIViewControllerContextTransitioning _transitionContext;
+
+		public override double TransitionDuration (IUIViewControllerContextTransitioning transitionContext)
+		{
+			return 0.25;
+		}
+
+		public override void AnimateTransition (IUIViewControllerContextTransitioning transitionContext)
+		{
+			//1
+			_transitionContext = transitionContext;
+
+			//2
+			var containerView = _transitionContext.ContainerView;
+			var fromViewController = _transitionContext.GetViewControllerForKey (UITransitionContext.FromViewControllerKey) as OnboardingController;
+			var toViewController = _transitionContext.GetViewControllerForKey (UITransitionContext.ToViewControllerKey) as ContainerController;
+			var fromRect = fromViewController.NavigationRect;
+
+			//3
+			containerView.AddSubview(toViewController.View);
+
+			//4
+			var circleMaskPathInitial = UIBezierPath.FromRect(fromRect);
+			var circleMaskPathFinal = UIBezierPath.FromRect (toViewController.View.Bounds);
+
+			//5
+			var maskLayer = new CAShapeLayer();
+			maskLayer.Path = circleMaskPathFinal.CGPath;
+			toViewController.View.Layer.Mask = maskLayer;
+
+			//6
+			var maskLayerAnimation = CABasicAnimation.FromKeyPath("path");
+			maskLayerAnimation.SetFrom(circleMaskPathInitial.CGPath);
+			maskLayerAnimation.SetTo(circleMaskPathFinal.CGPath);
+			maskLayerAnimation.Duration =  TransitionDuration(_transitionContext);
+			maskLayerAnimation.TimingFunction = CAMediaTimingFunction.FromName (CAMediaTimingFunction.EaseIn);
+
+			maskLayerAnimation.AnimationStopped += (object sender, CAAnimationStateEventArgs e) => {
+				if(_transitionContext != null) {
+					_transitionContext.CompleteTransition (!_transitionContext.TransitionWasCancelled);
+					var controller = _transitionContext.GetViewControllerForKey (UITransitionContext.FromViewControllerKey);
+					if(controller != null) {
+						controller.View.Layer.Mask = null;	
+					}
+				}
+			};
+
+			maskLayer.AddAnimation (maskLayerAnimation, "path");
+		}
 	}
 }

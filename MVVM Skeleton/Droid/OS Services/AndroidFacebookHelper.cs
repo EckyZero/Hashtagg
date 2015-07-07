@@ -72,6 +72,14 @@ namespace Droid
 			_activity = activity;
 		}
 
+		public void DeleteAccount ()
+		{
+			var store = AccountStore.Create ();
+			var account = store.FindAccountsForService (Config.FACEBOOK_SERVICE_ID).FirstOrDefault();
+
+			store.Delete (account, Config.FACEBOOK_SERVICE_ID);
+		}
+
 		#endregion
 	}
 }

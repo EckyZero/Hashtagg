@@ -3,11 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="SanFranciscoText-Thin.otf">
-            <string>SanFranciscoText-Thin</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--Splash Controller-->
         <scene sceneID="8oz-OK-E5V">
@@ -21,24 +16,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="App-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="zw9-aw-zJo">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="569"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="App-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="zw9-aw-zJo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hashtagg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDT-EN-NZX">
-                                <rect key="frame" x="105" y="208" width="110" height="31.5"/>
-                                <fontDescription key="fontDescription" name="SanFranciscoText-Thin" family="San Francisco Text" pointSize="26"/>
-                                <color key="textColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hashtagg_title.png" translatesAutoresizingMaskIntoConstraints="NO" id="2d9-Mg-Ayk">
+                                <rect key="frame" x="97" y="205" width="127" height="38"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zw9-aw-zJo" firstAttribute="leading" secondItem="uFF-C6-7i1" secondAttribute="leading" id="4RL-Cb-5ea"/>
-                            <constraint firstAttribute="centerY" secondItem="pDT-EN-NZX" secondAttribute="centerY" constant="60" id="D2y-Vp-EEK"/>
+                            <constraint firstItem="2d9-Mg-Ayk" firstAttribute="top" secondItem="iPX-cU-las" secondAttribute="bottom" constant="185" id="6t5-Zw-x7a"/>
+                            <constraint firstAttribute="centerX" secondItem="2d9-Mg-Ayk" secondAttribute="centerX" id="A5S-9x-b5k"/>
                             <constraint firstAttribute="bottom" secondItem="zw9-aw-zJo" secondAttribute="bottom" id="cjh-Ez-csH"/>
                             <constraint firstAttribute="trailing" secondItem="zw9-aw-zJo" secondAttribute="trailing" id="nxy-d9-6WR"/>
                             <constraint firstItem="zw9-aw-zJo" firstAttribute="top" secondItem="uFF-C6-7i1" secondAttribute="top" id="zOQ-fp-cLf"/>
-                            <constraint firstAttribute="centerX" secondItem="pDT-EN-NZX" secondAttribute="centerX" id="zvD-RX-5yE"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -49,6 +41,7 @@
     </scenes>
     <resources>
         <image name="App-bg.png" width="320" height="569"/>
+        <image name="Hashtagg_title.png" width="127" height="38"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
