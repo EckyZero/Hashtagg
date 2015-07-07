@@ -59,10 +59,13 @@ namespace iOS.Phone
 			if(_isFirstLoad == true)
 			{
 				_isFirstLoad = false;
+
 				await Task.Delay(1000);
 
 				InitUI ();
 				InitBindings ();	
+
+				await ViewModel.DidLoad ();
 			}
 		}
 
@@ -93,7 +96,6 @@ namespace iOS.Phone
 
 			TitleImageViewTopConstraint.Constant = 100;
 
-			GoButton.Enabled = false;
 			FacebookButton.Alpha = 0;
 			TwitterButton.Alpha = 0;
 			GoButton.Alpha = 0;
@@ -117,7 +119,6 @@ namespace iOS.Phone
 						TwitterButton.Alpha = 1;	
 					}, (ic2) => {
 						UIView.AnimateNotify (0.5, () => {
-							GoButton.Enabled = false;
 							GoButtonBottomConstraint.Constant = 35;
 							GoButton.Alpha = 1;	
 						}, null);

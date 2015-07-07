@@ -47,6 +47,16 @@ namespace Shared.VM
 			_facebookHelper = IocContainer.GetContainer ().Resolve<IFacebookHelper> ();
 		}
 
+		public override async Task DidLoad ()
+		{
+			await base.DidLoad ();
+
+			IsTwitterSelected = await _twitterHelper.AccountExists ();
+			IsFacebookSelected = await _facebookHelper.AccountExists ();
+
+			await RequestCanExecute ();
+		}
+
 		protected override void InitCommands ()
 		{
 			FacebookCommand = new RelayCommand (FacebookCommandExecute);

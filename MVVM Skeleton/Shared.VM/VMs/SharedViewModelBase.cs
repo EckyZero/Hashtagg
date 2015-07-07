@@ -40,6 +40,8 @@ namespace Shared.VM
 
 		protected abstract void InitCommands();
 
+		public virtual async Task DidLoad () {}
+
 		private void InitServices()
 		{
 			_navigationService = IocContainer.GetContainer().Resolve<IExtendedNavigationService>();
