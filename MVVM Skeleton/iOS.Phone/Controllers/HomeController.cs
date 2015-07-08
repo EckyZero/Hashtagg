@@ -66,9 +66,9 @@ namespace iOS.Phone
 		{
 			base.PrepareForSegue (segue, sender);
 
-			if(segue.DestinationViewController.GetType() == typeof(HomeTableController)) {
+			if(segue.DestinationViewController.GetType() == typeof(PSObservableTableController)) {
 
-				var controller = segue.DestinationViewController as HomeTableController;
+				var controller = segue.DestinationViewController as PSObservableTableController;
 
 				controller.Collection = ViewModel.CardViewModels;
 				controller.OnPullToRefresh = OnPullToRefresh;

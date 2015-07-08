@@ -9,8 +9,8 @@ using System.CodeDom.Compiler;
 
 namespace iOS.Phone
 {
-	[Register ("HomeTableController")]
-	partial class HomeTableController
+	[Register ("PSObservableTableController")]
+	partial class PSObservableTableController
 	{
 		
 		void ReleaseDesignerOutlets ()

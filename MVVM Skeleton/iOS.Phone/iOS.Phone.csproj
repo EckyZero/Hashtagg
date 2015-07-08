@@ -187,7 +187,6 @@
     <Compile Include="Controllers\HomeController.designer.cs">
       <DependentUpon>HomeController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HomeTableController.cs" />
     <Compile Include="Cells\DefaultCell.cs" />
     <Compile Include="Cells\DefaultCell.designer.cs">
       <DependentUpon>DefaultCell.cs</DependentUpon>
@@ -197,9 +196,6 @@
       <DependentUpon>MenuController.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ContainerController.cs" />
-    <Compile Include="Controllers\HomeTableController.designer.cs">
-      <DependentUpon>HomeTableController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\SplashController.cs" />
     <Compile Include="Controllers\SplashController.designer.cs">
       <DependentUpon>SplashController.cs</DependentUpon>
@@ -207,6 +203,10 @@
     <Compile Include="Controllers\OnboardingController.cs" />
     <Compile Include="Controllers\OnboardingController.designer.cs">
       <DependentUpon>OnboardingController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PSObservableTableController.cs" />
+    <Compile Include="Controllers\PSObservableTableController.designer.cs">
+      <DependentUpon>PSObservableTableController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

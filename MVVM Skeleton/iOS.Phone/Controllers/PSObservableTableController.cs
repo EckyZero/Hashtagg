@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace iOS.Phone
 {
-	public partial class HomeTableController : ExtendedObservableTableViewController<IListItem>, IUIScrollViewDelegate
+	public partial class PSObservableTableController : ExtendedObservableTableViewController<IListItem>, IUIScrollViewDelegate
 	{
 		#region Private Variables
 
@@ -27,7 +27,7 @@ namespace iOS.Phone
 
 		#region Methods
 
-		public HomeTableController (IntPtr handle) : base (handle)
+		public PSObservableTableController (IntPtr handle) : base (handle)
 		{
 		}
 

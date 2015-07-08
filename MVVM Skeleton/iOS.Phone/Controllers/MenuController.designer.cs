@@ -13,21 +13,37 @@ namespace iOS.Phone
 	partial class MenuController
 	{
 		[Outlet]
-		UIKit.UIButton FacebookButton { get; set; }
+		UIKit.UIImageView BackgroundImageView { get; set; }
 
 		[Outlet]
-		UIKit.UIButton TwitterButton { get; set; }
+		UIKit.UIButton PrimaryButton { get; set; }
+
+		[Outlet]
+		UIKit.UILabel SubtitleLabel { get; set; }
+
+		[Outlet]
+		UIKit.UILabel TitleLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (TwitterButton != null) {
-				TwitterButton.Dispose ();
-				TwitterButton = null;
+			if (BackgroundImageView != null) {
+				BackgroundImageView.Dispose ();
+				BackgroundImageView = null;
 			}
 
-			if (FacebookButton != null) {
-				FacebookButton.Dispose ();
-				FacebookButton = null;
+			if (PrimaryButton != null) {
+				PrimaryButton.Dispose ();
+				PrimaryButton = null;
+			}
+
+			if (TitleLabel != null) {
+				TitleLabel.Dispose ();
+				TitleLabel = null;
+			}
+
+			if (SubtitleLabel != null) {
+				SubtitleLabel.Dispose ();
+				SubtitleLabel = null;
 			}
 		}
 	}

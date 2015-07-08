@@ -32,9 +32,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="App-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="PSp-mD-Shp">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9a-jh-Q0d">
                                 <rect key="frame" x="0.0" y="90" width="320" height="414"/>
-                                <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="479-Fv-hah" kind="embed" id="HOp-Q1-par"/>
                                 </connections>
@@ -100,8 +103,12 @@
                             <constraint firstAttribute="trailing" secondItem="W9a-jh-Q0d" secondAttribute="trailing" id="BPQ-4e-Etl"/>
                             <constraint firstItem="3o1-Mw-RFT" firstAttribute="top" secondItem="W9a-jh-Q0d" secondAttribute="bottom" id="KRy-Kb-OKH"/>
                             <constraint firstAttribute="trailing" secondItem="oac-2S-kcF" secondAttribute="trailing" id="Ok9-E6-a5t"/>
+                            <constraint firstItem="PSp-mD-Shp" firstAttribute="leading" secondItem="kFD-Vb-S3j" secondAttribute="leading" id="Rgj-Zh-ueD"/>
                             <constraint firstItem="oac-2S-kcF" firstAttribute="top" secondItem="Vca-7a-BWk" secondAttribute="bottom" id="Wzf-xJ-EAA"/>
+                            <constraint firstItem="PSp-mD-Shp" firstAttribute="top" secondItem="Vca-7a-BWk" secondAttribute="bottom" id="Yez-ko-QzA"/>
+                            <constraint firstItem="3o1-Mw-RFT" firstAttribute="top" secondItem="PSp-mD-Shp" secondAttribute="bottom" id="ZFo-GW-5nV"/>
                             <constraint firstItem="W9a-jh-Q0d" firstAttribute="leading" secondItem="kFD-Vb-S3j" secondAttribute="leading" id="rSs-y7-WzZ"/>
+                            <constraint firstAttribute="trailing" secondItem="PSp-mD-Shp" secondAttribute="trailing" id="tpF-Nr-akh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nUC-xX-Jev">
@@ -143,14 +150,14 @@
             </objects>
             <point key="canvasLocation" x="1308" y="401"/>
         </scene>
-        <!--Home Table Controller-->
+        <!--Observable Table Controller-->
         <scene sceneID="D4x-ZN-Uzp">
             <objects>
-                <tableViewController id="479-Fv-hah" customClass="HomeTableController" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="PSObservableTableController" storyboardIdentifier="PSObservableTableController" id="479-Fv-hah" customClass="PSObservableTableController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="333" sectionHeaderHeight="22" sectionFooterHeight="22" id="gSf-9q-DyM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.91764705879999997" green="0.93725490199999995" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="yoR-DN-kgA">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -282,7 +289,7 @@
                                             <rect key="frame" x="150" y="91" width="20" height="20"/>
                                         </activityIndicatorView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.91764705882352937" green="0.93725490196078431" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="jie-V4-OzK" firstAttribute="centerY" secondItem="nBZ-gu-v7R" secondAttribute="centerY" id="2PY-X1-j6d"/>
                                         <constraint firstItem="nBZ-gu-v7R" firstAttribute="leading" secondItem="2q5-aI-gzd" secondAttribute="leading" id="E5m-uG-zVJ"/>
@@ -300,6 +307,7 @@
                                         <constraint firstItem="ruf-VC-Mdn" firstAttribute="leading" secondItem="MN0-6a-W5I" secondAttribute="leading" constant="15" id="tMc-uw-fMQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="ActivityIndicator" destination="jie-V4-OzK" id="sn8-tq-qyf"/>
                                     <outlet property="BodyTextView" destination="CWP-pN-93M" id="Vyh-O2-onD"/>
@@ -328,7 +336,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQR-iJ-5Vt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="776" y="1056"/>
+            <point key="canvasLocation" x="1308" y="1023"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AmR-aC-hsQ">
@@ -336,7 +344,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SWg-uY-wMO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="rWQ-nD-9eN">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" translucent="NO" id="rWQ-nD-9eN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -357,6 +365,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="App-bg.png" width="320" height="569"/>
         <image name="Facebook.png" width="44" height="44"/>
         <image name="New Post Button.png" width="20" height="21"/>
         <image name="Profile Image default.png" width="60" height="60"/>

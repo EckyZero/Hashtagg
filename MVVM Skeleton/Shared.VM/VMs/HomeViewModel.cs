@@ -17,7 +17,7 @@ namespace Shared.VM
 
 	public class HomeViewModel : SharedViewModelBase
 	{
-		#region Private Variables
+		#region Variables
 
 		private OrderBy _orderBy = OrderBy.Time;
 		private ITwitterService _twitterService;
@@ -34,7 +34,7 @@ namespace Shared.VM
 
 		#endregion
 
-		#region Member Properties
+		#region Properties
 
 		public OrderBy OrderBy
 		{

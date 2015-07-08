@@ -11,6 +11,7 @@ namespace Shared.VM
 
 		private ITwitterHelper _twitterHelper;
 		private IFacebookHelper _facebookHelper;
+		private ObservableRangeCollection<IListItem> _itemViewModels = new ObservableRangeCollection<IListItem> ();
 
 		#endregion
 
@@ -18,6 +19,12 @@ namespace Shared.VM
 
 		public RelayCommand TwitterCommand { get; private set; }
 		public RelayCommand FacebookCommand { get; private set; }
+
+		public ObservableRangeCollection<IListItem> ItemViewModels 
+		{
+			get { return _itemViewModels; }
+			set { _itemViewModels = value; }
+		}
 
 		#endregion
 

@@ -9,7 +9,7 @@ using GalaSoft.MvvmLight.Helpers;
 
 namespace iOS.Phone
 {
-	public partial class MenuController : UITableViewController
+	public partial class MenuController : UIViewController
 	{
 		#region Properties
 
@@ -19,14 +19,27 @@ namespace iOS.Phone
 
 		public MenuController (IntPtr handle) : base (handle)
 		{
+			if(ViewModel == null) {
+				ViewModel = new MenuViewModel ();
+			}
 		}
 
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+		}
 
-			FacebookButton.SetCommand ("TouchUpInside", ViewModel.FacebookCommand);
-			TwitterButton.SetCommand ("TouchUpInside", ViewModel.TwitterCommand);
+		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
+		{
+			base.PrepareForSegue (segue, sender);
+
+			if(segue.DestinationViewController.GetType() == typeof(PSObservableTableController)) {
+
+				var controller = segue.DestinationViewController as PSObservableTableController;
+
+				controller.Collection = ViewModel.ItemViewModels;
+				controller.SetEstimatedHeight (40);
+			}
 		}
 	}
 }

@@ -6,7 +6,7 @@ namespace Shared.VM
 	{
 		Header,
 		Default,
-		Timeline
+		MenuItem
 	}
 	public interface IListItem
 	{
