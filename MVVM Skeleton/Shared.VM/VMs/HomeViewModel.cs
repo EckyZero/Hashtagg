@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Shared.VM
 {
@@ -77,7 +78,7 @@ namespace Shared.VM
 
 		private async void RefreshCommandExecute ()
 		{
-			var facebookViewModels = await GetFacebookFeed();
+            var facebookViewModels = new List<FacebookCardViewModel>();// = await GetFacebookFeed();
 			var twitterViewModels = await GetTwitterFeed ();
 			var allViewModels = new ObservableRangeCollection<BaseContentCardViewModel> ();
 
