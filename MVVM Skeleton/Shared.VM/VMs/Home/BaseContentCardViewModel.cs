@@ -96,6 +96,7 @@ namespace Shared.VM
 		public RelayCommand LikeCommand { get; private set; }
 		public RelayCommand CommentCommand { get; private set; }
 		public RelayCommand ShareCommand { get; private set; }
+		public RelayCommand MediaCommand { get; private set; }
 
 		#endregion
 
@@ -131,6 +132,11 @@ namespace Shared.VM
 		protected virtual void ShareCommandExecute ()
 		{
 			// TODO: Repond to share selection
+		}
+
+		protected virtual void MediaCommandExecute ()
+		{
+			// TODO: Respond to image/movie tap
 		}
 
 		#endregion

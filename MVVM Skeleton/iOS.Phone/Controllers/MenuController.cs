@@ -11,11 +11,19 @@ namespace iOS.Phone
 {
 	public partial class MenuController : UIViewController
 	{
+		#region Variables
+
+		private PSObservableTableController _tableController;
+
+		#endregion
+
 		#region Properties
 
 		public MenuViewModel ViewModel { get; set; }
 
 		#endregion
+
+		#region Methods
 
 		public MenuController (IntPtr handle) : base (handle)
 		{
@@ -27,6 +35,8 @@ namespace iOS.Phone
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+			SubtitleLabel.Alpha = ViewModel.ItemViewModels.Count == 0 ? 1 : 0;
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
@@ -35,11 +45,15 @@ namespace iOS.Phone
 
 			if(segue.DestinationViewController.GetType() == typeof(PSObservableTableController)) {
 
-				var controller = segue.DestinationViewController as PSObservableTableController;
+				_tableController = segue.DestinationViewController as PSObservableTableController;
 
-//				controller.Collection = ViewModel.ItemViewModels;
-				controller.SetEstimatedHeight (40);
+				_tableController.Collection = ViewModel.ItemViewModels;
+				_tableController.SetEstimatedHeight (40);
+
+				_tableController.View.Alpha = ViewModel.ItemViewModels.Count == 0 ? 0 : 1;
 			}
 		}
+
+		#endregion
 	}
 }

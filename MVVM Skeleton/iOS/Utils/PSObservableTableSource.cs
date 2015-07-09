@@ -88,7 +88,9 @@ namespace iOS
 
 		private void OnSelectionChanged (object sender, EventArgs e)
 		{
-			var item = (IListItem)sender;
+			var controller = sender as PSObservableTableController;
+			var item = controller.SelectedItem;
+
 			item.Selected ();
 		}
 

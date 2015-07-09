@@ -23,8 +23,6 @@ namespace Shared.VM
 		public override string Subtitle { 
 			get { return _subtitle; }
 		}
-		// TODO: Return the imageName of the current state
-		public override string ImageName { get { return ""; } }
 
 		#endregion
 
@@ -41,7 +39,9 @@ namespace Shared.VM
 
 			var account = await _twitterHelper.GetAccount ();
 
-			_subtitle = account.Properties ["email"];
+			MenuItemType = (account == null) ? MenuItemType.Add : MenuItemType.Added;
+
+			_subtitle = String.Format("@{0}", account.Properties ["screen_name"]);
 		}
 
 		public override async void Selected ()
@@ -50,10 +50,10 @@ namespace Shared.VM
 
 			if(exists) {
 				_twitterHelper.DeleteAccount ();
-				RequestLoggedOutFormat (this);
+				RequestAddedFormatExecute ();
 			} 
 			else {
-				_twitterHelper.Authenticate (() => RequestLoggedInFormatExecute());
+				_twitterHelper.Authenticate (() => RequestAddedFormatExecute());
 			}
 		}
 

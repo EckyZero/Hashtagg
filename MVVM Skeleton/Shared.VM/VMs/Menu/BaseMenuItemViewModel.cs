@@ -4,9 +4,9 @@ namespace Shared.VM
 {
 	public enum MenuItemType
 	{
-		Default,
-		LoggedIn,
-		Loggedout
+		Add,
+		Added,
+		Remove
 	}
 
 	public abstract class BaseMenuItemViewModel : SharedViewModelBase, IListItem
@@ -14,15 +14,15 @@ namespace Shared.VM
 		#region Private Variables
 
 		private ListItemType _listItemType = ListItemType.MenuItem;
-		private MenuItemType _menuItemType = MenuItemType.Default;
+		private MenuItemType _menuItemType = MenuItemType.Add;
 
 		#endregion
 
 		#region Properties
 
-		public Action<BaseMenuItemViewModel> RequestDefaultFormat { get; set; }
-		public Action<BaseMenuItemViewModel> RequestLoggedInFormat { get; set; }
-		public Action<BaseMenuItemViewModel> RequestLoggedOutFormat { get; set; }
+		public Action<BaseMenuItemViewModel> RequestAddFormat { get; set; }
+		public Action<BaseMenuItemViewModel> RequestAddedFormat { get; set; }
+		public Action<BaseMenuItemViewModel> RequestRemoveFormat { get; set; }
 
 		public ListItemType ListItemType { 
 			get { return _listItemType; }
@@ -38,7 +38,20 @@ namespace Shared.VM
 
 		public abstract string Title { get; }
 		public abstract string Subtitle { get; }
-		public abstract string ImageName { get; }
+
+		public string ImageName { 
+			get { 
+				var imageName = "Add button.png";
+
+				if(MenuItemType == MenuItemType.Added) {
+					imageName = "Added button.png";
+				} 
+				else if (MenuItemType == MenuItemType.Remove) {
+					imageName = "Remove button.png";
+				}
+				return imageName;
+			} 
+		}
 
 		#endregion
 
@@ -55,30 +68,30 @@ namespace Shared.VM
 
 		public abstract void Selected ();
 
-		protected void RequestLoggedInFormatExecute ()
+		protected void RequestAddedFormatExecute ()
 		{
-			MenuItemType = MenuItemType.LoggedIn;
+			MenuItemType = MenuItemType.Added;
 
-			if(RequestLoggedInFormat != null) {
-				RequestLoggedInFormat(this);
+			if(RequestAddedFormat != null) {
+				RequestAddedFormat(this);
 			}
 		}
 
-		protected void RequestLoggedOutFormatExecute ()
+		protected void RequestRemoveFormatExecute ()
 		{
-			MenuItemType = MenuItemType.Loggedout;
+			MenuItemType = MenuItemType.Remove;
 
-			if(RequestLoggedOutFormat != null) {
-				RequestLoggedOutFormat (this);
+			if(RequestRemoveFormat != null) {
+				RequestRemoveFormat (this);
 			}
 		}
 
-		protected void RequestDefaultFormatExecute ()
+		protected void RequestAddFormatExecute ()
 		{
-			MenuItemType = MenuItemType.Default;
+			MenuItemType = MenuItemType.Add;
 
-			if(RequestDefaultFormat != null) {
-				RequestDefaultFormat (this);
+			if(RequestAddFormat != null) {
+				RequestAddFormat (this);
 			}
 		}
 

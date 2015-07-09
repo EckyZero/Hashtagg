@@ -14,17 +14,19 @@ namespace iOS.Phone
 		{
 		}
 
-		protected override void ConfigureSubviews (IListItem item)
+		protected override async void ConfigureSubviews (IListItem item)
 		{
 			var viewModel = (BaseMenuItemViewModel)item;
+
+			await viewModel.DidLoad ();
 
 			TitleLabel.Text = viewModel.Title;
 			SubtitleLabel.Text = viewModel.Subtitle;
 			MainImageView.Image = UIImage.FromFile (viewModel.ImageName);
 
-			viewModel.RequestDefaultFormat = OnRequestDefaultFormat;
-			viewModel.RequestLoggedInFormat = OnRequestLoggedInFormat;
-			viewModel.RequestLoggedOutFormat = OnRequestLoggedOutFormat;
+			viewModel.RequestAddFormat = OnRequestDefaultFormat;
+			viewModel.RequestAddedFormat = OnRequestLoggedInFormat;
+			viewModel.RequestRemoveFormat = OnRequestLoggedOutFormat;
 		}
 
 		private void OnRequestDefaultFormat(BaseMenuItemViewModel viewModel)

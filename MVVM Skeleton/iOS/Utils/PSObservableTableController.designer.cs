@@ -7,7 +7,7 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace iOS.Phone
+namespace iOS
 {
 	[Register ("PSObservableTableController")]
 	partial class PSObservableTableController
