@@ -9,16 +9,26 @@ namespace Shared.VM
 	{
 		#region Variables
 
-		private ITwitterHelper _twitterHelper;
-		private IFacebookHelper _facebookHelper;
+		private string _primaryButtonText = ApplicationResources.Signout;
 		private ObservableRangeCollection<IListItem> _itemViewModels = new ObservableRangeCollection<IListItem> ();
 
 		#endregion
 
 		#region Properties
 
-		public RelayCommand TwitterCommand { get; private set; }
-		public RelayCommand FacebookCommand { get; private set; }
+		public Action<BaseMenuItemViewModel, int> RequestRowUpdate { get; set; }
+
+		public RelayCommand PrimaryCommand { get; private set; }
+
+		public string Title {
+			// TODO: Abstract this out of the social services
+			get { return "Michael Peters"; }
+		}
+
+		public string PrimaryButtonText {
+			get { return _primaryButtonText; }
+			set { Set (() => PrimaryButtonText, ref _primaryButtonText, value); }
+		}
 
 		public ObservableRangeCollection<IListItem> ItemViewModels 
 		{
@@ -32,28 +42,30 @@ namespace Shared.VM
 
 		public MenuViewModel () : base ()
 		{
-			_twitterHelper = IocContainer.GetContainer ().Resolve<ITwitterHelper> ();
-			_facebookHelper = IocContainer.GetContainer ().Resolve<IFacebookHelper> ();
-
-			var twitterViewModel = new TwitterMenuItemViewModel ();
+			var twitterViewModel = new TwitterMenuItemViewModel (OnListItemSelected);
 
 			ItemViewModels.Add (twitterViewModel);
 		}
 
 		protected override void InitCommands ()
 		{
-			TwitterCommand = new RelayCommand (TwitterCommandExecute);
-			FacebookCommand = new RelayCommand (FacebookCommandExecute);
+			PrimaryCommand = new RelayCommand (PrimaryCommandExecute);
 		}
 
-		private void TwitterCommandExecute ()
+		private void OnListItemSelected (IListItem item)
 		{
-			_twitterHelper.Authenticate(null);
+			var viewModel = item as BaseMenuItemViewModel;
+			var index = ItemViewModels.IndexOf (viewModel);
+
+			if(RequestRowUpdate != null) {
+				RequestRowUpdate (viewModel, index);
+			}
 		}
 
-		private void FacebookCommandExecute ()
+		private void PrimaryCommandExecute ()
 		{
-			_facebookHelper.Authenticate (null);
+			// TODO: Keep track of state and toggle here
+			// May need to iterate through the viewModels and update their editable state
 		}
 
 		#endregion

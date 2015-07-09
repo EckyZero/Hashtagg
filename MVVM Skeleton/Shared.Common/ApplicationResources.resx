@@ -135,4 +135,7 @@
   	<data name="Facebook" xml:space="preserve">
     	<value>Facebook</value>
   	</data>
+  	<data name="Signout" xml:space="preserve">
+    	<value>Sign out</value>
+  	</data>
 </root>

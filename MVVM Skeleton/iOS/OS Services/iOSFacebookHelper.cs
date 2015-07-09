@@ -77,12 +77,15 @@ namespace iOS
 			store.Delete (account, Config.FACEBOOK_SERVICE_ID);
 		}
 
-		public async Task<SocialAccount> GetAccount()
+		public SocialAccount GetAccount()
 		{
 			var store = AccountStore.Create ();
 			var account = store.FindAccountsForService (Config.FACEBOOK_SERVICE_ID).FirstOrDefault();
-			var socialAccount = new SocialAccount (account.Username, account.Properties, account.Cookies);
+			SocialAccount socialAccount = null;
 
+			if (account != null) {
+				socialAccount = new SocialAccount (account.Username, account.Properties, account.Cookies);	
+			}
 			return socialAccount;
 		}
 

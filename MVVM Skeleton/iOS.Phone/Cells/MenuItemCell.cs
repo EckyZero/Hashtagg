@@ -5,6 +5,7 @@ using System;
 using Foundation;
 using UIKit;
 using Shared.VM;
+using GalaSoft.MvvmLight.Helpers;
 
 namespace iOS.Phone
 {
@@ -16,32 +17,13 @@ namespace iOS.Phone
 
 		protected override async void ConfigureSubviews (IListItem item)
 		{
-			var viewModel = (BaseMenuItemViewModel)item;
+			var viewModel = item as BaseMenuItemViewModel;
 
 			await viewModel.DidLoad ();
 
 			TitleLabel.Text = viewModel.Title;
 			SubtitleLabel.Text = viewModel.Subtitle;
 			MainImageView.Image = UIImage.FromFile (viewModel.ImageName);
-
-			viewModel.RequestAddFormat = OnRequestDefaultFormat;
-			viewModel.RequestAddedFormat = OnRequestLoggedInFormat;
-			viewModel.RequestRemoveFormat = OnRequestLoggedOutFormat;
-		}
-
-		private void OnRequestDefaultFormat(BaseMenuItemViewModel viewModel)
-		{
-			
-		}
-
-		private void OnRequestLoggedInFormat(BaseMenuItemViewModel viewModel)
-		{
-
-		}
-
-		private void OnRequestLoggedOutFormat(BaseMenuItemViewModel viewModel)
-		{
-
 		}
 	}
 }

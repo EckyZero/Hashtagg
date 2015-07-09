@@ -15,14 +15,11 @@ namespace Shared.VM
 
 		private ListItemType _listItemType = ListItemType.MenuItem;
 		private MenuItemType _menuItemType = MenuItemType.Add;
+		private string _imageName = "Add button.png";
 
 		#endregion
 
 		#region Properties
-
-		public Action<BaseMenuItemViewModel> RequestAddFormat { get; set; }
-		public Action<BaseMenuItemViewModel> RequestAddedFormat { get; set; }
-		public Action<BaseMenuItemViewModel> RequestRemoveFormat { get; set; }
 
 		public ListItemType ListItemType { 
 			get { return _listItemType; }
@@ -36,29 +33,21 @@ namespace Shared.VM
 
 		public Action<IListItem> OnSelected { get; set; }
 
-		public abstract string Title { get; }
-		public abstract string Subtitle { get; }
+		public abstract string Title { get; set; }
+		public abstract string Subtitle { get; set; }
 
 		public string ImageName { 
-			get { 
-				var imageName = "Add button.png";
-
-				if(MenuItemType == MenuItemType.Added) {
-					imageName = "Added button.png";
-				} 
-				else if (MenuItemType == MenuItemType.Remove) {
-					imageName = "Remove button.png";
-				}
-				return imageName;
-			} 
+			get { return _imageName; }
+			set { Set (() => ImageName, ref _imageName, value); }
 		}
 
 		#endregion
 
 		#region Methods
 
-		public BaseMenuItemViewModel () : base ()
+		public BaseMenuItemViewModel (Action<IListItem> selectedCallback) : base ()
 		{
+			OnSelected = selectedCallback;
 		}
 
 		protected override void InitCommands ()
@@ -66,33 +55,24 @@ namespace Shared.VM
 			
 		}
 
-		public abstract void Selected ();
-
-		protected void RequestAddedFormatExecute ()
+		public virtual void Selected ()
 		{
-			MenuItemType = MenuItemType.Added;
-
-			if(RequestAddedFormat != null) {
-				RequestAddedFormat(this);
+			if(OnSelected != null) {
+				OnSelected (this);
 			}
 		}
 
-		protected void RequestRemoveFormatExecute ()
+		protected void UpdateImageName ()
 		{
-			MenuItemType = MenuItemType.Remove;
+			var imageName = "Add button.png";
 
-			if(RequestRemoveFormat != null) {
-				RequestRemoveFormat (this);
+			if(MenuItemType == MenuItemType.Added) {
+				imageName = "Added button.png";
+			} 
+			else if (MenuItemType == MenuItemType.Remove) {
+				imageName = "Remove button.png";
 			}
-		}
-
-		protected void RequestAddFormatExecute ()
-		{
-			MenuItemType = MenuItemType.Add;
-
-			if(RequestAddFormat != null) {
-				RequestAddFormat (this);
-			}
+			ImageName = imageName;
 		}
 
 		#endregion

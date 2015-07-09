@@ -47,6 +47,12 @@ namespace Shared.Common {
             }
         }
         
+        public static string Signout {
+            get {
+                return ResourceManager.GetString("Signout", resourceCulture);
+            }
+        }
+        
         public static string Facebook {
             get {
                 return ResourceManager.GetString("Facebook", resourceCulture);
