@@ -30,6 +30,7 @@ namespace iOS.Phone
 
 			Window = new UIWindow (UIScreen.MainScreen.Bounds);
 			Window.RootViewController = controller;
+
 			Window.MakeKeyAndVisible ();
 
 			return true;

@@ -6,6 +6,10 @@
     <customFonts key="customFonts">
         <mutableArray key="SanFranciscoText-Regular.otf">
             <string>SanFranciscoText-Regular</string>
+            <string>SanFranciscoText-Regular</string>
+        </mutableArray>
+        <mutableArray key="SanFranciscoText-Semibold.otf">
+            <string>SanFranciscoText-Semibold</string>
         </mutableArray>
         <mutableArray key="SanFranciscoText-Thin.otf">
             <string>SanFranciscoText-Thin</string>
@@ -16,7 +20,7 @@
         <!--Menu Controller-->
         <scene sceneID="5hH-oR-Luz">
             <objects>
-                <viewController restorationIdentifier="MenuController" storyboardIdentifier="MenuController" id="p64-8T-Yea" customClass="MenuController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="MenuController" storyboardIdentifier="MenuController" modalPresentationStyle="overCurrentContext" id="p64-8T-Yea" customClass="MenuController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qce-ni-vhj"/>
                         <viewControllerLayoutGuide type="bottom" id="4Np-lV-3CN"/>
@@ -25,7 +29,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="App-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="YBV-jh-dY1">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="App-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="YBV-jh-dY1">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michael Peters" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tep-o4-7D2">
@@ -40,7 +44,7 @@
                                 <color key="textColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hZ-cY-Ibb">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hZ-cY-Ibb">
                                 <rect key="frame" x="50" y="488" width="220" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="uTX-ax-hQR"/>
@@ -63,7 +67,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="YBV-jh-dY1" secondAttribute="trailing" id="8va-lP-aXD"/>
                             <constraint firstItem="YBV-jh-dY1" firstAttribute="leading" secondItem="vwo-LJ-xhq" secondAttribute="leading" id="BWr-rM-nDm"/>
@@ -98,16 +102,53 @@
         <scene sceneID="w3q-UQ-6Zv">
             <objects>
                 <tableViewController restorationIdentifier="PSObservableTableController" storyboardIdentifier="PSObservableTableController" id="hvh-C5-sX1" customClass="PSObservableTableController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uzb-4p-9iK">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="76" sectionHeaderHeight="22" sectionFooterHeight="22" id="uzb-4p-9iK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="357"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mRS-JZ-1bU">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="mRS-JZ-1bU" customClass="MenuItemCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mRS-JZ-1bU" id="7fQ-xf-0X6">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add button.png" translatesAutoresizingMaskIntoConstraints="NO" id="5rM-Z4-lYg">
+                                            <rect key="frame" x="20" y="13" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="Jzf-nP-4xg"/>
+                                                <constraint firstAttribute="width" constant="25" id="ni0-8g-e55"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgn-KC-Qjb">
+                                            <rect key="frame" x="57" y="15" width="213" height="20.5"/>
+                                            <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="17"/>
+                                            <color key="textColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="michael.peters@gmail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnt-cD-wM6">
+                                            <rect key="frame" x="57" y="35.5" width="206" height="16.5"/>
+                                            <fontDescription key="fontDescription" name="SanFranciscoText-Semibold" family="San Francisco Text" pointSize="13"/>
+                                            <color key="textColor" red="0.0" green="0.28235294119999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="gnt-cD-wM6" firstAttribute="top" secondItem="cgn-KC-Qjb" secondAttribute="bottom" id="1Il-Wx-l40"/>
+                                        <constraint firstItem="cgn-KC-Qjb" firstAttribute="leading" secondItem="gnt-cD-wM6" secondAttribute="leading" id="A1s-Oq-Gvc"/>
+                                        <constraint firstAttribute="trailing" secondItem="cgn-KC-Qjb" secondAttribute="trailing" constant="50" id="E2e-GH-uNJ"/>
+                                        <constraint firstItem="cgn-KC-Qjb" firstAttribute="trailing" secondItem="gnt-cD-wM6" secondAttribute="trailing" constant="7" id="R7z-o4-qlq"/>
+                                        <constraint firstItem="5rM-Z4-lYg" firstAttribute="top" secondItem="7fQ-xf-0X6" secondAttribute="top" constant="13" id="SiS-5G-EwW"/>
+                                        <constraint firstAttribute="bottom" secondItem="gnt-cD-wM6" secondAttribute="bottom" constant="13" id="WFa-j0-dPu"/>
+                                        <constraint firstItem="5rM-Z4-lYg" firstAttribute="centerY" secondItem="cgn-KC-Qjb" secondAttribute="centerY" id="bdi-d4-lXV"/>
+                                        <constraint firstItem="5rM-Z4-lYg" firstAttribute="leading" secondItem="7fQ-xf-0X6" secondAttribute="leading" constant="20" id="cqq-Qu-Eyb"/>
+                                        <constraint firstItem="cgn-KC-Qjb" firstAttribute="leading" secondItem="5rM-Z4-lYg" secondAttribute="trailing" constant="12" id="kVk-O6-QzT"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="MainImageView" destination="5rM-Z4-lYg" id="ud0-6F-JPC"/>
+                                    <outlet property="SubtitleLabel" destination="gnt-cD-wM6" id="hdx-zb-HOF"/>
+                                    <outlet property="TitleLabel" destination="cgn-KC-Qjb" id="ugV-Nx-fpU"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -122,6 +163,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add button.png" width="22" height="22"/>
         <image name="App-bg.png" width="320" height="569"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

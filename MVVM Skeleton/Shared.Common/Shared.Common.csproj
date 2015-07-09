@@ -71,6 +71,7 @@
     <Compile Include="Models\FacebookUser.cs" />
     <Compile Include="Models\FacebookComment.cs" />
     <Compile Include="Models\SocialAccount.cs" />
+    <Compile Include="Helpers\SharedColors.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

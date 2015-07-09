@@ -10,6 +10,7 @@ using System.ComponentModel;
 using CoreGraphics;
 using CoreAnimation;
 using System.Threading.Tasks;
+using Shared.Common;
 
 namespace iOS.Phone
 {
@@ -85,16 +86,16 @@ namespace iOS.Phone
 			InitSocialButton(FacebookButton);
 			InitSocialButton (TwitterButton);
 
-			var bubbleTopConstraint = 30;
+			var bubbleCenterYConstraint = 0;
 
 			GoButton.Layer.CornerRadius = 6;
-			GoButton.Layer.BorderColor = UIColor.LightGray.CGColor;
+			GoButton.Layer.BorderColor = SharedColors.Disabled.ToUIColor().CGColor;
 			GoButton.Layer.BorderWidth = 1;
 
 			// Animations
 			View.SetNeedsLayout ();
 
-			TitleImageViewTopConstraint.Constant = 100;
+			TitleImageViewTopConstraint.Constant = 46;
 
 			FacebookButton.Alpha = 0;
 			TwitterButton.Alpha = 0;
@@ -106,20 +107,20 @@ namespace iOS.Phone
 				SubtitleLabel.Alpha = 1;
 			}, (ic) => {
 				FacebookButton.SetNeedsLayout();
-				FacebookButtonTopConstraint.Constant = bubbleTopConstraint;
+				FacebookButtonCenterYConstraint.Constant = bubbleCenterYConstraint;
 
 				UIView.AnimateNotify (1, 0, 0.4f, 1, 0, () => {
 					FacebookButton.LayoutIfNeeded();
 					FacebookButton.Alpha = 1;			
 				}, (ic1) => {
 					TwitterButton.SetNeedsLayout();
-					TwitterButtonTopConstraint.Constant = bubbleTopConstraint;
+					TwitterButtonCenterYConstraint.Constant = bubbleCenterYConstraint;
 					UIView.AnimateNotify (1, 0, 0.4f, 1, 0, () => {
 						TwitterButton.LayoutIfNeeded();
 						TwitterButton.Alpha = 1;	
 					}, (ic2) => {
 						UIView.AnimateNotify (0.5, () => {
-							GoButtonBottomConstraint.Constant = 35;
+							GoButtonBottomConstraint.Constant = 26;
 							GoButton.Alpha = 1;	
 						}, null);
 					});
@@ -178,7 +179,7 @@ namespace iOS.Phone
 
 			var controller = new ContainerController (viewModel);
 
-			await Task.Delay(1000);
+			await Task.Delay(2000);
 
 			NavigationController.PushViewController (controller, true);
 		}
@@ -186,7 +187,7 @@ namespace iOS.Phone
 		private void OnCanExecute (bool canExecute)
 		{
 			GoButton.Enabled = canExecute;
-			GoButton.Layer.BorderColor = canExecute ? GoButton.TitleLabel.TextColor.CGColor : UIColor.LightGray.CGColor;
+			GoButton.Layer.BorderColor = canExecute ? GoButton.TitleLabel.TextColor.CGColor : SharedColors.Disabled.ToUIColor().CGColor;
 		}
 
 		#endregion

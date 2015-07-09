@@ -37,7 +37,7 @@ namespace iOS.Phone
 
 				var controller = segue.DestinationViewController as PSObservableTableController;
 
-				controller.Collection = ViewModel.ItemViewModels;
+//				controller.Collection = ViewModel.ItemViewModels;
 				controller.SetEstimatedHeight (40);
 			}
 		}

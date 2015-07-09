@@ -34,6 +34,10 @@ namespace Shared.VM
 		{
 			_twitterHelper = IocContainer.GetContainer ().Resolve<ITwitterHelper> ();
 			_facebookHelper = IocContainer.GetContainer ().Resolve<IFacebookHelper> ();
+
+			var twitterViewModel = new TwitterMenuItemViewModel ();
+
+			ItemViewModels.Add (twitterViewModel);
 		}
 
 		protected override void InitCommands ()

@@ -20,9 +20,9 @@ namespace Shared.VM
 
 		#region Properties
 
-		public Action RequestDefaultFormat { get; set; }
-		public Action RequestLoggedInFormat { get; set; }
-		public Action RequestLoggedOutFormat { get; set; }
+		public Action<BaseMenuItemViewModel> RequestDefaultFormat { get; set; }
+		public Action<BaseMenuItemViewModel> RequestLoggedInFormat { get; set; }
+		public Action<BaseMenuItemViewModel> RequestLoggedOutFormat { get; set; }
 
 		public ListItemType ListItemType { 
 			get { return _listItemType; }
@@ -38,6 +38,7 @@ namespace Shared.VM
 
 		public abstract string Title { get; }
 		public abstract string Subtitle { get; }
+		public abstract string ImageName { get; }
 
 		#endregion
 
@@ -59,7 +60,7 @@ namespace Shared.VM
 			MenuItemType = MenuItemType.LoggedIn;
 
 			if(RequestLoggedInFormat != null) {
-				RequestLoggedInFormat();
+				RequestLoggedInFormat(this);
 			}
 		}
 
@@ -68,7 +69,7 @@ namespace Shared.VM
 			MenuItemType = MenuItemType.Loggedout;
 
 			if(RequestLoggedOutFormat != null) {
-				RequestLoggedOutFormat ();
+				RequestLoggedOutFormat (this);
 			}
 		}
 
@@ -77,7 +78,7 @@ namespace Shared.VM
 			MenuItemType = MenuItemType.Default;
 
 			if(RequestDefaultFormat != null) {
-				RequestDefaultFormat ();
+				RequestDefaultFormat (this);
 			}
 		}
 

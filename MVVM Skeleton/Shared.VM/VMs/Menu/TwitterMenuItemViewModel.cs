@@ -23,6 +23,8 @@ namespace Shared.VM
 		public override string Subtitle { 
 			get { return _subtitle; }
 		}
+		// TODO: Return the imageName of the current state
+		public override string ImageName { get { return ""; } }
 
 		#endregion
 
@@ -48,7 +50,7 @@ namespace Shared.VM
 
 			if(exists) {
 				_twitterHelper.DeleteAccount ();
-				RequestLoggedOutFormat ();
+				RequestLoggedOutFormat (this);
 			} 
 			else {
 				_twitterHelper.Authenticate (() => RequestLoggedInFormatExecute());

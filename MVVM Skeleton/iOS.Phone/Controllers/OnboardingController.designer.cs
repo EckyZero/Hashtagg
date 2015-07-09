@@ -22,7 +22,7 @@ namespace iOS.Phone
 		UIKit.UIButton FacebookButton { get; set; }
 
 		[Outlet]
-		UIKit.NSLayoutConstraint FacebookButtonTopConstraint { get; set; }
+		UIKit.NSLayoutConstraint FacebookButtonCenterYConstraint { get; set; }
 
 		[Outlet]
 		UIKit.UIButton GoButton { get; set; }
@@ -43,10 +43,20 @@ namespace iOS.Phone
 		UIKit.UIButton TwitterButton { get; set; }
 
 		[Outlet]
-		UIKit.NSLayoutConstraint TwitterButtonTopConstraint { get; set; }
+		UIKit.NSLayoutConstraint TwitterButtonCenterYConstraint { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (ActivityIndicator != null) {
+				ActivityIndicator.Dispose ();
+				ActivityIndicator = null;
+			}
+
+			if (BackgroundImageView != null) {
+				BackgroundImageView.Dispose ();
+				BackgroundImageView = null;
+			}
+
 			if (FacebookButton != null) {
 				FacebookButton.Dispose ();
 				FacebookButton = null;
@@ -82,24 +92,14 @@ namespace iOS.Phone
 				TwitterButton = null;
 			}
 
-			if (BackgroundImageView != null) {
-				BackgroundImageView.Dispose ();
-				BackgroundImageView = null;
+			if (FacebookButtonCenterYConstraint != null) {
+				FacebookButtonCenterYConstraint.Dispose ();
+				FacebookButtonCenterYConstraint = null;
 			}
 
-			if (FacebookButtonTopConstraint != null) {
-				FacebookButtonTopConstraint.Dispose ();
-				FacebookButtonTopConstraint = null;
-			}
-
-			if (TwitterButtonTopConstraint != null) {
-				TwitterButtonTopConstraint.Dispose ();
-				TwitterButtonTopConstraint = null;
-			}
-
-			if (ActivityIndicator != null) {
-				ActivityIndicator.Dispose ();
-				ActivityIndicator = null;
+			if (TwitterButtonCenterYConstraint != null) {
+				TwitterButtonCenterYConstraint.Dispose ();
+				TwitterButtonCenterYConstraint = null;
 			}
 		}
 	}
