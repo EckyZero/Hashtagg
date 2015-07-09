@@ -78,7 +78,7 @@ namespace iOS
 
 			InitBindCellDelegate ();
 			InitCreateCellDelegate ();
-			InitGetHeightForRowDelegate ();
+//			InitGetHeightForRowDelegate ();
 
 			InitGetViewForHeaderDelegate ();
 			InitGetHeightForHeaderDelegate ();

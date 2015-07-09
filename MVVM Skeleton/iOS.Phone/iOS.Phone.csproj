@@ -54,16 +54,12 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <MtouchI18n>
     </MtouchI18n>
     <IpaPackageName>
     </IpaPackageName>
-    <CodesignProvision>
-    </CodesignProvision>
-    <CodesignExtraArgs>
-    </CodesignExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -152,12 +148,6 @@
     <Reference Include="Xamarin.UITest">
       <HintPath>..\packages\Xamarin.UITest.0.8.0\lib\Xamarin.UITest.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Insights">
-      <HintPath>..\packages\Xamarin.Insights.1.10.2.110\lib\Xamarin.iOS10\Xamarin.Insights.dll</HintPath>
-    </Reference>
-    <Reference Include="PLCrashReporterUnifiedBinding">
-      <HintPath>..\packages\Xamarin.Insights.1.10.2.110\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Auth.iOS">
       <HintPath>..\Components\xamarin.social-1.1.7\lib\ios-unified\Xamarin.Auth.iOS.dll</HintPath>
     </Reference>
@@ -166,6 +156,18 @@
     </Reference>
     <Reference Include="Xamarin.Social.iOS">
       <HintPath>..\Components\xamarin.social-1.1.7\lib\ios-unified\Xamarin.Social.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="JASidePanels">
+      <HintPath>..\Components\jasidepanels-1.3.2.2\lib\ios-unified\JASidePanels.dll</HintPath>
+    </Reference>
+    <Reference Include="SDWebImage">
+      <HintPath>..\Components\sdwebimage-3.7.1.4\lib\ios-unified\SDWebImage.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.10.4.112\lib\Xamarin.iOS10\Xamarin.Insights.dll</HintPath>
+    </Reference>
+    <Reference Include="PLCrashReporterUnifiedBinding">
+      <HintPath>..\packages\Xamarin.Insights.1.10.4.112\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -185,10 +187,26 @@
     <Compile Include="Controllers\HomeController.designer.cs">
       <DependentUpon>HomeController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HomeTableController.cs" />
     <Compile Include="Cells\DefaultCell.cs" />
     <Compile Include="Cells\DefaultCell.designer.cs">
       <DependentUpon>DefaultCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\MenuController.designer.cs">
+      <DependentUpon>MenuController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ContainerController.cs" />
+    <Compile Include="Controllers\SplashController.cs" />
+    <Compile Include="Controllers\SplashController.designer.cs">
+      <DependentUpon>SplashController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\OnboardingController.cs" />
+    <Compile Include="Controllers\OnboardingController.designer.cs">
+      <DependentUpon>OnboardingController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PSObservableTableController.cs" />
+    <Compile Include="Controllers\PSObservableTableController.designer.cs">
+      <DependentUpon>PSObservableTableController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -204,6 +222,14 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="xamarin.social">
       <Version>1.1.7</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="jasidepanels">
+      <Version>1.3.2.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="sdwebimage">
+      <Version>3.7.1.4</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
@@ -241,6 +267,9 @@
   <ItemGroup />
   <ItemGroup>
     <InterfaceDefinition Include="Home.storyboard" />
+    <InterfaceDefinition Include="Menu.storyboard" />
+    <InterfaceDefinition Include="Splash.storyboard" />
+    <InterfaceDefinition Include="Onboarding.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Instagram%402x.png" />
@@ -257,5 +286,84 @@
     <BundleResource Include="Resources\New Post Button%403x.png" />
     <BundleResource Include="Resources\Profile Image default%402x.png" />
     <BundleResource Include="Resources\Profile Image default%403x.png" />
+    <BundleResource Include="Resources\SanFranciscoDisplay-Bold.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoDisplay-Heavy.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoDisplay-Light.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoDisplay-Medium.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoDisplay-Regular.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoDisplay-Semibold.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoDisplay-Thin.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoDisplay-Ultralight.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-Bold.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-BoldItalic.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-Heavy.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-HeavyItalic.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-Light.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-LightItalic.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-Medium.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-MediumItalic.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-Regular.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-RegularItalic.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-Semibold.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-SemiboldItalic.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-Thin.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoText-ThinItalic.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\SanFranciscoDisplay-Black.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\Add button%402x.png" />
+    <BundleResource Include="Resources\Add button%403x.png" />
+    <BundleResource Include="Resources\Added button%402x.png" />
+    <BundleResource Include="Resources\Added button%403x.png" />
+    <BundleResource Include="Resources\Remove button%402x.png" />
+    <BundleResource Include="Resources\Remove button%403x.png" />
+    <BundleResource Include="Resources\App-bg%403x.png" />
+    <BundleResource Include="Resources\App-bg%402x.png" />
+    <BundleResource Include="Resources\Hashtagg_title%402x.png" />
+    <BundleResource Include="Resources\Hashtagg_title%403x.png" />
   </ItemGroup>
 </Project>

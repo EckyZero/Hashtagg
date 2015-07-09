@@ -1,5 +1,7 @@
 ﻿using System;
 using GalaSoft.MvvmLight.Command;
+using Shared.Common;
+using System.Text;
 
 namespace Shared.VM
 {
@@ -34,6 +36,57 @@ namespace Shared.VM
 		public abstract int? CommentCount { get; }
 		public abstract int? ShareCount { get; }
 		public abstract DateTime OrderByDateTime { get; }
+		public abstract bool IsLikedByUser { get; }
+		public abstract bool IsCommentedByUser { get; }
+		public abstract bool IsSharedByUser { get; }
+
+		public string DisplayDateTime { 
+			get { return OrderByDateTime.ToRelativeString (); }
+		}
+
+		public bool ShowImage {
+			get { return !String.IsNullOrWhiteSpace (ImageUrl); }
+		}
+
+		public string UserImagePlaceholder {
+			get { return "Profile Image default.png"; }
+		}
+
+		public string LikeButtonText {
+			get { 
+				var builder = new StringBuilder ();
+				builder.Append (IsLikedByUser ? "Liked" : "Like");
+
+				if(LikeCount.HasValue) {
+					builder.Append (String.Format (" ({0})", LikeCount.Value));
+				}
+				return builder.ToString ();
+			}
+		}
+
+		public string CommentButtonText {
+			get { 
+				var builder = new StringBuilder ();
+				builder.Append (IsLikedByUser ? "Commented" : "Comment");
+
+				if(CommentCount.HasValue) {
+					builder.Append (String.Format (" ({0})", CommentCount.Value));
+				}
+				return builder.ToString ();
+			}
+		}
+
+		public string ShareButtonText {
+			get { 
+				var builder = new StringBuilder ();
+				builder.Append (IsLikedByUser ? "Shared" : "Share");
+
+				if(ShareCount.HasValue) {
+					builder.Append (String.Format (" ({0})", ShareCount.Value));
+				}
+				return builder.ToString ();
+			}
+		}
 
 		#endregion
 
@@ -60,22 +113,22 @@ namespace Shared.VM
 			ShareCommand = new RelayCommand (ShareCommandExecute);
 		}
 
-		private void SelectCommandExecute ()
+		protected virtual void SelectCommandExecute ()
 		{
 			// TODO: Repond to card selection
 		}
 
-		private void LikeCommandExecute ()
+		protected virtual void LikeCommandExecute ()
 		{
 			// TODO: Repond to like selection
 		}
 
-		private void CommentCommandExecute ()
+		protected virtual void CommentCommandExecute ()
 		{
 			// TODO: Repond to comment selection
 		}
 
-		private void ShareCommandExecute ()
+		protected virtual void ShareCommandExecute ()
 		{
 			// TODO: Repond to share selection
 		}

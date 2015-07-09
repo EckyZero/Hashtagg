@@ -13,45 +13,61 @@ namespace iOS.Phone
 	partial class HomeController
 	{
 		[Outlet]
-		UIKit.UIButton FacebookButton { get; set; }
+		UIKit.UIView AccountsView { get; set; }
 
 		[Outlet]
 		UIKit.UIView HeaderView { get; set; }
 
 		[Outlet]
-		UIKit.UIView ProfileView { get; set; }
+		UIKit.NSLayoutConstraint HeaderViewTopConstraint { get; set; }
 
 		[Outlet]
-		UIKit.UITableView TableView { get; set; }
+		UIKit.UILabel NameLabel { get; set; }
 
 		[Outlet]
-		UIKit.UIButton TwitterButton { get; set; }
+		UIKit.UIBarButtonItem PostBarButton { get; set; }
+
+		[Outlet]
+		UIKit.UISegmentedControl SortOrderSegmentedControl { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint TableViewTopConstraint { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (AccountsView != null) {
+				AccountsView.Dispose ();
+				AccountsView = null;
+			}
+
 			if (HeaderView != null) {
 				HeaderView.Dispose ();
 				HeaderView = null;
 			}
 
-			if (ProfileView != null) {
-				ProfileView.Dispose ();
-				ProfileView = null;
+			if (HeaderViewTopConstraint != null) {
+				HeaderViewTopConstraint.Dispose ();
+				HeaderViewTopConstraint = null;
 			}
 
-			if (TableView != null) {
-				TableView.Dispose ();
-				TableView = null;
+			if (TableViewTopConstraint != null) {
+				TableViewTopConstraint.Dispose ();
+				TableViewTopConstraint = null;
 			}
 
-			if (TwitterButton != null) {
-				TwitterButton.Dispose ();
-				TwitterButton = null;
+			if (NameLabel != null) {
+				NameLabel.Dispose ();
+				NameLabel = null;
 			}
 
-			if (FacebookButton != null) {
-				FacebookButton.Dispose ();
-				FacebookButton = null;
+			if (SortOrderSegmentedControl != null) {
+				SortOrderSegmentedControl.Dispose ();
+				SortOrderSegmentedControl = null;
+			}
+
+			if (PostBarButton != null) {
+				PostBarButton.Dispose ();
+				PostBarButton = null;
 			}
 		}
 	}

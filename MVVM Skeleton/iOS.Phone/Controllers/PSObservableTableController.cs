@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 
 namespace iOS.Phone
 {
-	[Register ("HomeTableController")]
-	public class HomeTableController : ExtendedObservableTableViewController<IListItem>
+	public partial class PSObservableTableController : ExtendedObservableTableViewController<IListItem>, IUIScrollViewDelegate
 	{
 		#region Private Variables
 
@@ -28,7 +27,7 @@ namespace iOS.Phone
 
 		#region Methods
 
-		public HomeTableController (IntPtr handle) : base (handle)
+		public PSObservableTableController (IntPtr handle) : base (handle)
 		{
 		}
 
@@ -38,11 +37,18 @@ namespace iOS.Phone
 
 			RefreshControl = new UIRefreshControl();
 			RefreshControl.ValueChanged += HandleValueChanged;
+
+			TableView.RowHeight = UITableView.AutomaticDimension;
 		}
 
 		public override void ConfigureDelegates ()
 		{
 			_source = new PSObservableTableSource<IListItem> (this, Collection);
+		}
+
+		public void SetEstimatedHeight (nfloat height) 
+		{
+			TableView.EstimatedRowHeight = 	height;
 		}
 
 		private void HandleValueChanged (object sender, EventArgs e)

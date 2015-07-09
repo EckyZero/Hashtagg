@@ -47,9 +47,27 @@ namespace Shared.Common {
             }
         }
         
+        public static string Facebook {
+            get {
+                return ResourceManager.GetString("Facebook", resourceCulture);
+            }
+        }
+        
         public static string CurrentlyOffline {
             get {
                 return ResourceManager.GetString("CurrentlyOffline", resourceCulture);
+            }
+        }
+        
+        public static string GenericOffline {
+            get {
+                return ResourceManager.GetString("GenericOffline", resourceCulture);
+            }
+        }
+        
+        public static string Twitter {
+            get {
+                return ResourceManager.GetString("Twitter", resourceCulture);
             }
         }
         
@@ -62,12 +80,6 @@ namespace Shared.Common {
         public static string GenericError {
             get {
                 return ResourceManager.GetString("GenericError", resourceCulture);
-            }
-        }
-        
-        public static string GenericOffline {
-            get {
-                return ResourceManager.GetString("GenericOffline", resourceCulture);
             }
         }
     }

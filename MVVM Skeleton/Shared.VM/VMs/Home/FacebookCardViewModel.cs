@@ -1,5 +1,8 @@
 ﻿using System;
 using Shared.Common;
+using Shared.Service;
+using Microsoft.Practices.Unity;
+using System.Text;
 
 namespace Shared.VM
 {
@@ -25,9 +28,7 @@ namespace Shared.VM
 
 		public override string UserImageUrl 
 		{
-			// TODO: Facebook only returns userIds. We'll have to do a separate
-			// query to get the image
-			get { return String.Empty; }
+			get { return _facebookPost.User.Picture; }
 		}
 
 		public override string UserName
@@ -37,14 +38,25 @@ namespace Shared.VM
 
 		public override string SocialMediaImage 
 		{
-			get { return "Facebook_Icon.png"; }
+			get { return "Facebook.png"; }
 		}
 
 		public override string Text 
 		{
-			// TODO: May need to look into how the text is formatted
-			// Sometimes the main body is in a description field, sometimes a story
-			get { return _facebookPost.Text; }
+			get { 
+				var builder = new StringBuilder ();
+
+				if(!String.IsNullOrWhiteSpace(_facebookPost.Message)) {
+					builder.Append (_facebookPost.Message);
+				}
+				if(!String.IsNullOrWhiteSpace(_facebookPost.Story)) {
+					builder.AppendFormat ("{0}{1}", builder.Length == 0 ? "" : "\n\n", _facebookPost.Story);
+				}
+				if(!String.IsNullOrWhiteSpace(_facebookPost.Description)) {
+					builder.AppendFormat ("{0}{1}", builder.Length == 0 ? "" : "\n\n", _facebookPost.Description);
+				}
+				return builder.ToString ();
+			}
 		}
 
 		public override int? LikeCount 
@@ -67,6 +79,23 @@ namespace Shared.VM
 			get { return _facebookPost.UpdatedAt; }
 		}
 
+		public override bool IsLikedByUser 
+		{
+			get { return _facebookPost.IsLikedByUser; }
+		}
+
+		public override bool IsCommentedByUser 
+		{
+			// TODO: Unsure as to how to gather this data
+			get { return false; }
+		}
+
+		public override bool IsSharedByUser 
+		{
+			// TODO: Unsure as to how to gather this data
+			get { return false; }
+		}
+			
 		#endregion
 
 		public FacebookCardViewModel (FacebookPost post)

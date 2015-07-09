@@ -48,10 +48,8 @@ namespace Shared.Bootstrapper
 					opts => opts.MapFrom (dto => dto.Created_Time))
 				.ForMember (model => model.UpdatedAt,
 					opts => opts.MapFrom (dto => dto.Updated_Time))
-				.ForMember (model => model.Text,
-					opts => opts.MapFrom (dto => dto.Message))
 				.ForMember (model => model.ImageUrl,
-					opts => opts.MapFrom (dto => dto.Picture))
+					opts => opts.MapFrom (dto => dto.Full_Picture))
 				.ForMember (model => model.LinkUrl,
 					opts => opts.MapFrom (dto => dto.Link))
 				.ForMember (model => model.ShareCount,
@@ -73,8 +71,6 @@ namespace Shared.Bootstrapper
 					opts => opts.MapFrom (dto => dto.Created_Time))
 				.ForMember (model => model.User,
 					opts => opts.MapFrom (dto => dto.From))
-				.ForMember (model => model.Text,
-					opts => opts.MapFrom (dto => dto.Message))
 				.ForMember (model => model.LikedCount,
 					opts => opts.MapFrom (dto => dto.Like_Count))
 				.ForMember (model => model.IsLikedByUser,

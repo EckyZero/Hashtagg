@@ -70,6 +70,7 @@
     <Compile Include="Models\FacebookPost.cs" />
     <Compile Include="Models\FacebookUser.cs" />
     <Compile Include="Models\FacebookComment.cs" />
+    <Compile Include="Models\SocialAccount.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

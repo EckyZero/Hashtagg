@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using Xamarin;
 using CoreGraphics;
+using JASidePanels;
+using Shared.VM;
 
 namespace iOS.Phone
 {
@@ -22,7 +24,8 @@ namespace iOS.Phone
 			Calabash.Start();
 			#endif
 
-			var storyboard = UIStoryboard.FromName ("Home", null);
+			// TODO: Toggle between onboarding/home depending on if they've signed in already
+			var storyboard = UIStoryboard.FromName ("Onboarding", null);
 			var controller = storyboard.InstantiateInitialViewController ();
 
 			Window = new UIWindow (UIScreen.MainScreen.Bounds);

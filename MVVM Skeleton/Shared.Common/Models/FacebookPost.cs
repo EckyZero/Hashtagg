@@ -9,7 +9,7 @@ namespace Shared.Common
 		public string Id { get; set;}
 		public DateTime CreatedAt { get; set; }
 		public DateTime UpdatedAt { get; set; }
-		public string Text { get; set; }
+		public string Message { get; set; }
 		public string Story { get; set; }
 		public string Name { get; set; }
 		public string Description { get; set; }

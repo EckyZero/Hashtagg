@@ -129,4 +129,10 @@
   	<data name="CurrentlyOffline" xml:space="preserve">
     	<value>Currently Offline</value>
   	</data>
+  	<data name="Twitter" xml:space="preserve">
+    	<value>Twitter</value>
+  	</data>
+  	<data name="Facebook" xml:space="preserve">
+    	<value>Facebook</value>
+  	</data>
 </root>

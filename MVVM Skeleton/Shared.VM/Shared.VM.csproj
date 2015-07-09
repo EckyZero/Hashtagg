@@ -37,12 +37,16 @@
     <Compile Include="ViewModelStore.cs" />
     <Compile Include="VMs\SharedViewModelBase.cs" />
     <Compile Include="VMs\HomeViewModel.cs" />
-    <Compile Include="VMs\BaseCardViewModel.cs" />
-    <Compile Include="VMs\TwitterCardViewModel.cs" />
-    <Compile Include="VMs\BaseContentCardViewModel.cs" />
-    <Compile Include="VMs\HeaderCardViewModel.cs" />
-    <Compile Include="VMs\FacebookCardViewModel.cs" />
     <Compile Include="Interfaces\IListItem.cs" />
+    <Compile Include="VMs\OnboardingViewModel.cs" />
+    <Compile Include="VMs\Home\BaseContentCardViewModel.cs" />
+    <Compile Include="VMs\Home\FacebookCardViewModel.cs" />
+    <Compile Include="VMs\Home\TwitterCardViewModel.cs" />
+    <Compile Include="VMs\Home\BaseCardViewModel.cs" />
+    <Compile Include="VMs\Menu\BaseMenuItemViewModel.cs" />
+    <Compile Include="VMs\Home\HeaderCardViewModel.cs" />
+    <Compile Include="VMs\Menu\MenuViewModel.cs" />
+    <Compile Include="VMs\Menu\TwitterMenuItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared.Common\Shared.Common.csproj">
@@ -80,5 +84,7 @@
   <ItemGroup />
   <ItemGroup>
     <Folder Include="Interfaces\" />
+    <Folder Include="VMs\Menu\" />
+    <Folder Include="VMs\Home\" />
   </ItemGroup>
 </Project>
