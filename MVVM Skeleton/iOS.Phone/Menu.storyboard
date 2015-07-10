@@ -109,13 +109,13 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgn-KC-Qjb">
-                                            <rect key="frame" x="58" y="5" width="212" height="21.5"/>
+                                            <rect key="frame" x="58" y="5" width="212" height="22"/>
                                             <fontDescription key="fontDescription" name="SanFranciscoText-Thin" family="San Francisco Text" pointSize="18"/>
                                             <color key="textColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="michael.peters@gmail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnt-cD-wM6">
-                                            <rect key="frame" x="58" y="27" width="205" height="20"/>
+                                            <rect key="frame" x="58" y="27" width="205" height="16"/>
                                             <fontDescription key="fontDescription" name="SanFranciscoText-Medium" family="San Francisco Text" pointSize="13"/>
                                             <color key="textColor" red="0.01176470588" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -129,8 +129,8 @@
                                         <constraint firstItem="cgn-KC-Qjb" firstAttribute="trailing" secondItem="gnt-cD-wM6" secondAttribute="trailing" constant="7" id="R7z-o4-qlq"/>
                                         <constraint firstItem="5rM-Z4-lYg" firstAttribute="top" secondItem="7fQ-xf-0X6" secondAttribute="top" priority="999" constant="5" id="SiS-5G-EwW"/>
                                         <constraint firstItem="5rM-Z4-lYg" firstAttribute="centerY" secondItem="cgn-KC-Qjb" secondAttribute="centerY" id="bdi-d4-lXV"/>
+                                        <constraint firstAttribute="bottom" secondItem="5rM-Z4-lYg" secondAttribute="bottom" constant="25" id="bm7-fU-zU2"/>
                                         <constraint firstItem="5rM-Z4-lYg" firstAttribute="leading" secondItem="7fQ-xf-0X6" secondAttribute="leading" constant="25" id="cqq-Qu-Eyb"/>
-                                        <constraint firstAttribute="bottom" secondItem="gnt-cD-wM6" secondAttribute="bottom" constant="5" id="j1M-1q-3F1"/>
                                         <constraint firstItem="cgn-KC-Qjb" firstAttribute="leading" secondItem="5rM-Z4-lYg" secondAttribute="trailing" constant="13" id="kVk-O6-QzT"/>
                                     </constraints>
                                 </tableViewCellContentView>

@@ -4,6 +4,7 @@ using Shared.Common;
 using Microsoft.Practices.Unity;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shared.VM
 {
@@ -21,6 +22,8 @@ namespace Shared.VM
 		private bool _showSubtitle = false;
 		private string _primaryButtonText = ApplicationResources.Signout;
 		private ObservableRangeCollection<IListItem> _itemViewModels = new ObservableRangeCollection<IListItem> ();
+		private ITwitterHelper _twitterHelper;
+		private IFacebookHelper _facebookHelper;
 
 		#endregion
 
@@ -65,6 +68,9 @@ namespace Shared.VM
 
 		public MenuViewModel (string title = "") : base ()
 		{
+			_facebookHelper = IocContainer.GetContainer ().Resolve<IFacebookHelper> ();
+			_twitterHelper = IocContainer.GetContainer ().Resolve<ITwitterHelper> ();
+
 			ConfigureForAdding ();
 			Title = title;
 		}
@@ -79,12 +85,16 @@ namespace Shared.VM
 			var viewModel = item as BaseMenuItemViewModel;
 			var index = ItemViewModels.IndexOf (viewModel);
 
+			if(MenuState == MenuState.Remove) {
+				//	if we're in remove mode, this also means this item has to be removed from the list
+				ItemViewModels.Remove(viewModel);
+			}
 			if(RequestRowUpdate != null) {
 				RequestRowUpdate (viewModel, index);
 			}
 		}
 
-		private void PrimaryCommandExecute ()
+		private async void PrimaryCommandExecute ()
 		{
 			// Toggle the states
 			if(MenuState == MenuState.Add) 
@@ -95,7 +105,7 @@ namespace Shared.VM
 			else if (MenuState == MenuState.Remove) 
 			{
 				MenuState = MenuState.Add;
-				ConfigureForAdding ();
+				await ConfigureForAdding ();
 			}
 		}
 
@@ -115,30 +125,56 @@ namespace Shared.VM
 
 			// Remove the items that aren't editable
 			if(itemsToRemove.Count > 0) {
-				ItemViewModels.RemoveRange (itemsToRemove);
+				foreach(BaseMenuItemViewModel viewModel in itemsToRemove) {
+					ItemViewModels.Remove (viewModel);
+				}
 			}
 
 			// Toggle the visibility of the "All accounts are removed" text
 			ShowSubtitle = ItemViewModels.Count == 0;
 		}
 
-		private void ConfigureForAdding ()
+		private async Task ConfigureForAdding ()
 		{
-			// Only add if they don't already exist in the list
-			// TODO: Make sure to reset their menu states (Add, or Added)
-			var twitterViewModel = new TwitterMenuItemViewModel (OnListItemSelected);
-			var facebookViewModel = new FacebookMenuItemViewModel (OnListItemSelected);
-
-			TryAdd (twitterViewModel);
-			TryAdd (facebookViewModel);
+			await AddFacebook ();
+			await AddTwitter ();
 		}
 
-		private void TryAdd(BaseMenuItemViewModel viewModel)
+		private async Task AddTwitter()
 		{
-			if(!ItemViewModels.Any ( vm => ((BaseMenuItemViewModel)vm).Title.Equals(viewModel.Title)))
-			{
-				ItemViewModels.Add (viewModel);
+			var newVM = new TwitterMenuItemViewModel (OnListItemSelected);
+			var existingVM = await TryAdd (newVM);
+			var exists = await _twitterHelper.AccountExists ();
+
+			existingVM.MenuItemType = exists ? MenuItemType.Added : MenuItemType.Add;
+		}
+
+		private async Task AddFacebook()
+		{
+			var newVM = new FacebookMenuItemViewModel (OnListItemSelected);
+			var existingVM = await TryAdd (newVM);
+			var exists = await _facebookHelper.AccountExists ();
+
+			existingVM.MenuItemType = exists ? MenuItemType.Added : MenuItemType.Add;
+		}
+
+		private async Task<BaseMenuItemViewModel> TryAdd(BaseMenuItemViewModel viewModel)
+		{
+			var existingViewModel = ItemViewModels.FirstOrDefault (vm => ((BaseMenuItemViewModel)vm).Title.Equals (viewModel.Title)) as BaseMenuItemViewModel;
+
+			if(existingViewModel == null) {
+
+				existingViewModel = viewModel;
+
+				await existingViewModel.DidLoad();
+
+				ItemViewModels.Add(existingViewModel);
+
+				if(RequestRowUpdate != null) {
+					RequestRowUpdate (viewModel, ItemViewModels.IndexOf(existingViewModel));
+				}
 			}
+			return existingViewModel;
 		}
 
 		#endregion

@@ -82,6 +82,7 @@ namespace iOS.Phone
 
 		private void OnRequestRowUpdate (BaseMenuItemViewModel viewModel, int index)
 		{
+//			_tableController.TableView.ReloadData ();
 			var indexPaths = new NSIndexPath[] { NSIndexPath.FromRowSection (index, 0) };
 
 			_tableController.TableView.ReloadRows (indexPaths, UITableViewRowAnimation.Automatic);

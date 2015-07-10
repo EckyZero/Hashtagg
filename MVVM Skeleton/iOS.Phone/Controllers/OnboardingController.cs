@@ -78,6 +78,7 @@ namespace iOS.Phone
 
 				await ViewModel.DidLoad ();
 			}
+			GoButton.TouchUpInside += OnGoButtonTapped;
 		}
 
 		public override void ViewDidDisappear (bool animated)
@@ -148,7 +149,6 @@ namespace iOS.Phone
 
 			FacebookButton.SetCommand ("TouchUpInside", ViewModel.FacebookCommand);
 			TwitterButton.SetCommand ("TouchUpInside", ViewModel.TwitterCommand);
-			GoButton.TouchUpInside += OnGoButtonTapped;
 
 			ViewModel.RequestHomePage = OnRequestHomePage;
 			ViewModel.CanExecute = OnCanExecute;
