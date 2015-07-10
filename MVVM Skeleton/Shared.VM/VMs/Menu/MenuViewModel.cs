@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using Shared.Common;
 using Microsoft.Practices.Unity;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Shared.VM
 {
@@ -64,10 +65,7 @@ namespace Shared.VM
 
 		public MenuViewModel (string title = "") : base ()
 		{
-			var twitterViewModel = new TwitterMenuItemViewModel (OnListItemSelected);
-			var facebookViewModel = new FacebookMenuItemViewModel (OnListItemSelected);
-
-			ItemViewModels.AddRange (new List<BaseMenuItemViewModel>() { facebookViewModel, twitterViewModel});
+			ConfigureForAdding ();
 			Title = title;
 		}
 
@@ -109,6 +107,7 @@ namespace Shared.VM
 			foreach (BaseMenuItemViewModel viewModel in ItemViewModels) {
 				if(viewModel.MenuItemType == MenuItemType.Added) {
 					viewModel.MenuItemType = MenuItemType.Remove;
+
 				} else {
 					itemsToRemove.Add (viewModel);
 				}
@@ -125,7 +124,21 @@ namespace Shared.VM
 
 		private void ConfigureForAdding ()
 		{
-			
+			// Only add if they don't already exist in the list
+			// TODO: Make sure to reset their menu states (Add, or Added)
+			var twitterViewModel = new TwitterMenuItemViewModel (OnListItemSelected);
+			var facebookViewModel = new FacebookMenuItemViewModel (OnListItemSelected);
+
+			TryAdd (twitterViewModel);
+			TryAdd (facebookViewModel);
+		}
+
+		private void TryAdd(BaseMenuItemViewModel viewModel)
+		{
+			if(!ItemViewModels.Any ( vm => ((BaseMenuItemViewModel)vm).Title.Equals(viewModel.Title)))
+			{
+				ItemViewModels.Add (viewModel);
+			}
 		}
 
 		#endregion

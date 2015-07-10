@@ -6,25 +6,64 @@ using Foundation;
 using UIKit;
 using Shared.VM;
 using GalaSoft.MvvmLight.Helpers;
+using System.ComponentModel;
 
 namespace iOS.Phone
 {
 	public partial class MenuItemCell : BaseCell
 	{
+		#region Properties
+
+		public BaseMenuItemViewModel ViewModel { get; set; }
+
+		#endregion
+
+		#region Methods
+
 		public MenuItemCell (IntPtr handle) : base (handle)
 		{
 		}
 
 		protected override async void ConfigureSubviews (IListItem item)
 		{
-			var viewModel = item as BaseMenuItemViewModel;
+			ViewModel = item as BaseMenuItemViewModel;
 
-			await viewModel.DidLoad ();
+			await ViewModel.DidLoad ();
 
-			UserInteractionEnabled = viewModel.UserInteractionEnabled;
-			TitleLabel.Text = viewModel.Title;
-			SubtitleLabel.Text = viewModel.Subtitle;
-			MainImageView.Image = UIImage.FromFile (viewModel.ImageName);
+			InitUI ();
+			InitBindings ();
 		}
+
+		private void InitUI ()
+		{
+			UserInteractionEnabled = ViewModel.UserInteractionEnabled;
+			TitleLabel.Text = ViewModel.Title;
+			SubtitleLabel.Text = ViewModel.Subtitle;
+			MainImageView.Image = UIImage.FromFile (ViewModel.ImageName);
+		}
+
+		private void InitBindings ()
+		{
+			ViewModel.PropertyChanged -= OnPropertyChanged;
+			ViewModel.PropertyChanged += OnPropertyChanged;
+		}
+
+		private void OnPropertyChanged (object sender, PropertyChangedEventArgs e)
+		{
+			if(e.PropertyName.Equals("ImageName")) {
+				MainImageView.Image = UIImage.FromFile (ViewModel.ImageName);	
+			} 
+			else if (e.PropertyName.Equals("Title")) {
+				TitleLabel.Text = ViewModel.Title;
+			} 
+			else if (e.PropertyName.Equals("Subtitle")) {
+				SubtitleLabel.Text = ViewModel.Subtitle;
+			} 
+			else if (e.PropertyName.Equals("UserInteractionEnabled")) {
+				UserInteractionEnabled = ViewModel.UserInteractionEnabled;
+			}
+		}
+
+		#endregion
 	}
 }
