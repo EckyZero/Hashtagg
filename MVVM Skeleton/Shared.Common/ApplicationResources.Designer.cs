@@ -77,6 +77,12 @@ namespace Shared.Common {
             }
         }
         
+        public static string Done {
+            get {
+                return ResourceManager.GetString("Done", resourceCulture);
+            }
+        }
+        
         public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);

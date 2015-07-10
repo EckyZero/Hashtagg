@@ -138,4 +138,7 @@
   	<data name="Signout" xml:space="preserve">
     	<value>Sign out</value>
   	</data>
+  	<data name="Done" xml:space="preserve">
+    	<value>Done!</value>
+  	</data>
 </root>
