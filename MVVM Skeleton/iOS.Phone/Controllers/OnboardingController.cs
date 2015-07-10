@@ -53,6 +53,16 @@ namespace iOS.Phone
 			ActivityIndicator.StopAnimating ();
 		}
 
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+
+			if(NavigationController != null) {
+				NavigationController.SetNavigationBarHidden (true, true);
+				NavigationController.Delegate = new OnboardingNavigationControllerDelegate ();
+			}
+		}
+
 		public override async void ViewDidAppear (bool animated)
 		{
 			base.ViewDidAppear (animated);
@@ -70,14 +80,11 @@ namespace iOS.Phone
 			}
 		}
 
-		public override void ViewWillAppear (bool animated)
+		public override void ViewDidDisappear (bool animated)
 		{
-			base.ViewWillAppear (animated);
+			base.ViewDidDisappear (animated);
 
-			if(NavigationController != null) {
-				NavigationController.SetNavigationBarHidden (true, true);
-				NavigationController.Delegate = new OnboardingNavigationControllerDelegate ();
-			}
+			GoButton.TouchUpInside -= OnGoButtonTapped;
 		}
 
 		private void InitUI ()
@@ -141,7 +148,7 @@ namespace iOS.Phone
 
 			FacebookButton.SetCommand ("TouchUpInside", ViewModel.FacebookCommand);
 			TwitterButton.SetCommand ("TouchUpInside", ViewModel.TwitterCommand);
-			GoButton.SetCommand ("TouchUpInside", ViewModel.GoCommand);
+			GoButton.TouchUpInside += OnGoButtonTapped;
 
 			ViewModel.RequestHomePage = OnRequestHomePage;
 			ViewModel.CanExecute = OnCanExecute;
@@ -171,12 +178,6 @@ namespace iOS.Phone
 
 		private async void OnRequestHomePage(HomeViewModel viewModel)
 		{
-			GoButton.Hidden = true;
-			FacebookButton.UserInteractionEnabled = false;
-			TwitterButton.UserInteractionEnabled = false;
-			ActivityIndicator.Alpha = 1;
-			ActivityIndicator.StartAnimating ();
-
 			var controller = new ContainerController (viewModel);
 
 			await Task.Delay(2000);
@@ -188,6 +189,17 @@ namespace iOS.Phone
 		{
 			GoButton.Enabled = canExecute;
 			GoButton.Layer.BorderColor = canExecute ? GoButton.TitleLabel.TextColor.CGColor : SharedColors.Disabled.ToUIColor().CGColor;
+		}
+
+		private void OnGoButtonTapped (object sender, EventArgs args)
+		{
+			GoButton.Hidden = true;
+			FacebookButton.UserInteractionEnabled = false;
+			TwitterButton.UserInteractionEnabled = false;
+			ActivityIndicator.Alpha = 1;
+			ActivityIndicator.StartAnimating ();
+
+			ViewModel.GoCommand.Execute (null);
 		}
 
 		#endregion

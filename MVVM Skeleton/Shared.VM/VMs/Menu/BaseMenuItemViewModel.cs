@@ -11,8 +11,9 @@ namespace Shared.VM
 
 	public abstract class BaseMenuItemViewModel : SharedViewModelBase, IListItem
 	{
-		#region Private Variables
+		#region Variables
 
+		private bool _userInteractionEnabled = true;
 		private ListItemType _listItemType = ListItemType.MenuItem;
 		private MenuItemType _menuItemType = MenuItemType.Add;
 		private string _imageName = "Add button.png";
@@ -28,7 +29,16 @@ namespace Shared.VM
 
 		public MenuItemType MenuItemType {
 			get { return _menuItemType; }
-			set { _menuItemType = value; }
+			set { 
+				Set (() => MenuItemType, ref _menuItemType, value); 
+				UpdateImageName ();
+				UserInteractionEnabled = value != MenuItemType.Added;
+			}
+		}
+
+		public bool UserInteractionEnabled {
+			get { return _userInteractionEnabled; }
+			set { Set (() => UserInteractionEnabled, ref _userInteractionEnabled, value); }
 		}
 
 		public Action<IListItem> OnSelected { get; set; }

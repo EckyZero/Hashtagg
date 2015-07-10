@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using Shared.Common;
 using Microsoft.Practices.Unity;
+using System.Collections.Generic;
 
 namespace Shared.VM
 {
@@ -9,6 +10,7 @@ namespace Shared.VM
 	{
 		#region Variables
 
+		private string _title = String.Empty;
 		private string _primaryButtonText = ApplicationResources.Signout;
 		private ObservableRangeCollection<IListItem> _itemViewModels = new ObservableRangeCollection<IListItem> ();
 
@@ -21,8 +23,8 @@ namespace Shared.VM
 		public RelayCommand PrimaryCommand { get; private set; }
 
 		public string Title {
-			// TODO: Abstract this out of the social services
-			get { return "Michael Peters"; }
+			get { return _title; }
+			set { _title = value; }
 		}
 
 		public string PrimaryButtonText {
@@ -40,11 +42,13 @@ namespace Shared.VM
 
 		#region Methods
 
-		public MenuViewModel () : base ()
+		public MenuViewModel (string title = "") : base ()
 		{
 			var twitterViewModel = new TwitterMenuItemViewModel (OnListItemSelected);
+			var facebookViewModel = new FacebookMenuItemViewModel (OnListItemSelected);
 
-			ItemViewModels.Add (twitterViewModel);
+			ItemViewModels.AddRange (new List<BaseMenuItemViewModel>() { facebookViewModel, twitterViewModel});
+			Title = title;
 		}
 
 		protected override void InitCommands ()

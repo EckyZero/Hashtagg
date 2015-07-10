@@ -21,6 +21,7 @@ namespace iOS.Phone
 
 			await viewModel.DidLoad ();
 
+			UserInteractionEnabled = viewModel.UserInteractionEnabled;
 			TitleLabel.Text = viewModel.Title;
 			SubtitleLabel.Text = viewModel.Subtitle;
 			MainImageView.Image = UIImage.FromFile (viewModel.ImageName);

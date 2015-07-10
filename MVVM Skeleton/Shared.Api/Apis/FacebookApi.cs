@@ -55,6 +55,25 @@ namespace Shared.Api
 			}
 		}
 
+		public async Task<FacebookToFromDto> GetUser ()
+		{
+			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.FACEBOOK_USER));
+
+			try
+			{
+				var response = await _facebookHelper.ExecuteRequest(GET, url);
+				var result = JsonConvert.DeserializeObject<FacebookToFromDto>(response);
+
+				return result;
+			}
+			catch (Exception e)
+			{
+				var exception = new ApiException ("Failed to get facebook user", e);
+				_logger.Log (exception, LogType.ERROR);
+				throw exception;
+			}
+		}
+
 		#endregion
 	}
 }

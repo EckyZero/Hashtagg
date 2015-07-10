@@ -11,6 +11,7 @@ using GalaSoft.MvvmLight.Helpers;
 using System.Linq;
 using Shared.Common;
 using CoreGraphics;
+using System.Threading.Tasks;
 
 namespace iOS.Phone
 {
@@ -36,12 +37,12 @@ namespace iOS.Phone
 			}
 		}
 
-		public override void ViewDidLoad ()
+		public override async void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 	
 			InitUI ();
-			InitBindings ();
+			await InitBindings ();
 		}
 
 		private void InitUI ()
@@ -55,11 +56,17 @@ namespace iOS.Phone
 				Font = UIFont.FromName ("SanFranciscoText-Light", 13)
 			};
 			SortOrderSegmentedControl.SetTitleTextAttributes(attributes, UIControlState.Normal);
+
+			NameLabel.Text = ViewModel.Title;
 		}
 
-		private void InitBindings ()
+		private async Task InitBindings ()
 		{
 			ViewModel.RequestCompleted = OnRequestCompleted;
+
+			if(!ViewModel.IsLoaded) {
+				await ViewModel.DidLoad();
+			}
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)

@@ -28,7 +28,7 @@ namespace iOS.Phone
 			var homeController = homeNavController.TopViewController as HomeController;
 
 			homeController.ViewModel = _homeViewModel;
-			menuController.ViewModel = new MenuViewModel ();
+			menuController.ViewModel = new MenuViewModel (_homeViewModel.Title);
 
 			DefinesPresentationContext = true;
 			ProvidesPresentationContextTransitionStyle = true;

@@ -1,16 +1,16 @@
 ﻿using System;
 using Shared.Common;
-using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
+using System.Threading.Tasks;
 
 namespace Shared.VM
 {
-	public class TwitterMenuItemViewModel : BaseMenuItemViewModel
+	public class FacebookMenuItemViewModel : BaseMenuItemViewModel
 	{
 		#region Variables
 
-		private ITwitterHelper _twitterHelper;
-		private string _title = ApplicationResources.Twitter;
+		private IFacebookHelper _facebookHelper;
+		private string _title = ApplicationResources.Facebook;
 		private string _subtitle = String.Empty;
 
 		#endregion
@@ -31,33 +31,33 @@ namespace Shared.VM
 
 		#region Methods
 
-		public TwitterMenuItemViewModel (Action<IListItem> selectedCallback) : base (selectedCallback)
+		public FacebookMenuItemViewModel (Action<IListItem> selectedCallback) : base (selectedCallback)
 		{
-			_twitterHelper = IocContainer.GetContainer ().Resolve<ITwitterHelper> ();
+			_facebookHelper = IocContainer.GetContainer ().Resolve<IFacebookHelper> ();
 		}
 
 		public override async Task DidLoad ()
 		{
 			await base.DidLoad ();
 
-			var account = _twitterHelper.GetAccount ();
+			var account = _facebookHelper.GetAccount ();
 
 			MenuItemType = (account == null) ? MenuItemType.Add : MenuItemType.Added;
-			Subtitle = (account == null) ? String.Empty : String.Format("@{0}", account.Username);
+			Subtitle = (account == null) ? String.Empty : account.Username;
 
 			UpdateImageName ();
 		}
 
 		public override void Selected ()
 		{
-			var account = _twitterHelper.GetAccount ();
+			var account = _facebookHelper.GetAccount ();
 
 			if(account != null) {
-				_twitterHelper.DeleteAccount ();
+				_facebookHelper.DeleteAccount ();
 				base.OnSelected (this);
 			} 
 			else {
-				_twitterHelper.Authenticate (() => base.OnSelected (this));
+				_facebookHelper.Authenticate (() => base.OnSelected (this));
 			}
 		}
 

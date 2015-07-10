@@ -11,6 +11,7 @@ namespace Shared.Common
 		Task<bool> AccountExists ();
 		void DeleteAccount ();
 		SocialAccount GetAccount ();
+		void Synchronize (SocialAccount socialAccount);
 	}
 }
 
