@@ -61,8 +61,6 @@ namespace iOS.Phone
 			};
 
 			PrimaryButton.SetCommand ("TouchUpInside", ViewModel.PrimaryCommand);
-
-//			ViewModel.RequestRowUpdate = OnRequestRowUpdate;
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
@@ -81,14 +79,6 @@ namespace iOS.Phone
 				_tableController.DeleteAnimation = UITableViewRowAnimation.Left;
 			}
 		}
-
-//		private void OnRequestRowUpdate (BaseMenuItemViewModel viewModel, int index)
-//		{
-//			_tableController.TableView.ReloadData ();
-//			var indexPaths = new NSIndexPath[] { NSIndexPath.FromRowSection (index, 0) };
-
-//			_tableController.TableView.ReloadRows (indexPaths, UITableViewRowAnimation.Automatic);
-//		}
 
 		#endregion
 	}
