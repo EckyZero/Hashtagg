@@ -50,7 +50,7 @@ namespace iOS.Phone
 
 		private void OnPropertyChanged (object sender, PropertyChangedEventArgs e)
 		{
-			if(e.PropertyName.Equals("ImageName")) {
+			if(e.PropertyName.Equals("ImageName") || e.PropertyName.Equals("MenuItemType")) {
 				MainImageView.Image = UIImage.FromFile (ViewModel.ImageName);	
 			} 
 			else if (e.PropertyName.Equals("Title")) {

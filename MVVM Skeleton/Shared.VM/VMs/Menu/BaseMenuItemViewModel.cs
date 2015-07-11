@@ -55,7 +55,7 @@ namespace Shared.VM
 
 		#region Methods
 
-		public BaseMenuItemViewModel (Action<IListItem> selectedCallback) : base ()
+		protected BaseMenuItemViewModel (Action<IListItem> selectedCallback) : base ()
 		{
 			OnSelected = selectedCallback;
 		}

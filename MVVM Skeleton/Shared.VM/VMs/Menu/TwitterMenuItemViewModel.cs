@@ -57,7 +57,9 @@ namespace Shared.VM
 				base.OnSelected (this);
 			} 
 			else {
-				_twitterHelper.Authenticate (() => base.OnSelected (this));
+				_twitterHelper.Authenticate (() => {
+					base.OnSelected (this)	;
+				});
 			}
 		}
 

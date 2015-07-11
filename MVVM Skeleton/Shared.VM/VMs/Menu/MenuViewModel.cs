@@ -29,7 +29,7 @@ namespace Shared.VM
 
 		#region Properties
 
-		public Action<BaseMenuItemViewModel, int> RequestRowUpdate { get; set; }
+//		public Action<BaseMenuItemViewModel, int> RequestRowUpdate { get; set; }
 
 		public RelayCommand PrimaryCommand { get; private set; }
 
@@ -80,17 +80,17 @@ namespace Shared.VM
 			PrimaryCommand = new RelayCommand (PrimaryCommandExecute);
 		}
 
-		private void OnListItemSelected (IListItem item)
+		private async void OnListItemSelected (IListItem item)
 		{
 			var viewModel = item as BaseMenuItemViewModel;
-			var index = ItemViewModels.IndexOf (viewModel);
 
 			if(MenuState == MenuState.Remove) {
 				//	if we're in remove mode, this also means this item has to be removed from the list
 				ItemViewModels.Remove(viewModel);
 			}
-			if(RequestRowUpdate != null) {
-				RequestRowUpdate (viewModel, index);
+			else {
+				// If we're not, then that must mean we just added one
+				await viewModel.DidLoad();
 			}
 		}
 
@@ -169,10 +169,6 @@ namespace Shared.VM
 				await existingViewModel.DidLoad();
 
 				ItemViewModels.Add(existingViewModel);
-
-				if(RequestRowUpdate != null) {
-					RequestRowUpdate (viewModel, ItemViewModels.IndexOf(existingViewModel));
-				}
 			}
 			return existingViewModel;
 		}
