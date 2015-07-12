@@ -8,7 +8,7 @@ using Shared.VM;
 using Shared.Common;
 using System.Threading.Tasks;
 
-namespace iOS.Phone
+namespace iOS
 {
 	public partial class PSObservableTableController : ExtendedObservableTableViewController<IListItem>, IUIScrollViewDelegate
 	{
@@ -29,6 +29,7 @@ namespace iOS.Phone
 
 		public PSObservableTableController (IntPtr handle) : base (handle)
 		{
+			
 		}
 
 		public override void ViewDidLoad ()
@@ -37,6 +38,8 @@ namespace iOS.Phone
 
 			RefreshControl = new UIRefreshControl();
 			RefreshControl.ValueChanged += HandleValueChanged;
+			RefreshControl.BeginRefreshing ();
+			RefreshControl.EndRefreshing ();
 
 			TableView.RowHeight = UITableView.AutomaticDimension;
 		}

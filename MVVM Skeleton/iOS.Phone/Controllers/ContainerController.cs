@@ -28,11 +28,23 @@ namespace iOS.Phone
 			var homeController = homeNavController.TopViewController as HomeController;
 
 			homeController.ViewModel = _homeViewModel;
-			menuController.ViewModel = new MenuViewModel ();
+			menuController.ViewModel = new MenuViewModel (_homeViewModel.Title);
 
+			DefinesPresentationContext = true;
+			ProvidesPresentationContextTransitionStyle = true;
 			ShouldDelegateAutorotateToVisiblePanel = false;
 			LeftPanel = menuController;
 			CenterPanel = homeNavController;
+
+			var image = UIImage.FromFile ("App-bg.png");
+			var imageView = new UIImageView (image);
+
+			imageView.ContentMode = UIViewContentMode.ScaleAspectFill;
+			imageView.Frame = View.Frame;
+			imageView.TranslatesAutoresizingMaskIntoConstraints = true;
+
+			View.AddSubview (imageView);
+			View.SendSubviewToBack (imageView);
 		}
 
 		public override void StyleContainer (UIView container, bool animate, double duration)

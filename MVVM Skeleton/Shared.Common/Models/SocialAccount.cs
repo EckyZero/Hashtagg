@@ -7,10 +7,10 @@ namespace Shared.Common
 	public class SocialAccount
 	{
 		public string Username { get; set; }
-		public IDictionary<string,string> Properties { get; set; }
+		public Dictionary<string,string> Properties { get; set; }
 		public CookieContainer Cookies { get; set; }
 
-		public SocialAccount (string username, IDictionary<string,string> properties, CookieContainer cookies)
+		public SocialAccount (string username, Dictionary<string,string> properties, CookieContainer cookies)
 		{
 			Username = username;
 			Properties = properties;

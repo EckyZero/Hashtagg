@@ -4,14 +4,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="SanFranciscoText-Regular.otf">
-            <string>SanFranciscoText-Regular</string>
+        <mutableArray key="SanFranciscoText-Light.otf">
+            <string>SanFranciscoText-Light</string>
+            <string>SanFranciscoText-Light</string>
         </mutableArray>
-        <mutableArray key="SanFranciscoText-Semibold.otf">
-            <string>SanFranciscoText-Semibold</string>
+        <mutableArray key="SanFranciscoText-Medium.otf">
+            <string>SanFranciscoText-Medium</string>
         </mutableArray>
         <mutableArray key="SanFranciscoText-Thin.otf">
-            <string>SanFranciscoText-Thin</string>
             <string>SanFranciscoText-Thin</string>
         </mutableArray>
     </customFonts>
@@ -31,19 +31,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="App-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="gXK-7g-B9R">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What accounts do you use?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PL-gD-dut">
-                                <rect key="frame" x="79" y="243" width="166" height="16"/>
-                                <fontDescription key="fontDescription" name="SanFranciscoText-Semibold" family="San Francisco Text" pointSize="13"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What accounts do you use?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PL-gD-dut">
+                                <rect key="frame" x="79" y="243" width="163.5" height="16"/>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Medium" family="San Francisco Text" pointSize="13"/>
                                 <color key="textColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOt-dJ-sAe">
-                                <rect key="frame" x="185" y="309" width="85" height="85"/>
+                                <rect key="frame" x="185" y="315" width="72" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="4gp-t2-U8U"/>
-                                    <constraint firstAttribute="height" constant="85" id="9D3-ZC-dZQ"/>
+                                    <constraint firstAttribute="width" constant="72" id="4gp-t2-U8U"/>
+                                    <constraint firstAttribute="height" constant="72" id="9D3-ZC-dZQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SanFranciscoText-Thin" family="San Francisco Text" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Light" family="San Francisco Text" pointSize="14"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Twitter">
                                     <color key="titleColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,14 +51,13 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QjB-G1-n0w">
-                                <rect key="frame" x="50" y="513" width="220" height="45"/>
+                                <rect key="frame" x="55" y="514" width="210" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="PYq-QH-Sfa"/>
-                                    <constraint firstAttribute="height" constant="45" id="n8x-lz-2KW"/>
+                                    <constraint firstAttribute="height" constant="44" id="n8x-lz-2KW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Thin" family="San Francisco Text" pointSize="20"/>
                                 <state key="normal" title="Let's go!">
-                                    <color key="titleColor" red="0.0" green="0.28235294117647058" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.011764705882352941" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled">
@@ -66,9 +65,9 @@
                                 </state>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyv-qe-Qew">
-                                <rect key="frame" x="50" y="309" width="85" height="85"/>
+                                <rect key="frame" x="63" y="316" width="72" height="72"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="SanFranciscoText-Thin" family="San Francisco Text" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Light" family="San Francisco Text" pointSize="14"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Facebook">
                                     <color key="titleColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -81,31 +80,32 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hashtagg_title.png" translatesAutoresizingMaskIntoConstraints="NO" id="QYN-PX-KMe">
                                 <rect key="frame" x="97" y="205" width="127" height="38"/>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="osn-k3-oAz">
-                                <rect key="frame" x="141" y="517" width="37" height="37"/>
-                                <color key="color" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="osn-k3-oAz">
+                                <rect key="frame" x="150" y="525.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dyv-qe-Qew" firstAttribute="top" secondItem="3PL-gD-dut" secondAttribute="bottom" constant="50" id="0Wm-xn-GZw"/>
                             <constraint firstItem="osn-k3-oAz" firstAttribute="centerY" secondItem="QjB-G1-n0w" secondAttribute="centerY" id="381-O3-quV"/>
                             <constraint firstItem="QjB-G1-n0w" firstAttribute="centerX" secondItem="gXK-7g-B9R" secondAttribute="centerX" id="6fT-eG-AVb"/>
                             <constraint firstAttribute="bottom" secondItem="gXK-7g-B9R" secondAttribute="bottom" id="7B6-9A-jP7"/>
+                            <constraint firstItem="QjB-G1-n0w" firstAttribute="leading" secondItem="Gm8-FO-KbD" secondAttribute="leading" constant="55" id="8Rj-eB-yq7"/>
                             <constraint firstItem="yOt-dJ-sAe" firstAttribute="height" secondItem="dyv-qe-Qew" secondAttribute="height" id="IKm-jx-RXl"/>
+                            <constraint firstItem="yOt-dJ-sAe" firstAttribute="centerY" secondItem="gXK-7g-B9R" secondAttribute="centerY" constant="67.5" id="K5e-Ib-VfK"/>
                             <constraint firstItem="QYN-PX-KMe" firstAttribute="centerX" secondItem="3PL-gD-dut" secondAttribute="centerX" id="Mzo-F0-n6f"/>
                             <constraint firstItem="gXK-7g-B9R" firstAttribute="leading" secondItem="dyv-qe-Qew" secondAttribute="trailing" constant="-135" id="Nyf-bS-dpc"/>
                             <constraint firstItem="3PL-gD-dut" firstAttribute="top" secondItem="QYN-PX-KMe" secondAttribute="bottom" id="ObK-1h-t3S"/>
+                            <constraint firstItem="gXK-7g-B9R" firstAttribute="centerY" secondItem="dyv-qe-Qew" secondAttribute="centerY" constant="-68" id="OsL-Jf-5Lt"/>
                             <constraint firstItem="gXK-7g-B9R" firstAttribute="top" secondItem="Gm8-FO-KbD" secondAttribute="top" id="R9i-GV-VS2"/>
                             <constraint firstItem="osn-k3-oAz" firstAttribute="centerX" secondItem="QjB-G1-n0w" secondAttribute="centerX" id="UcF-u0-gbe"/>
                             <constraint firstItem="QYN-PX-KMe" firstAttribute="centerX" secondItem="gXK-7g-B9R" secondAttribute="centerX" id="XYc-2E-y1C"/>
                             <constraint firstItem="yOt-dJ-sAe" firstAttribute="leading" secondItem="gXK-7g-B9R" secondAttribute="trailing" constant="-135" id="b2v-51-7zt"/>
                             <constraint firstItem="yOt-dJ-sAe" firstAttribute="width" secondItem="dyv-qe-Qew" secondAttribute="width" id="dM1-tD-bkF"/>
                             <constraint firstItem="QYN-PX-KMe" firstAttribute="top" secondItem="oBK-rQ-lxh" secondAttribute="bottom" constant="185" id="e00-se-KEU"/>
+                            <constraint firstAttribute="trailing" secondItem="QjB-G1-n0w" secondAttribute="trailing" constant="55" id="e19-Q0-9Bn"/>
                             <constraint firstAttribute="trailing" secondItem="gXK-7g-B9R" secondAttribute="trailing" id="fB5-iO-LpL"/>
                             <constraint firstItem="ekL-jr-FaG" firstAttribute="top" secondItem="QjB-G1-n0w" secondAttribute="bottom" constant="10" id="fk6-RX-xik"/>
                             <constraint firstItem="gXK-7g-B9R" firstAttribute="leading" secondItem="Gm8-FO-KbD" secondAttribute="leading" id="g4j-5n-stf"/>
-                            <constraint firstItem="yOt-dJ-sAe" firstAttribute="top" secondItem="3PL-gD-dut" secondAttribute="bottom" constant="50" id="mfO-Td-K0L"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FYn-Bn-IOI"/>
@@ -114,14 +114,14 @@
                         <outlet property="ActivityIndicator" destination="osn-k3-oAz" id="fHK-Xa-iJ1"/>
                         <outlet property="BackgroundImageView" destination="gXK-7g-B9R" id="gYR-nR-sy4"/>
                         <outlet property="FacebookButton" destination="dyv-qe-Qew" id="nsc-je-TqL"/>
-                        <outlet property="FacebookButtonTopConstraint" destination="0Wm-xn-GZw" id="gMB-yL-bkm"/>
+                        <outlet property="FacebookButtonCenterYConstraint" destination="OsL-Jf-5Lt" id="Qye-cV-lMD"/>
                         <outlet property="GoButton" destination="QjB-G1-n0w" id="Awv-Sf-47X"/>
                         <outlet property="GoButtonBottomConstraint" destination="fk6-RX-xik" id="0e1-Nl-yX2"/>
                         <outlet property="SubtitleLabel" destination="3PL-gD-dut" id="YyX-er-Pzr"/>
                         <outlet property="TitleImageView" destination="QYN-PX-KMe" id="jhI-lm-Wvc"/>
                         <outlet property="TitleImageViewTopConstraint" destination="e00-se-KEU" id="CA4-3p-Ocw"/>
                         <outlet property="TwitterButton" destination="yOt-dJ-sAe" id="tPP-sO-qa6"/>
-                        <outlet property="TwitterButtonTopConstraint" destination="mfO-Td-K0L" id="Fcy-6e-wTS"/>
+                        <outlet property="TwitterButtonCenterYConstraint" destination="K5e-Ib-VfK" id="ZCd-sW-l3j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Gq-ZJ-1LC" userLabel="First Responder" sceneMemberID="firstResponder"/>

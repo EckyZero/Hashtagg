@@ -23,6 +23,34 @@ namespace Shared.Service
 			_facebookApi = IocContainer.GetContainer ().Resolve<IFacebookApi> ();
 		}
 
+		public async Task<ServiceResponse<FacebookUser>> GetUser ()
+		{
+			var user = new FacebookUser ();
+
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					var dto = await _facebookApi.GetUser();
+					user = Mapper.Map<FacebookUser>(dto);
+
+					return new ServiceResponse<FacebookUser>(user,ServiceResponseType.SUCCESS);	
+				}
+				else {
+					return new ServiceResponse<FacebookUser>(user,ServiceResponseType.NO_CONNECTION);
+				}
+			}
+			catch (BaseException exception)
+			{
+				return new ServiceResponse<FacebookUser> (user, ServiceResponseType.ERROR);
+			}
+			catch (Exception e)
+			{
+				_logger.Log (new ServiceException ("Error getting facebook user", e), LogType.ERROR);
+				return new ServiceResponse<FacebookUser> (user, ServiceResponseType.ERROR);
+			} 
+		}
+
 		public async Task<ServiceResponse<ObservableCollection<FacebookPost>>> GetHomeFeed ()
 		{
 			var models = new ObservableCollection<FacebookPost> ();

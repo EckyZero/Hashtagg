@@ -20,6 +20,8 @@ namespace Shared.VM
 	{
 		#region Variables
 
+		private bool _isLoaded = false;
+		private string _title = String.Empty;
 		private OrderBy _orderBy = OrderBy.Time;
 		private ITwitterService _twitterService;
 		private ITwitterHelper _twitterHelper;
@@ -49,7 +51,15 @@ namespace Shared.VM
 			set { _cardViewModels = value; }
 		}
 
-        public string DisplayName { get; set; }
+		public string Title {
+			get { return _title; }
+			set { _title = value; }
+		}
+
+		public bool IsLoaded {
+			get { return _isLoaded; }
+			set { _isLoaded = value; }
+		}
 
 		#endregion
 
@@ -71,6 +81,16 @@ namespace Shared.VM
 			_facebookHelper = IocContainer.GetContainer ().Resolve<IFacebookHelper> ();
 		}
 
+		public override async Task DidLoad ()
+		{
+			await base.DidLoad ();
+
+			await GetPosts ();
+			await GetName ();
+
+			_isLoaded = true;
+		}
+
 		protected override void InitCommands ()
 		{
 			RefreshCommand = new RelayCommand (RefreshCommandExecute);
@@ -80,72 +100,7 @@ namespace Shared.VM
 
 		private async void RefreshCommandExecute ()
 		{
-		    try
-		    {
-		        var facebookViewModels = await GetFacebookFeed();
-		        var twitterViewModels = await GetTwitterFeed();
-
-		        if (facebookViewModels.Count > 0)
-		        {
-                    DisplayName = (await _facebookHelper.GetAccount()).Username;
-		        }
-
-		        var allViewModels = new ObservableRangeCollection<BaseContentCardViewModel>();
-
-		        // TODO: Need to further develop this system of ordering
-		        // Need to be able to toggle between popularity and time
-//			allViewModels.AddRange (facebookViewModels);
-//			allViewModels.AddRange (twitterViewModels);
-		        Random rnd = new Random();
-
-		        int total = facebookViewModels.Count + twitterViewModels.Count;
-		        double fbLuck = 0;
-		        double tLuck = 0;
-
-		        fbLuck = facebookViewModels.Count/(double) total;
-		        tLuck = twitterViewModels.Count/(double) total;
-
-		        for (int i = 0; i < total; i++)
-		        {
-		            int newTotal = 0;
-		            var dicey = rnd.NextDouble();
-		            if (dicey < fbLuck)
-		            {
-		                allViewModels.Add(facebookViewModels.First());
-		                facebookViewModels.RemoveAt(0);
-		            }
-		            else
-		            {
-		                allViewModels.Add(twitterViewModels.First());
-		                twitterViewModels.RemoveAt(0);
-		            }
-		            newTotal = facebookViewModels.Count + twitterViewModels.Count;
-		            if (newTotal != 0)
-		            {
-		                fbLuck = facebookViewModels.Count/(double) newTotal;
-		                tLuck = twitterViewModels.Count/(double) newTotal;
-		            }
-		        }
-
-
-
-//
-//			if(OrderBy == OrderBy.Time)
-//			{
-//				allViewModels = new ObservableRangeCollection<BaseContentCardViewModel> (allViewModels.OrderByDescending (vm => vm.OrderByDateTime));
-//			}
-//
-		        CardViewModels.Clear();
-		        CardViewModels.AddRange(allViewModels);
-		    }
-		    finally
-		    {
-                if (RequestCompleted != null)
-                {
-                    RequestCompleted();
-                }
-		    }
-		    
+			await GetPosts ();
 		}
 
 		private void TwitterCommandExecute ()
@@ -200,6 +155,92 @@ namespace Shared.VM
 				}
 			}
 			return viewModels;
+		}
+
+		public async Task GetPosts ()
+		{
+			var facebookViewModels = await GetFacebookFeed();
+			var twitterViewModels = await GetTwitterFeed ();
+
+			var allViewModels = new ObservableRangeCollection<BaseContentCardViewModel> ();
+
+			// TODO: Need to further develop this system of ordering
+			// Need to be able to toggle between popularity and time
+			//			allViewModels.AddRange (facebookViewModels);
+			//			allViewModels.AddRange (twitterViewModels);
+
+			Random rnd = new Random();
+
+			int total = facebookViewModels.Count + twitterViewModels.Count;
+			double fbLuck = 0;
+			double tLuck = 0;
+
+			fbLuck = facebookViewModels.Count/(double) total;
+			tLuck = twitterViewModels.Count/(double) total;
+
+			for (int i = 0; i < total; i++)
+			{
+				int newTotal = 0;
+				var dicey = rnd.NextDouble();
+				if (dicey < fbLuck)
+				{
+					allViewModels.Add(facebookViewModels.First());
+					facebookViewModels.RemoveAt(0);
+				}
+				else
+				{
+					allViewModels.Add(twitterViewModels.First());
+					twitterViewModels.RemoveAt(0);
+				}
+				newTotal = facebookViewModels.Count + twitterViewModels.Count;
+				if (newTotal != 0)
+				{
+					fbLuck = facebookViewModels.Count/(double) newTotal;
+					tLuck = twitterViewModels.Count/(double) newTotal;
+				}
+			}
+
+
+
+			//
+			//			if(OrderBy == OrderBy.Time)
+			//			{
+			//				allViewModels = new ObservableRangeCollection<BaseContentCardViewModel> (allViewModels.OrderByDescending (vm => vm.OrderByDateTime));
+			//			}
+			//
+			CardViewModels.Clear ();
+			CardViewModels.AddRange (allViewModels);
+
+			if(RequestCompleted != null) {
+				RequestCompleted ();
+			}
+		}
+
+		public async Task GetName ()
+		{
+			if(await _facebookHelper.AccountExists())
+			{
+				var facebookResponse = await _facebookService.GetUser ();	
+				
+				if(await ProcessResponse(facebookResponse, false))
+				{
+					var user = facebookResponse.Result;
+					var account = _facebookHelper.GetAccount ();
+
+					account.Properties ["screen_name"] = user.Name;
+					account.Properties ["id"] = user.Id;
+					account.Properties ["imageUrl"] = user.Picture;
+					_facebookHelper.Synchronize (account);
+
+					Title = account.Username;
+
+				}
+			} 
+			else if (await _twitterHelper.AccountExists())
+			{
+				var account = _twitterHelper.GetAccount ();
+				Title = String.Format("@{0}", account.Properties ["screen_name"]);
+			}
 		}
 
 		#endregion

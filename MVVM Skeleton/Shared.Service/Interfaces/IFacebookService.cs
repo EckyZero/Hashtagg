@@ -8,6 +8,7 @@ namespace Shared.Service
 	public interface IFacebookService
 	{
 		Task<ServiceResponse<ObservableCollection<FacebookPost>>> GetHomeFeed ();
+		Task<ServiceResponse<FacebookUser>> GetUser ();
 	}
 }
 

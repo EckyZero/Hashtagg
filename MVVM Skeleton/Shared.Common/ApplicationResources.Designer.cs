@@ -47,6 +47,12 @@ namespace Shared.Common {
             }
         }
         
+        public static string Signout {
+            get {
+                return ResourceManager.GetString("Signout", resourceCulture);
+            }
+        }
+        
         public static string Facebook {
             get {
                 return ResourceManager.GetString("Facebook", resourceCulture);
@@ -68,6 +74,12 @@ namespace Shared.Common {
         public static string Twitter {
             get {
                 return ResourceManager.GetString("Twitter", resourceCulture);
+            }
+        }
+        
+        public static string Done {
+            get {
+                return ResourceManager.GetString("Done", resourceCulture);
             }
         }
         

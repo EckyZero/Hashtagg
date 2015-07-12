@@ -10,7 +10,8 @@ namespace Shared.Common
 		void Authenticate (Action callback);
 		Task<bool> AccountExists ();
 		void DeleteAccount ();
-		Task<SocialAccount> GetAccount ();
+		SocialAccount GetAccount ();
+		void Synchronize (SocialAccount socialAccount);
 	}
 }
 

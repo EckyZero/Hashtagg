@@ -113,6 +113,10 @@
     <Compile Include="Utils\PSObservableTableSource.cs" />
     <Compile Include="BaseCell.cs" />
     <Compile Include="Utils\LabelExtensions.cs" />
+    <Compile Include="Utils\PSObservableTableController.cs" />
+    <Compile Include="Utils\PSObservableTableController.designer.cs">
+      <DependentUpon>PSObservableTableController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

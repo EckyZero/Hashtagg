@@ -9,6 +9,7 @@ namespace Shared.Api
 
 		public const string FACEBOOK_BASE = "https://graph.facebook.com/v2.3";
 		public const string FACEBOOK_HOME_FEED = "/me/home";
+		public const string FACEBOOK_USER = "/me";
 	}
 }
 

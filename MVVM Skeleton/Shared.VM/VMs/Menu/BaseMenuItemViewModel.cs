@@ -4,25 +4,23 @@ namespace Shared.VM
 {
 	public enum MenuItemType
 	{
-		Default,
-		LoggedIn,
-		Loggedout
+		Add,
+		Added,
+		Remove
 	}
 
 	public abstract class BaseMenuItemViewModel : SharedViewModelBase, IListItem
 	{
-		#region Private Variables
+		#region Variables
 
+		private bool _userInteractionEnabled = true;
 		private ListItemType _listItemType = ListItemType.MenuItem;
-		private MenuItemType _menuItemType = MenuItemType.Default;
+		private MenuItemType _menuItemType = MenuItemType.Add;
+		private string _imageName = "Add button.png";
 
 		#endregion
 
 		#region Properties
-
-		public Action RequestDefaultFormat { get; set; }
-		public Action RequestLoggedInFormat { get; set; }
-		public Action RequestLoggedOutFormat { get; set; }
 
 		public ListItemType ListItemType { 
 			get { return _listItemType; }
@@ -31,20 +29,35 @@ namespace Shared.VM
 
 		public MenuItemType MenuItemType {
 			get { return _menuItemType; }
-			set { _menuItemType = value; }
+			set { 
+				Set (() => MenuItemType, ref _menuItemType, value); 
+				UpdateImageName ();
+				UserInteractionEnabled = value != MenuItemType.Added;
+			}
+		}
+
+		public bool UserInteractionEnabled {
+			get { return _userInteractionEnabled; }
+			set { Set (() => UserInteractionEnabled, ref _userInteractionEnabled, value); }
 		}
 
 		public Action<IListItem> OnSelected { get; set; }
 
-		public abstract string Title { get; }
-		public abstract string Subtitle { get; }
+		public abstract string Title { get; set; }
+		public abstract string Subtitle { get; set; }
+
+		public string ImageName { 
+			get { return _imageName; }
+			set { Set (() => ImageName, ref _imageName, value); }
+		}
 
 		#endregion
 
 		#region Methods
 
-		public BaseMenuItemViewModel () : base ()
+		protected BaseMenuItemViewModel (Action<IListItem> selectedCallback) : base ()
 		{
+			OnSelected = selectedCallback;
 		}
 
 		protected override void InitCommands ()
@@ -52,33 +65,24 @@ namespace Shared.VM
 			
 		}
 
-		public abstract void Selected ();
-
-		protected void RequestLoggedInFormatExecute ()
+		public virtual void Selected ()
 		{
-			MenuItemType = MenuItemType.LoggedIn;
-
-			if(RequestLoggedInFormat != null) {
-				RequestLoggedInFormat();
+			if(OnSelected != null) {
+				OnSelected (this);
 			}
 		}
 
-		protected void RequestLoggedOutFormatExecute ()
+		protected void UpdateImageName ()
 		{
-			MenuItemType = MenuItemType.Loggedout;
+			var imageName = "Add button.png";
 
-			if(RequestLoggedOutFormat != null) {
-				RequestLoggedOutFormat ();
+			if(MenuItemType == MenuItemType.Added) {
+				imageName = "Added button.png";
+			} 
+			else if (MenuItemType == MenuItemType.Remove) {
+				imageName = "Remove button.png";
 			}
-		}
-
-		protected void RequestDefaultFormatExecute ()
-		{
-			MenuItemType = MenuItemType.Default;
-
-			if(RequestDefaultFormat != null) {
-				RequestDefaultFormat ();
-			}
+			ImageName = imageName;
 		}
 
 		#endregion

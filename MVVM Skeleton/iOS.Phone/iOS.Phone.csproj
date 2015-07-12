@@ -204,9 +204,9 @@
     <Compile Include="Controllers\OnboardingController.designer.cs">
       <DependentUpon>OnboardingController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\PSObservableTableController.cs" />
-    <Compile Include="Controllers\PSObservableTableController.designer.cs">
-      <DependentUpon>PSObservableTableController.cs</DependentUpon>
+    <Compile Include="Cells\MenuItemCell.cs" />
+    <Compile Include="Cells\MenuItemCell.designer.cs">
+      <DependentUpon>MenuItemCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

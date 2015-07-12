@@ -92,11 +92,11 @@ namespace Shared.VM
 			}
 		}
 
-		private void GoCommandExecute ()
+		private async void GoCommandExecute ()
 		{
 			var viewModel = new HomeViewModel ();
 
-			viewModel.RefreshCommand.Execute (null);
+			await viewModel.DidLoad ();
 
 			if(RequestHomePage != null) {
 				RequestHomePage (viewModel);

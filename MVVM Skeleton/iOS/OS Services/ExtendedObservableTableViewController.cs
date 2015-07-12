@@ -442,12 +442,16 @@ namespace iOS
 
 			public override void Scrolled (UIScrollView scrollView)
 			{
-				_controller.HandleScrolled (scrollView as UITableView);
+				if(_controller.HandleScrolled != null) {
+					_controller.HandleScrolled (scrollView as UITableView);	
+				}
 			}
 
 			public override void DraggingStarted (UIScrollView scrollView)
 			{
-				_controller.HandleDraggingStarted (scrollView as UITableView);	
+				if(_controller.HandleDraggingStarted != null) {
+					_controller.HandleDraggingStarted (scrollView as UITableView);		
+				}
 			}
 
 			/// <summary>
