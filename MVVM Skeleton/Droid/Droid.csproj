@@ -101,6 +101,8 @@
     <Compile Include="Activities\ActionBarBaseActivity.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
     <Compile Include="Activities\IBaseActivity.cs" />
+    <Compile Include="Controls\CircularImageView.cs" />
+    <Compile Include="Helpers\SharedDrawableHelpers.cs" />
     <Compile Include="OS Services\BaseService.cs" />
     <Compile Include="OS Services\BrowserService.cs" />
     <Compile Include="OS Services\ConnectivityService.cs" />
@@ -163,7 +165,6 @@
     <Folder Include="Assets\" />
     <Folder Include="Resources\drawable\" />
     <Folder Include="Resources\Values-v11\" />
-    <Folder Include="Resources\values\" />
   </ItemGroup>
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <ItemGroup>
@@ -179,5 +180,13 @@
       <Project>{CF876A71-9E29-4F7C-ABC7-BE9FE04E47B4}</Project>
       <Name>Shared.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\colors.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Attrs.xml" />
   </ItemGroup>
 </Project>

@@ -24,7 +24,7 @@ using Shared.VM;
 
 namespace Droid.Phone
 {
-	[Activity (Label = "HomeActivity",  MainLauncher = true)]			
+	[Activity (Label = "HomeActivity",  MainLauncher = false)]			
 	public class HamburgerMenuActivity : ActionBarBaseActivity
 	{
 		private ActionBarDrawerToggle _drawerToggle;

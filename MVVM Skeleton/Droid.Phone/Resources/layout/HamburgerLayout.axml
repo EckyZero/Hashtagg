@@ -2,10 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <include
+        android:layout_alignParentTop="true"
+        android:id="@+id/hamburgerMenu_toolbar"
+        layout="@layout/Toolbar" />
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/hamburgerMenu_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/hamburgerMenu_toolbar">
         <FrameLayout
             android:id="@+id/hamburgerMenu_content"
             android:layout_width="match_parent"
@@ -18,11 +23,7 @@
             android:layout_gravity="start"
             android:choiceMode="singleChoice"
             android:scrollbars="none"
-            android:background="#555555"
+            android:background="@drawable/App_bg"
             android:divider="@android:color/transparent" />
     </android.support.v4.widget.DrawerLayout>
-    <include
-        android:layout_alignParentTop="true"
-        android:id="@+id/hamburgerMenu_toolbar"
-        layout="@layout/Toolbar" />
 </RelativeLayout>
