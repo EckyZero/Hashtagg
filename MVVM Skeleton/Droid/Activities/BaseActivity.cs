@@ -99,7 +99,9 @@ namespace Droid
 
             _emailService = IocContainer.GetContainer().Resolve<IEmailService>() as EmailService;
 
-			_twitterHelper = IocContainer.GetContainer().Resolve<ITwitterHelper>() as AndroidTwitterHelper;
+            _twitterHelper = IocContainer.GetContainer().Resolve<ITwitterHelper>() as AndroidTwitterHelper;
+
+            _facebookHelper = IocContainer.GetContainer().Resolve<IFacebookHelper>() as AndroidFacebookHelper;
         }
 
         private void RegServices()

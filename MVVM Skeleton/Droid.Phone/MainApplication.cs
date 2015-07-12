@@ -101,6 +101,8 @@ namespace Droid.Phone
         {
             var nav = new ExtendedNavigationService();
 
+            nav.Configure(ViewModelLocator.HOME_KEY, typeof(HamburgerMenuActivity));
+
 			return nav;
 		}
 

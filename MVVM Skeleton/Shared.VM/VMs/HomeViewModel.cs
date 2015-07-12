@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Shared.VM
 {
@@ -116,7 +117,7 @@ namespace Shared.VM
 		{
 			var viewModels = new ObservableCollection<FacebookCardViewModel> ();
 
-			if(await _facebookHelper.AccountExists())
+            if(await _facebookHelper.AccountExists())
 			{
 				var response = new ServiceResponse<ObservableCollection<FacebookPost>> ();
 
@@ -170,16 +171,16 @@ namespace Shared.VM
 
 			Random rnd = new Random();
 
-			var total = facebookViewModels.Count + twitterViewModels.Count;
+			int total = facebookViewModels.Count + twitterViewModels.Count;
 			double fbLuck = 0;
 			double tLuck = 0;
 
-			var newTotal = 0;
-			fbLuck = facebookViewModels.Count / total;
-			tLuck = twitterViewModels.Count / total;
+			fbLuck = facebookViewModels.Count/(double) total;
+			tLuck = twitterViewModels.Count/(double) total;
 
 			for (int i = 0; i < total; i++)
 			{
+				int newTotal = 0;
 				var dicey = rnd.NextDouble();
 				if (dicey < fbLuck)
 				{
@@ -194,8 +195,8 @@ namespace Shared.VM
 				newTotal = facebookViewModels.Count + twitterViewModels.Count;
 				if (newTotal != 0)
 				{
-					fbLuck = facebookViewModels.Count / newTotal;
-					tLuck = twitterViewModels.Count / newTotal;
+					fbLuck = facebookViewModels.Count/(double) newTotal;
+					tLuck = twitterViewModels.Count/(double) newTotal;
 				}
 			}
 

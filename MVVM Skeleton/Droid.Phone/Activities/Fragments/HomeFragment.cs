@@ -14,6 +14,11 @@ using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Shared.VM;
 using System.Collections.ObjectModel;
+using Android.Support.V4.Widget;
+using Android.Text;
+using Droid.Controls;
+using Droid.UIHelpers;
+using Koush;
 
 namespace Droid.Phone
 {
@@ -25,8 +30,13 @@ namespace Droid.Phone
 		HomeViewModel _viewModel;
 		ListView _listLayout;
 		LayoutInflater _inflater;
+        private Android.Views.View header;
+	    private SwipeRefreshLayout _swipeLayout;
+	    private bool _init;
+	    private bool _loaded;
+	    private TextView _usernameText;
 
-		public HomeFragment(HomeViewModel viewModel)
+	    public HomeFragment(HomeViewModel viewModel)
 		{
 			_viewModel = viewModel;
 		}
@@ -36,9 +46,11 @@ namespace Droid.Phone
 			_inflater = inflater;
 
 			var viewGroup = inflater.Inflate (Resource.Layout.Home, container, false);
+		    _swipeLayout = viewGroup.FindViewById<SwipeRefreshLayout>(Resource.Id.HomeSwipeRefreshLayout);
 			_listLayout = viewGroup.FindViewById<ListView> (Resource.Id.HomeListView);
-			var header = inflater.Inflate (Resource.Layout.HomeHeader, null, false);
+            header = inflater.Inflate (Resource.Layout.HomeHeader, null, false);
 			_listLayout.AddHeaderView(header);
+            //(_listLayout as OverscrollListView).OnOverScroll += OnOnOverScroll;
 			_listLayout.Adapter = new HomeListAdapter<IListItem> (_viewModel.CardViewModels,  inflater, _listLayout);
 			// Use this to return your custom view for this Fragment
 			// return inflater.Inflate(Resource.Layout.YourFragment, container, false);
@@ -48,10 +60,45 @@ namespace Droid.Phone
 			_refreshButton.SetCommand("Click", _viewModel.RefreshCommand);
 			_twitterButton.SetCommand("Click", _viewModel.TwitterCommand);
 			_facebookButton.SetCommand ("Click", _viewModel.FacebookCommand);
+		    _usernameText = header.FindViewById<TextView>(Resource.Id.HomeHeaderUsernameText);
+            _swipeLayout.Refresh += SwipeLayoutOnRefresh;
+            _viewModel.RequestCompleted += OnRequestCompleted;
+            viewGroup.ViewTreeObserver.GlobalLayout += ViewTreeObserverOnGlobalLayout;
 			return viewGroup;
 		}
 
-        private class HomeListAdapter<T> : ObservableAdapter<T> where T : IListItem
+	    private void OnRequestCompleted()
+	    {
+	        _usernameText.Text = _viewModel.DisplayName;
+	        _swipeLayout.Refreshing = false;
+	    }
+
+	    private void SwipeLayoutOnRefresh(object sender, EventArgs eventArgs)
+	    {
+	        _viewModel.RefreshCommand.Execute(null);
+	    }
+
+	    private void ViewTreeObserverOnGlobalLayout(object sender, EventArgs eventArgs)
+	    {
+	        
+	        if (_init && !_loaded)
+	        {
+	            _loaded = true;
+                _viewModel.RefreshCommand.Execute(null);
+	            _swipeLayout.Refreshing = true;
+                return;
+            }
+            if (_init)
+            {
+                return;
+            }
+	        _init = true;
+            _swipeLayout.SetProgressViewOffset(false, header.Height, (int)Math.Ceiling(header.Height + _swipeLayout.Height * 0.1));
+            _swipeLayout.SetColorSchemeResources(Resource.Color.carnation);
+	    }
+
+
+	    private class HomeListAdapter<T> : ObservableAdapter<T> where T : IListItem
 		{
 			LayoutInflater _inflater;
 			ListView _listView;
@@ -72,9 +119,9 @@ namespace Droid.Phone
                     case ListItemType.Default:
                         return ProcessSocialCard(position, vm as BaseContentCardViewModel, convertView);
                 }
-				var cell = _inflater.Inflate(Resource.Layout.TwitterCell, _listView, false);
-				var label = cell.FindViewById<TextView>(Resource.Id.TweetCellTweetBody);
-				label.Text = vm.ToString();
+				var cell = _inflater.Inflate(Resource.Layout.DefaultCell, _listView, false);
+				//var label = cell.FindViewById<TextView>(Resource.Id.TweetCellTweetBody);
+				//label.Text = vm.ToString();
 				return cell;
 			}
 
@@ -109,19 +156,89 @@ namespace Droid.Phone
 
             private View ProcessFacebook(int position, FacebookCardViewModel fbVm, View convertView)
             {
-                if ( convertView == null || convertView.Id != Resource.Id.TweetCellMainLayout)
-                    convertView = _inflater.Inflate(Resource.Layout.TwitterCell, null, false);
-                convertView.FindViewById<TextView>(Resource.Id.TweetCellTweetBody).Text = fbVm.Text;
+                if ( convertView == null || convertView.Id != Resource.Id.DefaultCellMainLayout)
+                    convertView = _inflater.Inflate(Resource.Layout.DefaultCell, null, false);
+                var mainImage = convertView.FindViewById<ImageView>(Resource.Id.DefaultCellMainImage);
+                var profileImage = convertView.FindViewById<CircularImageView>(Resource.Id.DefaultCellProfileImage);
+                convertView.FindViewById<TextView>(Resource.Id.DefaultCellMainText).TextFormatted = Html.FromHtml(fbVm.Text);
+                convertView.FindViewById<CircularImageView>(Resource.Id.DefaultCellSocialImage).SetImageResource(Resource.Drawable.Facebook);
+
+                var likeButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellLikeButton);
+                var commentButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellCommentButton);
+                var shareButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellShareButton);
+
+                likeButton.Text = fbVm.LikeButtonText;
+                likeButton.SetCommand("Click", fbVm.LikeCommand);
+
+                commentButton.Text = fbVm.CommentButtonText;
+                commentButton.SetCommand("Click", fbVm.CommentCommand);
+
+                shareButton.Text = fbVm.ShareButtonText;
+                shareButton.SetCommand("Click", fbVm.ShareCommand);
+
+                if (!string.IsNullOrWhiteSpace(fbVm.UserImageUrl))
+                {
+                    UrlImageViewHelper.SetUrlDrawable(profileImage, fbVm.UserImageUrl, SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(fbVm.UserImagePlaceholder));
+                }
+                else
+                {
+                    profileImage.SetImageResource(SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(fbVm.UserImagePlaceholder));
+                }
+
+                if (fbVm.ShowImage)
+                {
+                    mainImage.Visibility = ViewStates.Visible;
+                    UrlImageViewHelper.SetUrlDrawable(mainImage, fbVm.ImageUrl);
+                }
+                else
+                {
+                    mainImage.Visibility = ViewStates.Gone;
+                }
 
                 return convertView;
             }
 
             private View ProcessTwitter(int position, TwitterCardViewModel tVm, View convertView)
             {
-                if (convertView == null || convertView.Id != Resource.Id.TweetCellMainLayout)
-                    convertView = _inflater.Inflate(Resource.Layout.TwitterCell, null, false);
+                if (convertView == null || convertView.Id != Resource.Id.DefaultCellMainLayout)
+                    convertView = _inflater.Inflate(Resource.Layout.DefaultCell, null, false);
 
-                convertView.FindViewById<TextView>(Resource.Id.TweetCellTweetBody).Text = tVm.Text;
+                var mainImage = convertView.FindViewById<ImageView>(Resource.Id.DefaultCellMainImage);
+                var profileImage = convertView.FindViewById<CircularImageView>(Resource.Id.DefaultCellProfileImage);
+                convertView.FindViewById<TextView>(Resource.Id.DefaultCellMainText).TextFormatted = Html.FromHtml(tVm.Text);
+                convertView.FindViewById<CircularImageView>(Resource.Id.DefaultCellSocialImage).SetImageResource(Resource.Drawable.Twitter);
+
+                var likeButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellLikeButton);
+                var commentButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellCommentButton);
+                var shareButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellShareButton);
+
+                likeButton.Text = tVm.LikeButtonText;
+                likeButton.SetCommand("Click", tVm.LikeCommand);
+
+                commentButton.Text = tVm.CommentButtonText;
+                commentButton.SetCommand("Click", tVm.CommentCommand);
+
+                shareButton.Text = tVm.ShareButtonText;
+                shareButton.SetCommand("Click", tVm.ShareCommand);
+
+                if (!string.IsNullOrWhiteSpace(tVm.UserImageUrl))
+                {
+                    UrlImageViewHelper.SetUrlDrawable(profileImage, tVm.UserImageUrl, SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(tVm.UserImagePlaceholder));
+                }
+                else
+                {
+                    profileImage.SetImageResource(SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(tVm.UserImagePlaceholder));
+                }
+
+                if (tVm.ShowImage)
+                {
+                    mainImage.Visibility = ViewStates.Visible;
+                    UrlImageViewHelper.SetUrlDrawable(mainImage, tVm.ImageUrl);
+                }
+                else
+                {
+                    mainImage.Visibility = ViewStates.Gone;
+                }
 
                 return convertView;
             }
