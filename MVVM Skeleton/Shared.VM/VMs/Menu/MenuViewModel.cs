@@ -48,6 +48,7 @@ namespace Shared.VM
 			set { 
 				Set (() => MenuState, ref _menuState, value); 
 				PrimaryButtonText = value == MenuState.Add ? ApplicationResources.Signout : ApplicationResources.Done;
+				ShowSubtitle = ItemViewModels.Count == 0 && MenuState == MenuState.Remove;
 			}
 		}
 
@@ -87,6 +88,7 @@ namespace Shared.VM
 			if(MenuState == MenuState.Remove) {
 				//	if we're in remove mode, this also means this item has to be removed from the list
 				ItemViewModels.Remove(viewModel);
+				ShowSubtitle = ItemViewModels.Count == 0;
 			}
 			else {
 				// If we're not, then that must mean we just added one
