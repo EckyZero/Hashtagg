@@ -8,7 +8,18 @@ namespace iOS.Phone
 {
 	public class ContainerController : JASidePanelController
 	{
+		#region Variables
+
 		private HomeViewModel _homeViewModel;
+
+		#endregion
+
+		#region Properties
+
+//		public event EventHandler WillShowLeftPanel;
+//		public event EventHandler WillShowCenterPanel;
+
+		#endregion
 
 		#region Methods
 
@@ -35,6 +46,8 @@ namespace iOS.Phone
 			ShouldDelegateAutorotateToVisiblePanel = false;
 			LeftPanel = menuController;
 			CenterPanel = homeNavController;
+			AllowLeftSwipe = false;
+			AllowRightSwipe = false;
 
 			var image = UIImage.FromFile ("App-bg.png");
 			var imageView = new UIImageView (image);
@@ -60,7 +73,12 @@ namespace iOS.Phone
 
 		public override UIBarButtonItem LeftButtonForCenterPanel ()
 		{
-			return new UIBarButtonItem (UIImage.FromBundle ("Menu Button"), UIBarButtonItemStyle.Plain, this, new ObjCRuntime.Selector("toggleLeftPanel:"));
+			var barButton = new UIBarButtonItem (UIImage.FromBundle ("Menu Button"), UIBarButtonItemStyle.Plain, this, new ObjCRuntime.Selector("toggleLeftPanel:"));
+
+			barButton.Clicked += (sender, e) => {
+				ToggleLeftPanel(barButton);
+			};
+			return barButton;
 		}
 
 		public override UIStatusBarStyle PreferredStatusBarStyle ()
@@ -74,9 +92,11 @@ namespace iOS.Phone
 
 			var menuController = LeftPanel as MenuController;
 			var centerController = CenterPanel as UINavigationController;
+			var homeController = centerController.TopViewController as HomeController;
 
-			if(centerController.ChildViewControllers[0].GetType() == typeof(HomeController))
+			if(homeController != null)
 			{
+				homeController.ViewWillDisappear (true);
 				menuController.ViewWillAppear (true);	
 			}		
 		}

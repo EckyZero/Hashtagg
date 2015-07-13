@@ -41,10 +41,34 @@ namespace iOS.Phone
 			InitBindings ();
 		}
 
+//		public override void ViewWillAppear (bool animated)
+//		{
+//			base.ViewWillAppear (animated);
+//
+//			UIView.Animate (0.25f, () => {
+//				foreach(UIView view in View.Subviews) {
+//					view.Alpha = 1;
+//				}	
+//			});
+//		}
+//
+//		public override void ViewWillDisappear (bool animated)
+//		{
+//			base.ViewWillDisappear (animated);
+//
+//			UIView.Animate (0.25f, () => {
+//				foreach(UIView view in View.Subviews) {
+//					view.Alpha = 0;
+//				}	
+//			});
+//			// Reset to add
+//			ViewModel.MenuState = MenuState.Add;
+//		}
+
 		private void InitUI ()
 		{
 			// TODO: Fade-in and out depending on the JASidePanel gesture
-			SubtitleLabel.Alpha = ViewModel.ItemViewModels.Count == 0 ? 1 : 0;
+			SubtitleLabel.Alpha = ViewModel.ShowSubtitle ? 1 : 0;
 			TitleLabel.Text = ViewModel.Title;
 
 			PrimaryButton.Layer.CornerRadius = 6;
@@ -57,6 +81,12 @@ namespace iOS.Phone
 			ViewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
 				if(e.PropertyName.Equals("PrimaryButtonText")) {
 					PrimaryButton.SetTitle(ViewModel.PrimaryButtonText, UIControlState.Normal);
+				}
+				else if (e.PropertyName.Equals("ShowSubtitle")) {
+					UIView.Animate(0.5, () => {
+//						SubtitleLabel.Hidden = !ViewModel.ShowSubtitle;
+						SubtitleLabel.Alpha = ViewModel.ShowSubtitle ? 1 : 0;
+					});
 				}
 			};
 

@@ -7,6 +7,7 @@ using UIKit;
 using Shared.VM;
 using GalaSoft.MvvmLight.Helpers;
 using System.ComponentModel;
+using CoreGraphics;
 
 namespace iOS.Phone
 {
@@ -51,6 +52,7 @@ namespace iOS.Phone
 		private void OnPropertyChanged (object sender, PropertyChangedEventArgs e)
 		{
 			if(e.PropertyName.Equals("ImageName") || e.PropertyName.Equals("MenuItemType")) {
+				MainImageView.Pulse(0.25, 4);
 				MainImageView.Image = UIImage.FromFile (ViewModel.ImageName);	
 			} 
 			else if (e.PropertyName.Equals("Title")) {
