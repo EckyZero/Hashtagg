@@ -59,6 +59,22 @@ namespace Shared.Api
 			}
 		}
 
+		public async Task Like(string tweetId)
+		{
+			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.TWITTER_LIKE));
+
+			try 
+			{
+				_twitterHelper.ExecuteRequest(POST, url, null);
+			}
+			catch (Exception e)
+			{
+				var exception = new ApiException("Failed to like tweet", e);
+				_logger.Log(exception, LogType.ERROR);
+				throw exception;
+			}
+		}
+
 		#endregion
 	}
 }

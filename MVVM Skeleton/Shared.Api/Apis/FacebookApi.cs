@@ -74,6 +74,22 @@ namespace Shared.Api
 			}
 		}
 
+		public async Task Like(string postId)
+		{
+			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.FACEBOOK_LIKE));
+
+			try 
+			{
+				_facebookHelper.ExecuteRequest(POST, url, null);
+			}
+			catch (Exception e)
+			{
+				var exception = new ApiException("Failed to like facebook post", e);
+				_logger.Log(exception, LogType.ERROR);
+				throw exception;
+			}
+		}
+
 		#endregion
 	}
 }
