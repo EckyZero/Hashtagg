@@ -53,7 +53,11 @@ namespace Shared.VM
 
 		public string Title {
 			get { return _title; }
-			set { _title = value; }
+		    set
+		    {
+		        _title = value; 
+		        RaisePropertyChanged();
+		    }
 		}
 
 		public bool IsLoaded {
@@ -231,7 +235,7 @@ namespace Shared.VM
 					account.Properties ["id"] = user.Id;
 					account.Properties ["imageUrl"] = user.Picture;
 					_facebookHelper.Synchronize (account);
-
+                    
 					Title = account.Username;
 
 				}
@@ -243,6 +247,9 @@ namespace Shared.VM
 			}
 		}
 
+        public string FacebookImageUrl {
+            get { return _facebookHelper.GetAccount().Properties["imageUrl"]; }
+        }
 		#endregion
 	}
 }

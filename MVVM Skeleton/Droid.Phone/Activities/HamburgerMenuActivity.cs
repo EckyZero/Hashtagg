@@ -33,10 +33,13 @@ namespace Droid.Phone
 
 		private DrawerLayout _drawerLayout;
 
-		private ListView _drawerList;
+		private LinearLayout _drawerList;
+	    private RelativeLayout _drawerHeader;
+	    private RelativeLayout _drawerFooter;
+	    private bool _init;
 
 
-		protected override void OnCreate(Bundle savedInstanceState)
+	    protected override void OnCreate(Bundle savedInstanceState)
 		{
 			// Must change theme to support the toolbar
 			//SetTheme(Resource.Style.MyTheme);
@@ -44,6 +47,7 @@ namespace Droid.Phone
 			SetContentView(Resource.Layout.HamburgerLayout);
 
 			_toolbar = FindViewById<Toolbar>(Resource.Id.hamburgerMenu_toolbar);
+            _toolbar.ViewTreeObserver.GlobalLayout += ViewTreeObserverOnGlobalLayout;
 			SetSupportActionBar(_toolbar);
 			SupportActionBar.SetDisplayShowTitleEnabled(true);
 
@@ -52,7 +56,14 @@ namespace Droid.Phone
 			SetupMenu();
 		}
 
-		protected virtual void OnCreateFragmentSetup()
+	    private void ViewTreeObserverOnGlobalLayout(object sender, EventArgs eventArgs)
+	    {
+	        if (_init)
+	            return;
+	        _init = true;
+	    }
+
+	    protected virtual void OnCreateFragmentSetup()
 		{
 			GetAndNavigateFragment();
 		}
@@ -80,11 +91,13 @@ namespace Droid.Phone
 		{
 
 			_drawerLayout = FindViewById<DrawerLayout>(Resource.Id.hamburgerMenu_layout);
-			_drawerList = FindViewById<ListView>(Resource.Id.hamburgerMenu_menu);
+			_drawerList = FindViewById<LinearLayout>(Resource.Id.hamburgerMenu_menu);
+            _drawerHeader = LayoutInflater.Inflate(Resource.Layout.DrawerHeader, _drawerList, false) as RelativeLayout;
+            _drawerFooter = LayoutInflater.Inflate(Resource.Layout.DrawerFooter, _drawerList, false) as RelativeLayout;
+            _drawerList.AddView(_drawerHeader, 0);
+            _drawerList.AddView(_drawerFooter, _drawerList.ChildCount);
 
-			//_drawerList.AddHeaderView(LayoutInflater.Inflate(Resource.Layout.Header,_drawerList,false));
-
-			//_drawerList.Adapter = adapter;
+			//_drawerList.Adapter = new SimpleAdapter(this, new List<IDictionary<string, object>>(), 0, new []{""}, new []{0});
 			//_drawerList.ItemClick += DrawerListOnItemClick;
 
 			_drawerToggle = new ActionBarDrawerToggle(this,_drawerLayout,_toolbar,Resource.String.abc_action_bar_home_description,Resource.String.abc_toolbar_collapse_description);

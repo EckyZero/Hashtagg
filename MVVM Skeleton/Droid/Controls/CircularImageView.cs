@@ -199,9 +199,10 @@ namespace Droid.Controls
          * @param dy
          * @param color
          */
-        public void SetShadow(float radius, float dx, float dy, int color)
+        public void SetShadow(float radius, float dx, float dy, Color color)
         {
-            // TODO
+            _paintBorder.SetShadowLayer(radius, dx, dy, color);
+            //_paintSelectorBorder.SetShadowLayer(4.0f, 0.0f, 2.0f, Color.Black);
         }
 
         protected override void OnDraw(Canvas canvas)

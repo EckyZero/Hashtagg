@@ -4,15 +4,66 @@
     p1:minHeight="25px"
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
-    p1:id="@+id/relativeLayout1"
+    p1:id="@+id/SplashMainRelativeLayout"
     p1:background="@drawable/app_bg">
-    <TextView
-        p1:text="Hashtagg"
+    <RelativeLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
         p1:layout_width="wrap_content"
         p1:layout_height="wrap_content"
-        p1:id="@+id/textView1"
-        p1:layout_centerInParent="true"
-        p1:paddingBottom="50dp"
-        p1:textSize="28sp"
-        p1:textColor="@color/carnation" />
+        p1:id="@+id/SplashAppNameLayout"
+        p1:layout_alignParentTop="true"
+        p1:layout_centerHorizontal="true"
+        p1:layout_marginTop="175dp">
+        <TextView
+            p1:text="Hashtagg"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/SplashAppName"
+            p1:textSize="28sp"
+            p1:textColor="@color/carnation"
+            p1:layout_centerHorizontal="true" />
+        <TextView
+            p1:text="What accounts do you use?"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/SplashWhatAccounts"
+            p1:layout_centerHorizontal="true"
+            p1:textColor="@color/carnation"
+            p1:textSize="13sp"
+            p1:layout_below="@id/SplashAppName"
+            p1:alpha="0.2" />
+    </RelativeLayout>
+    <Button
+        p1:layout_width="75dp"
+        p1:layout_height="75dp"
+        p1:layout_below="@id/SplashAppNameLayout"
+        p1:text="Facebook"
+        p1:id="@+id/SplashFacebookButton"
+        p1:layout_alignParentLeft="true"
+        p1:layout_marginLeft="50dp"
+        p1:background="@drawable/ezsocialbutton"
+        p1:textSize="12sp"
+        p1:alpha="0.2" />
+    <Button
+        p1:layout_width="75dp"
+        p1:layout_height="75dp"
+        p1:layout_below="@id/SplashAppNameLayout"
+        p1:id="@+id/SplashTwitterButton"
+        p1:layout_alignParentRight="true"
+        p1:text="Twitter"
+        p1:layout_marginRight="50dp"
+        p1:background="@drawable/ezsocialbutton"
+        p1:textSize="12sp"
+        p1:alpha="0.2" />
+    <Button
+        p1:text="Let's Go!"
+        p1:layout_width="250dp"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/SplashGoButton"
+        p1:layout_alignParentBottom="true"
+        p1:layout_centerHorizontal="true"
+        p1:textSize="18sp"
+        p1:layout_marginBottom="15dp"
+        p1:background="@drawable/ezbutton" />
 </RelativeLayout>

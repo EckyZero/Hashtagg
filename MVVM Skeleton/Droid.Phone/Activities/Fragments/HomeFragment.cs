@@ -14,19 +14,19 @@ using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Shared.VM;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using Android.Graphics;
 using Android.Support.V4.Widget;
 using Android.Text;
 using Droid.Controls;
 using Droid.UIHelpers;
 using Koush;
+using Shared.Common.Helpers;
 
 namespace Droid.Phone
 {
 	public class HomeFragment : Android.Support.V4.App.Fragment
 	{
-		Button _refreshButton;
-		Button _twitterButton;
-		Button _facebookButton;
 		HomeViewModel _viewModel;
 		ListView _listLayout;
 		LayoutInflater _inflater;
@@ -35,6 +35,8 @@ namespace Droid.Phone
 	    private bool _init;
 	    private bool _loaded;
 	    private TextView _usernameText;
+	    private CircularImageView _headerImage1;
+	    private CircularImageView _headerImage2;
 
 	    public HomeFragment(HomeViewModel viewModel)
 		{
@@ -48,28 +50,34 @@ namespace Droid.Phone
 			var viewGroup = inflater.Inflate (Resource.Layout.Home, container, false);
 		    _swipeLayout = viewGroup.FindViewById<SwipeRefreshLayout>(Resource.Id.HomeSwipeRefreshLayout);
 			_listLayout = viewGroup.FindViewById<ListView> (Resource.Id.HomeListView);
-            header = inflater.Inflate (Resource.Layout.HomeHeader, null, false);
+            header = inflater.Inflate(Resource.Layout.HomeHeader, _listLayout, false);
 			_listLayout.AddHeaderView(header);
             //(_listLayout as OverscrollListView).OnOverScroll += OnOnOverScroll;
 			_listLayout.Adapter = new HomeListAdapter<IListItem> (_viewModel.CardViewModels,  inflater, _listLayout);
 			// Use this to return your custom view for this Fragment
 			// return inflater.Inflate(Resource.Layout.YourFragment, container, false);
-			_refreshButton = header.FindViewById<Button> (Resource.Id.RefreshButton);
-			_twitterButton = header.FindViewById<Button> (Resource.Id.TwitterButton);
-			_facebookButton = header.FindViewById<Button> (Resource.Id.FacebookButton);
-			_refreshButton.SetCommand("Click", _viewModel.RefreshCommand);
-			_twitterButton.SetCommand("Click", _viewModel.TwitterCommand);
-			_facebookButton.SetCommand ("Click", _viewModel.FacebookCommand);
 		    _usernameText = header.FindViewById<TextView>(Resource.Id.HomeHeaderUsernameText);
+            _viewModel.PropertyChanged += ViewModelOnPropertyChanged;
             _swipeLayout.Refresh += SwipeLayoutOnRefresh;
             _viewModel.RequestCompleted += OnRequestCompleted;
+            _headerImage1 = header.FindViewById<CircularImageView>(Resource.Id.HomeHeaderImage1);
+            _headerImage2 = header.FindViewById<CircularImageView>(Resource.Id.HomeHeaderImage2);
             viewGroup.ViewTreeObserver.GlobalLayout += ViewTreeObserverOnGlobalLayout;
 			return viewGroup;
 		}
 
+	    private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+	    {
+	        switch (propertyChangedEventArgs.PropertyName)
+	        {
+	            case "Title":
+	                _usernameText.Text = _viewModel.Title;
+	                break;
+	        }
+	    }
+
 	    private void OnRequestCompleted()
 	    {
-	        _usernameText.Text = _viewModel.DisplayName;
 	        _swipeLayout.Refreshing = false;
 	    }
 
@@ -78,14 +86,16 @@ namespace Droid.Phone
 	        _viewModel.RefreshCommand.Execute(null);
 	    }
 
-	    private void ViewTreeObserverOnGlobalLayout(object sender, EventArgs eventArgs)
+	    private async void ViewTreeObserverOnGlobalLayout(object sender, EventArgs eventArgs)
 	    {
 	        
 	        if (_init && !_loaded)
 	        {
 	            _loaded = true;
-                _viewModel.RefreshCommand.Execute(null);
 	            _swipeLayout.Refreshing = true;
+                await _viewModel.DidLoad();
+                if(!string.IsNullOrWhiteSpace(_viewModel.FacebookImageUrl))
+                    UrlImageViewHelper.SetUrlDrawable(_headerImage1, _viewModel.FacebookImageUrl, Resource.Drawable.Profile_Image_Default, new TestCallback() );
                 return;
             }
             if (_init)
@@ -93,10 +103,22 @@ namespace Droid.Phone
                 return;
             }
 	        _init = true;
-            _swipeLayout.SetProgressViewOffset(false, header.Height, (int)Math.Ceiling(header.Height + _swipeLayout.Height * 0.1));
+	        _usernameText.Text = string.Empty;
+            _listLayout.OverScrollMode = OverScrollMode.Never;
+            _swipeLayout.SetProgressViewOffset(false, header.Height - header.FindViewById<RelativeLayout>(Resource.Id.HomeHeaderPaddingLayout).Height, (int)Math.Ceiling(header.Height + _swipeLayout.Height * 0.01));
             _swipeLayout.SetColorSchemeResources(Resource.Color.carnation);
 	    }
 
+	    public class TestCallback : Java.Lang.Object, IUrlImageViewCallback
+	    {
+
+            public void OnLoaded(ImageView p0, Android.Graphics.Bitmap p1, string p2, bool p3)
+            {
+                (p0 as CircularImageView).SetShadow(5f, 1f, 2f, Color.DarkSlateGray);
+                (p0 as CircularImageView).SetBorderColor(Color.White);
+                (p0 as CircularImageView).Invalidate();
+            }
+        }
 
 	    private class HomeListAdapter<T> : ObservableAdapter<T> where T : IListItem
 		{

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -12,18 +13,215 @@ using Android.Views;
 using Android.Widget;
 using Shared.VM;
 using System.Threading.Tasks;
+using Android.Animation;
+using Android.Content.Res;
+using Android.Graphics;
+using Android.Graphics.Drawables;
+using Android.Graphics.Drawables.Shapes;
+using Android.Support.V4.Graphics.Drawable;
+using Android.Util;
+using Android.Views.Animations;
+using GalaSoft.MvvmLight.Helpers;
 
 namespace Droid.Phone.Activities
 {
    [Activity(Label = "HashTagg", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
     public class SplashActivity : BaseActivity
     {
-        protected override async void OnCreate(Bundle bundle)
+       private RelativeLayout _mainLayout;
+       private bool _init;
+       private TextView _appName;
+       private TextView _whatAccounts;
+       private RelativeLayout _appNameLayout;
+       private Button _facebookButton;
+       private Button _twitterButton;
+       private OnboardingViewModel _viewModel;
+       private Button _goButton;
+
+       protected override async void OnCreate(Bundle bundle)
         {
+            _viewModel = new OnboardingViewModel();
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.SplashLayout);
-            await Task.Delay(2000);
-            _navigationService.NavigateTo(ViewModelLocator.HOME_KEY);
+           _mainLayout = FindViewById<RelativeLayout>(Resource.Id.SplashMainRelativeLayout);
+           _appName = FindViewById<TextView>(Resource.Id.SplashAppName);
+           _whatAccounts = FindViewById<TextView>(Resource.Id.SplashWhatAccounts);
+           _appNameLayout = FindViewById<RelativeLayout>(Resource.Id.SplashAppNameLayout);
+           _facebookButton = FindViewById<Button>(Resource.Id.SplashFacebookButton);
+           _twitterButton = FindViewById<Button>(Resource.Id.SplashTwitterButton);
+           _goButton = FindViewById<Button>(Resource.Id.SplashGoButton);
+           InitUi();
+           BindEvents();
         }
+
+       private void BindEvents()
+       {
+           _mainLayout.ViewTreeObserver.GlobalLayout += ViewTreeObserverOnGlobalLayout;
+           
+           _viewModel.CanExecute += b =>
+           {
+               _goButton.Enabled = b;
+           };
+           _twitterButton.SetCommand("Click", _viewModel.TwitterCommand);
+           _facebookButton.SetCommand("Click", _viewModel.FacebookCommand);
+           _viewModel.PropertyChanged += ViewModelOnPropertyChanged;
+
+           _goButton.Click += (sender, args) =>
+           {
+               var animation = ActivityOptions.MakeScaleUpAnimation(_goButton, 0, 0, _goButton.Width, _goButton.Height).ToBundle();
+               StartActivity(new Intent(this, typeof(HamburgerMenuActivity)), animation);
+               //_navigationService.NavigateTo(ViewModelLocator.HOME_KEY);
+           };
+       }
+
+       private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+       {
+           switch (propertyChangedEventArgs.PropertyName)
+           {
+               case "IsTwitterSelected":
+                   _twitterButton.Selected = _viewModel.IsTwitterSelected;
+                   break;
+               case "IsFacebookSelected":
+                   _facebookButton.Selected = _viewModel.IsFacebookSelected;
+                   break;
+           }
+       }
+
+       private void InitUi()
+       {
+           _whatAccounts.Alpha = 0;
+           _facebookButton.Alpha = 0;
+           _twitterButton.Alpha = 0;
+           _goButton.Alpha = 0;
+           _goButton.Enabled = false;
+           _twitterButton.Selected = _viewModel.IsTwitterSelected;
+           _facebookButton.Selected = _viewModel.IsFacebookSelected;
+
+       }
+
+       private void PrepareGoButtonStates()
+       {
+           int[][] states = new int[][]
+           {
+               new int[] {Android.Resource.Attribute.StatePressed, Android.Resource.Attribute.StateEnabled}, // Pressed
+               new int[] {-Android.Resource.Attribute.StatePressed, Android.Resource.Attribute.StateEnabled}, // not pressed
+               new int[] {-Android.Resource.Attribute.StateEnabled} // disabled
+           };
+
+           int[] goTextColors =
+           {
+               Resources.GetColor(Resource.Color.silver),
+               Resources.GetColor(Resource.Color.blue2),
+               Resources.GetColor(Resource.Color.silver),
+           };
+
+           var textColorStateList = new ColorStateList(states, goTextColors);
+           
+           _goButton.SetTextColor(textColorStateList);
+       }
+
+
+       private void PrepareMediaDrawable(Button mediaButton)
+       {
+           int[][] states = new int[][]
+           {
+               new int[] {Android.Resource.Attribute.StateSelected }, // disabled
+               new int[] {Android.Resource.Attribute.StatePressed, Android.Resource.Attribute.StateEnabled}, // Pressed
+               new int[] {-Android.Resource.Attribute.StatePressed, Android.Resource.Attribute.StateEnabled}, // not pressed
+               new int[] {-Android.Resource.Attribute.StateEnabled} // disabled
+           };
+
+           int[] goTextColors =
+           {
+               Resources.GetColor(Resource.Color.white),
+               Resources.GetColor(Resource.Color.carnation),
+               Resources.GetColor(Resource.Color.carnation),
+               Resources.GetColor(Resource.Color.silver),
+           };
+
+           var textColorStateList = new ColorStateList(states, goTextColors);
+
+           mediaButton.SetTextColor(textColorStateList);
+           mediaButton.RequestLayout();
+       }
+
+       private void ViewTreeObserverOnGlobalLayout(object sender, EventArgs eventArgs)
+       {
+           if (_init)
+               return;
+           _init = true;
+           PrepareGoButtonStates();
+           PrepareMediaDrawable(_twitterButton);
+           PrepareMediaDrawable(_facebookButton);
+           RunAnimation();
+       }
+
+       private async void RunAnimation()
+       {
+           var mainAnimatorSet = new AnimatorSet();
+
+           var appNameLayoutFinalTopSpace = TypedValue.ApplyDimension(ComplexUnitType.Dip, 55.0f, Application.Context.Resources.DisplayMetrics);
+
+           var decelerateInterpolator = new DecelerateInterpolator(1.0f);
+
+           var appNameLayoutAnimator = new ValueAnimator();
+           appNameLayoutAnimator.SetDuration(750);
+           appNameLayoutAnimator.SetInterpolator(decelerateInterpolator);
+           appNameLayoutAnimator.SetFloatValues(_appNameLayout.GetY(), appNameLayoutFinalTopSpace);
+           appNameLayoutAnimator.Update += (o, args) => { _appNameLayout.SetY((float)args.Animation.AnimatedValue); };
+
+           var whatAccountsAnimator = new ValueAnimator();
+           whatAccountsAnimator.SetDuration(750);
+           whatAccountsAnimator.SetInterpolator(decelerateInterpolator);
+           whatAccountsAnimator.SetFloatValues(0.0f, 1.0f);
+           whatAccountsAnimator.Update += (o, args) => { _whatAccounts.Alpha = (float)args.Animation.AnimatedValue; };
+
+           var appNameAnimationSet = new AnimatorSet();
+           appNameAnimationSet.PlayTogether(appNameLayoutAnimator, whatAccountsAnimator);
+
+
+           var socialButtonsAnimatorSet = new AnimatorSet();
+
+           var overshootInterpolator = new OvershootInterpolator(3f);
+
+           var facebookButtonAnimator = new ValueAnimator();
+           facebookButtonAnimator.SetDuration(500);
+           facebookButtonAnimator.SetInterpolator(overshootInterpolator);
+           facebookButtonAnimator.SetFloatValues(_facebookButton.GetY() + _facebookButton.Height, _facebookButton.GetY());
+           facebookButtonAnimator.Update += (o, args) =>
+           {
+               _facebookButton.SetY((float)args.Animation.AnimatedValue);
+               _facebookButton.Alpha = args.Animation.AnimatedFraction;
+           };
+
+           var twitterButtonAnimator = new ValueAnimator();
+           twitterButtonAnimator.SetDuration(500);
+           twitterButtonAnimator.SetInterpolator(overshootInterpolator);
+           twitterButtonAnimator.SetFloatValues(_facebookButton.GetY() + _facebookButton.Height, _facebookButton.GetY());
+           twitterButtonAnimator.Update += (o, args) =>
+           {
+               _twitterButton.SetY((float)args.Animation.AnimatedValue);
+               _twitterButton.Alpha = args.Animation.AnimatedFraction;
+           };
+           socialButtonsAnimatorSet.PlaySequentially(facebookButtonAnimator, twitterButtonAnimator);
+           socialButtonsAnimatorSet.StartDelay = 500;
+
+           var letsGoButtonAnimator = new ValueAnimator();
+           letsGoButtonAnimator.SetDuration(500);
+           letsGoButtonAnimator.SetInterpolator(decelerateInterpolator);
+           letsGoButtonAnimator.SetFloatValues(0.0f, 1.0f);
+           letsGoButtonAnimator.Update += (sender, args) =>
+           {
+               _goButton.Alpha = (float)args.Animation.AnimatedValue;
+           };
+
+           mainAnimatorSet.PlaySequentially(appNameAnimationSet, socialButtonsAnimatorSet, letsGoButtonAnimator);
+
+           await _viewModel.DidLoad();
+
+           await Task.Delay(2000);
+
+           mainAnimatorSet.Start();
+       }
     }
 }

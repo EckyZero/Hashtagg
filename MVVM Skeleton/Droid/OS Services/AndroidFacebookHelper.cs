@@ -80,7 +80,7 @@ namespace Droid
 			store.Delete (account, Config.FACEBOOK_SERVICE_ID);
 		}
 
-		public async Task<SocialAccount> GetAccount()
+		public SocialAccount GetAccount()
 		{
             var store = AccountStore.Create(_activity);
 			var account = store.FindAccountsForService (Config.FACEBOOK_SERVICE_ID).FirstOrDefault();
@@ -94,7 +94,7 @@ namespace Droid
 
 		public void Synchronize (SocialAccount socialAccount)
 		{
-			var store = AccountStore.Create ();
+			var store = AccountStore.Create (_activity);
 			var account = store.FindAccountsForService (Config.FACEBOOK_SERVICE_ID).FirstOrDefault();
 
 			// merge on unique keys

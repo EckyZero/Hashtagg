@@ -82,7 +82,7 @@ namespace Droid
 			store.Delete (account, Config.TWITTER_SERVICE_ID);
 		}
 
-		public async Task<SocialAccount> GetAccount()
+		public SocialAccount GetAccount()
 		{
             var store = AccountStore.Create(_activity);
 			var account = store.FindAccountsForService (Config.TWITTER_SERVICE_ID).FirstOrDefault();
