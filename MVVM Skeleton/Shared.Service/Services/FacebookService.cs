@@ -91,6 +91,56 @@ namespace Shared.Service
 			} 
 		}
 
+		public async Task<ServiceResponseType> Like (string postId)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _facebookApi.Like(postId);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException exception)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error liking facebook post", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
+		public async Task<ServiceResponseType> Unlike (string postId)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _facebookApi.Unlike(postId);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException exception)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error unliking facebook post", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
 		#endregion
 	}
 }

@@ -8,6 +8,8 @@ namespace Shared.Api
 	{
 		Task<FacebookResponseDto> GetHomeFeed();
 		Task<FacebookToFromDto> GetUser ();
+		Task Like (string postId);
+		Task Unlike (string postId);
 	}
 }
 

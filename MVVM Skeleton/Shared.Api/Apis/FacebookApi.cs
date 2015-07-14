@@ -80,11 +80,27 @@ namespace Shared.Api
 
 			try 
 			{
-				_facebookHelper.ExecuteRequest(POST, url, null);
+				await _facebookHelper.ExecuteRequest(POST, url, null);
 			}
 			catch (Exception e)
 			{
 				var exception = new ApiException("Failed to like facebook post", e);
+				_logger.Log(exception, LogType.ERROR);
+				throw exception;
+			}
+		}
+
+		public async Task Unlike(string postId)
+		{
+			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.TWITTER_LIKE));
+
+			try 
+			{
+				await _facebookHelper.ExecuteRequest(DELETE, url, null);
+			}
+			catch (Exception e)
+			{
+				var exception = new ApiException("Failed to unlike facebook post", e);
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}

@@ -1,5 +1,6 @@
 ﻿using System;
 using Shared.Common;
+using Shared.Service;
 
 namespace Shared.VM
 {
@@ -8,6 +9,7 @@ namespace Shared.VM
 		#region Private Variables
 
 		private Tweet _tweet;
+		private ITwitterService _twitterService;
 
 		#endregion
 
@@ -87,9 +89,30 @@ namespace Shared.VM
 
 		#endregion
 
+		#region Methods
+
 		public TwitterCardViewModel (Tweet tweet)
 		{
 			_tweet = tweet;
+		}
+
+		#endregion
+
+		protected override async void LikeCommandExecute ()
+		{
+			base.LikeCommandExecute ();
+
+			// may need to unlike the post (i.e. toggle state)
+			if(IsLikedByUser) {
+				await _twitterService.Unlike (_tweet.Id);
+			} 
+			else {
+				await _twitterService.Like (_tweet.Id);	
+			}
+
+			// Increment count
+			// Toggle colors
+			// Toggle font
 		}
 	}
 }

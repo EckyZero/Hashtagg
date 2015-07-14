@@ -11,6 +11,7 @@ namespace Shared.VM
 		#region Private Variables
 
 		private FacebookPost _facebookPost;
+		private IFacebookService _facebookService;
 
 		#endregion
 
@@ -98,10 +99,32 @@ namespace Shared.VM
 			
 		#endregion
 
+		#region Methods
+
 		public FacebookCardViewModel (FacebookPost post)
 		{
 			_facebookPost = post;
+			_facebookService = IocContainer.GetContainer ().Resolve<IFacebookService> ();
 		}
+
+		protected override async void LikeCommandExecute ()
+		{
+			base.LikeCommandExecute ();
+
+			// may need to unlike the post (i.e. toggle state)
+			if(IsLikedByUser) {
+				await _facebookService.Unlike (_facebookPost.Id);
+			} 
+			else {
+				await _facebookService.Like (_facebookPost.Id);	
+			}
+
+			// Increment count
+			// Toggle colors
+			// Toggle font
+		}
+
+		#endregion
 	}
 }
 
