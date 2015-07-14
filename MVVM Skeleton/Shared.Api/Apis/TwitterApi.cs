@@ -87,7 +87,7 @@ namespace Shared.Api
 
 			try 
 			{
-				await _twitterHelper.ExecuteRequest(DELETE, url, parameters);
+				await _twitterHelper.ExecuteRequest(POST, url, parameters);
 			}
 			catch (Exception e)
 			{

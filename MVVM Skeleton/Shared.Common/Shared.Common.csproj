@@ -72,6 +72,9 @@
     <Compile Include="Models\FacebookUser.cs" />
     <Compile Include="Models\FacebookComment.cs" />
     <Compile Include="Models\SocialAccount.cs" />
+    <Compile Include="Themes\ThemeManager.cs" />
+    <Compile Include="Themes\CarnationTheme.cs" />
+    <Compile Include="Themes\ITheme.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -100,5 +103,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ApplicationResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Themes\" />
   </ItemGroup>
 </Project>

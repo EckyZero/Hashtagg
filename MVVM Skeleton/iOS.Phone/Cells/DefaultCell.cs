@@ -7,6 +7,7 @@ using UIKit;
 using Shared.VM;
 using CoreGraphics;
 using SDWebImage;
+using System.ComponentModel;
 
 namespace iOS.Phone
 {
@@ -14,8 +15,13 @@ namespace iOS.Phone
 	{
 		#region Variables
 
-		private BaseContentCardViewModel _viewModel;
 		private nfloat _photoImageViewDefaultHeightConstraint = 174;
+
+		#endregion
+
+		#region Properties
+
+		public BaseContentCardViewModel ViewModel { get; set; }
 
 		#endregion
 
@@ -36,7 +42,6 @@ namespace iOS.Phone
 			UserImageView.Layer.CornerRadius = UserImageView.Frame.Height / 2;
 			BodyTextView.TextContainer.LineFragmentPadding = 0;
 			BodyTextView.TextContainerInset = UIEdgeInsets.Zero;
-//			BodyTextView.TextContainer.HeightTracksTextView = true;
 
 			_photoImageViewDefaultHeightConstraint = PhotoImageViewHeightConstraint.Constant;
 
@@ -47,36 +52,42 @@ namespace iOS.Phone
 
 		protected override void ConfigureSubviews (IListItem item)
 		{
-			_viewModel = item as BaseContentCardViewModel;
+			ViewModel = item as BaseContentCardViewModel;
 
+			InitUI ();
+			InitBindings ();
+		}
+
+		void InitUI ()
+		{
 			// Adjust constraints as needed
-			PhotoImageViewHeightConstraint.Constant = _viewModel.ShowImage ? _photoImageViewDefaultHeightConstraint : 0;
+			PhotoImageViewHeightConstraint.Constant = ViewModel.ShowImage ? _photoImageViewDefaultHeightConstraint : 0;
 
 			// Map values to UI elements
 			BodyTextView.Text = null;
-			BodyTextView.Text = _viewModel.Text;
+			BodyTextView.Text = ViewModel.Text;
 			BodyTextViewHeightConstraint.Constant = BodyTextView.SizeThatFits(new CGSize(BodyTextView.Frame.Width, nfloat.MaxValue)).Height;
-			TimeLabel.Text = _viewModel.DisplayDateTime;
-			LikeButton.SetTitle (_viewModel.LikeButtonText, UIControlState.Normal);
-			CommentButton.SetTitle (_viewModel.CommentButtonText, UIControlState.Normal);
-			ShareButton.SetTitle (_viewModel.ShareButtonText, UIControlState.Normal);
-			NameLabel.SetHighlightText (_viewModel.UserName, _viewModel.UserName.IndexOf ("@"), UIColor.LightGray);
+			TimeLabel.Text = ViewModel.DisplayDateTime;
+			LikeButton.SetTitle (ViewModel.LikeButtonText, UIControlState.Normal);
+			CommentButton.SetTitle (ViewModel.CommentButtonText, UIControlState.Normal);
+			ShareButton.SetTitle (ViewModel.ShareButtonText, UIControlState.Normal);
+			NameLabel.SetHighlightText (ViewModel.UserName, ViewModel.UserName.IndexOf ("@"), UIColor.LightGray);
 
-			if(_viewModel.ShowImage) {
+			if(ViewModel.ShowImage) {
 				ActivityIndicator.StartAnimating ();
 			} else {
 				ActivityIndicator.StopAnimating ();
 			}
 
-			SocialTypeImageView.Image = UIImage.FromBundle (_viewModel.SocialMediaImage);
+			SocialTypeImageView.Image = UIImage.FromBundle (ViewModel.SocialMediaImage);
 			UserImageView.SetImage (
-				url: new NSUrl (_viewModel.UserImageUrl), 
-				placeholder: UIImage.FromBundle (_viewModel.UserImagePlaceholder)
+				url: new NSUrl (ViewModel.UserImageUrl), 
+				placeholder: UIImage.FromBundle (ViewModel.UserImagePlaceholder)
 			);
 
-			if (_viewModel.ShowImage) {
+			if (ViewModel.ShowImage) {
 				PhotoImageView.SetImage (
-					url: new NSUrl (_viewModel.ImageUrl), 
+					url: new NSUrl (ViewModel.ImageUrl), 
 					completionHandler: ((UIImage image, NSError error, SDImageCacheType cacheType, NSUrl imageUrl) => {
 						ActivityIndicator.Hidden = true;
 					})
@@ -84,22 +95,42 @@ namespace iOS.Phone
 			} else {
 				PhotoImageView.Image = null;
 			}
+		}
+
+		void InitBindings ()
+		{
+			ViewModel.PropertyChanged -= OnPropertyChanged;
+			ViewModel.PropertyChanged += OnPropertyChanged;
+		}
+
+		void OnPropertyChanged (object sender, PropertyChangedEventArgs args)
+		{
+			var name = args.PropertyName;
+
+			if(name.Equals("IsLikedByUser")) {
 				
+			}
+			else if(name.Equals("IsCommentedByUser")) {
+				
+			}
+			else if(name.Equals("IsSharedByUser")) {
+				
+			}
 		}
 
 		void CommentButton_TouchUpInside (object sender, EventArgs e)
 		{
-			_viewModel.CommentCommand.Execute (null);
+			ViewModel.CommentCommand.Execute (null);
 		}
 
 		void ShareButton_TouchUpInside (object sender, EventArgs e)
 		{
-			_viewModel.ShareCommand.Execute (null);
+			ViewModel.ShareCommand.Execute (null);
 		}
 
 		void LikeButton_TouchUpInside (object sender, EventArgs e)
 		{
-			_viewModel.LikeCommand.Execute (null);
+			ViewModel.LikeCommand.Execute (null);
 		}
 
 		#endregion
