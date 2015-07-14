@@ -6,6 +6,9 @@ namespace Shared.Common
 {
 	public class FacebookPost
 	{
+		private bool _isLikedByUser = false;
+		private List<FacebookUser> _likes = new List<FacebookUser> ();
+
 		public string Id { get; set;}
 		public DateTime CreatedAt { get; set; }
 		public DateTime UpdatedAt { get; set; }
@@ -21,16 +24,10 @@ namespace Shared.Common
 
 		public bool IsLikedByUser 
 		{
-			get 
-			{
-				var liked = false;
-				if(Likes != null)
-				{
-					liked = Likes.Any ( m => m.Id.Equals(Id));
-				}
-				return liked;
-			}	
+			get { return _isLikedByUser; }	
+			set { _isLikedByUser = value; }
 		}
+
 		public int LikedCount 
 		{ 
 			get
@@ -45,8 +42,17 @@ namespace Shared.Common
 		}
 
 		public FacebookUser User { get; set; }
-		public List<FacebookUser> Likes { get; set; }
 		public List<FacebookComment> Comments { get; set; }
+		public List<FacebookUser> Likes { 
+			get { return _likes; }
+			set {
+				_likes = value;
+
+				if(_likes != null) {
+					IsLikedByUser = Likes.Any ( m => m.Id.Equals(Id));
+				}
+			}
+		}
 
 		public FacebookPost ()
 		{

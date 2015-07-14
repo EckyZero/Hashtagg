@@ -62,10 +62,13 @@ namespace Shared.Api
 		public async Task Like(string tweetId)
 		{
 			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.TWITTER_LIKE));
+			var parameters = new Dictionary<string, string> () {
+				{ "id", tweetId }
+			};
 
 			try 
 			{
-				await _twitterHelper.ExecuteRequest(POST, url, null);
+				await _twitterHelper.ExecuteRequest(POST, url, parameters);
 			}
 			catch (Exception e)
 			{
@@ -77,11 +80,14 @@ namespace Shared.Api
 
 		public async Task Unlike(string tweetId)
 		{
-			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.TWITTER_LIKE));
+			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.TWITTER_UNLIKE));
+			var parameters = new Dictionary<string, string> () {
+				{ "id", tweetId }
+			};
 
 			try 
 			{
-				await _twitterHelper.ExecuteRequest(DELETE, url, null);
+				await _twitterHelper.ExecuteRequest(DELETE, url, parameters);
 			}
 			catch (Exception e)
 			{

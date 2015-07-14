@@ -56,7 +56,8 @@ namespace Shared.VM
 				if(!String.IsNullOrWhiteSpace(_facebookPost.Description)) {
 					builder.AppendFormat ("{0}{1}", builder.Length == 0 ? "" : "\n\n", _facebookPost.Description);
 				}
-				return builder.ToString ();
+
+				return builder.ToString ().Trim();
 			}
 		}
 
@@ -83,18 +84,24 @@ namespace Shared.VM
 		public override bool IsLikedByUser 
 		{
 			get { return _facebookPost.IsLikedByUser; }
+			set {
+				_facebookPost.IsLikedByUser = value;
+				LikeButtonText = String.Empty;
+			}
 		}
 
 		public override bool IsCommentedByUser 
 		{
 			// TODO: Unsure as to how to gather this data
 			get { return false; }
+			set { }
 		}
 
 		public override bool IsSharedByUser 
 		{
 			// TODO: Unsure as to how to gather this data
 			get { return false; }
+			set { }
 		}
 			
 		#endregion
@@ -113,9 +120,11 @@ namespace Shared.VM
 
 			// may need to unlike the post (i.e. toggle state)
 			if(IsLikedByUser) {
+				IsLikedByUser = false;
 				await _facebookService.Unlike (_facebookPost.Id);
 			} 
 			else {
+				IsLikedByUser = true;
 				await _facebookService.Like (_facebookPost.Id);	
 			}
 

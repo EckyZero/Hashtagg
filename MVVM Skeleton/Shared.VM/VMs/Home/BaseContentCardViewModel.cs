@@ -17,6 +17,9 @@ namespace Shared.VM
 		#region Private Variables
 
 		private ListItemType _listItemType = ListItemType.Default;
+		private string _likeButtonText;
+		private string _commentButtonText;
+		private string _shareButtonText;
 
 		#endregion
 
@@ -36,9 +39,9 @@ namespace Shared.VM
 		public abstract int? CommentCount { get; }
 		public abstract int? ShareCount { get; }
 		public abstract DateTime OrderByDateTime { get; }
-		public abstract bool IsLikedByUser { get; }
-		public abstract bool IsCommentedByUser { get; }
-		public abstract bool IsSharedByUser { get; }
+		public abstract bool IsLikedByUser { get; set; }
+		public abstract bool IsCommentedByUser { get; set; }
+		public abstract bool IsSharedByUser { get; set; }
 
 		public string DisplayDateTime { 
 			get { return OrderByDateTime.ToRelativeString (); }
@@ -60,8 +63,11 @@ namespace Shared.VM
 				if(LikeCount.HasValue) {
 					builder.Append (String.Format (" ({0})", LikeCount.Value));
 				}
-				return builder.ToString ();
+				_likeButtonText = builder.ToString ();
+
+				return _likeButtonText;
 			}
+			set { Set (() => LikeButtonText, ref _likeButtonText, value); }
 		}
 
 		public string CommentButtonText {
@@ -72,8 +78,11 @@ namespace Shared.VM
 				if(CommentCount.HasValue) {
 					builder.Append (String.Format (" ({0})", CommentCount.Value));
 				}
-				return builder.ToString ();
+				_commentButtonText = builder.ToString ();
+
+				return _commentButtonText;
 			}
+			set { Set (() => CommentButtonText, ref _commentButtonText, value); }
 		}
 
 		public string ShareButtonText {
@@ -84,8 +93,11 @@ namespace Shared.VM
 				if(ShareCount.HasValue) {
 					builder.Append (String.Format (" ({0})", ShareCount.Value));
 				}
-				return builder.ToString ();
+				_shareButtonText = builder.ToString ();
+
+				return _shareButtonText;
 			}
+			set { Set (() => ShareButtonText, ref _shareButtonText, value); }
 		}
 
 		#endregion

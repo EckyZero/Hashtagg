@@ -1,6 +1,7 @@
 ﻿using System;
 using Shared.Common;
 using Shared.Service;
+using Microsoft.Practices.Unity;
 
 namespace Shared.VM
 {
@@ -69,17 +70,29 @@ namespace Shared.VM
 		public override bool IsLikedByUser 
 		{
 			get { return _tweet.IsFavoritedByUser; }
+			set {
+				_tweet.IsFavoritedByUser = value;
+				LikeButtonText = String.Empty;
+			}
 		}
 
 		public override bool IsCommentedByUser 
 		{
 			// TODO: Unsure as to how to gather this data
 			get { return _tweet.IsRetweetedByUser; }
+			set { 
+				_tweet.IsRetweetedByUser = value; 
+				CommentButtonText = String.Empty;
+			}
 		}
 
 		public override bool IsSharedByUser 
 		{
 			get { return _tweet.IsRetweetedByUser; }
+			set {
+				_tweet.IsRetweetedByUser = value;
+				ShareButtonText = String.Empty;
+			}
 		}
 
 		public string UserScreenName 
@@ -94,6 +107,7 @@ namespace Shared.VM
 		public TwitterCardViewModel (Tweet tweet)
 		{
 			_tweet = tweet;
+			_twitterService = IocContainer.GetContainer ().Resolve<ITwitterService> ();
 		}
 
 		#endregion
@@ -104,9 +118,11 @@ namespace Shared.VM
 
 			// may need to unlike the post (i.e. toggle state)
 			if(IsLikedByUser) {
+				IsLikedByUser = false;
 				await _twitterService.Unlike (_tweet.Id);
 			} 
 			else {
+				IsLikedByUser = true;
 				await _twitterService.Like (_tweet.Id);	
 			}
 

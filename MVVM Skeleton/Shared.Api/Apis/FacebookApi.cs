@@ -36,7 +36,7 @@ namespace Shared.Api
 		{
 			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.FACEBOOK_HOME_FEED));
 			var parameters = new Dictionary<string, string> () {
-				{ "limit", "10" },
+				{ "limit", "50" },
 				{ "fields", "full_picture,created_time,id,updated_time,message,link,shares,from,likes,comments,actions,story,name,description"}
 			};
 
@@ -76,7 +76,7 @@ namespace Shared.Api
 
 		public async Task Like(string postId)
 		{
-			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.FACEBOOK_LIKE));
+			var url = new Uri (String.Format ("{0}/{1}{2}", BASE_URL, postId, Routes.FACEBOOK_LIKE));
 
 			try 
 			{
@@ -92,7 +92,7 @@ namespace Shared.Api
 
 		public async Task Unlike(string postId)
 		{
-			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.TWITTER_LIKE));
+			var url = new Uri (String.Format ("{0}/{1}{2}", BASE_URL, postId, Routes.FACEBOOK_LIKE));
 
 			try 
 			{
