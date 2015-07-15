@@ -91,6 +91,22 @@ namespace iOS
 			return socialAccount;
 		}
 
+		public void Synchronize (SocialAccount socialAccount)
+		{
+			var store = AccountStore.Create ();
+			var account = store.FindAccountsForService (Config.TWITTER_SERVICE_ID).FirstOrDefault();
+
+			// merge on unique keys
+			if(account != null && socialAccount != null) {
+				foreach (string key in socialAccount.Properties.Keys) {
+					if(!account.Properties.ContainsKey(key)) {
+						account.Properties.Add (key, socialAccount.Properties [key]);
+					}
+				}
+			}
+			store.Save (account, Config.TWITTER_SERVICE_ID);
+		}
+
 		#endregion
 	}
 }

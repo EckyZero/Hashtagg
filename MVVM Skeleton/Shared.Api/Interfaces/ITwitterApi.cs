@@ -7,6 +7,7 @@ namespace Shared.Api
 	public interface ITwitterApi
 	{
 		Task<List<TwitterFeedItemDto>> GetHomeFeed();
+		Task<TwitterUserDto> GetUser (string screenName);
 		Task Like (string tweetId);
 		Task Unlike (string tweetId);
 	}

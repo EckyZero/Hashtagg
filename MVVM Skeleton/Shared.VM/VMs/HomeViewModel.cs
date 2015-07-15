@@ -227,6 +227,7 @@ namespace Shared.VM
 					var user = facebookResponse.Result;
 					var account = _facebookHelper.GetAccount ();
 
+					account.Properties ["name"] = user.Name;
 					account.Properties ["screen_name"] = user.Name;
 					account.Properties ["id"] = user.Id;
 					account.Properties ["imageUrl"] = user.Picture;
@@ -235,11 +236,23 @@ namespace Shared.VM
 					Title = account.Username;
 
 				}
-			} 
+			}
 			else if (await _twitterHelper.AccountExists())
 			{
 				var account = _twitterHelper.GetAccount ();
-				Title = String.Format("@{0}", account.Properties ["screen_name"]);
+				var twitterResponse = await _twitterService.GetUser (account.Username);
+
+				if(await ProcessResponse(twitterResponse, false))
+				{
+					var user = twitterResponse.Result;
+
+					account.Properties ["name"] = user.Name;
+					account.Properties ["id"] = user.Id;
+					account.Properties ["imageUrl"] = user.Picture;
+					_twitterHelper.Synchronize (account);
+
+					Title = user.Name;
+				}
 			}
 		}
 

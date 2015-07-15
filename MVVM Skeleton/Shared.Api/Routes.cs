@@ -6,6 +6,7 @@ namespace Shared.Api
 	{
 		public const string TWITTER_BASE = "https://api.twitter.com/1.1";
 		public const string TWITTER_HOME_FEED = "/statuses/home_timeline.json";
+		public const string TWITTER_USER = "/users/show.json";
 		public const string TWITTER_LIKE = "/favorites/create.json";
 		public const string TWITTER_UNLIKE = "/favorites/destroy.json";
 

@@ -13,6 +13,7 @@ namespace Shared.Api
 		#region Private Variables
 
 		ITwitterHelper _twitterHelper;
+		JsonSerializerSettings _settings;
 
 		#endregion
 
@@ -30,15 +31,14 @@ namespace Shared.Api
 		public TwitterApi ()
 		{
 			_twitterHelper = IocContainer.GetContainer ().Resolve<ITwitterHelper> ();
+			_settings = new JsonSerializerSettings ();
+
+			_settings.DateFormatString = "ddd MMM dd HH:mm:ss zzzz yyyy";
+			_settings.Culture = CultureInfo.InvariantCulture;
 		}
 
 		public async Task<List<TwitterFeedItemDto>> GetHomeFeed()
 		{
-			var settings = new JsonSerializerSettings ();
-
-			settings.DateFormatString = "ddd MMM dd HH:mm:ss zzzz yyyy";
-			settings.Culture = CultureInfo.InvariantCulture;
-
 			var url = new Uri(String.Format ("{0}{1}", BASE_URL, Routes.TWITTER_HOME_FEED));
 			var parameters = new Dictionary<string, string> () {
 				{ "count", "10" }
@@ -47,13 +47,35 @@ namespace Shared.Api
 			try
 			{
 				var response = await _twitterHelper.ExecuteRequest (GET, url, parameters);
-				var results = JsonConvert.DeserializeObject<List<TwitterFeedItemDto>> (response, settings);	
+				var results = JsonConvert.DeserializeObject<List<TwitterFeedItemDto>> (response, _settings);	
 
 				return results;
 			}
 			catch (Exception e)
 			{
 				var exception = new ApiException("Failed to get tweets", e);
+				_logger.Log(exception, LogType.ERROR);
+				throw exception;
+			}
+		}
+
+		public async Task<TwitterUserDto> GetUser (string screenName)
+		{
+			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.TWITTER_USER));
+			var parameters = new Dictionary<string, string> () {
+				{ "screen_name", screenName }
+			};
+
+			try
+			{
+				var response = await _twitterHelper.ExecuteRequest(GET, url, parameters);
+				var results = JsonConvert.DeserializeObject<TwitterUserDto>(response, _settings);
+
+				return results;
+			}
+			catch (Exception e)
+			{
+				var exception = new ApiException("Failed to user", e);
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}

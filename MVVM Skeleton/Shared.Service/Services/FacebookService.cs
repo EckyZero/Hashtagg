@@ -40,7 +40,7 @@ namespace Shared.Service
 					return new ServiceResponse<FacebookUser>(user,ServiceResponseType.NO_CONNECTION);
 				}
 			}
-			catch (BaseException exception)
+			catch (BaseException e)
 			{
 				return new ServiceResponse<FacebookUser> (user, ServiceResponseType.ERROR);
 			}
@@ -80,7 +80,7 @@ namespace Shared.Service
 					return new ServiceResponse<ObservableCollection<FacebookPost>>(models,ServiceResponseType.NO_CONNECTION);
 				}
 			}
-			catch (BaseException exception)
+			catch (BaseException e)
 			{
 				return new ServiceResponse<ObservableCollection<FacebookPost>> (models, ServiceResponseType.ERROR);
 			}
@@ -105,7 +105,7 @@ namespace Shared.Service
 					return ServiceResponseType.NO_CONNECTION;
 				}
 			}
-			catch (BaseException exception)
+			catch (BaseException e)
 			{
 				return ServiceResponseType.ERROR;
 			}
@@ -130,7 +130,7 @@ namespace Shared.Service
 					return ServiceResponseType.NO_CONNECTION;
 				}
 			}
-			catch (BaseException exception)
+			catch (BaseException e)
 			{
 				return ServiceResponseType.ERROR;
 			}

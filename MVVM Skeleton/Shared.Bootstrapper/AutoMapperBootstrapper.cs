@@ -75,6 +75,11 @@ namespace Shared.Bootstrapper
 					opts => opts.MapFrom (dto => dto.Like_Count))
 				.ForMember (model => model.IsLikedByUser,
 					opts => opts.MapFrom (dto => dto.User_Likes));
+			Mapper.CreateMap<TwitterUserDto, TwitterUser> ()
+				.ForMember (model => model.Name,
+					opts => opts.MapFrom (dto => dto.Name))
+				.ForMember (model => model.Picture,
+					opts => opts.MapFrom (dto => dto.Profile_Image_Url_Https));
 		}
 	}
 }

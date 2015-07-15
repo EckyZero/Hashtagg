@@ -40,20 +40,15 @@ namespace Shared.Service
 						var model = Mapper.Map<Tweet> (dto);
 						models.Add (model);
 					}
-					var tempModels = models
-						.OrderByDescending(t => t.CreatedAt)
-						.ThenByDescending(t => t.RetweetCount)
-						.ThenByDescending(t => t.FavoriteCount);
-					var orderModels = new ObservableCollection<Tweet>(tempModels);
 
-					return new ServiceResponse<ObservableCollection<Tweet>>(orderModels,ServiceResponseType.SUCCESS);
+					return new ServiceResponse<ObservableCollection<Tweet>>(models,ServiceResponseType.SUCCESS);
 				}
 				else
 				{
 					return new ServiceResponse<ObservableCollection<Tweet>>(models,ServiceResponseType.NO_CONNECTION);
 				}
 			}
-			catch (BaseException exception)
+			catch (BaseException e)
 			{
 				return new ServiceResponse<ObservableCollection<Tweet>> (models, ServiceResponseType.ERROR);
 			}
@@ -61,6 +56,35 @@ namespace Shared.Service
 			{
 				_logger.Log (new ServiceException ("Error getting tweets", exception), LogType.ERROR);
 				return new ServiceResponse<ObservableCollection<Tweet>> (models, ServiceResponseType.ERROR);
+			}
+		}
+
+		public async Task<ServiceResponse<TwitterUser>> GetUser (string screenName)
+		{
+			var user = new TwitterUser ();
+
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					var dto = await _twitterApi.GetUser(screenName);
+					user = Mapper.Map<TwitterUser> (dto);
+
+					return new ServiceResponse<TwitterUser>(user, ServiceResponseType.SUCCESS);
+				}
+				else
+				{
+					return new ServiceResponse<TwitterUser>(user,ServiceResponseType.NO_CONNECTION);
+				}
+			}
+			catch (BaseException e)
+			{
+				return new ServiceResponse<TwitterUser>(user,ServiceResponseType.ERROR);
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error getting Twitter user", exception), LogType.ERROR);
+				return new ServiceResponse<TwitterUser>(user,ServiceResponseType.ERROR);
 			}
 		}
 
@@ -78,7 +102,7 @@ namespace Shared.Service
 					return ServiceResponseType.NO_CONNECTION;
 				}
 			}
-			catch (BaseException exception)
+			catch (BaseException e)
 			{
 				return ServiceResponseType.ERROR;
 			}
@@ -103,7 +127,7 @@ namespace Shared.Service
 					return ServiceResponseType.NO_CONNECTION;
 				}
 			}
-			catch (BaseException exception)
+			catch (BaseException e)
 			{
 				return ServiceResponseType.ERROR;
 			}
