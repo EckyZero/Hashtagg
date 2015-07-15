@@ -13,6 +13,12 @@ namespace iOS.Phone
 	partial class HomeController
 	{
 		[Outlet]
+		UIKit.UIImageView AccountImageView { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint AccountImageViewTrailingConstraint { get; set; }
+
+		[Outlet]
 		UIKit.UIView AccountsView { get; set; }
 
 		[Outlet]
@@ -50,14 +56,14 @@ namespace iOS.Phone
 				HeaderViewTopConstraint = null;
 			}
 
-			if (TableViewTopConstraint != null) {
-				TableViewTopConstraint.Dispose ();
-				TableViewTopConstraint = null;
-			}
-
 			if (NameLabel != null) {
 				NameLabel.Dispose ();
 				NameLabel = null;
+			}
+
+			if (PostBarButton != null) {
+				PostBarButton.Dispose ();
+				PostBarButton = null;
 			}
 
 			if (SortOrderSegmentedControl != null) {
@@ -65,9 +71,19 @@ namespace iOS.Phone
 				SortOrderSegmentedControl = null;
 			}
 
-			if (PostBarButton != null) {
-				PostBarButton.Dispose ();
-				PostBarButton = null;
+			if (TableViewTopConstraint != null) {
+				TableViewTopConstraint.Dispose ();
+				TableViewTopConstraint = null;
+			}
+
+			if (AccountImageView != null) {
+				AccountImageView.Dispose ();
+				AccountImageView = null;
+			}
+
+			if (AccountImageViewTrailingConstraint != null) {
+				AccountImageViewTrailingConstraint.Dispose ();
+				AccountImageViewTrailingConstraint = null;
 			}
 		}
 	}

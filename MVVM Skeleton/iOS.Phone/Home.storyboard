@@ -63,25 +63,22 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4X-4L-5hr" userLabel="AccountsView">
-                                        <rect key="frame" x="80" y="61" width="160" height="47"/>
+                                        <rect key="frame" x="136.5" y="61" width="47" height="47"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1W-Ty-qzx">
-                                                <rect key="frame" x="56" y="0.0" width="47" height="47"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile Image default.png" translatesAutoresizingMaskIntoConstraints="NO" id="iCc-4y-YH7">
+                                                <rect key="frame" x="0.0" y="0.0" width="47" height="47"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="47" id="iCA-yQ-27P"/>
-                                                    <constraint firstAttribute="height" constant="47" id="qEE-SN-rri"/>
+                                                    <constraint firstAttribute="width" constant="47" id="Hx2-pY-82A"/>
+                                                    <constraint firstAttribute="height" constant="47" id="vfm-eN-OYH"/>
                                                 </constraints>
-                                                <state key="normal" image="Profile Image default.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="centerX" secondItem="d1W-Ty-qzx" secondAttribute="centerX" id="7x1-So-FrB"/>
-                                            <constraint firstAttribute="centerY" secondItem="d1W-Ty-qzx" secondAttribute="centerY" id="Sht-D7-Nbn"/>
+                                            <constraint firstItem="iCc-4y-YH7" firstAttribute="leading" secondItem="R4X-4L-5hr" secondAttribute="leading" id="QOu-pa-cVU"/>
+                                            <constraint firstAttribute="trailing" secondItem="iCc-4y-YH7" secondAttribute="trailing" id="VBL-zj-aEd"/>
                                             <constraint firstAttribute="height" constant="47" id="cye-ZB-Lyd"/>
-                                            <constraint firstAttribute="width" constant="160" id="wlv-9s-uYG"/>
+                                            <constraint firstAttribute="centerY" secondItem="iCc-4y-YH7" secondAttribute="centerY" id="xA5-Pd-nfI"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -137,6 +134,8 @@
                         <barButtonItem key="rightBarButtonItem" image="New Post Button.png" id="Zs8-01-7rr"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="AccountImageView" destination="iCc-4y-YH7" id="Fv1-G3-eWi"/>
+                        <outlet property="AccountImageViewTrailingConstraint" destination="VBL-zj-aEd" id="6AM-t5-D9x"/>
                         <outlet property="AccountsView" destination="R4X-4L-5hr" id="r4U-IC-FW7"/>
                         <outlet property="HeaderView" destination="oac-2S-kcF" id="OXH-bu-d1G"/>
                         <outlet property="HeaderViewTopConstraint" destination="Wzf-xJ-EAA" id="MjU-s1-fya"/>

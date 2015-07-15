@@ -12,6 +12,8 @@ using System.Linq;
 using Shared.Common;
 using CoreGraphics;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using SDWebImage;
 
 namespace iOS.Phone
 {
@@ -43,6 +45,8 @@ namespace iOS.Phone
 	
 			InitUI ();
 			await InitBindings ();
+
+			ViewModel.HeaderImagesCommand.Execute (null);
 		}
 
 		private void InitUI ()
@@ -63,6 +67,7 @@ namespace iOS.Phone
 		private async Task InitBindings ()
 		{
 			ViewModel.RequestCompleted = OnRequestCompleted;
+			ViewModel.RequestHeaderImages = OnRequestHeaderImages;
 
 			if(!ViewModel.IsLoaded) {
 				await ViewModel.DidLoad();
@@ -96,6 +101,57 @@ namespace iOS.Phone
 		{
 			if(_refreshControl != null) {
 				_refreshControl.EndRefreshing ();
+			}
+		}
+
+		private void OnRequestHeaderImages (List<string> images)
+		{
+			var defaultImage = UIImage.FromFile (ViewModel.DefaultAccountImageName);
+
+			if(images.Count > 0) 
+			{
+				var prevImageView = AccountImageView;
+				var prevTrailingConstraint = AccountImageViewTrailingConstraint;
+
+				prevImageView.Layer.ShadowColor = UIColor.Black.CGColor;
+				prevImageView.Layer.ShadowOffset = new CGSize (0, 0);
+				prevImageView.Layer.ShadowRadius = 10;
+				prevImageView.Layer.CornerRadius = prevImageView.Frame.Height/2;
+				prevImageView.SetImage (new NSUrl(images [0]), defaultImage);	
+
+				images.RemoveAt (0);
+
+				foreach (string imageUrl in images)
+				{
+					var imageView = new UIImageView ();
+
+					imageView.SetImage (new NSUrl (imageUrl), defaultImage);
+					imageView.Layer.CornerRadius = prevImageView.Layer.CornerRadius;
+					imageView.ClipsToBounds = prevImageView.ClipsToBounds;
+					imageView.Layer.ShadowColor = prevImageView.Layer.ShadowColor;
+					imageView.Layer.ShadowOffset = prevImageView.Layer.ShadowOffset;
+					imageView.Layer.ShadowRadius = prevImageView.Layer.ShadowRadius;
+					imageView.TranslatesAutoresizingMaskIntoConstraints = false;
+
+					var heightConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.Height, NSLayoutRelation.Equal, null, NSLayoutAttribute.NoAttribute, 1, prevImageView.Frame.Height);
+					var widthConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.Width, NSLayoutRelation.Equal, null, NSLayoutAttribute.NoAttribute, 1, prevImageView.Frame.Width);
+					var leadingConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.Leading, NSLayoutRelation.Equal, prevImageView, NSLayoutAttribute.Trailing, 1, -prevImageView.Frame.Width/2);
+					var centerYConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, AccountsView, NSLayoutAttribute.CenterY, 1, 0);
+					var trailingConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.Trailing, NSLayoutRelation.Equal, AccountsView, NSLayoutAttribute.Trailing, 1, 0);	
+
+					AccountsView.AddSubview (imageView);
+					AccountsView.AddConstraint (heightConstraint);
+					AccountsView.AddConstraint (widthConstraint);
+					AccountsView.AddConstraint (leadingConstraint);
+					AccountsView.AddConstraint (centerYConstraint);
+					AccountsView.AddConstraint (trailingConstraint);
+
+					AccountsView.RemoveConstraint (prevTrailingConstraint);
+
+					prevImageView = imageView;
+					prevTrailingConstraint = trailingConstraint;
+				}
+				AccountsView.LayoutIfNeeded ();
 			}
 		}
 

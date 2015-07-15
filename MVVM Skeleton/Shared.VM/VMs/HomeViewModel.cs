@@ -34,6 +34,7 @@ namespace Shared.VM
 		#region Actions
 
 		public Action RequestCompleted { get; set; }
+		public Action<List<string>> RequestHeaderImages { get; set; }
 
 		#endregion
 
@@ -61,6 +62,10 @@ namespace Shared.VM
 			set { _isLoaded = value; }
 		}
 
+		public string DefaultAccountImageName {
+			get { return "Profile Image default.png"; }
+		}
+
 		#endregion
 
 		#region Commands
@@ -68,6 +73,7 @@ namespace Shared.VM
 		public RelayCommand RefreshCommand { get; private set; }
 		public RelayCommand TwitterCommand { get; private set; }
 		public RelayCommand FacebookCommand { get; private set; }
+		public RelayCommand HeaderImagesCommand { get; private set; }
 
 		#endregion
 
@@ -87,6 +93,9 @@ namespace Shared.VM
 
 			await GetPosts ();
 			await GetName ();
+			await GetSocialAccountDetails ();
+
+			HeaderImagesCommandExecute ();
 
 			_isLoaded = true;
 		}
@@ -96,6 +105,7 @@ namespace Shared.VM
 			RefreshCommand = new RelayCommand (RefreshCommandExecute);
 			TwitterCommand = new RelayCommand (TwitterCommandExecute);
 			FacebookCommand = new RelayCommand (FacebookCommandExecute);
+			HeaderImagesCommand = new RelayCommand (HeaderImagesCommandExecute);
 		}
 
 		private async void RefreshCommandExecute ()
@@ -216,45 +226,96 @@ namespace Shared.VM
 			}
 		}
 
-		public async Task GetName ()
+		private async Task GetName ()
 		{
+			SocialAccount account = null;
+
 			if(await _facebookHelper.AccountExists())
 			{
-				var facebookResponse = await _facebookService.GetUser ();	
-				
-				if(await ProcessResponse(facebookResponse, false))
-				{
-					var user = facebookResponse.Result;
-					var account = _facebookHelper.GetAccount ();
-
-					account.Properties ["name"] = user.Name;
-					account.Properties ["screen_name"] = user.Name;
-					account.Properties ["id"] = user.Id;
-					account.Properties ["imageUrl"] = user.Picture;
-					_facebookHelper.Synchronize (account);
-
-					Title = account.Username;
-
-				}
+				account = _facebookHelper.GetAccount ();
 			}
 			else if (await _twitterHelper.AccountExists())
 			{
+				account = _twitterHelper.GetAccount ();
+			}
+
+			Title = account.Username;
+		}
+
+		private async Task GetSocialAccountDetails ()
+		{
+			GetTwitterUserAccountDetails ();
+			GetFacebookUserAccountDetails ();
+		}
+
+		private async Task GetTwitterUserAccountDetails ()
+		{
+			if(await _twitterHelper.AccountExists())
+			{
 				var account = _twitterHelper.GetAccount ();
-				var twitterResponse = await _twitterService.GetUser (account.Username);
 
-				if(await ProcessResponse(twitterResponse, false))
+				if(!account.Properties.ContainsKey("imageUrl") )
 				{
-					var user = twitterResponse.Result;
+					var twitterResponse = await _twitterService.GetUser (account.Username);
 
-					account.Properties ["name"] = user.Name;
-					account.Properties ["id"] = user.Id;
-					account.Properties ["imageUrl"] = user.Picture;
-					_twitterHelper.Synchronize (account);
+					if(await ProcessResponse(twitterResponse, false))
+					{
+						var user = twitterResponse.Result;
 
-					Title = user.Name;
-				}
+						account.Properties ["name"] = user.Name;
+						account.Properties ["id"] = user.Id;
+						account.Properties ["imageUrl"] = user.Picture;
+
+						_twitterHelper.Synchronize (account);
+					}	
+				}	
 			}
 		}
+
+		private async Task GetFacebookUserAccountDetails ()
+		{
+			if(await _facebookHelper.AccountExists())
+			{
+				var account = _facebookHelper.GetAccount ();
+
+				if(!account.Properties.ContainsKey("imageUrl"))
+				{
+					var facebookResponse = await _facebookService.GetUser ();	
+
+					if(await ProcessResponse(facebookResponse, false))
+					{
+						var user = facebookResponse.Result;
+
+						account.Properties ["name"] = user.Name;
+						account.Properties ["screen_name"] = user.Name;
+						account.Properties ["id"] = user.Id;
+						account.Properties ["imageUrl"] = user.Picture;
+
+						_facebookHelper.Synchronize (account);
+					}	
+				}	
+			}
+		}
+
+		private void HeaderImagesCommandExecute ()
+		{
+			var urls = new List<string> ();
+			var facebook = _facebookHelper.GetAccount ();
+			var twitter = _facebookHelper.GetAccount ();
+
+			if(facebook != null) {
+				urls.Add (facebook.Properties ["imageUrl"]);
+			}
+			if(twitter != null) {
+				urls.Add (twitter.Properties ["imageUrl"]);
+			}
+
+			if(RequestHeaderImages != null) {
+				RequestHeaderImages (urls);
+			}
+		}
+
+
 
 		#endregion
 	}
