@@ -97,7 +97,7 @@ namespace iOS.Phone
 			var bubbleCenterYConstraint = 0;
 
 			GoButton.Layer.CornerRadius = 6;
-			GoButton.Layer.BorderColor = SharedColors.Disabled.ToUIColor().CGColor;
+			GoButton.Layer.BorderColor = ThemeManager.Instance.CurrentTheme.Disabled.ToUIColor().CGColor;
 			GoButton.Layer.BorderWidth = 1;
 
 			// Animations
@@ -158,7 +158,7 @@ namespace iOS.Phone
 		{
 			button.Layer.CornerRadius = button.Frame.Height / 2;
 			button.Layer.BorderWidth = 1;
-			button.Layer.BorderColor = button.TitleLabel.TextColor.CGColor;
+			button.Layer.BorderColor = button.CurrentTitleColor.CGColor;
 			button.TitleLabel.BackgroundColor = UIColor.Clear;
 		}
 
@@ -176,11 +176,9 @@ namespace iOS.Phone
 			button.TitleLabel.BackgroundColor = UIColor.Clear;
 		}
 
-		private async void OnRequestHomePage(HomeViewModel viewModel)
+		private void OnRequestHomePage(HomeViewModel viewModel)
 		{
 			var controller = new ContainerController (viewModel);
-
-			await Task.Delay(2000);
 
 			NavigationController.PushViewController (controller, true);
 		}
@@ -188,7 +186,7 @@ namespace iOS.Phone
 		private void OnCanExecute (bool canExecute)
 		{
 			GoButton.Enabled = canExecute;
-			GoButton.Layer.BorderColor = canExecute ? GoButton.TitleLabel.TextColor.CGColor : SharedColors.Disabled.ToUIColor().CGColor;
+			GoButton.Layer.BorderColor = canExecute ? GoButton.TitleLabel.TextColor.CGColor : ThemeManager.Instance.CurrentTheme.Disabled.ToUIColor().CGColor;
 		}
 
 		private void OnGoButtonTapped (object sender, EventArgs args)

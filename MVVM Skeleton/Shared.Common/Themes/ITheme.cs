@@ -4,11 +4,17 @@ namespace Shared.Common
 {
 	public interface ITheme
 	{
-		PSColor PrimaryColor { get; set; }
-		PSColor SecondaryColor { get; set; }
-		PSColor TertiaryColor { get; set; }
+		PSColor PrimaryColor { get; }
+		PSColor SecondaryColor { get; }
+		PSColor TertiaryColor { get; }
 
-		string BackgroundImageName { get; set; }
+		PSColor TextPrimaryColor { get; }
+		PSColor TextSecondaryColor { get;  }
+		PSColor TextTertiaryColor { get; }
+
+		PSColor Disabled { get; }
+
+		string BackgroundImageName { get; }
 	}
 }
 

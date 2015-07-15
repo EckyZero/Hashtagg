@@ -47,9 +47,45 @@ namespace Shared.Common {
             }
         }
         
+        public static string Done {
+            get {
+                return ResourceManager.GetString("Done", resourceCulture);
+            }
+        }
+        
+        public static string Like {
+            get {
+                return ResourceManager.GetString("Like", resourceCulture);
+            }
+        }
+        
+        public static string GenericError {
+            get {
+                return ResourceManager.GetString("GenericError", resourceCulture);
+            }
+        }
+        
+        public static string Commented {
+            get {
+                return ResourceManager.GetString("Commented", resourceCulture);
+            }
+        }
+        
+        public static string Shared {
+            get {
+                return ResourceManager.GetString("Shared", resourceCulture);
+            }
+        }
+        
         public static string Signout {
             get {
                 return ResourceManager.GetString("Signout", resourceCulture);
+            }
+        }
+        
+        public static string Liked {
+            get {
+                return ResourceManager.GetString("Liked", resourceCulture);
             }
         }
         
@@ -65,9 +101,15 @@ namespace Shared.Common {
             }
         }
         
-        public static string GenericOffline {
+        public static string Error {
             get {
-                return ResourceManager.GetString("GenericOffline", resourceCulture);
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        public static string Share {
+            get {
+                return ResourceManager.GetString("Share", resourceCulture);
             }
         }
         
@@ -77,21 +119,15 @@ namespace Shared.Common {
             }
         }
         
-        public static string Done {
+        public static string Comment {
             get {
-                return ResourceManager.GetString("Done", resourceCulture);
+                return ResourceManager.GetString("Comment", resourceCulture);
             }
         }
         
-        public static string Error {
+        public static string GenericOffline {
             get {
-                return ResourceManager.GetString("Error", resourceCulture);
-            }
-        }
-        
-        public static string GenericError {
-            get {
-                return ResourceManager.GetString("GenericError", resourceCulture);
+                return ResourceManager.GetString("GenericOffline", resourceCulture);
             }
         }
     }

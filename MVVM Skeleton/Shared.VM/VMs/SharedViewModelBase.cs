@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using Shared.Common;
 using Shared.Service;
+using System.ComponentModel;
 
 namespace Shared.VM
 {
@@ -65,12 +66,12 @@ namespace Shared.VM
 			_emailService = IocContainer.GetContainer().Resolve<IEmailService> ();
 		}
 
-		protected async void OnError()
+		protected async Task OnError()
 		{
 			await _dialogService.ShowMessage(ApplicationResources.GenericError, ApplicationResources.Error);
 		}
 
-		protected async void OnNoConnection()
+		protected async Task OnNoConnection()
 		{
 			await _dialogService.ShowMessage(ApplicationResources.GenericOffline, ApplicationResources.CurrentlyOffline);
 		}
@@ -81,7 +82,7 @@ namespace Shared.VM
 			{
 				if (showDialog)
 				{
-					OnError();
+					await OnError();
 				}
 				return false;
 			}
@@ -89,7 +90,7 @@ namespace Shared.VM
 			{
 				if (showDialog)
 				{
-					OnNoConnection();
+					await OnNoConnection();
 				}
 				return false;
 			}
@@ -106,7 +107,7 @@ namespace Shared.VM
 			{
 				if (showDialog)
 				{
-					OnError();
+					await OnError();
 				}
 				return false;
 			}
@@ -114,7 +115,7 @@ namespace Shared.VM
 			{
 				if (showDialog)
 				{
-					OnNoConnection();
+					await OnNoConnection();
 				}
 				return false;
 			}

@@ -72,7 +72,7 @@ namespace Shared.VM
 			get { return _tweet.IsFavoritedByUser; }
 			set {
 				_tweet.IsFavoritedByUser = value;
-				LikeButtonText = String.Empty;
+				RaisePropertyChanged (() => IsLikedByUser);
 			}
 		}
 
@@ -82,7 +82,7 @@ namespace Shared.VM
 			get { return _tweet.IsRetweetedByUser; }
 			set { 
 				_tweet.IsRetweetedByUser = value; 
-				CommentButtonText = String.Empty;
+				RaisePropertyChanged (() => IsCommentedByUser);
 			}
 		}
 
@@ -91,7 +91,7 @@ namespace Shared.VM
 			get { return _tweet.IsRetweetedByUser; }
 			set {
 				_tweet.IsRetweetedByUser = value;
-				ShareButtonText = String.Empty;
+				RaisePropertyChanged (() => IsSharedByUser);
 			}
 		}
 
@@ -125,10 +125,6 @@ namespace Shared.VM
 				IsLikedByUser = true;
 				await _twitterService.Like (_tweet.Id);	
 			}
-
-			// Increment count
-			// Toggle colors
-			// Toggle font
 		}
 	}
 }

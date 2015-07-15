@@ -86,7 +86,8 @@ namespace Shared.VM
 			get { return _facebookPost.IsLikedByUser; }
 			set {
 				_facebookPost.IsLikedByUser = value;
-				LikeButtonText = String.Empty;
+
+				RaisePropertyChanged (() => IsLikedByUser);
 			}
 		}
 
@@ -127,10 +128,6 @@ namespace Shared.VM
 				IsLikedByUser = true;
 				await _facebookService.Like (_facebookPost.Id);	
 			}
-
-			// Increment count
-			// Toggle colors
-			// Toggle font
 		}
 
 		#endregion

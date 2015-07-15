@@ -57,14 +57,7 @@ namespace Shared.VM
 
 		public string LikeButtonText {
 			get { 
-				var builder = new StringBuilder ();
-				builder.Append (IsLikedByUser ? "Liked" : "Like");
-
-				if(LikeCount.HasValue) {
-					builder.Append (String.Format (" ({0})", LikeCount.Value));
-				}
-				_likeButtonText = builder.ToString ();
-
+				_likeButtonText = CalculateButtonText (IsLikedByUser, ApplicationResources.Liked, ApplicationResources.Like, LikeCount);
 				return _likeButtonText;
 			}
 			set { Set (() => LikeButtonText, ref _likeButtonText, value); }
@@ -72,14 +65,7 @@ namespace Shared.VM
 
 		public string CommentButtonText {
 			get { 
-				var builder = new StringBuilder ();
-				builder.Append (IsLikedByUser ? "Commented" : "Comment");
-
-				if(CommentCount.HasValue) {
-					builder.Append (String.Format (" ({0})", CommentCount.Value));
-				}
-				_commentButtonText = builder.ToString ();
-
+				_commentButtonText = CalculateButtonText (IsCommentedByUser, ApplicationResources.Commented, ApplicationResources.Comment, CommentCount);
 				return _commentButtonText;
 			}
 			set { Set (() => CommentButtonText, ref _commentButtonText, value); }
@@ -87,17 +73,22 @@ namespace Shared.VM
 
 		public string ShareButtonText {
 			get { 
-				var builder = new StringBuilder ();
-				builder.Append (IsLikedByUser ? "Shared" : "Share");
-
-				if(ShareCount.HasValue) {
-					builder.Append (String.Format (" ({0})", ShareCount.Value));
-				}
-				_shareButtonText = builder.ToString ();
-
+				_shareButtonText = CalculateButtonText (IsSharedByUser, ApplicationResources.Shared, ApplicationResources.Share, ShareCount);
 				return _shareButtonText;
 			}
 			set { Set (() => ShareButtonText, ref _shareButtonText, value); }
+		}
+
+		public PSColor LikeButtonTextColor {
+			get { return CalculateTextColor (IsLikedByUser); }
+		}
+
+		public PSColor CommentButtonTextColor {
+			get { return CalculateTextColor (IsCommentedByUser); }
+		}
+
+		public PSColor ShareButtonTextColor {
+			get { return CalculateTextColor (IsSharedByUser); }
 		}
 
 		#endregion
@@ -149,6 +140,26 @@ namespace Shared.VM
 		protected virtual void MediaCommandExecute ()
 		{
 			// TODO: Respond to image/movie tap
+		}
+
+		private PSColor CalculateTextColor (bool isSelectedByUser)
+		{
+			var theme = ThemeManager.Instance.CurrentTheme;
+			var color = isSelectedByUser ? theme.PrimaryColor : theme.TextTertiaryColor;
+
+			return color;
+		}
+
+		private string CalculateButtonText (bool isSelectedByUser, string positiveResponse, string negativeResponse, int? count) 
+		{
+			var builder = new StringBuilder ();
+			builder.Append (isSelectedByUser ? positiveResponse : negativeResponse);
+
+			if(count.HasValue) {
+				var userCount = isSelectedByUser ? 1 : 0;
+				builder.Append (String.Format (" ({0})", count.Value + userCount));
+			}
+			return builder.ToString ();
 		}
 
 		#endregion

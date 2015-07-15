@@ -68,10 +68,16 @@ namespace iOS.Phone
 			BodyTextView.Text = ViewModel.Text;
 			BodyTextViewHeightConstraint.Constant = BodyTextView.SizeThatFits(new CGSize(BodyTextView.Frame.Width, nfloat.MaxValue)).Height;
 			TimeLabel.Text = ViewModel.DisplayDateTime;
-			LikeButton.SetTitle (ViewModel.LikeButtonText, UIControlState.Normal);
-			CommentButton.SetTitle (ViewModel.CommentButtonText, UIControlState.Normal);
-			ShareButton.SetTitle (ViewModel.ShareButtonText, UIControlState.Normal);
 			NameLabel.SetHighlightText (ViewModel.UserName, ViewModel.UserName.IndexOf ("@"), UIColor.LightGray);
+
+			LikeButton.SetTitle (ViewModel.LikeButtonText, UIControlState.Normal);
+			LikeButton.SetTitleColor (ViewModel.LikeButtonTextColor.ToUIColor (), UIControlState.Normal);
+
+			CommentButton.SetTitle (ViewModel.CommentButtonText, UIControlState.Normal);
+			CommentButton.SetTitleColor (ViewModel.CommentButtonTextColor.ToUIColor (), UIControlState.Normal);
+
+			ShareButton.SetTitle (ViewModel.ShareButtonText, UIControlState.Normal);
+			ShareButton.SetTitleColor (ViewModel.ShareButtonTextColor.ToUIColor (), UIControlState.Normal);
 
 			if(ViewModel.ShowImage) {
 				ActivityIndicator.StartAnimating ();
@@ -108,13 +114,16 @@ namespace iOS.Phone
 			var name = args.PropertyName;
 
 			if(name.Equals("IsLikedByUser")) {
-				
+				LikeButton.SetTitleColor (ViewModel.LikeButtonTextColor.ToUIColor (), UIControlState.Normal);
+				LikeButton.SetTitle (ViewModel.LikeButtonText, UIControlState.Normal);
 			}
 			else if(name.Equals("IsCommentedByUser")) {
-				
+				CommentButton.SetTitleColor (ViewModel.CommentButtonTextColor.ToUIColor (), UIControlState.Normal);
+				CommentButton.SetTitle (ViewModel.CommentButtonText, UIControlState.Normal);
 			}
 			else if(name.Equals("IsSharedByUser")) {
-				
+				ShareButton.SetTitleColor (ViewModel.ShareButtonTextColor.ToUIColor (), UIControlState.Normal);
+				ShareButton.SetTitle (ViewModel.ShareButtonText, UIControlState.Normal);
 			}
 		}
 
