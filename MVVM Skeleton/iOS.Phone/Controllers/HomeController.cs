@@ -14,6 +14,7 @@ using CoreGraphics;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using SDWebImage;
+using CoreAnimation;
 
 namespace iOS.Phone
 {
@@ -112,26 +113,62 @@ namespace iOS.Phone
 			{
 				var prevImageView = AccountImageView;
 				var prevTrailingConstraint = AccountImageViewTrailingConstraint;
+				var rect = CGRect.FromLTRB (prevImageView.Frame.X + 2, prevImageView.Frame.Y + 2, prevImageView.Frame.Width - 4, prevImageView.Frame.Height - 4);
+				var path = UIBezierPath.FromRoundedRect (rect, prevImageView.Frame.Height / 2);
+				var prevMaskLayer = new CAShapeLayer ();
 
-				prevImageView.Layer.ShadowColor = UIColor.Black.CGColor;
-				prevImageView.Layer.ShadowOffset = new CGSize (0, 0);
-				prevImageView.Layer.ShadowRadius = 10;
-				prevImageView.Layer.CornerRadius = prevImageView.Frame.Height/2;
+				prevMaskLayer.Path = path.CGPath;
+
+//				maskLayer.ShadowPath = path.CGPath;
+				prevMaskLayer.ShadowColor = UIColor.Black.CGColor;
+				prevMaskLayer.ShadowOpacity = 0.35f;
+				prevMaskLayer.ShadowOffset = new CGSize (0, 1);
+//				prevImageView.Layer.CornerRadius = prevImageView.Frame.Height/2;
+				prevMaskLayer.ShadowRadius = 2;
+				prevMaskLayer.ShadowPath = path.CGPath;
+//				prevImageView.Layer.MasksToBounds = true;
+				prevImageView.ClipsToBounds = false;
+				prevImageView.Layer.MasksToBounds = false;
+				prevImageView.Layer.Mask = prevMaskLayer;
+//				prevImageView.Layer.ShadowPath = path.CGPath;
+
 				prevImageView.SetImage (new NSUrl(images [0]), defaultImage);	
 
 				images.RemoveAt (0);
+				AccountsView.Layer.MasksToBounds = false;
+				AccountsView.ClipsToBounds = false;
+//				AccountsView.Layer.Bounds
 
 				foreach (string imageUrl in images)
 				{
 					var imageView = new UIImageView ();
+					var maskLayer = new CAShapeLayer ();
+
+					maskLayer.Path = path.CGPath;
+
+
+//					imageView.Layer.ShadowPath = path.CGPath;
+//					imageView.Path = path.CGPath;
+
+//					maskLayer.Path = path;
+//					imageView.Layer.Mask = maskLayer;
+
+//					imageView.Layer.CornerRadius = prevImageView.Layer.CornerRadius;
+
+					maskLayer.ShadowColor = prevMaskLayer.ShadowColor;
+					maskLayer.ShadowOpacity = prevMaskLayer.ShadowOpacity;
+					maskLayer.ShadowOffset = prevMaskLayer.ShadowOffset;
+					maskLayer.ShadowRadius = prevMaskLayer.ShadowRadius;
+					maskLayer.ShadowPath = prevMaskLayer.ShadowPath;
+
+//					imageView.Layer.ShadowPath = path.CGPath;
+					imageView.ClipsToBounds = prevImageView.ClipsToBounds;
+					imageView.Layer.MasksToBounds = prevImageView.Layer.MasksToBounds;
+					imageView.Layer.Mask = maskLayer;
+//					imageView.Layer.ShadowRadius = 2;
+					imageView.TranslatesAutoresizingMaskIntoConstraints = false;
 
 					imageView.SetImage (new NSUrl (imageUrl), defaultImage);
-					imageView.Layer.CornerRadius = prevImageView.Layer.CornerRadius;
-					imageView.ClipsToBounds = prevImageView.ClipsToBounds;
-					imageView.Layer.ShadowColor = prevImageView.Layer.ShadowColor;
-					imageView.Layer.ShadowOffset = prevImageView.Layer.ShadowOffset;
-					imageView.Layer.ShadowRadius = prevImageView.Layer.ShadowRadius;
-					imageView.TranslatesAutoresizingMaskIntoConstraints = false;
 
 					var heightConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.Height, NSLayoutRelation.Equal, null, NSLayoutAttribute.NoAttribute, 1, prevImageView.Frame.Height);
 					var widthConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.Width, NSLayoutRelation.Equal, null, NSLayoutAttribute.NoAttribute, 1, prevImageView.Frame.Width);
@@ -140,14 +177,16 @@ namespace iOS.Phone
 					var trailingConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.Trailing, NSLayoutRelation.Equal, AccountsView, NSLayoutAttribute.Trailing, 1, 0);	
 
 					AccountsView.AddSubview (imageView);
+					AccountsView.SendSubviewToBack (imageView);
+
+					AccountsView.RemoveConstraint (prevTrailingConstraint);
 					AccountsView.AddConstraint (heightConstraint);
 					AccountsView.AddConstraint (widthConstraint);
 					AccountsView.AddConstraint (leadingConstraint);
 					AccountsView.AddConstraint (centerYConstraint);
 					AccountsView.AddConstraint (trailingConstraint);
 
-					AccountsView.RemoveConstraint (prevTrailingConstraint);
-
+					prevMaskLayer = maskLayer;
 					prevImageView = imageView;
 					prevTrailingConstraint = trailingConstraint;
 				}

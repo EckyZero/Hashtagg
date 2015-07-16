@@ -301,7 +301,7 @@ namespace Shared.VM
 		{
 			var urls = new List<string> ();
 			var facebook = _facebookHelper.GetAccount ();
-			var twitter = _facebookHelper.GetAccount ();
+			var twitter = _twitterHelper.GetAccount ();
 
 			if(facebook != null) {
 				urls.Add (facebook.Properties ["imageUrl"]);
