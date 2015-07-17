@@ -81,6 +81,26 @@ namespace iOS
 //
 //			view.Layer.AddAnimation (animation, "animateOpacity");
 		}
+
+		public static CGRect CenterViewInView(this UIView viewToCenter, UIView containerView)
+		{
+			var boundsSize = containerView.Bounds.Size;
+			var contentsFrame = viewToCenter.Frame;
+
+			if (contentsFrame.Width < boundsSize.Width) {
+				contentsFrame.X = (boundsSize.Width - contentsFrame.Width) / 2;
+			} else {
+				contentsFrame.X = 0;
+			}
+
+			if (contentsFrame.Height < boundsSize.Height) {
+				contentsFrame.Y = (boundsSize.Height - contentsFrame.Height) / 2;
+			} else {
+				contentsFrame.Y = 0;
+			}
+
+			return contentsFrame;
+		}
 	}
 }
 

@@ -1,5 +1,6 @@
 using System;
 using UIKit;
+using CoreGraphics;
 
 namespace iOS
 {
@@ -10,6 +11,13 @@ namespace iOS
 
 		public bool UseAnimation = true;
 		public float AnimationDuration = 0.3f;
+
+		public CGRect ImageFrame {
+			get { return sviMain.ImageFrame; }
+		}
+
+		public event EventHandler WillHide;
+		public event EventHandler DidHide;
 
 		public UIViewFullscreen () : base ()
 		{
@@ -55,15 +63,24 @@ namespace iOS
 		
 		public void Hide()
 		{
+			if(WillHide != null) {
+				WillHide (this, new EventArgs ());
+			}
 			if (Superview != null) {
 				if (!UseAnimation) {
 					RemoveFromSuperview ();
+					if(DidHide != null) {
+						DidHide (this, new EventArgs ());
+					}
 				} else {
 					Alpha = 1f;
 					UIView.Animate (AnimationDuration, () => {
 						Alpha = 0f;
 					}, () => {
 						RemoveFromSuperview ();
+						if(DidHide != null) {
+							DidHide (this, new EventArgs ());
+						}
 					});
 				}
 			}

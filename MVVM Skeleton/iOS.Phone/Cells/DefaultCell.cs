@@ -28,6 +28,15 @@ namespace iOS.Phone
 			get { return PhotoImageView.Image; }
 		}
 
+		public bool ImageHidden {
+			get { return PhotoImageView.Hidden; }
+			set { PhotoImageView.Hidden = value; }
+		}
+
+		public CGRect ImageRect {
+			get { return PhotoImageView.Frame; }
+		}
+
 		#endregion
 
 		#region Methods

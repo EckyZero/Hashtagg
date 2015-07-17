@@ -252,12 +252,40 @@ namespace iOS.Phone
 		{
 			var index = ViewModel.CardViewModels.IndexOf (viewModel);
 			var cell = _tableController.TableView.CellAt (NSIndexPath.FromRowSection (index, 0)) as DefaultCell;
+			var startFrame = cell.ConvertRectToView (cell.ImageRect, View);
+			var imageView = new UIImageView (startFrame);
 
-			if(_fullScreenView == null) {
-				_fullScreenView = new UIViewFullscreen();
-			}
+			imageView.ContentMode = UIViewContentMode.ScaleAspectFill;
+			imageView.Image = cell.Image;
+			cell.ImageHidden = true;
+
+			View.AddSubview (imageView);
+
+			_fullScreenView = new UIViewFullscreen ();
+			_fullScreenView.WillHide += (object sender, EventArgs e) => {
+				imageView.Hidden = false;
+				// Scale the image back to the cell
+				UIView.Animate(_fullScreenView.AnimationDuration/2, () => {
+					imageView.Frame = startFrame;
+				}, () => {
+					imageView.RemoveFromSuperview();
+					imageView = null;
+					cell.ImageHidden = false;	
+				});
+			};
+
 			_fullScreenView.SetImage(cell.Image);
 			_fullScreenView.Show();
+
+			// Set final Rect Animation
+			var finalFrame = _fullScreenView.ConvertRectToView(_fullScreenView.ImageFrame, View);
+
+			UIView.Animate (_fullScreenView.AnimationDuration/2, () => {
+				imageView.Frame = finalFrame;
+			}, () => {
+				imageView.Hidden = true;
+			});
+
 		}
 
 		private void OnRequestMovieViewer (BaseContentCardViewModel viewModel)

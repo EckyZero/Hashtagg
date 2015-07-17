@@ -124,6 +124,10 @@ namespace iOS
 			}
 		}
 
+		public CGRect ImageFrame {
+			get { return ivMain.Frame; }
+		}
+
 		public CGRect CenterScrollViewContents ()
 		{
 			var boundsSize = Bounds.Size;

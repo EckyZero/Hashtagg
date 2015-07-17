@@ -8,7 +8,8 @@ namespace Shared.Common
 		None,
 		Video,
 		Link,
-		Photo
+		Photo,
+		Event
 	}
 
 	public class FacebookPost

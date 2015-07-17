@@ -36,7 +36,7 @@ namespace Shared.Api
 		{
 			var url = new Uri (String.Format ("{0}{1}", BASE_URL, Routes.FACEBOOK_HOME_FEED));
 			var parameters = new Dictionary<string, string> () {
-				{ "limit", "50" },
+				{ "limit", "10" },
 				{ "fields", "full_picture,created_time,id,updated_time,message,link,shares,from,likes,comments,actions,story,name,description,type,source"}
 			};
 
