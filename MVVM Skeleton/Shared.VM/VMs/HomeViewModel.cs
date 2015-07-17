@@ -35,6 +35,8 @@ namespace Shared.VM
 
 		public Action RequestCompleted { get; set; }
 		public Action<List<string>> RequestHeaderImages { get; set; }
+		public Action<BaseContentCardViewModel> RequestPhotoViewer { get; set;}
+		public Action<BaseContentCardViewModel> RequestMovieViewer { get; set;}
 
 		#endregion
 
@@ -221,6 +223,12 @@ namespace Shared.VM
 			CardViewModels.Clear ();
 			CardViewModels.AddRange (allViewModels);
 
+			foreach (BaseContentCardViewModel viewModel in CardViewModels)
+			{
+				viewModel.RequestMovieViewer = RequestMovieViewer;
+				viewModel.RequestPhotoViewer = RequestPhotoViewer;
+			}
+
 			if(RequestCompleted != null) {
 				RequestCompleted ();
 			}
@@ -304,15 +312,15 @@ namespace Shared.VM
 			var twitter = _twitterHelper.GetAccount ();
 
 			if(facebook != null) {
-				urls.Add (facebook.Properties ["imageUrl"]);
+//				urls.Add (facebook.Properties ["imageUrl"]);
 			}
 			if(twitter != null) {
-				urls.Add (twitter.Properties ["imageUrl"]);
+//				urls.Add (twitter.Properties ["imageUrl"]);
 			}
 
-			if(RequestHeaderImages != null) {
-				RequestHeaderImages (urls);
-			}
+//			if(RequestHeaderImages != null) {
+//				RequestHeaderImages (urls);
+//			}
 		}
 
 

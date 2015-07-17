@@ -100,6 +100,17 @@ namespace Shared.VM
 			get { return _tweet.UserScreenName; }
 		}
 
+		public override bool IsMovie 
+		{
+			get { return false; }
+		}
+
+		public override string MovieUrl 
+		{
+			// TODO: Change model object to contain the MediaUrl
+			get { return String.Empty; }
+		}
+
 		#endregion
 
 		#region Methods

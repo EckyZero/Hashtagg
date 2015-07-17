@@ -34,7 +34,7 @@ namespace iOS.Phone
 		UIKit.UILabel NameLabel { get; set; }
 
 		[Outlet]
-		UIKit.UIImageView PhotoImageView { get; set; }
+		iOS.UIImageViewClickable PhotoImageView { get; set; }
 
 		[Outlet]
 		UIKit.NSLayoutConstraint PhotoImageViewHeightConstraint { get; set; }
@@ -56,6 +56,16 @@ namespace iOS.Phone
 			if (ActivityIndicator != null) {
 				ActivityIndicator.Dispose ();
 				ActivityIndicator = null;
+			}
+
+			if (BodyTextView != null) {
+				BodyTextView.Dispose ();
+				BodyTextView = null;
+			}
+
+			if (BodyTextViewHeightConstraint != null) {
+				BodyTextViewHeightConstraint.Dispose ();
+				BodyTextViewHeightConstraint = null;
 			}
 
 			if (CommentButton != null) {
@@ -106,16 +116,6 @@ namespace iOS.Phone
 			if (UserImageView != null) {
 				UserImageView.Dispose ();
 				UserImageView = null;
-			}
-
-			if (BodyTextView != null) {
-				BodyTextView.Dispose ();
-				BodyTextView = null;
-			}
-
-			if (BodyTextViewHeightConstraint != null) {
-				BodyTextViewHeightConstraint.Dispose ();
-				BodyTextViewHeightConstraint = null;
 			}
 		}
 	}

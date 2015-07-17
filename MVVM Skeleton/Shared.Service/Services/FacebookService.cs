@@ -80,7 +80,7 @@ namespace Shared.Service
 					return new ServiceResponse<ObservableCollection<FacebookPost>>(models,ServiceResponseType.NO_CONNECTION);
 				}
 			}
-			catch (BaseException e)
+			catch (BaseException exc)
 			{
 				return new ServiceResponse<ObservableCollection<FacebookPost>> (models, ServiceResponseType.ERROR);
 			}

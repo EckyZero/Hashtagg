@@ -23,6 +23,13 @@ namespace Shared.VM
 
 		#endregion
 
+		#region Actions
+
+		public Action<BaseContentCardViewModel> RequestPhotoViewer { get; set;}
+		public Action<BaseContentCardViewModel> RequestMovieViewer { get; set;}
+
+		#endregion
+
 		#region Member Properties
 
 		public override ListItemType ListItemType {
@@ -42,6 +49,8 @@ namespace Shared.VM
 		public abstract bool IsLikedByUser { get; set; }
 		public abstract bool IsCommentedByUser { get; set; }
 		public abstract bool IsSharedByUser { get; set; }
+		public abstract bool IsMovie { get; }
+		public abstract string MovieUrl { get; }
 
 		public string DisplayDateTime { 
 			get { return OrderByDateTime.ToRelativeString (); }
@@ -115,6 +124,7 @@ namespace Shared.VM
 			LikeCommand = new RelayCommand (LikeCommandExecute);
 			CommentCommand = new RelayCommand (CommentCommandExecute);
 			ShareCommand = new RelayCommand (ShareCommandExecute);
+			MediaCommand = new RelayCommand (MediaCommandExecute);
 		}
 
 		protected virtual void SelectCommandExecute ()
@@ -139,7 +149,21 @@ namespace Shared.VM
 
 		protected virtual void MediaCommandExecute ()
 		{
-			// TODO: Respond to image/movie tap
+			if(IsMovie) {
+
+				// Per Youtube's policies, all videos must be presenting on their site
+				if(MovieUrl.Contains("youtube")) {
+					
+					_browserService.OpenUrl (MovieUrl);
+				}
+				else if (RequestMovieViewer != null) {
+					RequestMovieViewer (this);
+				}
+			} else {
+				if(RequestPhotoViewer != null) {
+					RequestPhotoViewer (this);
+				}
+			}
 		}
 
 		private PSColor CalculateTextColor (bool isSelectedByUser)

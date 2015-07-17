@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using SDWebImage;
 using CoreAnimation;
+using MediaPlayer;
 
 namespace iOS.Phone
 {
@@ -24,6 +25,9 @@ namespace iOS.Phone
 
 		private UIRefreshControl _refreshControl;
 		private nfloat _lastY;
+		private UIViewFullscreen _fullScreenView;
+		private MPMoviePlayerViewController _movieController;
+		private PSObservableTableController _tableController;
 
 		#endregion
 
@@ -69,6 +73,8 @@ namespace iOS.Phone
 		{
 			ViewModel.RequestCompleted = OnRequestCompleted;
 			ViewModel.RequestHeaderImages = OnRequestHeaderImages;
+			ViewModel.RequestPhotoViewer = OnRequestPhotoViewer;
+			ViewModel.RequestMovieViewer = OnRequestMovieViewer;
 
 			if(!ViewModel.IsLoaded) {
 				await ViewModel.DidLoad();
@@ -81,14 +87,14 @@ namespace iOS.Phone
 
 			if(segue.DestinationViewController.GetType() == typeof(PSObservableTableController)) {
 
-				var controller = segue.DestinationViewController as PSObservableTableController;
+				_tableController = segue.DestinationViewController as PSObservableTableController;
 
-				controller.Collection = ViewModel.CardViewModels;
-				controller.OnPullToRefresh = OnPullToRefresh;
-				controller.HandleScrolled = OnScrolled;
-				controller.HandleDraggingStarted = OnDraggingStarted;
+				_tableController.Collection = ViewModel.CardViewModels;
+				_tableController.OnPullToRefresh = OnPullToRefresh;
+				_tableController.HandleScrolled = OnScrolled;
+				_tableController.HandleDraggingStarted = OnDraggingStarted;
 
-				controller.SetEstimatedHeight (175);
+				_tableController.SetEstimatedHeight (175);
 			}
 		}
 
@@ -240,6 +246,26 @@ namespace iOS.Phone
 			var point = tableView.PanGestureRecognizer.TranslationInView (tableView);
 
 			_lastY = point.Y;
+		}
+
+		private void OnRequestPhotoViewer (BaseContentCardViewModel viewModel) 
+		{
+			var index = ViewModel.CardViewModels.IndexOf (viewModel);
+			var cell = _tableController.TableView.CellAt (NSIndexPath.FromRowSection (index, 0)) as DefaultCell;
+
+			if(_fullScreenView == null) {
+				_fullScreenView = new UIViewFullscreen();
+			}
+			_fullScreenView.SetImage(cell.Image);
+			_fullScreenView.Show();
+		}
+
+		private void OnRequestMovieViewer (BaseContentCardViewModel viewModel)
+		{
+			var url = NSUrl.FromString(viewModel.MovieUrl);
+			_movieController = new MPMoviePlayerViewController(url);
+
+			PresentMoviePlayerViewController (_movieController);
 		}
 	}
 }

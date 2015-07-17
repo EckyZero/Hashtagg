@@ -104,7 +104,17 @@ namespace Shared.VM
 			get { return false; }
 			set { }
 		}
-			
+
+		public override bool IsMovie 
+		{
+			get { return _facebookPost.MediaType == MediaType.Video; }
+		}
+
+		public override string MovieUrl 
+		{
+			get { return _facebookPost.SourceUrl; }
+		}
+
 		#endregion
 
 		#region Methods

@@ -8,6 +8,8 @@ using Shared.VM;
 using CoreGraphics;
 using SDWebImage;
 using System.ComponentModel;
+using MediaPlayer;
+using GalaSoft.MvvmLight.Helpers;
 
 namespace iOS.Phone
 {
@@ -22,6 +24,9 @@ namespace iOS.Phone
 		#region Properties
 
 		public BaseContentCardViewModel ViewModel { get; set; }
+		public UIImage Image { 
+			get { return PhotoImageView.Image; }
+		}
 
 		#endregion
 
@@ -107,6 +112,9 @@ namespace iOS.Phone
 		{
 			ViewModel.PropertyChanged -= OnPropertyChanged;
 			ViewModel.PropertyChanged += OnPropertyChanged;
+
+			PhotoImageView.OnClick -= OnPhotoClicked;
+			PhotoImageView.OnClick += OnPhotoClicked;
 		}
 
 		void OnPropertyChanged (object sender, PropertyChangedEventArgs args)
@@ -125,6 +133,11 @@ namespace iOS.Phone
 				ShareButton.SetTitleColor (ViewModel.ShareButtonTextColor.ToUIColor (), UIControlState.Normal);
 				ShareButton.SetTitle (ViewModel.ShareButtonText, UIControlState.Normal);
 			}
+		}
+
+		void OnPhotoClicked () 
+		{
+			ViewModel.MediaCommand.Execute (null);
 		}
 
 		void CommentButton_TouchUpInside (object sender, EventArgs e)

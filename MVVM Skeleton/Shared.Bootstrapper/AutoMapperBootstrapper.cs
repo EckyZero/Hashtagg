@@ -44,6 +44,10 @@ namespace Shared.Bootstrapper
 				.ForMember(model => model.ImageUrl,
 					opts => opts.MapFrom(dto => (dto.Entities != null && dto.Entities.Media != null) ? dto.Entities.Media.FirstOrDefault( m => m.Type.Equals("photo")).Media_Url : String.Empty));
 			Mapper.CreateMap<FacebookFeedItemDto, FacebookPost> ()
+				.ForMember (model => model.MediaType,
+					opts => opts.MapFrom (dto => String.IsNullOrWhiteSpace(dto.Type) ? MediaType.None : (MediaType)Enum.Parse(typeof(MediaType),dto.Type.UppercaseFirstCharacter())))
+				.ForMember (model => model.SourceUrl,
+					opts => opts.MapFrom (dto => String.IsNullOrWhiteSpace(dto.Source) ? String.Empty : dto.Source))
 				.ForMember (model => model.CreatedAt,
 					opts => opts.MapFrom (dto => dto.Created_Time))
 				.ForMember (model => model.UpdatedAt,

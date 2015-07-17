@@ -4,6 +4,13 @@ using System.Linq;
 
 namespace Shared.Common
 {
+	public enum MediaType {
+		None,
+		Video,
+		Link,
+		Photo
+	}
+
 	public class FacebookPost
 	{
 		private bool _isLikedByUser = false;
@@ -20,7 +27,9 @@ namespace Shared.Common
 		public string LinkUrl { get; set; }
 		public int ShareCount { get; set; }
 		public string LikeUrl { get; set; }
+		public string SourceUrl { get; set; }
 		public string CommentUrl { get; set; }
+		public MediaType MediaType { get; set; } 
 
 		public bool IsLikedByUser 
 		{
