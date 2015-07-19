@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using SDWebImage;
 using CoreAnimation;
 using MediaPlayer;
+using System.ComponentModel;
 
 namespace iOS.Phone
 {
@@ -37,11 +38,11 @@ namespace iOS.Phone
 
 		#endregion
 
+		#region Lifecycle
+
 		public HomeController (IntPtr handle) : base (handle)
 		{
-			if(ViewModel == null) {
-				ViewModel = new HomeViewModel ();
-			}
+			ViewModel = new HomeViewModel ();	
 		}
 
 		public override async void ViewDidLoad ()
@@ -50,9 +51,19 @@ namespace iOS.Phone
 	
 			InitUI ();
 			await InitBindings ();
-
-			ViewModel.HeaderImagesCommand.Execute (null);
+			await ViewModel.DidLoad ();
 		}
+
+		public override async void ViewDidAppear (bool animated)
+		{
+			base.ViewDidAppear (animated);
+
+			await ViewModel.DidAppear();
+		}
+
+		#endregion
+
+		#region Methods
 
 		private void InitUI ()
 		{
@@ -71,14 +82,16 @@ namespace iOS.Phone
 
 		private async Task InitBindings ()
 		{
+			ViewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
+				if(e.PropertyName.Equals("IsNoAccountsExistPromptHidden")) {
+					SignedOutLabel.Hidden = ViewModel.IsNoAccountsExistPromptHidden;
+				}
+			};
+
 			ViewModel.RequestCompleted = OnRequestCompleted;
 			ViewModel.RequestHeaderImages = OnRequestHeaderImages;
 			ViewModel.RequestPhotoViewer = OnRequestPhotoViewer;
 			ViewModel.RequestMovieViewer = OnRequestMovieViewer;
-
-			if(!ViewModel.IsLoaded) {
-				await ViewModel.DidLoad();
-			}
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
@@ -117,6 +130,15 @@ namespace iOS.Phone
 
 			if(images.Count > 0) 
 			{
+				// remove all existing just in case
+				foreach (UIView view in AccountsView.Subviews) {
+					if(!view.Equals(AccountImageView)) {
+						AccountsView.RemoveConstraints (view.Constraints);
+						view.RemoveFromSuperview ();
+					}
+				}
+
+				// proceed and add the new ones
 				var prevImageView = AccountImageView;
 				var prevTrailingConstraint = AccountImageViewTrailingConstraint;
 				var rect = CGRect.FromLTRB (prevImageView.Frame.X + 2, prevImageView.Frame.Y + 2, prevImageView.Frame.Width - 4, prevImageView.Frame.Height - 4);
@@ -124,26 +146,20 @@ namespace iOS.Phone
 				var prevMaskLayer = new CAShapeLayer ();
 
 				prevMaskLayer.Path = path.CGPath;
-
-//				maskLayer.ShadowPath = path.CGPath;
 				prevMaskLayer.ShadowColor = UIColor.Black.CGColor;
 				prevMaskLayer.ShadowOpacity = 0.35f;
 				prevMaskLayer.ShadowOffset = new CGSize (0, 1);
-//				prevImageView.Layer.CornerRadius = prevImageView.Frame.Height/2;
 				prevMaskLayer.ShadowRadius = 2;
 				prevMaskLayer.ShadowPath = path.CGPath;
-//				prevImageView.Layer.MasksToBounds = true;
-				prevImageView.ClipsToBounds = false;
-				prevImageView.Layer.MasksToBounds = false;
-				prevImageView.Layer.Mask = prevMaskLayer;
-//				prevImageView.Layer.ShadowPath = path.CGPath;
 
+				prevImageView.ClipsToBounds = false;
+				prevImageView.Layer.Mask = prevMaskLayer;
+				prevImageView.Layer.MasksToBounds = false;
 				prevImageView.SetImage (new NSUrl(images [0]), defaultImage);	
 
 				images.RemoveAt (0);
 				AccountsView.Layer.MasksToBounds = false;
 				AccountsView.ClipsToBounds = false;
-//				AccountsView.Layer.Bounds
 
 				foreach (string imageUrl in images)
 				{
@@ -151,27 +167,15 @@ namespace iOS.Phone
 					var maskLayer = new CAShapeLayer ();
 
 					maskLayer.Path = path.CGPath;
-
-
-//					imageView.Layer.ShadowPath = path.CGPath;
-//					imageView.Path = path.CGPath;
-
-//					maskLayer.Path = path;
-//					imageView.Layer.Mask = maskLayer;
-
-//					imageView.Layer.CornerRadius = prevImageView.Layer.CornerRadius;
-
 					maskLayer.ShadowColor = prevMaskLayer.ShadowColor;
 					maskLayer.ShadowOpacity = prevMaskLayer.ShadowOpacity;
 					maskLayer.ShadowOffset = prevMaskLayer.ShadowOffset;
 					maskLayer.ShadowRadius = prevMaskLayer.ShadowRadius;
 					maskLayer.ShadowPath = prevMaskLayer.ShadowPath;
 
-//					imageView.Layer.ShadowPath = path.CGPath;
 					imageView.ClipsToBounds = prevImageView.ClipsToBounds;
-					imageView.Layer.MasksToBounds = prevImageView.Layer.MasksToBounds;
 					imageView.Layer.Mask = maskLayer;
-//					imageView.Layer.ShadowRadius = 2;
+					imageView.Layer.MasksToBounds = prevImageView.Layer.MasksToBounds;
 					imageView.TranslatesAutoresizingMaskIntoConstraints = false;
 
 					imageView.SetImage (new NSUrl (imageUrl), defaultImage);
@@ -265,9 +269,9 @@ namespace iOS.Phone
 			_fullScreenView.WillHide += (object sender, EventArgs e) => {
 				imageView.Hidden = false;
 				// Scale the image back to the cell
-				UIView.Animate(_fullScreenView.AnimationDuration/2, () => {
+				UIView.AnimateNotify(_fullScreenView.AnimationDuration/2, () => {
 					imageView.Frame = startFrame;
-				}, () => {
+				}, (isComplete) => {
 					imageView.RemoveFromSuperview();
 					imageView = null;
 					cell.ImageHidden = false;	
@@ -280,21 +284,24 @@ namespace iOS.Phone
 			// Set final Rect Animation
 			var finalFrame = _fullScreenView.ConvertRectToView(_fullScreenView.ImageFrame, View);
 
-			UIView.Animate (_fullScreenView.AnimationDuration/2, () => {
+			UIView.AnimateNotify (_fullScreenView.AnimationDuration/2, () => {
 				imageView.Frame = finalFrame;
-			}, () => {
+			}, async (isComplete) => {
+				await Task.Delay(500);
 				imageView.Hidden = true;
 			});
-
 		}
 
 		private void OnRequestMovieViewer (BaseContentCardViewModel viewModel)
 		{
 			var url = NSUrl.FromString(viewModel.MovieUrl);
 			_movieController = new MPMoviePlayerViewController(url);
-
+		
 			PresentMoviePlayerViewController (_movieController);
 		}
+
+		#endregion
+//		private void OnRequest
 	}
 }
 

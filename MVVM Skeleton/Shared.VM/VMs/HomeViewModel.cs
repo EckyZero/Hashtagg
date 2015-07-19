@@ -21,6 +21,7 @@ namespace Shared.VM
 		#region Variables
 
 		private bool _isLoaded = false;
+		private bool _isNoAccountsExistPromptHidden = true;
 		private string _title = String.Empty;
 		private OrderBy _orderBy = OrderBy.Time;
 		private ITwitterService _twitterService;
@@ -64,6 +65,11 @@ namespace Shared.VM
 			set { _isLoaded = value; }
 		}
 
+		public bool IsNoAccountsExistPromptHidden {
+			get { return _isNoAccountsExistPromptHidden; }
+			set { Set (() => IsNoAccountsExistPromptHidden, ref _isNoAccountsExistPromptHidden, value); }
+		}
+
 		public string DefaultAccountImageName {
 			get { return "Profile Image default.png"; }
 		}
@@ -75,7 +81,6 @@ namespace Shared.VM
 		public RelayCommand RefreshCommand { get; private set; }
 		public RelayCommand TwitterCommand { get; private set; }
 		public RelayCommand FacebookCommand { get; private set; }
-		public RelayCommand HeaderImagesCommand { get; private set; }
 
 		#endregion
 
@@ -91,15 +96,23 @@ namespace Shared.VM
 
 		public override async Task DidLoad ()
 		{
-			await base.DidLoad ();
+			if(!_isLoaded) 
+			{
+				_isLoaded = true;
 
-			await GetPosts ();
-			await GetName ();
-			await GetSocialAccountDetails ();
+				await base.DidLoad ();
+				await GetName ();
+				await GetSocialAccountDetails ();
+				await GetPosts();	
+			}
+		}
 
-			HeaderImagesCommandExecute ();
+		public override async Task DidAppear ()
+		{
+			await base.DidAppear();
 
-			_isLoaded = true;
+			GetHeaderImages ();
+			RemoveCardsIfNeeded ();
 		}
 
 		protected override void InitCommands ()
@@ -107,7 +120,6 @@ namespace Shared.VM
 			RefreshCommand = new RelayCommand (RefreshCommandExecute);
 			TwitterCommand = new RelayCommand (TwitterCommandExecute);
 			FacebookCommand = new RelayCommand (FacebookCommandExecute);
-			HeaderImagesCommand = new RelayCommand (HeaderImagesCommandExecute);
 		}
 
 		private async void RefreshCommandExecute ()
@@ -236,6 +248,7 @@ namespace Shared.VM
 
 		private async Task GetName ()
 		{
+			// Get the display name
 			SocialAccount account = null;
 
 			if(await _facebookHelper.AccountExists())
@@ -252,12 +265,14 @@ namespace Shared.VM
 
 		private async Task GetSocialAccountDetails ()
 		{
-			GetTwitterUserAccountDetails ();
-			GetFacebookUserAccountDetails ();
+			// Sync all accounts
+			await GetTwitterUserAccountDetails ();
+			await GetFacebookUserAccountDetails ();
 		}
 
 		private async Task GetTwitterUserAccountDetails ()
 		{
+			// Sync twitter account details
 			if(await _twitterHelper.AccountExists())
 			{
 				var account = _twitterHelper.GetAccount ();
@@ -282,6 +297,7 @@ namespace Shared.VM
 
 		private async Task GetFacebookUserAccountDetails ()
 		{
+			// Sync facebook account details
 			if(await _facebookHelper.AccountExists())
 			{
 				var account = _facebookHelper.GetAccount ();
@@ -305,25 +321,48 @@ namespace Shared.VM
 			}
 		}
 
-		private void HeaderImagesCommandExecute ()
+		private void GetHeaderImages ()
 		{
+			// This gets the imageUrls for each synced account
+			// It also toggles the "No accounts exist" prompt if none are found
 			var urls = new List<string> ();
 			var facebook = _facebookHelper.GetAccount ();
 			var twitter = _twitterHelper.GetAccount ();
 
-			if(facebook != null) {
-//				urls.Add (facebook.Properties ["imageUrl"]);
+			if(facebook != null && facebook.Properties.ContainsKey("imageUrl")) {
+				urls.Add (facebook.Properties ["imageUrl"]);
 			}
-			if(twitter != null) {
-//				urls.Add (twitter.Properties ["imageUrl"]);
+			if(twitter != null && twitter.Properties.ContainsKey("imageUrl")) {
+				urls.Add (twitter.Properties ["imageUrl"]);
 			}
 
-//			if(RequestHeaderImages != null) {
-//				RequestHeaderImages (urls);
-//			}
+			// Also toggle the state of the label prompt
+			IsNoAccountsExistPromptHidden = urls.Count != 0;
+
+			if(RequestHeaderImages != null) {
+				RequestHeaderImages (urls);
+			}
 		}
 
+		private void RemoveCardsIfNeeded ()
+		{
+			// Remove cards that no longer have an associated account
+			// This is to protected against a user signing out of an account in the menu
+			// And then trying to take action on a card
+			var removableViewModels = CardViewModels.Where (vm => vm.ListItemType == ListItemType.Default);
+			var cardsToRemove = new List<IListItem> ();
 
+			if(_twitterHelper.GetAccount() == null) {
+				var tViewModels = removableViewModels.Where (vm => ((BaseContentCardViewModel)vm).SocialType == SocialType.Twitter);
+				cardsToRemove.AddRange (tViewModels);
+			}
+			if(_facebookHelper.GetAccount() == null) {
+				var fViewModels = removableViewModels.Where (vm => ((BaseContentCardViewModel)vm).SocialType == SocialType.Facebook);
+				cardsToRemove.AddRange (fViewModels);
+			}
+
+			CardViewModels.RemoveRange (cardsToRemove);
+		}
 
 		#endregion
 	}

@@ -109,7 +109,7 @@ namespace iOS.Phone
 				PhotoImageView.SetImage (
 					url: new NSUrl (ViewModel.ImageUrl), 
 					completionHandler: ((UIImage image, NSError error, SDImageCacheType cacheType, NSUrl imageUrl) => {
-						ActivityIndicator.Hidden = true;
+						ActivityIndicator.StopAnimating();
 					})
 				);	
 			} else {

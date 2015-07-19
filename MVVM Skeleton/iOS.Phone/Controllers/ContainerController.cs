@@ -11,6 +11,7 @@ namespace iOS.Phone
 		#region Variables
 
 		private HomeViewModel _homeViewModel;
+		private IDisposable _stateObserver;
 
 		#endregion
 
@@ -44,10 +45,9 @@ namespace iOS.Phone
 			DefinesPresentationContext = true;
 			ProvidesPresentationContextTransitionStyle = true;
 			ShouldDelegateAutorotateToVisiblePanel = false;
+			PushesSidePanels = true;
 			LeftPanel = menuController;
 			CenterPanel = homeNavController;
-			AllowLeftSwipe = false;
-			AllowRightSwipe = false;
 
 			var image = UIImage.FromFile ("App-bg.png");
 			var imageView = new UIImageView (image);
@@ -55,6 +55,21 @@ namespace iOS.Phone
 			imageView.ContentMode = UIViewContentMode.ScaleAspectFill;
 			imageView.Frame = View.Frame;
 			imageView.TranslatesAutoresizingMaskIntoConstraints = true;
+
+			_stateObserver = AddObserver ("state", NSKeyValueObservingOptions.New, ((NSObservedChange obj) => {
+
+				// listen to state changes and forward lifecycle events
+				if(State == JASidePanelState.LeftVisible)
+				{
+					homeController.ViewDidDisappear(true);
+					menuController.ViewDidAppear(true);
+				} 
+				else if (State == JASidePanelState.CenterVisible)
+				{
+					menuController.ViewDidDisappear(true);
+					homeController.ViewDidAppear(true);
+				}
+			}));
 
 			View.AddSubview (imageView);
 			View.SendSubviewToBack (imageView);
@@ -75,9 +90,6 @@ namespace iOS.Phone
 		{
 			var barButton = new UIBarButtonItem (UIImage.FromBundle ("Menu Button"), UIBarButtonItemStyle.Plain, this, new ObjCRuntime.Selector("toggleLeftPanel:"));
 
-			barButton.Clicked += (sender, e) => {
-				ToggleLeftPanel(barButton);
-			};
 			return barButton;
 		}
 
@@ -86,19 +98,17 @@ namespace iOS.Phone
 			return UIStatusBarStyle.LightContent;
 		}
 
-		public override void ToggleLeftPanel (NSObject sender)
+		protected override void Dispose (bool disposing)
 		{
-			base.ToggleLeftPanel (sender);
-
-			var menuController = LeftPanel as MenuController;
-			var centerController = CenterPanel as UINavigationController;
-			var homeController = centerController.TopViewController as HomeController;
-
-			if(homeController != null)
+			if(disposing)
 			{
-				homeController.ViewWillDisappear (true);
-				menuController.ViewWillAppear (true);	
-			}		
+				if(this != null)
+				{
+					_stateObserver.Dispose ();
+					_stateObserver = null;
+				}
+			}
+			base.Dispose (disposing);
 		}
 
 		#endregion

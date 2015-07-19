@@ -17,6 +17,7 @@
         </mutableArray>
         <mutableArray key="SanFranciscoText-Thin.otf">
             <string>SanFranciscoText-Thin</string>
+            <string>SanFranciscoText-Thin</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -35,6 +36,12 @@
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="App-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="PSp-mD-Shp">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You aren't signed in to any accounts" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSf-Iv-C54">
+                                <rect key="frame" x="37" y="141" width="246" height="53"/>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Thin" family="San Francisco Text" pointSize="22"/>
+                                <color key="textColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9a-jh-Q0d">
                                 <rect key="frame" x="0.0" y="90" width="320" height="414"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -99,13 +106,16 @@
                             <constraint firstItem="oac-2S-kcF" firstAttribute="leading" secondItem="kFD-Vb-S3j" secondAttribute="leading" id="7NC-4y-jGQ"/>
                             <constraint firstAttribute="trailing" secondItem="W9a-jh-Q0d" secondAttribute="trailing" id="BPQ-4e-Etl"/>
                             <constraint firstItem="3o1-Mw-RFT" firstAttribute="top" secondItem="W9a-jh-Q0d" secondAttribute="bottom" id="KRy-Kb-OKH"/>
+                            <constraint firstItem="SSf-Iv-C54" firstAttribute="top" secondItem="oac-2S-kcF" secondAttribute="bottom" constant="25" id="O7X-xg-mKd"/>
                             <constraint firstAttribute="trailing" secondItem="oac-2S-kcF" secondAttribute="trailing" id="Ok9-E6-a5t"/>
                             <constraint firstItem="PSp-mD-Shp" firstAttribute="leading" secondItem="kFD-Vb-S3j" secondAttribute="leading" id="Rgj-Zh-ueD"/>
+                            <constraint firstItem="SSf-Iv-C54" firstAttribute="leading" secondItem="kFD-Vb-S3j" secondAttribute="leading" constant="37" id="Uvo-GL-LGv"/>
                             <constraint firstItem="oac-2S-kcF" firstAttribute="top" secondItem="Vca-7a-BWk" secondAttribute="bottom" id="Wzf-xJ-EAA"/>
                             <constraint firstItem="PSp-mD-Shp" firstAttribute="top" secondItem="Vca-7a-BWk" secondAttribute="bottom" id="Yez-ko-QzA"/>
                             <constraint firstItem="3o1-Mw-RFT" firstAttribute="top" secondItem="PSp-mD-Shp" secondAttribute="bottom" id="ZFo-GW-5nV"/>
                             <constraint firstItem="W9a-jh-Q0d" firstAttribute="leading" secondItem="kFD-Vb-S3j" secondAttribute="leading" id="rSs-y7-WzZ"/>
                             <constraint firstAttribute="trailing" secondItem="PSp-mD-Shp" secondAttribute="trailing" id="tpF-Nr-akh"/>
+                            <constraint firstAttribute="trailing" secondItem="SSf-Iv-C54" secondAttribute="trailing" constant="37" id="zUZ-Ga-fk6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nUC-xX-Jev">
@@ -141,6 +151,7 @@
                         <outlet property="HeaderViewTopConstraint" destination="Wzf-xJ-EAA" id="MjU-s1-fya"/>
                         <outlet property="NameLabel" destination="NCg-y6-dkO" id="eQe-3G-APl"/>
                         <outlet property="PostBarButton" destination="Zs8-01-7rr" id="03O-LY-VoS"/>
+                        <outlet property="SignedOutLabel" destination="SSf-Iv-C54" id="7Be-sk-pTk"/>
                         <outlet property="SortOrderSegmentedControl" destination="K1a-O1-dBy" id="iwl-qT-KTh"/>
                         <outlet property="TableViewTopConstraint" destination="5IA-N8-RSN" id="ahf-8k-8UP"/>
                     </connections>
