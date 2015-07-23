@@ -12,6 +12,7 @@ namespace Shared.Service
 		Task<ServiceResponseType> Like (string postId);
 		Task<ServiceResponseType> Unlike (string postId);
 		Task<ServiceResponseType> Comment (string postId, string message);
+		Task<ServiceResponseType> Post (string userId, string message);
 	}
 }
 

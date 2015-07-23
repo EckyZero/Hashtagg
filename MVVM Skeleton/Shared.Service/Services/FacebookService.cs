@@ -191,6 +191,32 @@ namespace Shared.Service
 			}
 		}
 
+		public async Task<ServiceResponseType> Post (string userId, string message)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _facebookApi.Post(userId, message);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException e)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error posting facebook post", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
+
 		#endregion
 	}
 }

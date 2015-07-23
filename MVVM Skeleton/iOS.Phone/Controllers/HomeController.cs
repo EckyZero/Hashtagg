@@ -59,6 +59,18 @@ namespace iOS.Phone
 			base.ViewDidAppear (animated);
 
 			await ViewModel.DidAppear();
+
+			// Update refreshControl's offset
+			_refreshControl = _tableController.RefreshControl;
+			_refreshControl.Bounds = new CGRect(
+				_refreshControl.Bounds.X,
+				-25,
+				_refreshControl.Bounds.Width,
+				_refreshControl.Bounds.Height
+			);
+
+			_refreshControl.BeginRefreshing ();
+			_refreshControl.EndRefreshing ();
 		}
 
 		#endregion
@@ -127,6 +139,8 @@ namespace iOS.Phone
 		private void OnRequestHeaderImages (List<string> images)
 		{
 			var defaultImage = UIImage.FromFile (ViewModel.DefaultAccountImageName);
+
+			AccountImageView.Hidden = images.Count == 0;
 
 			if(images.Count > 0) 
 			{

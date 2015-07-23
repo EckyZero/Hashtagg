@@ -9,7 +9,7 @@ namespace Shared.Api
 		public const string TWITTER_USER = "/users/show.json";
 		public const string TWITTER_LIKE = "/favorites/create.json";
 		public const string TWITTER_UNLIKE = "/favorites/destroy.json";
-		public const string TWITTER_COMMENT = "statuses/update.json";
+		public const string TWITTER_POST = "statuses/update.json";
 		public const string TWITTER_DELETE_POST = "statuses/destroy.json";
 
 		public const string FACEBOOK_BASE = "https://graph.facebook.com/v2.3";
@@ -18,6 +18,7 @@ namespace Shared.Api
 		public const string FACEBOOK_LIKE = "/likes";
 		public const string FACEBOOK_COMMENT = "/comments";
 		public const string FACEBOOK_DELETE_COMMENT = "/comment";
+		public const string FACEBOOK_POST = "/feed";
 	}
 }
 

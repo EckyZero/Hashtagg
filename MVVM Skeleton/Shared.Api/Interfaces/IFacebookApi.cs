@@ -12,6 +12,7 @@ namespace Shared.Api
 		Task Unlike (string postId);
 		Task Comment (string postId, string message);
 		Task DeleteComment (string commentId);
+		Task Post (string userId, string message);
 	}
 }
 

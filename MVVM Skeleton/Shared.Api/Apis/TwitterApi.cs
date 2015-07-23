@@ -121,7 +121,7 @@ namespace Shared.Api
 
 		public async Task Comment (string tweetId, string message)
 		{
-			var url = new Uri(String.Format("{0}{1}", BASE_URL, Routes.TWITTER_COMMENT));
+			var url = new Uri(String.Format("{0}{1}", BASE_URL, Routes.TWITTER_POST));
 			var parameters = new Dictionary<string, string> () {
 				{ "in_reply_to_status_id", tweetId },
 				{ "status", message }
@@ -134,7 +134,7 @@ namespace Shared.Api
 			}
 			catch (Exception e)
 			{
-				var exception = new ApiException("Failed to comment on facebook post", e);
+				var exception = new ApiException("Failed to comment on twitter post", e);
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
@@ -150,11 +150,35 @@ namespace Shared.Api
 			}
 			catch (Exception e)
 			{
-				var exception = new ApiException("Failed to delete a comment on facebook post", e);
+				var exception = new ApiException("Failed to delete a comment on twitter post", e);
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
 		}
+
+		public async Task Post (string message)
+		{
+			// TODO: May need to change this endpoints if images or links need to be included
+			var url = new Uri(String.Format("{0}{1}", BASE_URL, Routes.TWITTER_POST));
+			var parameters = new Dictionary<string, string> () {
+				{ "status", message }
+			};
+
+			try
+			{
+				// TODO: Determine if we care about if this fails
+				// Do we store locally and try to resync later?
+				// Do we just alert the user that twitter failed?
+				await _twitterHelper.ExecuteRequest(POST, url, parameters);	
+			}
+			catch (Exception e)
+			{
+				var exception = new ApiException("Failed to post a tweet", e);
+				_logger.Log(exception, LogType.ERROR);
+				throw exception;
+			}
+		}
+
 
 		#endregion
 	}

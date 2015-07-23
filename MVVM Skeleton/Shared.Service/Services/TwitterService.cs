@@ -188,6 +188,31 @@ namespace Shared.Service
 			}
 		}
 
+		public async Task<ServiceResponseType> Post (string message)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _twitterApi.Post(message);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException e)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error posting tweet", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
 		#endregion
 	}
 }

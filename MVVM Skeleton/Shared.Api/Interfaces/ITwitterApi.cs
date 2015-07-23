@@ -12,6 +12,7 @@ namespace Shared.Api
 		Task Unlike (string tweetId);
 		Task Comment (string tweetId, string message);
 		Task DeleteTweet (string tweetId);
+		Task Post (string message);
 	}
 }
 

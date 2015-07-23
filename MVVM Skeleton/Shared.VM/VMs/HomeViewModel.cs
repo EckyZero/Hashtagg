@@ -141,11 +141,9 @@ namespace Shared.VM
 		{
 			var viewModels = new ObservableCollection<FacebookCardViewModel> ();
 
-            if(await _facebookHelper.AccountExists())
+			if(_facebookHelper.GetAccount() != null)
 			{
-				var response = new ServiceResponse<ObservableCollection<FacebookPost>> ();
-
-				response = await _facebookService.GetHomeFeed ();
+				var response = await _facebookService.GetHomeFeed ();
 
 				if(await ProcessResponse(response))
 				{
@@ -163,11 +161,9 @@ namespace Shared.VM
 		{
 			var viewModels = new ObservableCollection<TwitterCardViewModel> ();
 
-			if(await _twitterHelper.AccountExists())
+			if(_twitterHelper.GetAccount() != null)
 			{
-				var response = new ServiceResponse<ObservableCollection<Tweet>> ();
-
-				response = await _twitterService.GetHomeFeed ();	
+				var response = await _twitterService.GetHomeFeed ();	
 
 				if(await ProcessResponse(response))
 				{
