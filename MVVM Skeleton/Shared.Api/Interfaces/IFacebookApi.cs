@@ -10,6 +10,8 @@ namespace Shared.Api
 		Task<FacebookToFromDto> GetUser ();
 		Task Like (string postId);
 		Task Unlike (string postId);
+		Task Comment (string postId, string message);
+		Task DeleteComment (string commentId);
 	}
 }
 

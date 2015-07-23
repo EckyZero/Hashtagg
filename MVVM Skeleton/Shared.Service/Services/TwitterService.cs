@@ -138,6 +138,56 @@ namespace Shared.Service
 			}
 		}
 
+		public async Task<ServiceResponseType> Comment (string tweetId, string message)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _twitterApi.Comment(tweetId, message);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException e)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error commenting on tweet", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
+		public async Task<ServiceResponseType> DeleteTweet (string tweetId)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _twitterApi.DeleteTweet(tweetId);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException e)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error deleting a  tweet", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
 		#endregion
 	}
 }

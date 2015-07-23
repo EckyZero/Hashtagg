@@ -10,6 +10,8 @@ namespace Shared.Api
 		Task<TwitterUserDto> GetUser (string screenName);
 		Task Like (string tweetId);
 		Task Unlike (string tweetId);
+		Task Comment (string tweetId, string message);
+		Task DeleteTweet (string tweetId);
 	}
 }
 

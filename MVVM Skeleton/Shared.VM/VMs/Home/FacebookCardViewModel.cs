@@ -140,6 +140,13 @@ namespace Shared.VM
 			}
 		}
 
+		protected override void CommentCommandExecute ()
+		{
+			base.CommentCommandExecute ();
+
+			// TODO: present screen to enter comment
+		}
+
 		#endregion
 	}
 }

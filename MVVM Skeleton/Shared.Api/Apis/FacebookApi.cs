@@ -106,6 +106,42 @@ namespace Shared.Api
 			}
 		}
 
+		public async Task Comment (string postId, string message)
+		{
+			var url = new Uri(String.Format("{0}/{1}{2}", BASE_URL, postId, Routes.FACEBOOK_COMMENT));
+			var parameters = new Dictionary<string, string> () {
+				{ "message", message }
+			};
+
+			try
+			{
+				// TODO: return id so we can track the post locally
+				await _facebookHelper.ExecuteRequest(POST, url, parameters);	
+			}
+			catch (Exception e)
+			{
+				var exception = new ApiException("Failed to comment on facebook post", e);
+				_logger.Log(exception, LogType.ERROR);
+				throw exception;
+			}
+		}
+
+		public async Task DeleteComment (string commentId)
+		{
+			var url = new Uri(String.Format("{0}/{1}{2}", BASE_URL, Routes.FACEBOOK_DELETE_COMMENT, commentId));
+
+			try
+			{
+				await _facebookHelper.ExecuteRequest(DELETE, url);	
+			}
+			catch (Exception e)
+			{
+				var exception = new ApiException("Failed to delete a comment on facebook post", e);
+				_logger.Log(exception, LogType.ERROR);
+				throw exception;
+			}
+		}
+
 		#endregion
 	}
 }

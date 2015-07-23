@@ -119,6 +119,43 @@ namespace Shared.Api
 			}
 		}
 
+		public async Task Comment (string tweetId, string message)
+		{
+			var url = new Uri(String.Format("{0}{1}", BASE_URL, Routes.TWITTER_COMMENT));
+			var parameters = new Dictionary<string, string> () {
+				{ "in_reply_to_status_id", tweetId },
+				{ "status", message }
+			};
+
+			try
+			{
+				// TODO: return the id so we can track this
+				await _twitterHelper.ExecuteRequest(POST, url, parameters);	
+			}
+			catch (Exception e)
+			{
+				var exception = new ApiException("Failed to comment on facebook post", e);
+				_logger.Log(exception, LogType.ERROR);
+				throw exception;
+			}
+		}
+
+		public async Task DeleteTweet (string tweetId)
+		{
+			var url = new Uri(String.Format("{0}/{1}/{2}.json", BASE_URL, Routes.TWITTER_DELETE_POST, tweetId));
+
+			try
+			{
+				await _twitterHelper.ExecuteRequest(POST, url);	
+			}
+			catch (Exception e)
+			{
+				var exception = new ApiException("Failed to delete a comment on facebook post", e);
+				_logger.Log(exception, LogType.ERROR);
+				throw exception;
+			}
+		}
+
 		#endregion
 	}
 }

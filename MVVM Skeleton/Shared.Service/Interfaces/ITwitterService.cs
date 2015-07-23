@@ -12,6 +12,7 @@ namespace Shared.Service
 		Task<ServiceResponse<TwitterUser>> GetUser (string screenName);
 		Task<ServiceResponseType> Like (string tweetId);
 		Task<ServiceResponseType> Unlike (string tweetId);
+		Task<ServiceResponseType> Comment (string tweetId, string message);
 	}
 }
 

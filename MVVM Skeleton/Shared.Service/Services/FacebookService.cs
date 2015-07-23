@@ -141,6 +141,56 @@ namespace Shared.Service
 			}
 		}
 
+		public async Task<ServiceResponseType> Comment (string postId, string message)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _facebookApi.Comment(postId, message);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException e)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error commenting on facebook post", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
+		public async Task<ServiceResponseType> DeleteComment (string commentId)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _facebookApi.DeleteComment(commentId);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException e)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error deleting comment on facebook post", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
 		#endregion
 	}
 }

@@ -137,6 +137,13 @@ namespace Shared.VM
 				await _twitterService.Like (_tweet.Id);	
 			}
 		}
+
+		protected override void CommentCommandExecute ()
+		{
+			base.CommentCommandExecute ();
+
+			// TODO: present screen to enter comment
+		}
 	}
 }
 

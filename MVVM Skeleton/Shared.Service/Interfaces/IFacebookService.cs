@@ -11,6 +11,7 @@ namespace Shared.Service
 		Task<ServiceResponse<FacebookUser>> GetUser ();
 		Task<ServiceResponseType> Like (string postId);
 		Task<ServiceResponseType> Unlike (string postId);
+		Task<ServiceResponseType> Comment (string postId, string message);
 	}
 }
 
