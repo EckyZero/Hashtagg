@@ -13,6 +13,12 @@ namespace iOS.Phone
 	partial class HomeController
 	{
 		[Outlet]
+		UIKit.UIImageView AccountImageView { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint AccountImageViewTrailingConstraint { get; set; }
+
+		[Outlet]
 		UIKit.UIView AccountsView { get; set; }
 
 		[Outlet]
@@ -28,6 +34,9 @@ namespace iOS.Phone
 		UIKit.UIBarButtonItem PostBarButton { get; set; }
 
 		[Outlet]
+		UIKit.UILabel SignedOutLabel { get; set; }
+
+		[Outlet]
 		UIKit.UISegmentedControl SortOrderSegmentedControl { get; set; }
 
 		[Outlet]
@@ -35,6 +44,16 @@ namespace iOS.Phone
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (AccountImageView != null) {
+				AccountImageView.Dispose ();
+				AccountImageView = null;
+			}
+
+			if (AccountImageViewTrailingConstraint != null) {
+				AccountImageViewTrailingConstraint.Dispose ();
+				AccountImageViewTrailingConstraint = null;
+			}
+
 			if (AccountsView != null) {
 				AccountsView.Dispose ();
 				AccountsView = null;
@@ -50,14 +69,14 @@ namespace iOS.Phone
 				HeaderViewTopConstraint = null;
 			}
 
-			if (TableViewTopConstraint != null) {
-				TableViewTopConstraint.Dispose ();
-				TableViewTopConstraint = null;
-			}
-
 			if (NameLabel != null) {
 				NameLabel.Dispose ();
 				NameLabel = null;
+			}
+
+			if (PostBarButton != null) {
+				PostBarButton.Dispose ();
+				PostBarButton = null;
 			}
 
 			if (SortOrderSegmentedControl != null) {
@@ -65,9 +84,14 @@ namespace iOS.Phone
 				SortOrderSegmentedControl = null;
 			}
 
-			if (PostBarButton != null) {
-				PostBarButton.Dispose ();
-				PostBarButton = null;
+			if (TableViewTopConstraint != null) {
+				TableViewTopConstraint.Dispose ();
+				TableViewTopConstraint = null;
+			}
+
+			if (SignedOutLabel != null) {
+				SignedOutLabel.Dispose ();
+				SignedOutLabel = null;
 			}
 		}
 	}

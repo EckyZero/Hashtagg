@@ -12,6 +12,11 @@ using System.Linq;
 using Shared.Common;
 using CoreGraphics;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using SDWebImage;
+using CoreAnimation;
+using MediaPlayer;
+using System.ComponentModel;
 
 namespace iOS.Phone
 {
@@ -21,6 +26,9 @@ namespace iOS.Phone
 
 		private UIRefreshControl _refreshControl;
 		private nfloat _lastY;
+		private UIViewFullscreen _fullScreenView;
+		private MPMoviePlayerViewController _movieController;
+		private PSObservableTableController _tableController;
 
 		#endregion
 
@@ -30,11 +38,11 @@ namespace iOS.Phone
 
 		#endregion
 
+		#region Lifecycle
+
 		public HomeController (IntPtr handle) : base (handle)
 		{
-			if(ViewModel == null) {
-				ViewModel = new HomeViewModel ();
-			}
+			ViewModel = new HomeViewModel ();	
 		}
 
 		public override async void ViewDidLoad ()
@@ -43,7 +51,31 @@ namespace iOS.Phone
 	
 			InitUI ();
 			await InitBindings ();
+			await ViewModel.DidLoad ();
 		}
+
+		public override async void ViewDidAppear (bool animated)
+		{
+			base.ViewDidAppear (animated);
+
+			await ViewModel.DidAppear();
+
+			// Update refreshControl's offset
+			_refreshControl = _tableController.RefreshControl;
+			_refreshControl.Bounds = new CGRect(
+				_refreshControl.Bounds.X,
+				-25,
+				_refreshControl.Bounds.Width,
+				_refreshControl.Bounds.Height
+			);
+
+			_refreshControl.BeginRefreshing ();
+			_refreshControl.EndRefreshing ();
+		}
+
+		#endregion
+
+		#region Methods
 
 		private void InitUI ()
 		{
@@ -62,11 +94,16 @@ namespace iOS.Phone
 
 		private async Task InitBindings ()
 		{
-			ViewModel.RequestCompleted = OnRequestCompleted;
+			ViewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
+				if(e.PropertyName.Equals("IsNoAccountsExistPromptHidden")) {
+					SignedOutLabel.Hidden = ViewModel.IsNoAccountsExistPromptHidden;
+				}
+			};
 
-			if(!ViewModel.IsLoaded) {
-				await ViewModel.DidLoad();
-			}
+			ViewModel.RequestCompleted = OnRequestCompleted;
+			ViewModel.RequestHeaderImages = OnRequestHeaderImages;
+			ViewModel.RequestPhotoViewer = OnRequestPhotoViewer;
+			ViewModel.RequestMovieViewer = OnRequestMovieViewer;
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
@@ -75,14 +112,14 @@ namespace iOS.Phone
 
 			if(segue.DestinationViewController.GetType() == typeof(PSObservableTableController)) {
 
-				var controller = segue.DestinationViewController as PSObservableTableController;
+				_tableController = segue.DestinationViewController as PSObservableTableController;
 
-				controller.Collection = ViewModel.CardViewModels;
-				controller.OnPullToRefresh = OnPullToRefresh;
-				controller.HandleScrolled = OnScrolled;
-				controller.HandleDraggingStarted = OnDraggingStarted;
+				_tableController.Collection = ViewModel.CardViewModels;
+				_tableController.OnPullToRefresh = OnPullToRefresh;
+				_tableController.HandleScrolled = OnScrolled;
+				_tableController.HandleDraggingStarted = OnDraggingStarted;
 
-				controller.SetEstimatedHeight (175);
+				_tableController.SetEstimatedHeight (175);
 			}
 		}
 
@@ -96,6 +133,88 @@ namespace iOS.Phone
 		{
 			if(_refreshControl != null) {
 				_refreshControl.EndRefreshing ();
+			}
+		}
+
+		private void OnRequestHeaderImages (List<string> images)
+		{
+			var defaultImage = UIImage.FromFile (ViewModel.DefaultAccountImageName);
+
+			AccountImageView.Hidden = images.Count == 0;
+
+			if(images.Count > 0) 
+			{
+				// remove all existing just in case
+				foreach (UIView view in AccountsView.Subviews) {
+					if(!view.Equals(AccountImageView)) {
+						AccountsView.RemoveConstraints (view.Constraints);
+						view.RemoveFromSuperview ();
+					}
+				}
+
+				// proceed and add the new ones
+				var prevImageView = AccountImageView;
+				var prevTrailingConstraint = AccountImageViewTrailingConstraint;
+				var rect = CGRect.FromLTRB (prevImageView.Frame.X + 2, prevImageView.Frame.Y + 2, prevImageView.Frame.Width - 4, prevImageView.Frame.Height - 4);
+				var path = UIBezierPath.FromRoundedRect (rect, prevImageView.Frame.Height / 2);
+				var prevMaskLayer = new CAShapeLayer ();
+
+				prevMaskLayer.Path = path.CGPath;
+				prevMaskLayer.ShadowColor = UIColor.Black.CGColor;
+				prevMaskLayer.ShadowOpacity = 0.35f;
+				prevMaskLayer.ShadowOffset = new CGSize (0, 1);
+				prevMaskLayer.ShadowRadius = 2;
+				prevMaskLayer.ShadowPath = path.CGPath;
+
+				prevImageView.ClipsToBounds = false;
+				prevImageView.Layer.Mask = prevMaskLayer;
+				prevImageView.Layer.MasksToBounds = false;
+				prevImageView.SetImage (new NSUrl(images [0]), defaultImage);	
+
+				images.RemoveAt (0);
+				AccountsView.Layer.MasksToBounds = false;
+				AccountsView.ClipsToBounds = false;
+
+				foreach (string imageUrl in images)
+				{
+					var imageView = new UIImageView ();
+					var maskLayer = new CAShapeLayer ();
+
+					maskLayer.Path = path.CGPath;
+					maskLayer.ShadowColor = prevMaskLayer.ShadowColor;
+					maskLayer.ShadowOpacity = prevMaskLayer.ShadowOpacity;
+					maskLayer.ShadowOffset = prevMaskLayer.ShadowOffset;
+					maskLayer.ShadowRadius = prevMaskLayer.ShadowRadius;
+					maskLayer.ShadowPath = prevMaskLayer.ShadowPath;
+
+					imageView.ClipsToBounds = prevImageView.ClipsToBounds;
+					imageView.Layer.Mask = maskLayer;
+					imageView.Layer.MasksToBounds = prevImageView.Layer.MasksToBounds;
+					imageView.TranslatesAutoresizingMaskIntoConstraints = false;
+
+					imageView.SetImage (new NSUrl (imageUrl), defaultImage);
+
+					var heightConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.Height, NSLayoutRelation.Equal, null, NSLayoutAttribute.NoAttribute, 1, prevImageView.Frame.Height);
+					var widthConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.Width, NSLayoutRelation.Equal, null, NSLayoutAttribute.NoAttribute, 1, prevImageView.Frame.Width);
+					var leadingConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.Leading, NSLayoutRelation.Equal, prevImageView, NSLayoutAttribute.Trailing, 1, -prevImageView.Frame.Width/2);
+					var centerYConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, AccountsView, NSLayoutAttribute.CenterY, 1, 0);
+					var trailingConstraint = NSLayoutConstraint.Create (imageView, NSLayoutAttribute.Trailing, NSLayoutRelation.Equal, AccountsView, NSLayoutAttribute.Trailing, 1, 0);	
+
+					AccountsView.AddSubview (imageView);
+					AccountsView.SendSubviewToBack (imageView);
+
+					AccountsView.RemoveConstraint (prevTrailingConstraint);
+					AccountsView.AddConstraint (heightConstraint);
+					AccountsView.AddConstraint (widthConstraint);
+					AccountsView.AddConstraint (leadingConstraint);
+					AccountsView.AddConstraint (centerYConstraint);
+					AccountsView.AddConstraint (trailingConstraint);
+
+					prevMaskLayer = maskLayer;
+					prevImageView = imageView;
+					prevTrailingConstraint = trailingConstraint;
+				}
+				AccountsView.LayoutIfNeeded ();
 			}
 		}
 
@@ -146,6 +265,57 @@ namespace iOS.Phone
 
 			_lastY = point.Y;
 		}
+
+		private void OnRequestPhotoViewer (BaseContentCardViewModel viewModel) 
+		{
+			var index = ViewModel.CardViewModels.IndexOf (viewModel);
+			var cell = _tableController.TableView.CellAt (NSIndexPath.FromRowSection (index, 0)) as DefaultCell;
+			var startFrame = cell.ConvertRectToView (cell.ImageRect, View);
+			var imageView = new UIImageView (startFrame);
+
+			imageView.ContentMode = UIViewContentMode.ScaleAspectFill;
+			imageView.Image = cell.Image;
+			cell.ImageHidden = true;
+
+			View.AddSubview (imageView);
+
+			_fullScreenView = new UIViewFullscreen ();
+			_fullScreenView.WillHide += (object sender, EventArgs e) => {
+				imageView.Hidden = false;
+				// Scale the image back to the cell
+				UIView.AnimateNotify(_fullScreenView.AnimationDuration/2, () => {
+					imageView.Frame = startFrame;
+				}, (isComplete) => {
+					imageView.RemoveFromSuperview();
+					imageView = null;
+					cell.ImageHidden = false;	
+				});
+			};
+
+			_fullScreenView.SetImage(cell.Image);
+			_fullScreenView.Show();
+
+			// Set final Rect Animation
+			var finalFrame = _fullScreenView.ConvertRectToView(_fullScreenView.ImageFrame, View);
+
+			UIView.AnimateNotify (_fullScreenView.AnimationDuration/2, () => {
+				imageView.Frame = finalFrame;
+			}, async (isComplete) => {
+				await Task.Delay(500);
+				imageView.Hidden = true;
+			});
+		}
+
+		private void OnRequestMovieViewer (BaseContentCardViewModel viewModel)
+		{
+			var url = NSUrl.FromString(viewModel.MovieUrl);
+			_movieController = new MPMoviePlayerViewController(url);
+		
+			PresentMoviePlayerViewController (_movieController);
+		}
+
+		#endregion
+//		private void OnRequest
 	}
 }
 

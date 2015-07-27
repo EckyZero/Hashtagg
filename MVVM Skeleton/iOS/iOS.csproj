@@ -118,6 +118,20 @@
       <DependentUpon>PSObservableTableController.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\ViewExtensions.cs" />
+    <Compile Include="ApplicationLayer\ImageViewer\ImageViewerViewController.cs" />
+    <Compile Include="ApplicationLayer\ImageViewer\ImageViewerViewController.designer.cs" />
+    <Compile Include="ApplicationLayer\ImageViewer\UIImageViewClickable.cs" />
+    <Compile Include="ApplicationLayer\ImageViewer\UIScrollViewImage.cs" />
+    <Compile Include="ApplicationLayer\ImageViewer\UIViewFullscreen.cs" />
+    <Compile Include="ApplicationLayer\ImageViewer\UIImageViewClickable.designer.cs">
+      <DependentUpon>UIImageViewClickable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationLayer\ImageViewer\UIScrollViewImage.designer.cs">
+      <DependentUpon>UIScrollViewImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationLayer\ImageViewer\UIViewFullcreen.designer.cs">
+      <DependentUpon>UIViewFullscreen.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -162,5 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ApplicationLayer\" />
+    <Folder Include="ApplicationLayer\ImageViewer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="ApplicationLayer\ImageViewer\ImageViewerViewController.xib" />
   </ItemGroup>
 </Project>

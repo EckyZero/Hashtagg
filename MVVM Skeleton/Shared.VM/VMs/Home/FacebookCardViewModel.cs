@@ -11,6 +11,7 @@ namespace Shared.VM
 		#region Private Variables
 
 		private FacebookPost _facebookPost;
+		private IFacebookService _facebookService;
 
 		#endregion
 
@@ -55,7 +56,8 @@ namespace Shared.VM
 				if(!String.IsNullOrWhiteSpace(_facebookPost.Description)) {
 					builder.AppendFormat ("{0}{1}", builder.Length == 0 ? "" : "\n\n", _facebookPost.Description);
 				}
-				return builder.ToString ();
+
+				return builder.ToString ().Trim();
 			}
 		}
 
@@ -82,26 +84,70 @@ namespace Shared.VM
 		public override bool IsLikedByUser 
 		{
 			get { return _facebookPost.IsLikedByUser; }
+			set {
+				_facebookPost.IsLikedByUser = value;
+
+				RaisePropertyChanged (() => IsLikedByUser);
+			}
 		}
 
 		public override bool IsCommentedByUser 
 		{
 			// TODO: Unsure as to how to gather this data
 			get { return false; }
+			set { }
 		}
 
 		public override bool IsSharedByUser 
 		{
 			// TODO: Unsure as to how to gather this data
 			get { return false; }
+			set { }
 		}
-			
+
+		public override bool IsMovie 
+		{
+			get { return _facebookPost.MediaType == MediaType.Video; }
+		}
+
+		public override string MovieUrl 
+		{
+			get { return _facebookPost.SourceUrl; }
+		}
+
 		#endregion
+
+		#region Methods
 
 		public FacebookCardViewModel (FacebookPost post)
 		{
 			_facebookPost = post;
+			_facebookService = IocContainer.GetContainer ().Resolve<IFacebookService> ();
 		}
+
+		protected override async void LikeCommandExecute ()
+		{
+			base.LikeCommandExecute ();
+
+			// may need to unlike the post (i.e. toggle state)
+			if(IsLikedByUser) {
+				IsLikedByUser = false;
+				await _facebookService.Unlike (_facebookPost.Id);
+			} 
+			else {
+				IsLikedByUser = true;
+				await _facebookService.Like (_facebookPost.Id);	
+			}
+		}
+
+		protected override void CommentCommandExecute ()
+		{
+			base.CommentCommandExecute ();
+
+			// TODO: present screen to enter comment
+		}
+
+		#endregion
 	}
 }
 

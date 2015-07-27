@@ -17,6 +17,16 @@ namespace Shared.VM
 		#region Private Variables
 
 		private ListItemType _listItemType = ListItemType.Default;
+		private string _likeButtonText;
+		private string _commentButtonText;
+		private string _shareButtonText;
+
+		#endregion
+
+		#region Actions
+
+		public Action<BaseContentCardViewModel> RequestPhotoViewer { get; set;}
+		public Action<BaseContentCardViewModel> RequestMovieViewer { get; set;}
 
 		#endregion
 
@@ -36,9 +46,11 @@ namespace Shared.VM
 		public abstract int? CommentCount { get; }
 		public abstract int? ShareCount { get; }
 		public abstract DateTime OrderByDateTime { get; }
-		public abstract bool IsLikedByUser { get; }
-		public abstract bool IsCommentedByUser { get; }
-		public abstract bool IsSharedByUser { get; }
+		public abstract bool IsLikedByUser { get; set; }
+		public abstract bool IsCommentedByUser { get; set; }
+		public abstract bool IsSharedByUser { get; set; }
+		public abstract bool IsMovie { get; }
+		public abstract string MovieUrl { get; }
 
 		public string DisplayDateTime { 
 			get { return OrderByDateTime.ToRelativeString (); }
@@ -54,38 +66,38 @@ namespace Shared.VM
 
 		public string LikeButtonText {
 			get { 
-				var builder = new StringBuilder ();
-				builder.Append (IsLikedByUser ? "Liked" : "Like");
-
-				if(LikeCount.HasValue) {
-					builder.Append (String.Format (" ({0})", LikeCount.Value));
-				}
-				return builder.ToString ();
+				_likeButtonText = CalculateButtonText (IsLikedByUser, ApplicationResources.Liked, ApplicationResources.Like, LikeCount);
+				return _likeButtonText;
 			}
+			set { Set (() => LikeButtonText, ref _likeButtonText, value); }
 		}
 
 		public string CommentButtonText {
 			get { 
-				var builder = new StringBuilder ();
-				builder.Append (IsLikedByUser ? "Commented" : "Comment");
-
-				if(CommentCount.HasValue) {
-					builder.Append (String.Format (" ({0})", CommentCount.Value));
-				}
-				return builder.ToString ();
+				_commentButtonText = CalculateButtonText (IsCommentedByUser, ApplicationResources.Commented, ApplicationResources.Comment, CommentCount);
+				return _commentButtonText;
 			}
+			set { Set (() => CommentButtonText, ref _commentButtonText, value); }
 		}
 
 		public string ShareButtonText {
 			get { 
-				var builder = new StringBuilder ();
-				builder.Append (IsLikedByUser ? "Shared" : "Share");
-
-				if(ShareCount.HasValue) {
-					builder.Append (String.Format (" ({0})", ShareCount.Value));
-				}
-				return builder.ToString ();
+				_shareButtonText = CalculateButtonText (IsSharedByUser, ApplicationResources.Shared, ApplicationResources.Share, ShareCount);
+				return _shareButtonText;
 			}
+			set { Set (() => ShareButtonText, ref _shareButtonText, value); }
+		}
+
+		public PSColor LikeButtonTextColor {
+			get { return CalculateTextColor (IsLikedByUser); }
+		}
+
+		public PSColor CommentButtonTextColor {
+			get { return CalculateTextColor (IsCommentedByUser); }
+		}
+
+		public PSColor ShareButtonTextColor {
+			get { return CalculateTextColor (IsSharedByUser); }
 		}
 
 		#endregion
@@ -112,6 +124,7 @@ namespace Shared.VM
 			LikeCommand = new RelayCommand (LikeCommandExecute);
 			CommentCommand = new RelayCommand (CommentCommandExecute);
 			ShareCommand = new RelayCommand (ShareCommandExecute);
+			MediaCommand = new RelayCommand (MediaCommandExecute);
 		}
 
 		protected virtual void SelectCommandExecute ()
@@ -136,7 +149,41 @@ namespace Shared.VM
 
 		protected virtual void MediaCommandExecute ()
 		{
-			// TODO: Respond to image/movie tap
+			if(IsMovie) {
+
+				// Per Youtube's policies, all videos must be presenting on their site
+				if(MovieUrl.Contains("youtube")) {
+					
+					_browserService.OpenUrl (MovieUrl);
+				}
+				else if (RequestMovieViewer != null) {
+					RequestMovieViewer (this);
+				}
+			} else {
+				if(RequestPhotoViewer != null) {
+					RequestPhotoViewer (this);
+				}
+			}
+		}
+
+		private PSColor CalculateTextColor (bool isSelectedByUser)
+		{
+			var theme = ThemeManager.Instance.CurrentTheme;
+			var color = isSelectedByUser ? theme.PrimaryColor : theme.TextTertiaryColor;
+
+			return color;
+		}
+
+		private string CalculateButtonText (bool isSelectedByUser, string positiveResponse, string negativeResponse, int? count) 
+		{
+			var builder = new StringBuilder ();
+			builder.Append (isSelectedByUser ? positiveResponse : negativeResponse);
+
+			if(count.HasValue) {
+				var userCount = isSelectedByUser ? 1 : 0;
+				builder.Append (String.Format (" ({0})", count.Value + userCount));
+			}
+			return builder.ToString ();
 		}
 
 		#endregion

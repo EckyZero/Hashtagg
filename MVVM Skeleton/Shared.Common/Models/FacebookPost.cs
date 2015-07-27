@@ -4,8 +4,19 @@ using System.Linq;
 
 namespace Shared.Common
 {
+	public enum MediaType {
+		None,
+		Video,
+		Link,
+		Photo,
+		Event
+	}
+
 	public class FacebookPost
 	{
+		private bool _isLikedByUser = false;
+		private List<FacebookUser> _likes = new List<FacebookUser> ();
+
 		public string Id { get; set;}
 		public DateTime CreatedAt { get; set; }
 		public DateTime UpdatedAt { get; set; }
@@ -17,20 +28,16 @@ namespace Shared.Common
 		public string LinkUrl { get; set; }
 		public int ShareCount { get; set; }
 		public string LikeUrl { get; set; }
+		public string SourceUrl { get; set; }
 		public string CommentUrl { get; set; }
+		public MediaType MediaType { get; set; } 
 
 		public bool IsLikedByUser 
 		{
-			get 
-			{
-				var liked = false;
-				if(Likes != null)
-				{
-					liked = Likes.Any ( m => m.Id.Equals(Id));
-				}
-				return liked;
-			}	
+			get { return _isLikedByUser; }	
+			set { _isLikedByUser = value; }
 		}
+
 		public int LikedCount 
 		{ 
 			get
@@ -45,8 +52,17 @@ namespace Shared.Common
 		}
 
 		public FacebookUser User { get; set; }
-		public List<FacebookUser> Likes { get; set; }
 		public List<FacebookComment> Comments { get; set; }
+		public List<FacebookUser> Likes { 
+			get { return _likes; }
+			set {
+				_likes = value;
+
+				if(_likes != null) {
+					IsLikedByUser = Likes.Any ( m => m.Id.Equals(Id));
+				}
+			}
+		}
 
 		public FacebookPost ()
 		{

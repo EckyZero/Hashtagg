@@ -111,9 +111,13 @@ namespace iOS
 		{
 			CreateCellDelegate = ((NSString id, UITableView tableView, NSIndexPath indexPath) => {
 
-				var item = _collection[indexPath.Row];
-				var identifier = item.ListItemType.ToString();
-				var cell = tableView.DequeueReusableCell(identifier);
+				var cell = new UITableViewCell();
+				if(indexPath != null && _collection.Count != 0) {
+					var item = _collection[indexPath.Row];
+					var identifier = item.ListItemType.ToString();
+
+					cell = tableView.DequeueReusableCell(identifier);	
+				}
 
 				return cell;
 			});

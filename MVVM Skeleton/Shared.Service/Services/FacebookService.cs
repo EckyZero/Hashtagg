@@ -40,7 +40,7 @@ namespace Shared.Service
 					return new ServiceResponse<FacebookUser>(user,ServiceResponseType.NO_CONNECTION);
 				}
 			}
-			catch (BaseException exception)
+			catch (BaseException e)
 			{
 				return new ServiceResponse<FacebookUser> (user, ServiceResponseType.ERROR);
 			}
@@ -80,7 +80,7 @@ namespace Shared.Service
 					return new ServiceResponse<ObservableCollection<FacebookPost>>(models,ServiceResponseType.NO_CONNECTION);
 				}
 			}
-			catch (BaseException exception)
+			catch (BaseException exc)
 			{
 				return new ServiceResponse<ObservableCollection<FacebookPost>> (models, ServiceResponseType.ERROR);
 			}
@@ -90,6 +90,132 @@ namespace Shared.Service
 				return new ServiceResponse<ObservableCollection<FacebookPost>> (models, ServiceResponseType.ERROR);
 			} 
 		}
+
+		public async Task<ServiceResponseType> Like (string postId)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _facebookApi.Like(postId);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException e)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error liking facebook post", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
+		public async Task<ServiceResponseType> Unlike (string postId)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _facebookApi.Unlike(postId);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException e)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error unliking facebook post", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
+		public async Task<ServiceResponseType> Comment (string postId, string message)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _facebookApi.Comment(postId, message);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException e)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error commenting on facebook post", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
+		public async Task<ServiceResponseType> DeleteComment (string commentId)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _facebookApi.DeleteComment(commentId);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException e)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error deleting comment on facebook post", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
+		public async Task<ServiceResponseType> Post (string userId, string message)
+		{
+			try
+			{
+				if(_connectivityService.IsConnected)
+				{
+					await _facebookApi.Post(userId, message);
+					return ServiceResponseType.SUCCESS;
+				}
+				else
+				{
+					return ServiceResponseType.NO_CONNECTION;
+				}
+			}
+			catch (BaseException e)
+			{
+				return ServiceResponseType.ERROR;
+			}
+			catch (Exception exception)
+			{
+				_logger.Log (new ServiceException ("Error posting facebook post", exception), LogType.ERROR);
+				return ServiceResponseType.ERROR;
+			}
+		}
+
 
 		#endregion
 	}

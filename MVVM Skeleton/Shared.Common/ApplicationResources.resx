@@ -141,4 +141,22 @@
   	<data name="Done" xml:space="preserve">
     	<value>Done!</value>
   	</data>
+  	<data name="Liked" xml:space="preserve">
+    	<value>Liked</value>
+  	</data>
+  	<data name="Like" xml:space="preserve">
+    	<value>Like</value>
+  	</data>
+  	<data name="Commented" xml:space="preserve">
+    	<value>Commented</value>
+  	</data>
+  	<data name="Comment" xml:space="preserve">
+    	<value>Comment</value>
+  	</data>
+  	<data name="Shared" xml:space="preserve">
+    	<value>Shared</value>
+  	</data>
+  	<data name="Share" xml:space="preserve">
+    	<value>Share</value>
+  	</data>
 </root>

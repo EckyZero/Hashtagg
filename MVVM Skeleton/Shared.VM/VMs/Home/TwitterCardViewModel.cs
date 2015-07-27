@@ -1,5 +1,7 @@
 ﻿using System;
 using Shared.Common;
+using Shared.Service;
+using Microsoft.Practices.Unity;
 
 namespace Shared.VM
 {
@@ -8,6 +10,7 @@ namespace Shared.VM
 		#region Private Variables
 
 		private Tweet _tweet;
+		private ITwitterService _twitterService;
 
 		#endregion
 
@@ -67,17 +70,29 @@ namespace Shared.VM
 		public override bool IsLikedByUser 
 		{
 			get { return _tweet.IsFavoritedByUser; }
+			set {
+				_tweet.IsFavoritedByUser = value;
+				RaisePropertyChanged (() => IsLikedByUser);
+			}
 		}
 
 		public override bool IsCommentedByUser 
 		{
 			// TODO: Unsure as to how to gather this data
 			get { return _tweet.IsRetweetedByUser; }
+			set { 
+				_tweet.IsRetweetedByUser = value; 
+				RaisePropertyChanged (() => IsCommentedByUser);
+			}
 		}
 
 		public override bool IsSharedByUser 
 		{
 			get { return _tweet.IsRetweetedByUser; }
+			set {
+				_tweet.IsRetweetedByUser = value;
+				RaisePropertyChanged (() => IsSharedByUser);
+			}
 		}
 
 		public string UserScreenName 
@@ -85,11 +100,49 @@ namespace Shared.VM
 			get { return _tweet.UserScreenName; }
 		}
 
+		public override bool IsMovie 
+		{
+			get { return false; }
+		}
+
+		public override string MovieUrl 
+		{
+			// TODO: Change model object to contain the MediaUrl
+			get { return String.Empty; }
+		}
+
 		#endregion
+
+		#region Methods
 
 		public TwitterCardViewModel (Tweet tweet)
 		{
 			_tweet = tweet;
+			_twitterService = IocContainer.GetContainer ().Resolve<ITwitterService> ();
+		}
+
+		#endregion
+
+		protected override async void LikeCommandExecute ()
+		{
+			base.LikeCommandExecute ();
+
+			// may need to unlike the post (i.e. toggle state)
+			if(IsLikedByUser) {
+				IsLikedByUser = false;
+				await _twitterService.Unlike (_tweet.Id);
+			} 
+			else {
+				IsLikedByUser = true;
+				await _twitterService.Like (_tweet.Id);	
+			}
+		}
+
+		protected override void CommentCommandExecute ()
+		{
+			base.CommentCommandExecute ();
+
+			// TODO: present screen to enter comment
 		}
 	}
 }

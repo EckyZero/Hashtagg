@@ -21,6 +21,7 @@ namespace Shared.VM
 		#region Variables
 
 		private bool _isLoaded = false;
+		private bool _isNoAccountsExistPromptHidden = true;
 		private string _title = String.Empty;
 		private OrderBy _orderBy = OrderBy.Time;
 		private ITwitterService _twitterService;
@@ -34,6 +35,9 @@ namespace Shared.VM
 		#region Actions
 
 		public Action RequestCompleted { get; set; }
+		public Action<List<string>> RequestHeaderImages { get; set; }
+		public Action<BaseContentCardViewModel> RequestPhotoViewer { get; set;}
+		public Action<BaseContentCardViewModel> RequestMovieViewer { get; set;}
 
 		#endregion
 
@@ -65,6 +69,15 @@ namespace Shared.VM
 			set { _isLoaded = value; }
 		}
 
+		public bool IsNoAccountsExistPromptHidden {
+			get { return _isNoAccountsExistPromptHidden; }
+			set { Set (() => IsNoAccountsExistPromptHidden, ref _isNoAccountsExistPromptHidden, value); }
+		}
+
+		public string DefaultAccountImageName {
+			get { return "Profile Image default.png"; }
+		}
+
 		#endregion
 
 		#region Commands
@@ -87,12 +100,23 @@ namespace Shared.VM
 
 		public override async Task DidLoad ()
 		{
-			await base.DidLoad ();
+			if(!_isLoaded) 
+			{
+				_isLoaded = true;
 
-			await GetPosts ();
-			await GetName ();
+				await base.DidLoad ();
+				await GetName ();
+				await GetSocialAccountDetails ();
+				await GetPosts();	
+			}
+		}
 
-			_isLoaded = true;
+		public override async Task DidAppear ()
+		{
+			await base.DidAppear();
+
+			GetHeaderImages ();
+			RemoveCardsIfNeeded ();
 		}
 
 		protected override void InitCommands ()
@@ -121,11 +145,9 @@ namespace Shared.VM
 		{
 			var viewModels = new ObservableCollection<FacebookCardViewModel> ();
 
-            if(await _facebookHelper.AccountExists())
+			if(_facebookHelper.GetAccount() != null)
 			{
-				var response = new ServiceResponse<ObservableCollection<FacebookPost>> ();
-
-				response = await _facebookService.GetHomeFeed ();
+				var response = await _facebookService.GetHomeFeed ();
 
 				if(await ProcessResponse(response))
 				{
@@ -143,11 +165,9 @@ namespace Shared.VM
 		{
 			var viewModels = new ObservableCollection<TwitterCardViewModel> ();
 
-			if(await _twitterHelper.AccountExists())
+			if(_twitterHelper.GetAccount() != null)
 			{
-				var response = new ServiceResponse<ObservableCollection<Tweet>> ();
-
-				response = await _twitterService.GetHomeFeed ();	
+				var response = await _twitterService.GetHomeFeed ();	
 
 				if(await ProcessResponse(response))
 				{
@@ -215,36 +235,138 @@ namespace Shared.VM
 			CardViewModels.Clear ();
 			CardViewModels.AddRange (allViewModels);
 
+			foreach (BaseContentCardViewModel viewModel in CardViewModels)
+			{
+				viewModel.RequestMovieViewer = RequestMovieViewer;
+				viewModel.RequestPhotoViewer = RequestPhotoViewer;
+			}
+
 			if(RequestCompleted != null) {
 				RequestCompleted ();
 			}
 		}
 
-		public async Task GetName ()
+		private async Task GetName ()
 		{
+			// Get the display name
+			SocialAccount account = null;
+
 			if(await _facebookHelper.AccountExists())
 			{
-				var facebookResponse = await _facebookService.GetUser ();	
-				
-				if(await ProcessResponse(facebookResponse, false))
-				{
-					var user = facebookResponse.Result;
-					var account = _facebookHelper.GetAccount ();
+				account = _facebookHelper.GetAccount ();
+			}
+			else if (await _twitterHelper.AccountExists())
+			{
+				account = _twitterHelper.GetAccount ();
+			}
 
 					account.Properties ["screen_name"] = user.Name;
 					account.Properties ["id"] = user.Id;
 					account.Properties ["imageUrl"] = user.Picture;
 					_facebookHelper.Synchronize (account);
                     
-					Title = account.Username;
+					Title = account.Username
+		}
 
-				}
-			} 
-			else if (await _twitterHelper.AccountExists())
+		private async Task GetSocialAccountDetails ()
+		{
+			// Sync all accounts
+			await GetTwitterUserAccountDetails ();
+			await GetFacebookUserAccountDetails ();
+		}
+		
+		private async Task GetTwitterUserAccountDetails ()
+		{
+			// Sync twitter account details
+			if(await _twitterHelper.AccountExists())
 			{
 				var account = _twitterHelper.GetAccount ();
-				Title = String.Format("@{0}", account.Properties ["screen_name"]);
+
+				if(!account.Properties.ContainsKey("imageUrl") )
+				{
+					var twitterResponse = await _twitterService.GetUser (account.Username);
+
+					if(await ProcessResponse(twitterResponse, false))
+					{
+						var user = twitterResponse.Result;
+
+						account.Properties ["name"] = user.Name;
+						account.Properties ["id"] = user.Id;
+						account.Properties ["imageUrl"] = user.Picture;
+
+						_twitterHelper.Synchronize (account);
+					}	
+				}	
 			}
+		}
+
+		private async Task GetFacebookUserAccountDetails ()
+		{
+			// Sync facebook account details
+			if(await _facebookHelper.AccountExists())
+			{
+				var account = _facebookHelper.GetAccount ();
+
+				if(!account.Properties.ContainsKey("imageUrl"))
+				{
+					var facebookResponse = await _facebookService.GetUser ();	
+
+					if(await ProcessResponse(facebookResponse, false))
+					{
+						var user = facebookResponse.Result;
+
+						account.Properties ["name"] = user.Name;
+						account.Properties ["screen_name"] = user.Name;
+						account.Properties ["id"] = user.Id;
+						account.Properties ["imageUrl"] = user.Picture;
+
+						_facebookHelper.Synchronize (account);
+					}	
+				}	
+			}
+		}
+
+		private void GetHeaderImages ()
+		{
+			// This gets the imageUrls for each synced account
+			// It also toggles the "No accounts exist" prompt if none are found
+			var urls = new List<string> ();
+			var facebook = _facebookHelper.GetAccount ();
+			var twitter = _twitterHelper.GetAccount ();
+
+			if(facebook != null && facebook.Properties.ContainsKey("imageUrl")) {
+				urls.Add (facebook.Properties ["imageUrl"]);
+			}
+			if(twitter != null && twitter.Properties.ContainsKey("imageUrl")) {
+				urls.Add (twitter.Properties ["imageUrl"]);
+			}
+
+			// Also toggle the state of the label prompt
+			IsNoAccountsExistPromptHidden = urls.Count != 0;
+
+			if(RequestHeaderImages != null) {
+				RequestHeaderImages (urls);
+			}
+		}
+
+		private void RemoveCardsIfNeeded ()
+		{
+			// Remove cards that no longer have an associated account
+			// This is to protected against a user signing out of an account in the menu
+			// And then trying to take action on a card
+			var removableViewModels = CardViewModels.Where (vm => vm.ListItemType == ListItemType.Default);
+			var cardsToRemove = new List<IListItem> ();
+
+			if(_twitterHelper.GetAccount() == null) {
+				var tViewModels = removableViewModels.Where (vm => ((BaseContentCardViewModel)vm).SocialType == SocialType.Twitter);
+				cardsToRemove.AddRange (tViewModels);
+			}
+			if(_facebookHelper.GetAccount() == null) {
+				var fViewModels = removableViewModels.Where (vm => ((BaseContentCardViewModel)vm).SocialType == SocialType.Facebook);
+				cardsToRemove.AddRange (fViewModels);
+			}
+
+			CardViewModels.RemoveRange (cardsToRemove);
 		}
 
         public string FacebookImageUrl {
