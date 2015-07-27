@@ -33,7 +33,7 @@ namespace Droid.Phone
 
 		private DrawerLayout _drawerLayout;
 
-		private LinearLayout _drawerList;
+		private ListView _drawerList;
 	    private RelativeLayout _drawerHeader;
 	    private RelativeLayout _drawerFooter;
 	    private bool _init;
@@ -91,11 +91,11 @@ namespace Droid.Phone
 		{
 
 			_drawerLayout = FindViewById<DrawerLayout>(Resource.Id.hamburgerMenu_layout);
-			_drawerList = FindViewById<LinearLayout>(Resource.Id.hamburgerMenu_menu);
+            _drawerList = FindViewById<ListView>(Resource.Id.hamburgerMenu_menu);
             _drawerHeader = LayoutInflater.Inflate(Resource.Layout.DrawerHeader, _drawerList, false) as RelativeLayout;
             _drawerFooter = LayoutInflater.Inflate(Resource.Layout.DrawerFooter, _drawerList, false) as RelativeLayout;
-            _drawerList.AddView(_drawerHeader, 0);
-            _drawerList.AddView(_drawerFooter, _drawerList.ChildCount);
+            //_drawerList.AddView(_drawerHeader, 0);
+            //_drawerList.AddView(_drawerFooter, _drawerList.ChildCount);
 
 			//_drawerList.Adapter = new SimpleAdapter(this, new List<IDictionary<string, object>>(), 0, new []{""}, new []{0});
 			//_drawerList.ItemClick += DrawerListOnItemClick;
