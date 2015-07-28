@@ -38,6 +38,8 @@
     <Compile Include="ServiceException.cs" />
     <Compile Include="Services\FacebookService.cs" />
     <Compile Include="Interfaces\IFacebookService.cs" />
+    <Compile Include="Services\LifecyleService.cs" />
+    <Compile Include="Interfaces\ILifecycleService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

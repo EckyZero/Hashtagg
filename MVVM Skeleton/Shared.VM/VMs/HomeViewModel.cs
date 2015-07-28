@@ -55,28 +55,30 @@ namespace Shared.VM
 			set { _cardViewModels = value; }
 		}
 
-		public string Title {
+		public string Title 
+		{
 			get { return _title; }
-		    set
-		    {
-		        _title = value; 
-		        RaisePropertyChanged();
-		    }
+ 			set { Set (() => Title, ref _title, value); }
 		}
 
-		public bool IsLoaded {
+		public bool IsLoaded 
+		{
 			get { return _isLoaded; }
 			set { _isLoaded = value; }
 		}
 
-		public bool IsNoAccountsExistPromptHidden {
+		public bool IsNoAccountsExistPromptHidden 
+		{
 			get { return _isNoAccountsExistPromptHidden; }
 			set { Set (() => IsNoAccountsExistPromptHidden, ref _isNoAccountsExistPromptHidden, value); }
 		}
 
-		public string DefaultAccountImageName {
+		public string DefaultAccountImageName 
+		{
 			get { return "Profile Image default.png"; }
 		}
+
+		public bool IsRefreshing { get; set; }
 
 		#endregion
 
@@ -100,13 +102,13 @@ namespace Shared.VM
 
 		public override async Task DidLoad ()
 		{
+			await base.DidLoad ();
+
 			if(!_isLoaded) 
 			{
 				_isLoaded = true;
 
 				await base.DidLoad ();
-				await GetName ();
-				await GetSocialAccountDetails ();
 				await GetPosts();	
 			}
 		}
@@ -114,6 +116,8 @@ namespace Shared.VM
 		public override async Task DidAppear ()
 		{
 			await base.DidAppear();
+			await GetName ();
+			await GetSocialAccountDetails ();
 
 			GetHeaderImages ();
 			RemoveCardsIfNeeded ();
@@ -128,7 +132,11 @@ namespace Shared.VM
 
 		private async void RefreshCommandExecute ()
 		{
-			await GetPosts ();
+			if(!IsRefreshing)
+			{
+				IsRefreshing = true;
+				await GetPosts ();	
+			}
 		}
 
 		private void TwitterCommandExecute ()
@@ -241,6 +249,8 @@ namespace Shared.VM
 				viewModel.RequestPhotoViewer = RequestPhotoViewer;
 			}
 
+			IsRefreshing = false;
+
 			if(RequestCompleted != null) {
 				RequestCompleted ();
 			}
@@ -259,13 +269,7 @@ namespace Shared.VM
 			{
 				account = _twitterHelper.GetAccount ();
 			}
-
-					account.Properties ["screen_name"] = user.Name;
-					account.Properties ["id"] = user.Id;
-					account.Properties ["imageUrl"] = user.Picture;
-					_facebookHelper.Synchronize (account);
-                    
-					Title = account.Username
+			Title = (account == null) ? string.Empty : account.Username;
 		}
 
 		private async Task GetSocialAccountDetails ()

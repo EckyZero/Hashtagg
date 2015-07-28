@@ -50,7 +50,8 @@ namespace iOS.Phone
 			base.ViewDidLoad ();
 	
 			InitUI ();
-			await InitBindings ();
+			InitBindings ();
+
 			await ViewModel.DidLoad ();
 		}
 
@@ -68,9 +69,6 @@ namespace iOS.Phone
 				_refreshControl.Bounds.Width,
 				_refreshControl.Bounds.Height
 			);
-
-			_refreshControl.BeginRefreshing ();
-			_refreshControl.EndRefreshing ();
 		}
 
 		#endregion
@@ -92,11 +90,17 @@ namespace iOS.Phone
 			NameLabel.Text = ViewModel.Title;
 		}
 
-		private async Task InitBindings ()
+		private void InitBindings ()
 		{
-			ViewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
-				if(e.PropertyName.Equals("IsNoAccountsExistPromptHidden")) {
-					SignedOutLabel.Hidden = ViewModel.IsNoAccountsExistPromptHidden;
+			ViewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => 
+			{
+				if(e.PropertyName.Equals("IsNoAccountsExistPromptHidden")) 
+				{
+					SignedOutLabel.Hidden =  ViewModel.IsNoAccountsExistPromptHidden;
+				}
+				else if(e.PropertyName.Equals("Title"))
+				{
+					NameLabel.Text = ViewModel.Title;
 				}
 			};
 

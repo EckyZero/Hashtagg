@@ -27,10 +27,7 @@ namespace iOS
 
 		#region Methods
 
-		public PSObservableTableController (IntPtr handle) : base (handle)
-		{
-			
-		}
+		public PSObservableTableController (IntPtr handle) : base (handle) {}
 
 		public override void ViewDidLoad ()
 		{

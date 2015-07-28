@@ -18,6 +18,7 @@ namespace Shared.Bootstrapper
 			// Services
 			container.RegisterType<ITwitterService, TwitterService> ();
 			container.RegisterType<IFacebookService, FacebookService> ();
+			container.RegisterType<ILifecycleService, LifecyleService> ();
 		}
 	}
 }
