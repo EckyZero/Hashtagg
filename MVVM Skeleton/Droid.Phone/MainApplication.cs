@@ -19,6 +19,7 @@ using Shared.Common;
 using Shared.VM;
 using Shared.Bootstrapper;
 using Droid;
+using Shared.Service;
 
 namespace Droid.Phone
 {
@@ -29,13 +30,18 @@ namespace Droid.Phone
     #endif
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
     {
-        private ILogger _logger;
+		#region Variables
 
+		private ILogger _logger;
         private int _sessionDepth = 0;
+		private ILifecycleService _lifecycleService = IocContainer.GetContainer ().Resolve<ILifecycleService> ();
 
         private static ViewModelLocator _locator;
-
         private static ViewModelStore _store;
+
+		#endregion
+
+		#region Properties
 
         public static ViewModelLocator VMLocator
         {
@@ -46,6 +52,8 @@ namespace Droid.Phone
         {
             get { return _store; }
         }
+
+		#endregion
 
         public MainApplication(IntPtr handle, JniHandleOwnership transfer)
             : base(handle, transfer)
@@ -70,6 +78,7 @@ namespace Droid.Phone
             Init();
 
             RegisterActivityLifecycleCallbacks(this);
+
         }
 
         private void Init()
@@ -95,6 +104,8 @@ namespace Droid.Phone
 			IocContainer.GetContainer().RegisterInstance<IEmailService> (new EmailService());
 			IocContainer.GetContainer ().RegisterInstance<ITwitterHelper> (new AndroidTwitterHelper ());
 			IocContainer.GetContainer ().RegisterInstance<IFacebookHelper> (new AndroidFacebookHelper ());
+
+			_lifecycleService.OnStart ();
         }
 
         private static ExtendedNavigationService ConfigureNav()
@@ -130,6 +141,7 @@ namespace Droid.Phone
         {
             if (_sessionDepth == 0)
             {
+				_lifecycleService.OnResume ();
             }
             _sessionDepth++;
         }
@@ -142,6 +154,7 @@ namespace Droid.Phone
             }
             if (_sessionDepth == 0)
             {
+				_lifecycleService.OnPause ();
             }
         }
     }

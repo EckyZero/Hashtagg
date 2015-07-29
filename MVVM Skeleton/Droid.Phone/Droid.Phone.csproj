@@ -204,6 +204,10 @@
       <Project>{8BA73740-09B9-4923-8D33-B4539FAB205F}</Project>
       <Name>Shared.VM</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shared.Service\Shared.Service.csproj">
+      <Project>{6BC8D2B7-7FA1-4642-873F-59357FAB0904}</Project>
+      <Name>Shared.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\anim\" />
