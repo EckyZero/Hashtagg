@@ -4,8 +4,10 @@ namespace Shared.Service
 {
 	public interface ILifecycleService
 	{
-		Action RequestHomePage { get; set; }
-		Action RequestOnboardingPage { get; set; }
+		event EventHandler ApplicationWillStart;
+		event EventHandler ApplicationWillPause;
+		event EventHandler ApplicationWillResume;
+		event EventHandler ApplicationWillTerminate;
 
 		void OnStart();
 		void OnResume();

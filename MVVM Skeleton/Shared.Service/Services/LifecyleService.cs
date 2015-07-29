@@ -6,62 +6,49 @@ namespace Shared.Service
 {
 	public class LifecyleService : ILifecycleService
 	{
-		#region Variables
-
-		private IFacebookHelper _facebookHelper;
-		private ITwitterHelper _twitterHelper;
-
-		#endregion
-
 		#region Properties
 
-		public Action RequestHomePage { get; set; }
-		public Action RequestOnboardingPage { get; set; }
+		public event EventHandler ApplicationWillStart;
+		public event EventHandler ApplicationWillPause;
+		public event EventHandler ApplicationWillResume;
+		public event EventHandler ApplicationWillTerminate;
 
 		#endregion
 
-		public LifecyleService (IFacebookHelper facebookHelper, ITwitterHelper twitterHelper) 
-		{ 
-			_facebookHelper = facebookHelper;
-			_twitterHelper = twitterHelper;
-		}
+		public LifecyleService () { }
 
 		#region Methods
 
 		public void OnStart ()
 		{
-			var isLoggedIn = _facebookHelper.GetAccount () != null;
-			isLoggedIn |= _twitterHelper.GetAccount () != null;
-
-			if(isLoggedIn)
+			if(ApplicationWillStart != null)
 			{
-				if (RequestHomePage != null)
-				{
-					RequestHomePage ();
-				}
-			}
-			else
-			{
-				if(RequestOnboardingPage != null)
-				{
-					RequestOnboardingPage ();
-				}
+				ApplicationWillStart (this, new EventArgs ());
 			}
 		}
 
 		public void OnResume ()
 		{
-			
+			if(ApplicationWillResume != null)
+			{
+				ApplicationWillResume (this, new EventArgs ());
+			}
 		}
 
 		public void OnPause ()
 		{
-			
+			if(ApplicationWillPause != null)
+			{
+				ApplicationWillPause (this, new EventArgs ());
+			}
 		}
 
 		public void OnTerminated ()
 		{
-			
+			if(ApplicationWillTerminate != null)
+			{
+				ApplicationWillTerminate (this, new EventArgs ());
+			}
 		}
 
 		#endregion

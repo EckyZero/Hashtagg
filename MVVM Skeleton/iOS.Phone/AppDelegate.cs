@@ -32,30 +32,33 @@ namespace iOS.Phone
 
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
+			var mainViewModel = new MainViewModel ();
+
+			mainViewModel.RequestHomePage = OnRequestHomePage;
+			mainViewModel.RequestOnboardingPage = OnRequestOnboardingPage;
+
+			_lifecycleService.OnStart ();
+
 			#if DEBUG
 			Calabash.Start();
 			#endif
 
-			_lifecycleService.RequestHomePage = OnRequestHomePage;
-			_lifecycleService.RequestOnboardingPage = OnRequestOnboardingPage;
-
-			_lifecycleService.OnStart ();
-
 			return true;
 		}
 
-		private void OnRequestHomePage ()
+		private void OnRequestHomePage (HomeViewModel viewModel)
 		{
-			var viewModel = new HomeViewModel ();
 			var controller = new ContainerController (viewModel);
 
 			SetRootViewController (controller);
 		}
 
-		private void OnRequestOnboardingPage ()
+		private void OnRequestOnboardingPage (OnboardingViewModel viewModel)
 		{
 			var storyboard = UIStoryboard.FromName ("Onboarding", null);
-			var controller = storyboard.InstantiateInitialViewController ();
+			var controller = storyboard.InstantiateInitialViewController () as OnboardingController;
+
+			controller.ViewModel = viewModel;
 
 			SetRootViewController (controller);
 		}

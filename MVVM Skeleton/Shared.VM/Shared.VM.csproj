@@ -48,6 +48,7 @@
     <Compile Include="VMs\Menu\MenuViewModel.cs" />
     <Compile Include="VMs\Menu\TwitterMenuItemViewModel.cs" />
     <Compile Include="VMs\Menu\FacebookMenuItemViewModel.cs" />
+    <Compile Include="VMs\MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared.Common\Shared.Common.csproj">
