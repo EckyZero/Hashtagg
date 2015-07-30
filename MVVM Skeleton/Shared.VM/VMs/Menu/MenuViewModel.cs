@@ -24,18 +24,17 @@ namespace Shared.VM
 		private ObservableRangeCollection<IListItem> _itemViewModels = new ObservableRangeCollection<IListItem> ();
 		private ITwitterHelper _twitterHelper;
 		private IFacebookHelper _facebookHelper;
+		private HomeViewModel _homeViewModel;
 
 		#endregion
 
 		#region Properties
 
-//		public Action<BaseMenuItemViewModel, int> RequestRowUpdate { get; set; }
-
 		public RelayCommand PrimaryCommand { get; private set; }
 
 		public string Title {
 			get { return _title; }
-			set { _title = value; }
+			set { Set (() => Title, ref _title, value); }
 		}
 
 		public string PrimaryButtonText {
@@ -60,25 +59,32 @@ namespace Shared.VM
 		public ObservableRangeCollection<IListItem> ItemViewModels 
 		{
 			get { return _itemViewModels; }
-			set { _itemViewModels = value; }
+			set { Set(() => ItemViewModels, ref _itemViewModels, value); }
 		}
 
 		#endregion
 
 		#region Methods
 
-		public MenuViewModel (string title = "") : base ()
+		public MenuViewModel (HomeViewModel viewModel) : base ()
 		{
 			_facebookHelper = IocContainer.GetContainer ().Resolve<IFacebookHelper> ();
 			_twitterHelper = IocContainer.GetContainer ().Resolve<ITwitterHelper> ();
-
+			_homeViewModel = viewModel;
 			ConfigureForAdding ();
-			Title = title;
 		}
 
 		protected override void InitCommands ()
 		{
 			PrimaryCommand = new RelayCommand (PrimaryCommandExecute);
+		}
+
+		public override async Task DidLoad ()
+		{
+			await base.DidLoad ();
+			await _homeViewModel.DidLoad ();
+
+			Title = _homeViewModel.Title;
 		}
 
 		private async void OnListItemSelected (IListItem item)
@@ -94,6 +100,8 @@ namespace Shared.VM
 				// If we're not, then that must mean we just added one
 				await viewModel.DidLoad();
 			}
+			var addedCount = ItemViewModels.Count (vm => ((BaseMenuItemViewModel)vm).MenuItemType == MenuItemType.Added || ((BaseMenuItemViewModel)vm).MenuItemType == MenuItemType.Remove);
+			Title =  (addedCount == 0) ? String.Empty : _homeViewModel.GetName();
 		}
 
 		private async void PrimaryCommandExecute ()

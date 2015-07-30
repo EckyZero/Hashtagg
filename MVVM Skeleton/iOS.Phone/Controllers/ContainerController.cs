@@ -15,13 +15,6 @@ namespace iOS.Phone
 
 		#endregion
 
-		#region Properties
-
-//		public event EventHandler WillShowLeftPanel;
-//		public event EventHandler WillShowCenterPanel;
-
-		#endregion
-
 		#region Methods
 
 		public ContainerController (HomeViewModel homeViewModel) 
@@ -40,12 +33,13 @@ namespace iOS.Phone
 			var homeController = homeNavController.TopViewController as HomeController;
 
 			homeController.ViewModel = _homeViewModel;
-			menuController.ViewModel = new MenuViewModel (_homeViewModel.Title);
+			menuController.ViewModel = new MenuViewModel (_homeViewModel);
 
 			DefinesPresentationContext = true;
 			ProvidesPresentationContextTransitionStyle = true;
 			ShouldDelegateAutorotateToVisiblePanel = false;
 			PushesSidePanels = true;
+			LeftGapPercentage = 0.85f;
 			LeftPanel = menuController;
 			CenterPanel = homeNavController;
 

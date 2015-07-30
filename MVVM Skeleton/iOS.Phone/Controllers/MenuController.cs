@@ -29,45 +29,28 @@ namespace iOS.Phone
 		public MenuController (IntPtr handle) : base (handle)
 		{
 			if(ViewModel == null) {
-				ViewModel = new MenuViewModel ();
+				ViewModel = new MenuViewModel (new HomeViewModel());
 			}
 		}
 
-		public override void ViewDidLoad ()
+		public override async void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+			await ViewModel.DidLoad ();
 
 			InitUI ();
 			InitBindings ();
 		}
 
-//		public override void ViewWillAppear (bool animated)
-//		{
-//			base.ViewWillAppear (animated);
-//
-//			UIView.Animate (0.25f, () => {
-//				foreach(UIView view in View.Subviews) {
-//					view.Alpha = 1;
-//				}	
-//			});
-//		}
-//
-//		public override void ViewWillDisappear (bool animated)
-//		{
-//			base.ViewWillDisappear (animated);
-//
-//			UIView.Animate (0.25f, () => {
-//				foreach(UIView view in View.Subviews) {
-//					view.Alpha = 0;
-//				}	
-//			});
-//			// Reset to add
-//			ViewModel.MenuState = MenuState.Add;
-//		}
+		public override async void ViewDidAppear (bool animated)
+		{
+			base.ViewDidAppear (animated);
+
+			await ViewModel.DidAppear();
+		}
 
 		private void InitUI ()
 		{
-			// TODO: Fade-in and out depending on the JASidePanel gesture
 			SubtitleLabel.Alpha = ViewModel.ShowSubtitle ? 1 : 0;
 			TitleLabel.Text = ViewModel.Title;
 
@@ -78,15 +61,21 @@ namespace iOS.Phone
 
 		private void InitBindings ()
 		{
-			ViewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
-				if(e.PropertyName.Equals("PrimaryButtonText")) {
+			ViewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => 
+			{
+				if(e.PropertyName.Equals("PrimaryButtonText")) 
+				{
 					PrimaryButton.SetTitle(ViewModel.PrimaryButtonText, UIControlState.Normal);
 				}
-				else if (e.PropertyName.Equals("ShowSubtitle")) {
+				else if (e.PropertyName.Equals("ShowSubtitle")) 
+				{
 					UIView.Animate(0.5, () => {
-//						SubtitleLabel.Hidden = !ViewModel.ShowSubtitle;
 						SubtitleLabel.Alpha = ViewModel.ShowSubtitle ? 1 : 0;
 					});
+				}
+				else if (e.PropertyName.Equals("Title")) 
+				{
+					TitleLabel.Text = ViewModel.Title;
 				}
 			};
 

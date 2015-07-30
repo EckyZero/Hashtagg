@@ -245,11 +245,11 @@ namespace iOS
 		/// Initializes a new instance of this class with a specific style.
 		/// </summary>
 		/// <param name="tableStyle">The style that will be used for this controller.</param>
-		public ExtendedObservableTableViewController(UITableViewStyle tableStyle)
-			: base(tableStyle)
-		{
-			Initialize();
-		}
+//		public ExtendedObservableTableViewController(UITableViewStyle tableStyle)
+//			: base(tableStyle)
+//		{
+//			Initialize();
+//		}
 
 		/// <summary>
 		/// Initializes a new instance of this class with a specific IntPtr.
@@ -393,7 +393,10 @@ namespace iOS
 					var paths = new NSIndexPath[count];
 					for (var i = 0; i < count; i++)
 					{
-						paths[i] = NSIndexPath.FromRowSection(e.OldStartingIndex + i, 0);
+						// There's a bug when trying to remove all items from a list
+						// So, we always make sure we protect against a startingIndex of < 0
+						var startingIndex = e.OldStartingIndex < 0 ? 0 : e.OldStartingIndex;
+						paths[i] = NSIndexPath.FromRowSection(startingIndex + i, 0);
 					}
 					TableView.DeleteRows(paths, DeleteAnimation);
 				}

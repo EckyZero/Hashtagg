@@ -116,7 +116,8 @@ namespace Shared.VM
 		public override async Task DidAppear ()
 		{
 			await base.DidAppear();
-			await GetName ();
+
+			GetName ();
 			await GetSocialAccountDetails ();
 
 			GetHeaderImages ();
@@ -256,20 +257,22 @@ namespace Shared.VM
 			}
 		}
 
-		private async Task GetName ()
+		public string GetName ()
 		{
 			// Get the display name
 			SocialAccount account = null;
 
-			if(await _facebookHelper.AccountExists())
+			if(_facebookHelper.GetAccount() != null)
 			{
 				account = _facebookHelper.GetAccount ();
 			}
-			else if (await _twitterHelper.AccountExists())
+			else if (_twitterHelper.GetAccount() != null)
 			{
 				account = _twitterHelper.GetAccount ();
 			}
 			Title = (account == null) ? string.Empty : account.Username;
+
+			return Title;
 		}
 
 		private async Task GetSocialAccountDetails ()

@@ -56,11 +56,12 @@ namespace iOS.Phone
 		private void OnRequestOnboardingPage (OnboardingViewModel viewModel)
 		{
 			var storyboard = UIStoryboard.FromName ("Onboarding", null);
-			var controller = storyboard.InstantiateInitialViewController () as OnboardingController;
+			var navigationController = storyboard.InstantiateInitialViewController () as UINavigationController;
+			var controller = navigationController.TopViewController as OnboardingController;
 
 			controller.ViewModel = viewModel;
 
-			SetRootViewController (controller);
+			SetRootViewController (navigationController);
 		}
 
 		private void SetRootViewController (UIViewController controller)

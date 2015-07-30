@@ -146,22 +146,27 @@ namespace iOS.Phone
 
 			AccountImageView.Hidden = images.Count == 0;
 
+			// clear all existing entries before beginning
+			foreach (UIView view in AccountsView.Subviews) {
+				if(!view.Equals(AccountImageView)) {
+					AccountsView.RemoveConstraints (view.Constraints);
+					view.RemoveFromSuperview ();
+				}
+			}
+
 			if(images.Count > 0) 
 			{
-				// remove all existing just in case
-				foreach (UIView view in AccountsView.Subviews) {
-					if(!view.Equals(AccountImageView)) {
-						AccountsView.RemoveConstraints (view.Constraints);
-						view.RemoveFromSuperview ();
-					}
-				}
-
 				// proceed and add the new ones
 				var prevImageView = AccountImageView;
 				var prevTrailingConstraint = AccountImageViewTrailingConstraint;
 				var rect = CGRect.FromLTRB (prevImageView.Frame.X + 2, prevImageView.Frame.Y + 2, prevImageView.Frame.Width - 4, prevImageView.Frame.Height - 4);
 				var path = UIBezierPath.FromRoundedRect (rect, prevImageView.Frame.Height / 2);
 				var prevMaskLayer = new CAShapeLayer ();
+
+				if(!AccountsView.Constraints.Contains(AccountImageViewTrailingConstraint))
+				{
+					AccountsView.AddConstraint (AccountImageViewTrailingConstraint);
+				}
 
 				prevMaskLayer.Path = path.CGPath;
 				prevMaskLayer.ShadowColor = UIColor.Black.CGColor;
@@ -226,7 +231,6 @@ namespace iOS.Phone
 		{
 			var point = tableView.PanGestureRecognizer.TranslationInView (tableView);
 			var difference = _lastY - point.Y;
-			var percentComplete = HeaderViewTopConstraint.Constant / -HeaderView.Frame.Height;
 			nfloat? newConstant = null;
 
 			if(HeaderViewTopConstraint.Constant - difference <= -HeaderView.Frame.Height) 
