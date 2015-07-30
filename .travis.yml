@@ -6,5 +6,5 @@ env:
  - EnableNuGetPackageRestore=true 
 
 script:
- - xbuild 
- - ./build-scripts/build.sh
+ - ./MVVM Skeleton/xbuild 
+ - ./MVVM Skeleton/build-scripts/build.sh
