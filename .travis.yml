@@ -6,4 +6,4 @@ env:
  - EnableNuGetPackageRestore=true 
 
 script:
- - xbuild 
+ - xbuild /p:Configuration=Debug ./MVVM Skeleton/MVVM Skeleton.sln 
