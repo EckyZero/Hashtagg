@@ -1,9 +1,10 @@
 language: csharp
-solution: /MVVM Skeleton/MVVM Skeleton.sln
+solution: ./MVVM Skeleton/MVVM Skeleton.sln
 
 env:
  global:
-  - EnableNuGetPackageRestore=true 
+ - EnableNuGetPackageRestore=true 
 
 script:
  - xbuild 
+ - ./build-scripts/build.sh
