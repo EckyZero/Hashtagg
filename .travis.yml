@@ -12,7 +12,6 @@ before_install:
  - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
  
 install:
- - sudo apt-get install nunit-console
  - nuget restore ./MVVM Skeleton/MVVMSkeleton.sln
 
 script:
