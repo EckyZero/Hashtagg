@@ -1,5 +1,4 @@
 language: objective-c
-solution: ./MVVM Skeleton/MVVM Skeleton.sln
 
 env:
   matrix:
@@ -15,4 +14,4 @@ install:
   - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
   
 script:
-  - xbuild /t:Install /p:Configuration=Debug /v:diag MVVM Skeleton/iOS.Phone/iOS.Phone.csproj
+  - xbuild MVVM Skeleton/MVVM Skeleton.sln /nologo /verbosity:normal /p:Configuration=Debug
