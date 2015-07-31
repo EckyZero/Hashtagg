@@ -1,5 +1,5 @@
 language: objective-c
-solution: ./MVVM Skeleton/MVVMSkeleton.sln
+solution: "./MVVM Skeleton/MVVMSkeleton.sln"
 
 env:
  global:
@@ -12,4 +12,4 @@ before_install:
  - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
 
 script:
- - xbuild ./MVVM Skeleton/MVVMSkeleton.sln /nologo /verbosity:normal /p:Configuration=Debug
+ - xbuild "./MVVM Skeleton/MVVMSkeleton.sln" /nologo /verbosity:normal /p:Configuration=Debug
