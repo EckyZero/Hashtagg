@@ -13,4 +13,5 @@ install:
 - mozroots --import --sync
 
 script:
+ - nuget restore "./MVVM Skeleton/MVVMSkeleton.sln"
  - xbuild "./MVVM Skeleton/MVVMSkeleton.sln" /nologo /verbosity:normal /p:Configuration=Debug
