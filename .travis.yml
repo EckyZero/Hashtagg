@@ -1,19 +1,15 @@
 language: objective-c
-solution: MVVM Skeleton/MVVMSkeleton.sln
+solution: ./MVVM Skeleton/MVVMSkeleton.sln
 
 env:
-  matrix:
-    - MONO_VERSION="3.6.0"
+ global:
+  - EnableNuGetPackageRestore=true 
+ matrix:
+  - MONO_VERSION="3.8.0"
 
 before_install:
-  - npm install -g gulp
-  - wget --no-check-certificate "http://launchpad.net/nunitv2/trunk/2.6.3/+download/NUnit-2.6.3.zip"
-  - unzip NUnit-2.6.3.zip
- 
-install:
-  - wget "http://download.mono-project.com/archive/${MONO_VERSION}/macos-10-x86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg"
-  - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
+ - wget "http://download.mono-project.com/archive/${MONO_VERSION}/macos-10-x86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg"
+ - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
   
 script:
-  - nuget restore MVVM Skeleton/MVVMSkeleton.sln
   - xbuild MVVM Skeleton/MVVMSkeleton.sln /nologo /verbosity:normal /p:Configuration=Debug
