@@ -15,4 +15,4 @@ install:
   - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
   
 script:
-  - xbuild ./MVVM Skeleton/iOS.Phone/iOS.Phone.csproj
+  - xbuild /t:Install /p:Configuration=Release /v:diag ./MVVM Skeleton/iOS.Phone/iOS.Phone.csproj
