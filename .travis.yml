@@ -1,5 +1,5 @@
 language: objective-c
-solution: "./MVVM Skeleton/MVVMSkeleton.sln"
+solution: ./MVVMSkeleton/MVVMSkeleton.sln
 
 env:
  global:
@@ -13,5 +13,5 @@ install:
 - mozroots --import --sync
 
 script:
- - nuget restore ./MVVM\ Skeleton/MVVMSkeleton.sln
- - xbuild "./MVVM Skeleton/MVVMSkeleton.sln" /nologo /verbosity:normal /p:Configuration=Debug
+ - nuget restore ./MVVMSkeleton/MVVMSkeleton.sln
+ - xbuild ./MVVMSkeleton/MVVMSkeleton.sln /nologo /verbosity:normal /p:Configuration=Debug
