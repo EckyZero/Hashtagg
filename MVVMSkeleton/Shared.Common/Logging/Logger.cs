@@ -11,6 +11,7 @@ namespace Shared.Common
     {
         public void Log(Exception exception = null, LogType severity = LogType.WARNING)
         {
+			
         }
     }
 }
