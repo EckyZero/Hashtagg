@@ -9,5 +9,5 @@ before_install:
  - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
 
 script:
- - nuget restore ./MVVMSkeleton/MVVMSkeleton.sln
+ - .ci/packagerestore.sh ./MVVMSkeleton/MVVMSkeleton.sln
  - xbuild ./MVVMSkeleton/MVVMSkeleton.sln /p:Configuration=Release
