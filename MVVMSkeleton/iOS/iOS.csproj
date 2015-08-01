@@ -136,9 +136,8 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
+    <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <ItemGroup>
     <XamarinComponentReference Include="btprogresshud">
       <Version>1.15</Version>
