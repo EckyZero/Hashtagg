@@ -14,4 +14,4 @@ install:
 
 script:
  - nuget restore ./MVVMSkeleton/MVVMSkeleton.sln
- - xbuild ./MVVMSkeleton/MVVMSkeleton.sln /nologo /verbosity:normal /p:Configuration=Debug
+ - xbuild ./MVVMSkeleton/MVVMSkeleton.sln /p:Configuration=Release
