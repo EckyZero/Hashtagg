@@ -8,7 +8,7 @@ before_build:
 
 # package Web Application project for Web Deploy
 build:
-  project: MVVMSkeleton/MVVMSkeleton.sln
+  project: ./MVVMSkeleton/MVVMSkeleton.sln
 
 on_finish:
 - appveyor UnregisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password%
