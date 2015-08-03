@@ -3,19 +3,12 @@ language: objective-c
 env:
  global:
   - EnableNuGetPackageRestore=true 
+  - MONO_VERSION=3.8.0
 
 before_install:
- - wget http://download.mono-project.com/repo/xamarin.gpg
- - sudo apt-key add xamarin.gpg
- - echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee --append /etc/apt/sources.list.d/mono-xamarin.list
- - sudo apt-get update
- - sudo apt-get install mono-complete
- - sudo certmgr -ssl -m https://go.microsoft.com
- - sudo certmgr -ssl -m https://nugetgallery.blob.core.windows.net
- - sudo certmgr -ssl -m https://nuget.org
- - mozroots --import --sync
+ - wget "http://download.mono-project.com/archive/${MONO_VERSION}/macos-10-x86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg"
+ - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
 
 script:
- - chmod +x .ci/packagerestore.sh
- - .ci/packagerestore.sh ./MVVMSkeleton/MVVMSkeleton.sln
+ - nuget restore ./MVVMSkeleton/MVVMSkeleton.sln
  - xbuild ./MVVMSkeleton/MVVMSkeleton.sln /p:Configuration=Debug
