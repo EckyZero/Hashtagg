@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{57D15B6D-9101-4615-8FD3-87565A0BAA5B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Shared.Api</RootNamespace>
+    <AssemblyName>Shared.Api</AssemblyName>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ApiClient.cs" />
+    <Compile Include="Routes.cs" />
+    <Compile Include="Exceptions\ApiException.cs" />
+    <Compile Include="Apis\TwitterApi.cs" />
+    <Compile Include="Interfaces\ITwitterApi.cs" />
+    <Compile Include="Dtos\Twitter\TwitterEntityDto.cs" />
+    <Compile Include="Dtos\Twitter\TwitterFeedItemDto.cs" />
+    <Compile Include="Dtos\Twitter\TwitterUserDto.cs" />
+    <Compile Include="Dtos\Twitter\TwitterUserUrlDto.cs" />
+    <Compile Include="Dtos\Twitter\TwitterUserUrlUrlDto.cs" />
+    <Compile Include="Dtos\Twitter\TwitterUserDescriptionDto.cs" />
+    <Compile Include="Dtos\Twitter\TwitterFeedItemMetaDataDto.cs" />
+    <Compile Include="Dtos\Twitter\TwitterFeedItemMetaDataMediumDto.cs" />
+    <Compile Include="Dtos\Twitter\TwitterFeedItemRetweetedStatusDto.cs" />
+    <Compile Include="Dtos\Twitter\TwitterHashTagDto.cs" />
+    <Compile Include="Dtos\Twitter\TwitterFeedItemExtendedEntityDto.cs" />
+    <Compile Include="Apis\FacebookApi.cs" />
+    <Compile Include="Interfaces\IFacebookApi.cs" />
+    <Compile Include="Dtos\Facebook\FacebookPagingDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookCursorsDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookResponseDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookFeedItemDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookPropertyDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookSharesDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookCommentResponseDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookCommentDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookMessageTagDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookLikeResponseDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookLikeDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookPlaceDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookLocationDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookToFromDto.cs" />
+    <Compile Include="Dtos\Facebook\FacebookActionDto.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\portable-net45+wp80+win8+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared.Common\Shared.Common.csproj">
+      <Project>{CF876A71-9E29-4F7C-ABC7-BE9FE04E47B4}</Project>
+      <Name>Shared.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dtos\" />
+    <Folder Include="Apis\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Dtos\Twitter\" />
+    <Folder Include="Dtos\Facebook\" />
+  </ItemGroup>
+</Project>

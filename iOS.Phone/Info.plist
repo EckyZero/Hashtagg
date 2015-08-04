@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>com.parivedasolutions.projectez</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MinimumOSVersion</key>
+	<string>8.0</string>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+	</array>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SanFranciscoText-ThinItalic.otf</string>
+		<string>SanFranciscoText-Thin.otf</string>
+		<string>SanFranciscoText-SemiboldItalic.otf</string>
+		<string>SanFranciscoText-Semibold.otf</string>
+		<string>SanFranciscoText-RegularItalic.otf</string>
+		<string>SanFranciscoText-Regular.otf</string>
+		<string>SanFranciscoText-MediumItalic.otf</string>
+		<string>SanFranciscoText-Medium.otf</string>
+		<string>SanFranciscoText-LightItalic.otf</string>
+		<string>SanFranciscoText-Light.otf</string>
+		<string>SanFranciscoText-HeavyItalic.otf</string>
+		<string>SanFranciscoText-Heavy.otf</string>
+		<string>SanFranciscoText-BoldItalic.otf</string>
+		<string>SanFranciscoText-Bold.otf</string>
+		<string>SanFranciscoDisplay-Ultralight.otf</string>
+		<string>SanFranciscoDisplay-Thin.otf</string>
+		<string>SanFranciscoDisplay-Semibold.otf</string>
+		<string>SanFranciscoDisplay-Regular.otf</string>
+		<string>SanFranciscoDisplay-Medium.otf</string>
+		<string>SanFranciscoDisplay-Light.otf</string>
+		<string>SanFranciscoDisplay-Heavy.otf</string>
+		<string>SanFranciscoDisplay-Bold.otf</string>
+		<string>SanFranciscoDisplay-Black.otf</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>CFBundleIconFiles</key>
+	<array/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We use your location to provide more accurate search results. </string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We use your location to provide more accurate search results. </string>
+	<key>CFBundleDisplayName</key>
+	<string>Hashtagg</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.0.1</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>projectez</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.parivedasolutions.projectez</string>
+		</dict>
+	</array>
+	<key>Custom Property</key>
+	<string></string>
+	<key>UILaunchStoryboardName</key>
+	<string>Splash</string>
+</dict>
+</plist>

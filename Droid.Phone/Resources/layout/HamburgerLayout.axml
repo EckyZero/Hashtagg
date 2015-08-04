@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:layout_alignParentTop="true"
+        android:id="@+id/hamburgerMenu_toolbar"
+        layout="@layout/Toolbar" />
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/hamburgerMenu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/hamburgerMenu_toolbar">
+        <FrameLayout
+            android:id="@+id/hamburgerMenu_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:layout_width="240dp"
+            android:background="@drawable/App_bg"
+            android:layout_gravity="start"
+            android:layout_height="match_parent">
+            <ListView
+                android:listSelector="@android:color/transparent"
+                android:layout_above="@+id/DrawerFooterMainLayout"
+                android:id="@+id/hamburgerMenu_menu"
+                android:layout_width="240dp"
+                android:layout_height="match_parent"
+                android:choiceMode="singleChoice"
+                android:scrollbars="none"
+                android:background="@drawable/App_bg"
+                android:divider="@android:color/transparent" />
+            <RelativeLayout
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/DrawerFooterMainLayout">
+                <Button
+                    android:text="Sign out"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/DrawerFooterButton"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/ezbutton" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </android.support.v4.widget.DrawerLayout>
+</RelativeLayout>

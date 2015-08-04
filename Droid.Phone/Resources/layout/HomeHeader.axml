@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="115dp"
+    android:id="@+id/HomeHeaderMainLayout"
+    android:background="@android:color/transparent">
+    <RelativeLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/HomeHeaderPaddingLayout"
+        android:layout_alignParentBottom="true"
+        android:background="#00000000" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/HomeHeaderColorLayout"
+        android:layout_above="@id/HomeHeaderPaddingLayout"
+        android:background="@color/carnation"
+        android:layout_alignParentTop="true">
+        <TextView
+            android:text="Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/HomeHeaderUsernameText"
+            android:textSize="28sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="12dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="15dp"
+        android:layout_alignBottom="@id/HomeHeaderPaddingLayout">
+        <ImageView
+            custom:circular_image_border="true"
+            custom:circular_image_border_width="0dp"
+            custom:circular_image_border_color="@android:color/transparent"
+            android:src="@drawable/profile_image_default"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/HomeHeaderImage2"
+            android:translationX="12dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter" />
+        <Droid.Controls.CircularImageView
+            custom:circular_image_border="true"
+            custom:circular_image_border_width="0dp"
+            custom:circular_image_border_color="@android:color/transparent"
+            android:src="@drawable/profile_image_default"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/HomeHeaderImage1"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:translationX="-12dp" />
+    </RelativeLayout>
+</RelativeLayout>

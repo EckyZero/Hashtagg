@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{CF876A71-9E29-4F7C-ABC7-BE9FE04E47B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Shared.Common</RootNamespace>
+    <AssemblyName>Shared.Common</AssemblyName>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Helpers\PropertyExtensions.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="OS Services\GeoLocation.cs" />
+    <Compile Include="OS Services\IBrowserService.cs" />
+    <Compile Include="OS Services\IConnectivityService.cs" />
+    <Compile Include="OS Services\IEmailService.cs" />
+    <Compile Include="OS Services\IExtendedDialogService.cs" />
+    <Compile Include="OS Services\IExtendedNavigationService.cs" />
+    <Compile Include="OS Services\IHttpClientHelper.cs" />
+    <Compile Include="OS Services\IHudService.cs" />
+    <Compile Include="Helpers\ISecureKeyValueStore.cs" />
+    <Compile Include="Helpers\PSColor.cs" />
+    <Compile Include="Helpers\WeakReferenceHelper.cs" />
+    <Compile Include="IoC\UnityServiceLocator.cs" />
+    <Compile Include="IoC\IocContainer.cs" />
+    <Compile Include="Interfaces\IIdentifiable.cs" />
+    <Compile Include="OS Services\IMapService.cs" />
+    <Compile Include="OS Services\IPhoneService.cs" />
+    <Compile Include="Interfaces\ISecureDatabase.cs" />
+    <Compile Include="OS Services\IGeolocator.cs" />
+    <Compile Include="Helpers\TaskExtensions.cs" />
+    <Compile Include="Helpers\ObservableRangeCollection.cs" />
+    <Compile Include="OS Services\IDispatcherService.cs" />
+    <Compile Include="Helpers\DateTimeExtensions.cs" />
+    <Compile Include="Helpers\StringExtensions.cs" />
+    <Compile Include="Helpers\LinkedListExtensions.cs" />
+    <Compile Include="Helpers\DictionaryExtensions.cs" />
+    <Compile Include="BaseException.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Models\Tweet.cs" />
+    <Compile Include="ApplicationResources.Designer.cs">
+      <DependentUpon>ApplicationResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\ITwitterHelper.cs" />
+    <Compile Include="Interfaces\IFacebookHelper.cs" />
+    <Compile Include="Models\FacebookPost.cs" />
+    <Compile Include="Models\FacebookUser.cs" />
+    <Compile Include="Models\FacebookComment.cs" />
+    <Compile Include="Models\SocialAccount.cs" />
+    <Compile Include="Themes\ThemeManager.cs" />
+    <Compile Include="Themes\CarnationTheme.cs" />
+    <Compile Include="Themes\ITheme.cs" />
+    <Compile Include="Models\TwitterUser.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\portable-net45+wp80+win8+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlcipher">
+      <HintPath>..\PCL\Libs\iOS\Mono.Data.Sqlcipher.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\packages\MvvmLightLibs.5.1.1.0\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras">
+      <HintPath>..\packages\MvvmLightLibs.5.1.1.0\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="ApplicationResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Themes\" />
+  </ItemGroup>
+</Project>
