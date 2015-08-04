@@ -2,9 +2,9 @@ configuration: Debug
 
 # restore NuGet packages before running MSBuild
 before_build:
-  - nuget restore
+- nuget restore MVVMSkeleton\MVVMSkeleton.sln
+- appveyor RegisterXamarinLicense MVVMSkeleton\MVVMSkeleton.sln -Email %xamarin_email% -Password %xamarin_password% -Product iOS
 
-# package Web Application project for Web Deploy
-build:
-  verbosity: minimal
-  publish_wap: true
+on_finish:
+- appveyor UnregisterXamarinLicense MVVMSkeleton\MVVMSkeleton.sln -Email %xamarin_email% -Password %xamarin_password%
+
