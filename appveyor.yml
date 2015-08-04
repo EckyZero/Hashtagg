@@ -5,5 +5,5 @@ before_build:
 - nuget restore MVVMSkeleton.sln
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product iOS
  
- on_finish:
- - appveyor UnregisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password%
+on_finish:
+- appveyor UnregisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password%
