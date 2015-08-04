@@ -3,8 +3,8 @@ configuration: Debug
 # restore NuGet packages before running MSBuild
 before_build:
 - nuget restore MVVMSkeleton\MVVMSkeleton.sln
-- appveyor RegisterXamarinLicense -Project MVVMSkeleton\MVVMSkeleton.sln -Email %xamarin_email% -Password %xamarin_password% -Product iOS
+- appveyor RegisterXamarinLicense MVVMSkeleton\MVVMSkeleton.sln -Email %xamarin_email% -Password %xamarin_password% -Product iOS
 
 on_finish:
-- appveyor UnregisterXamarinLicense -Project MVVMSkeleton\MVVMSkeleton.sln -Email %xamarin_email% -Password %xamarin_password%
+- appveyor UnregisterXamarinLicense MVVMSkeleton\MVVMSkeleton.sln -Email %xamarin_email% -Password %xamarin_password%
 
