@@ -8,3 +8,4 @@ before_build:
  
 on_finish:
 - appveyor UnregisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password%
+
