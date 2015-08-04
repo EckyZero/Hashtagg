@@ -2,7 +2,7 @@ configuration: Debug
 
 # restore NuGet packages before running MSBuild
 before_build:
-- nuget restore MVVMSkeleton.sln
+- nuget restore Shared.VM\Shared.VM.csproj
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product iOS
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
  
