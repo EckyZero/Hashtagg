@@ -1,5 +1,0 @@
-configuration: Debug
-
-# restore NuGet packages before running MSBuild
-before_build:
-- nuget restore MVVMSkeleton.sln
