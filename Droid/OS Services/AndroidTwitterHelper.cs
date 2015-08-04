@@ -96,7 +96,7 @@ namespace Droid
 
 		public void Synchronize (SocialAccount socialAccount)
 		{
-			var store = AccountStore.Create ();
+			var store = AccountStore.Create (_activity);
 			var account = store.FindAccountsForService (Config.TWITTER_SERVICE_ID).FirstOrDefault();
 
 			// merge on unique keys

@@ -56,20 +56,14 @@
     <Reference Include="Telerik.Xamarin.iOS">
       <HintPath>..\ThirdParty\Telerik\iOS\Telerik.Xamarin.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="ModernHttpClient">
-      <HintPath>..\Components\modernhttpclient-2.2.0\lib\ios-unified\ModernHttpClient.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Data.Sqlcipher">
-      <HintPath>..\Components\sqlcipher-for-xamarin-ios-3.2.1.1\lib\ios-unified\Mono.Data.Sqlcipher.dll</HintPath>
+    <Reference Include="SDWebImage">
+      <HintPath>..\Components\sdwebimage-3.7.1.4\lib\ios-unified\SDWebImage.dll</HintPath>
     </Reference>
     <Reference Include="BTProgressHUD">
       <HintPath>..\Components\btprogresshud-1.15\lib\ios-unified\BTProgressHUD.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Insights">
-      <HintPath>..\packages\Xamarin.Insights.1.10.2.110\lib\Xamarin.iOS10\Xamarin.Insights.dll</HintPath>
-    </Reference>
-    <Reference Include="PLCrashReporterUnifiedBinding">
-      <HintPath>..\packages\Xamarin.Insights.1.10.2.110\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\Components\modernhttpclient-2.2.0\lib\ios-unified\ModernHttpClient.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Auth.iOS">
       <HintPath>..\Components\xamarin.social-1.1.7\lib\ios-unified\Xamarin.Auth.iOS.dll</HintPath>
@@ -80,8 +74,14 @@
     <Reference Include="Xamarin.Social.iOS">
       <HintPath>..\Components\xamarin.social-1.1.7\lib\ios-unified\Xamarin.Social.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="SDWebImage">
-      <HintPath>..\Components\sdwebimage-3.7.1.4\lib\ios-unified\SDWebImage.dll</HintPath>
+    <Reference Include="Mono.Data.Sqlcipher">
+      <HintPath>..\Components\sqlcipher-for-xamarin-ios-3.3.1.0\lib\ios-unified\Mono.Data.Sqlcipher.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\Xamarin.iOS10\Xamarin.Insights.dll</HintPath>
+    </Reference>
+    <Reference Include="PLCrashReporterUnifiedBinding">
+      <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +134,7 @@
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Insights.1.10.5\build\Xamarin.iOS10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.5\build\Xamarin.iOS10\Xamarin.Insights.targets')" />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
@@ -146,12 +147,12 @@
       <Version>2.2.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
-    <XamarinComponentReference Include="sqlcipher-for-xamarin-ios">
-      <Version>3.2.1.1</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
     <XamarinComponentReference Include="xamarin.social">
       <Version>1.1.7</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="sqlcipher-for-xamarin-ios">
+      <Version>3.3.1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
