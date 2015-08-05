@@ -5,6 +5,7 @@ before_build:
 - nuget restore
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product iOS
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
+- xamarin-component restore
  
 on_finish:
 - appveyor UnregisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password%
