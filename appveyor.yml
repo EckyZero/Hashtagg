@@ -7,11 +7,12 @@ install:
 - ps: 7z x $zipPath
 
 # restore NuGet packages before running MSBuild
+# - send "%xamarin_password%\r"
 before_build:
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
 - mono xamarin-component.exe login %xamarin_email%
-- send "%xamarin_password%\r"
 - mono xamarin-component.exe restore MVVMSkeleton.sln
+- send "y\r"
 - nuget restore
  
 on_finish:
