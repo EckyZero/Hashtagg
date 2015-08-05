@@ -212,6 +212,10 @@
     <Compile Include="Controllers\CommentController.designer.cs">
       <DependentUpon>CommentController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cells\DefaultHeaderCell.cs" />
+    <Compile Include="Cells\DefaultHeaderCell.designer.cs">
+      <DependentUpon>DefaultHeaderCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

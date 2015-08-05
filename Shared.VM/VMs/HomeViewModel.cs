@@ -38,7 +38,7 @@ namespace Shared.VM
 		public Action<List<string>> RequestHeaderImages { get; set; }
 		public Action<BaseContentCardViewModel> RequestPhotoViewer { get; set; }
 		public Action<BaseContentCardViewModel> RequestMovieViewer { get; set; }
-		public Action<BaseContentCardViewModel> RequestCommentPage { get; set; }
+		public Action<CommentViewModel> RequestCommentPage { get; set; }
 
 		#endregion
 

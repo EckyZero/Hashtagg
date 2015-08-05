@@ -50,8 +50,6 @@
     <Compile Include="VMs\Menu\FacebookMenuItemViewModel.cs" />
     <Compile Include="VMs\MainViewModel.cs" />
     <Compile Include="VMs\Comment\CommentViewModel.cs" />
-    <Compile Include="VMs\Comment\BaseCommentCardViewModel.cs" />
-    <Compile Include="VMs\Comment\TwitterCommentCardViewModel.cs" />
     <Compile Include="VMs\Comment\FacebookCommentCardViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

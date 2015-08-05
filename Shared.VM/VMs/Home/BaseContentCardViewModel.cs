@@ -2,6 +2,8 @@
 using GalaSoft.MvvmLight.Command;
 using Shared.Common;
 using System.Text;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Shared.VM
 {
@@ -27,7 +29,7 @@ namespace Shared.VM
 
 		public Action<BaseContentCardViewModel> RequestPhotoViewer { get; set; }
 		public Action<BaseContentCardViewModel> RequestMovieViewer { get; set; }
-		public Action<BaseContentCardViewModel> RequestCommentPage { get; set; }
+		public Action<CommentViewModel> RequestCommentPage { get; set; }
 
 		#endregion
 
@@ -38,7 +40,7 @@ namespace Shared.VM
 			set { _listItemType = value; } 
 		}
 			
-		public bool ShowTimeline { get; }
+		public bool ShowTimeline { get; protected set; }
 		public abstract string ImageUrl { get; }
 		public abstract string UserImageUrl { get; }
 		public abstract string UserName { get; }
@@ -53,6 +55,14 @@ namespace Shared.VM
 		public abstract bool IsSharedByUser { get; set; }
 		public abstract bool IsMovie { get; }
 		public abstract string MovieUrl { get; }
+
+		public bool ShowLikeButton { get; protected set; } = true;
+		public bool ShowCommentButton { get; protected set; } = true;
+		public bool ShowShareButton { get; protected set; } = true;
+		public bool ShowDateTime { get; protected set; } = true;
+		public bool ShowSocialMediaImage { get; protected set; } = true;
+
+		public List<BaseContentCardViewModel> CommentViewModels { get; set; }
 
 		public string DisplayDateTime { 
 			get { return OrderByDateTime.ToRelativeString (); }
@@ -119,6 +129,7 @@ namespace Shared.VM
 		protected BaseContentCardViewModel () 
 		{ 
 			ShowTimeline = false;
+			CommentViewModels = new List<BaseContentCardViewModel> ();
 		}
 
 		protected override void InitCommands ()
@@ -134,10 +145,7 @@ namespace Shared.VM
 
 		protected virtual void SelectCommandExecute ()
 		{
-			if(RequestCommentPage != null)
-			{
-				RequestCommentPage (this);
-			}
+			CommentCommandExecute ();
 		}
 
 		protected virtual void LikeCommandExecute ()
@@ -145,11 +153,13 @@ namespace Shared.VM
 			// TODO: Repond to like selection
 		}
 
-		protected virtual void CommentCommandExecute ()
+		protected virtual async void CommentCommandExecute ()
 		{
 			if(RequestCommentPage != null)
 			{
-				RequestCommentPage (this);
+				var viewModel = new CommentViewModel (this);
+
+				RequestCommentPage (viewModel);
 			}
 		}
 
@@ -196,6 +206,9 @@ namespace Shared.VM
 			}
 			return builder.ToString ();
 		}
+
+		// Make sure to set the CommentViewModels Property before completing this
+		public virtual async Task GetComments () { }
 
 		#endregion
 	}

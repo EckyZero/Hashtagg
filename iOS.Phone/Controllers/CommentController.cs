@@ -4,15 +4,40 @@ using System;
 
 using Foundation;
 using UIKit;
+using Shared.VM;
 
 namespace iOS.Phone
 {
 	public partial class CommentController : UIViewController
 	{
+		#region Properties
+
+		public CommentViewModel ViewModel { get; set; }
+
+		#endregion
+
 		#region Lifecycle
 
-		public CommentController (IntPtr handle) : base (handle)
+		public CommentController (IntPtr handle) : base (handle) { }
+
+		public override async void ViewDidLoad ()
 		{
+			base.ViewDidLoad ();
+
+			await ViewModel.DidLoad ();
+		}
+
+		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
+		{
+			base.PrepareForSegue (segue, sender);
+
+			if(segue.DestinationViewController.GetType() == typeof(PSObservableTableController)) {
+
+				var tableController = segue.DestinationViewController as PSObservableTableController;
+
+				tableController.Collection = ViewModel.CardViewModels;
+				tableController.SetEstimatedHeight (175);
+			}
 		}
 
 		#endregion

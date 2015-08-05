@@ -1,5 +1,7 @@
 ﻿using System;
 using Shared.Common;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace Shared.VM
 {
@@ -34,17 +36,28 @@ namespace Shared.VM
 		{
 			PrimaryCardViewModel = viewModel;
 			CardViewModels.Add (PrimaryCardViewModel);
-
-			for (int i = 0; i < 10; i++)
-			{
-//				var vm = new TwitterCommentCardViewModel() {  = "HELLO WORLD!" };
-//				CardViewModels.Add(vm);
-			}
 		}
 
 		#endregion
 
 		#region Methods
+
+		public override async Task DidLoad ()
+		{
+
+			// Only fetch new comments as needed
+			if(PrimaryCardViewModel.CommentCount != 0 || PrimaryCardViewModel.CommentViewModels.Count == 0)
+			{
+				await PrimaryCardViewModel.GetComments ();
+			}
+
+			// populate all cards
+			// TODO: Insert section headers foreach 15 minute grouping
+			var viewModels = PrimaryCardViewModel.CommentViewModels.OrderBy (vm => vm.OrderByDateTime);
+//			var dateTimes = viewModels.Select (vm => vm.OrderByDateTime);
+
+			CardViewModels.AddRange (viewModels);
+		}
 
 		protected override void InitCommands ()
 		{

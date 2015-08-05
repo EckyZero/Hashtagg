@@ -3,6 +3,8 @@ using Shared.Common;
 using Shared.Service;
 using Microsoft.Practices.Unity;
 using System.Text;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Shared.VM
 {
@@ -144,7 +146,24 @@ namespace Shared.VM
 		{
 			base.CommentCommandExecute ();
 
-			// TODO: present screen to enter comment
+//			if()
+		}
+
+		public override async Task GetComments ()
+		{
+			if(CommentViewModels == null)
+			{
+				CommentViewModels = new List<BaseContentCardViewModel> ();
+			}
+
+			CommentViewModels.Clear ();
+
+			foreach (FacebookComment comment in _facebookPost.Comments)
+			{
+				var viewModel = new FacebookCommentCardViewModel (comment);
+
+				CommentViewModels.Add (viewModel);
+			}
 		}
 
 		#endregion

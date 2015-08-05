@@ -120,6 +120,7 @@ namespace iOS.Phone
 				_tableController = segue.DestinationViewController as PSObservableTableController;
 
 				_tableController.Collection = ViewModel.CardViewModels;
+				_tableController.IsPullToRefreshEnabled = true;
 				_tableController.OnPullToRefresh = OnPullToRefresh;
 				_tableController.HandleScrolled = OnScrolled;
 				_tableController.HandleDraggingStarted = OnDraggingStarted;
@@ -323,10 +324,12 @@ namespace iOS.Phone
 			PresentMoviePlayerViewController (_movieController);
 		}
 
-		private void OnRequestCommentPage (BaseContentCardViewModel viewModel)
+		private void OnRequestCommentPage (CommentViewModel viewModel)
 		{
 			var storyboard = UIStoryboard.FromName ("Comment", null);
-			var controller = storyboard.InstantiateInitialViewController ();
+			var controller = storyboard.InstantiateInitialViewController () as CommentController;
+
+			controller.ViewModel = viewModel;
 
 			NavigationController.PushViewController (controller, true);
 		}

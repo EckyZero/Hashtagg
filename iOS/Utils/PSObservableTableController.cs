@@ -23,20 +23,29 @@ namespace iOS
 		public ObservableRangeCollection<IListItem> Collection { get; set; }
 		public Action<UIRefreshControl> OnPullToRefresh { get; set; }
 
+		public bool IsPullToRefreshEnabled { get; set; }
+
 		#endregion
 
 		#region Methods
 
-		public PSObservableTableController (IntPtr handle) : base (handle) {}
+		public PSObservableTableController (IntPtr handle) : base (handle) 
+		{
+			IsPullToRefreshEnabled = false;
+		}
 
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 
-			RefreshControl = new UIRefreshControl();
-			RefreshControl.ValueChanged += HandleValueChanged;
-			RefreshControl.BeginRefreshing ();
-			RefreshControl.EndRefreshing ();
+
+			if(IsPullToRefreshEnabled)
+			{
+				RefreshControl = new UIRefreshControl();
+				RefreshControl.ValueChanged += HandleValueChanged;
+				RefreshControl.BeginRefreshing ();
+				RefreshControl.EndRefreshing ();	
+			}
 
 			TableView.RowHeight = UITableView.AutomaticDimension;
 		}

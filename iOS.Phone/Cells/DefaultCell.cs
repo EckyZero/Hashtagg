@@ -83,7 +83,7 @@ namespace iOS.Phone
 			BodyTextView.Text = null;
 			BodyTextView.Text = ViewModel.Text;
 			BodyTextViewHeightConstraint.Constant = BodyTextView.SizeThatFits(new CGSize(BodyTextView.Frame.Width, nfloat.MaxValue)).Height;
-			TimeLabel.Text = ViewModel.DisplayDateTime;
+			TimeLabel.Text = ViewModel.ShowDateTime ? ViewModel.DisplayDateTime : string.Empty;
 			NameLabel.SetHighlightText (ViewModel.UserName, ViewModel.UserName.IndexOf ("@"), UIColor.LightGray);
 
 			LikeButton.SetTitle (ViewModel.LikeButtonText, UIControlState.Normal);
@@ -102,6 +102,7 @@ namespace iOS.Phone
 			}
 
 			SocialTypeImageView.Image = UIImage.FromBundle (ViewModel.SocialMediaImage);
+			SocialTypeImageView.Hidden = !ViewModel.ShowSocialMediaImage;
 			UserImageView.SetImage (
 				url: new NSUrl (ViewModel.UserImageUrl), 
 				placeholder: UIImage.FromBundle (ViewModel.UserImagePlaceholder)
@@ -128,6 +129,9 @@ namespace iOS.Phone
 				ContainerViewLeadingConstraint.Constant = _containerViewDefaultLeadingConstraint;
 				TimelineView.Hidden = true;
 			}
+
+			CommentButton.Hidden = !ViewModel.ShowCommentButton;
+			ShareButton.Hidden = !ViewModel.ShowShareButton;
 		}
 
 		void InitBindings ()
