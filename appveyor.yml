@@ -12,7 +12,7 @@ install:
 before_build:
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
 - mono xamarin-component.exe restore MVVMSkeleton.sln
-- send "y\r"
+- send "Y\r"
 - nuget restore
  
 on_finish:
