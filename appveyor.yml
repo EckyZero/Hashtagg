@@ -5,6 +5,7 @@ before_build:
 - nuget restore
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product iOS
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
+- mono xamarin-component.exe restore MVVMSkeleton.sln
 
 install:
 - set PATH=C:\Program Files (x86)\Mono\bin;%PATH%
