@@ -18,6 +18,8 @@ namespace iOS.Phone
 		#region Variables
 
 		private nfloat _photoImageViewDefaultHeightConstraint = 174;
+		private nfloat _containerViewDefaultLeadingConstraint = 8;
+		private nfloat _containerViewTimelineLeadingConstraint = 38;
 
 		#endregion
 
@@ -114,6 +116,17 @@ namespace iOS.Phone
 				);	
 			} else {
 				PhotoImageView.Image = null;
+			}
+
+			if(ViewModel.ShowTimeline)
+			{
+				ContainerViewLeadingConstraint.Constant = _containerViewTimelineLeadingConstraint;
+				TimelineView.Hidden = false;
+			}
+			else
+			{
+				ContainerViewLeadingConstraint.Constant = _containerViewDefaultLeadingConstraint;
+				TimelineView.Hidden = true;
 			}
 		}
 

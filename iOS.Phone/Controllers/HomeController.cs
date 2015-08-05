@@ -108,6 +108,7 @@ namespace iOS.Phone
 			ViewModel.RequestHeaderImages = OnRequestHeaderImages;
 			ViewModel.RequestPhotoViewer = OnRequestPhotoViewer;
 			ViewModel.RequestMovieViewer = OnRequestMovieViewer;
+			ViewModel.RequestCommentPage = OnRequestCommentPage;
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
@@ -322,8 +323,15 @@ namespace iOS.Phone
 			PresentMoviePlayerViewController (_movieController);
 		}
 
+		private void OnRequestCommentPage (BaseContentCardViewModel viewModel)
+		{
+			var storyboard = UIStoryboard.FromName ("Comment", null);
+			var controller = storyboard.InstantiateInitialViewController ();
+
+			NavigationController.PushViewController (controller, true);
+		}
+
 		#endregion
-//		private void OnRequest
 	}
 }
 

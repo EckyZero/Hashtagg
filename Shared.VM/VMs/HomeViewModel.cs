@@ -36,8 +36,9 @@ namespace Shared.VM
 
 		public Action RequestCompleted { get; set; }
 		public Action<List<string>> RequestHeaderImages { get; set; }
-		public Action<BaseContentCardViewModel> RequestPhotoViewer { get; set;}
-		public Action<BaseContentCardViewModel> RequestMovieViewer { get; set;}
+		public Action<BaseContentCardViewModel> RequestPhotoViewer { get; set; }
+		public Action<BaseContentCardViewModel> RequestMovieViewer { get; set; }
+		public Action<BaseContentCardViewModel> RequestCommentPage { get; set; }
 
 		#endregion
 
@@ -248,6 +249,7 @@ namespace Shared.VM
 			{
 				viewModel.RequestMovieViewer = RequestMovieViewer;
 				viewModel.RequestPhotoViewer = RequestPhotoViewer;
+				viewModel.RequestCommentPage = RequestCommentPage;
 			}
 
 			IsRefreshing = false;

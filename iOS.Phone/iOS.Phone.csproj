@@ -208,6 +208,10 @@
     <Compile Include="Cells\MenuItemCell.designer.cs">
       <DependentUpon>MenuItemCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\CommentController.designer.cs">
+      <DependentUpon>CommentController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -270,6 +274,7 @@
     <InterfaceDefinition Include="Menu.storyboard" />
     <InterfaceDefinition Include="Splash.storyboard" />
     <InterfaceDefinition Include="Onboarding.storyboard" />
+    <InterfaceDefinition Include="Comment.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Instagram%402x.png" />

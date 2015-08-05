@@ -25,8 +25,9 @@ namespace Shared.VM
 
 		#region Actions
 
-		public Action<BaseContentCardViewModel> RequestPhotoViewer { get; set;}
-		public Action<BaseContentCardViewModel> RequestMovieViewer { get; set;}
+		public Action<BaseContentCardViewModel> RequestPhotoViewer { get; set; }
+		public Action<BaseContentCardViewModel> RequestMovieViewer { get; set; }
+		public Action<BaseContentCardViewModel> RequestCommentPage { get; set; }
 
 		#endregion
 
@@ -37,6 +38,7 @@ namespace Shared.VM
 			set { _listItemType = value; } 
 		}
 			
+		public bool ShowTimeline { get; }
 		public abstract string ImageUrl { get; }
 		public abstract string UserImageUrl { get; }
 		public abstract string UserName { get; }
@@ -114,7 +116,10 @@ namespace Shared.VM
 
 		#region Methods
 
-		protected BaseContentCardViewModel () { }
+		protected BaseContentCardViewModel () 
+		{ 
+			ShowTimeline = false;
+		}
 
 		protected override void InitCommands ()
 		{
@@ -129,7 +134,10 @@ namespace Shared.VM
 
 		protected virtual void SelectCommandExecute ()
 		{
-			// TODO: Repond to card selection
+			if(RequestCommentPage != null)
+			{
+				RequestCommentPage (this);
+			}
 		}
 
 		protected virtual void LikeCommandExecute ()
@@ -139,7 +147,10 @@ namespace Shared.VM
 
 		protected virtual void CommentCommandExecute ()
 		{
-			// TODO: Repond to comment selection
+			if(RequestCommentPage != null)
+			{
+				RequestCommentPage (this);
+			}
 		}
 
 		protected virtual void ShareCommandExecute ()

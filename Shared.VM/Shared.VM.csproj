@@ -49,6 +49,10 @@
     <Compile Include="VMs\Menu\TwitterMenuItemViewModel.cs" />
     <Compile Include="VMs\Menu\FacebookMenuItemViewModel.cs" />
     <Compile Include="VMs\MainViewModel.cs" />
+    <Compile Include="VMs\Comment\CommentViewModel.cs" />
+    <Compile Include="VMs\Comment\BaseCommentCardViewModel.cs" />
+    <Compile Include="VMs\Comment\TwitterCommentCardViewModel.cs" />
+    <Compile Include="VMs\Comment\FacebookCommentCardViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared.Common\Shared.Common.csproj">
@@ -88,5 +92,6 @@
     <Folder Include="Interfaces\" />
     <Folder Include="VMs\Menu\" />
     <Folder Include="VMs\Home\" />
+    <Folder Include="VMs\Comment\" />
   </ItemGroup>
 </Project>

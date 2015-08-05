@@ -28,6 +28,9 @@ namespace iOS.Phone
 		UIKit.UIView ContainerView { get; set; }
 
 		[Outlet]
+		UIKit.NSLayoutConstraint ContainerViewLeadingConstraint { get; set; }
+
+		[Outlet]
 		UIKit.UIButton LikeButton { get; set; }
 
 		[Outlet]
@@ -49,10 +52,18 @@ namespace iOS.Phone
 		UIKit.UILabel TimeLabel { get; set; }
 
 		[Outlet]
+		UIKit.UIView TimelineView { get; set; }
+
+		[Outlet]
 		UIKit.UIImageView UserImageView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (TimelineView != null) {
+				TimelineView.Dispose ();
+				TimelineView = null;
+			}
+
 			if (ActivityIndicator != null) {
 				ActivityIndicator.Dispose ();
 				ActivityIndicator = null;
@@ -116,6 +127,11 @@ namespace iOS.Phone
 			if (UserImageView != null) {
 				UserImageView.Dispose ();
 				UserImageView = null;
+			}
+
+			if (ContainerViewLeadingConstraint != null) {
+				ContainerViewLeadingConstraint.Dispose ();
+				ContainerViewLeadingConstraint = null;
 			}
 		}
 	}

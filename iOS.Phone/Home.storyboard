@@ -187,17 +187,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nBZ-gu-v7R" customClass="UIImageViewClickable">
-                                            <rect key="frame" x="8" y="14" width="304" height="174"/>
+                                            <rect key="frame" x="40" y="14" width="272" height="174"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="174" id="nwk-32-EVd"/>
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2q5-aI-gzd" userLabel="ContainerView">
-                                            <rect key="frame" x="8" y="188" width="304" height="123.5"/>
+                                            <rect key="frame" x="40" y="188" width="272" height="123.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Susan Strong @SueStrong" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0K-Bl-upT">
-                                                    <rect key="frame" x="36" y="6" width="194" height="16"/>
+                                                    <rect key="frame" x="36" y="6" width="162" height="16"/>
                                                     <fontDescription key="fontDescription" name="SanFranciscoText-Medium" family="San Francisco Text" pointSize="13"/>
                                                     <color key="textColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -209,14 +209,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajQ-5p-Fdx">
-                                                    <rect key="frame" x="24" y="97" width="280" height="1"/>
+                                                    <rect key="frame" x="24" y="97" width="248" height="1"/>
                                                     <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="v7x-nM-7Pc"/>
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOd-o6-K6C">
-                                                    <rect key="frame" x="24" y="98" width="93.5" height="25"/>
+                                                    <rect key="frame" x="24" y="98" width="82.5" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="Uxk-b0-GQ6"/>
                                                     </constraints>
@@ -227,7 +227,7 @@
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmw-Hj-7XP">
-                                                    <rect key="frame" x="117" y="98" width="93" height="25"/>
+                                                    <rect key="frame" x="106.5" y="98" width="82" height="25"/>
                                                     <fontDescription key="fontDescription" name="SanFranciscoText-Semibold" family="San Francisco Text" pointSize="11"/>
                                                     <state key="normal" title="Comment (123)">
                                                         <color key="titleColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -235,7 +235,7 @@
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gu3-IX-I55">
-                                                    <rect key="frame" x="210" y="98" width="93.5" height="25"/>
+                                                    <rect key="frame" x="189" y="98" width="82.5" height="25"/>
                                                     <fontDescription key="fontDescription" name="SanFranciscoText-Semibold" family="San Francisco Text" pointSize="11"/>
                                                     <state key="normal" title="Shared (123)">
                                                         <color key="titleColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -243,7 +243,7 @@
                                                     </state>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Lorem ipsum dolor sit amet, consectetur adipscing elit. Praesent enim elit." translatesAutoresizingMaskIntoConstraints="NO" id="CWP-pN-93M">
-                                                    <rect key="frame" x="36" y="44" width="249" height="31.5"/>
+                                                    <rect key="frame" x="36" y="44" width="217" height="31.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="31.5" id="bb4-oz-eGc"/>
@@ -289,32 +289,42 @@
                                             </constraints>
                                         </imageView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Facebook.png" translatesAutoresizingMaskIntoConstraints="NO" id="ruf-VC-Mdn">
-                                            <rect key="frame" x="15" y="176" width="24" height="24"/>
+                                            <rect key="frame" x="47" y="176" width="24" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="24" id="fdT-DA-0up"/>
                                                 <constraint firstAttribute="height" constant="24" id="nTg-Ym-rAD"/>
                                             </constraints>
                                         </imageView>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jie-V4-OzK">
-                                            <rect key="frame" x="150" y="91" width="20" height="20"/>
+                                            <rect key="frame" x="166" y="91" width="20" height="20"/>
                                         </activityIndicatorView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7x-CC-dnx">
+                                            <rect key="frame" x="19" y="0.0" width="2" height="311.5"/>
+                                            <color key="backgroundColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="2" id="0z8-4X-eQh"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstItem="n7x-CC-dnx" firstAttribute="leading" secondItem="MN0-6a-W5I" secondAttribute="leading" constant="19" id="1CH-lg-aSg"/>
                                         <constraint firstItem="jie-V4-OzK" firstAttribute="centerY" secondItem="nBZ-gu-v7R" secondAttribute="centerY" id="2PY-X1-j6d"/>
+                                        <constraint firstItem="n7x-CC-dnx" firstAttribute="top" secondItem="MN0-6a-W5I" secondAttribute="top" id="2bd-r0-we3"/>
                                         <constraint firstItem="nBZ-gu-v7R" firstAttribute="leading" secondItem="2q5-aI-gzd" secondAttribute="leading" id="E5m-uG-zVJ"/>
                                         <constraint firstItem="jie-V4-OzK" firstAttribute="centerX" secondItem="nBZ-gu-v7R" secondAttribute="centerX" id="FfW-Fa-WgZ"/>
                                         <constraint firstAttribute="trailing" secondItem="dXO-hc-AOq" secondAttribute="trailing" constant="32" id="MEP-dr-Fd7"/>
                                         <constraint firstAttribute="bottom" secondItem="2q5-aI-gzd" secondAttribute="bottom" constant="0.5" id="MPW-Ej-iMH"/>
                                         <constraint firstAttribute="trailing" secondItem="2q5-aI-gzd" secondAttribute="trailing" constant="8" id="MTg-T7-9Xf"/>
+                                        <constraint firstItem="2q5-aI-gzd" firstAttribute="leading" secondItem="ruf-VC-Mdn" secondAttribute="trailing" constant="-31" id="Mvc-UO-Z3f"/>
                                         <constraint firstItem="dXO-hc-AOq" firstAttribute="centerY" secondItem="ruf-VC-Mdn" secondAttribute="centerY" id="NQX-vP-P0P"/>
                                         <constraint firstItem="dXO-hc-AOq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MN0-6a-W5I" secondAttribute="top" priority="999" constant="14" id="Qqc-iK-vbv"/>
                                         <constraint firstItem="nBZ-gu-v7R" firstAttribute="trailing" secondItem="2q5-aI-gzd" secondAttribute="trailing" id="XnR-L9-3CF"/>
+                                        <constraint firstAttribute="bottom" secondItem="n7x-CC-dnx" secondAttribute="bottom" id="aPM-YY-gTU"/>
                                         <constraint firstItem="nBZ-gu-v7R" firstAttribute="top" secondItem="MN0-6a-W5I" secondAttribute="top" priority="998" constant="14" id="b8l-ax-9rg"/>
                                         <constraint firstItem="2q5-aI-gzd" firstAttribute="top" secondItem="dXO-hc-AOq" secondAttribute="bottom" constant="-19" id="gM9-tl-L5r"/>
                                         <constraint firstItem="2q5-aI-gzd" firstAttribute="top" secondItem="nBZ-gu-v7R" secondAttribute="bottom" id="h94-0S-Qwg"/>
-                                        <constraint firstItem="2q5-aI-gzd" firstAttribute="leading" secondItem="MN0-6a-W5I" secondAttribute="leading" constant="8" id="jhA-d4-mtZ"/>
-                                        <constraint firstItem="ruf-VC-Mdn" firstAttribute="leading" secondItem="MN0-6a-W5I" secondAttribute="leading" constant="15" id="tMc-uw-fMQ"/>
+                                        <constraint firstItem="2q5-aI-gzd" firstAttribute="leading" secondItem="MN0-6a-W5I" secondAttribute="leading" constant="40" id="jhA-d4-mtZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -324,6 +334,7 @@
                                     <outlet property="BodyTextViewHeightConstraint" destination="bb4-oz-eGc" id="qyu-uH-8xD"/>
                                     <outlet property="CommentButton" destination="mmw-Hj-7XP" id="qwh-3T-yqb"/>
                                     <outlet property="ContainerView" destination="2q5-aI-gzd" id="AHE-dl-b9g"/>
+                                    <outlet property="ContainerViewLeadingConstraint" destination="jhA-d4-mtZ" id="y0B-Hd-NkE"/>
                                     <outlet property="LikeButton" destination="aOd-o6-K6C" id="3aB-YC-v0h"/>
                                     <outlet property="NameLabel" destination="k0K-Bl-upT" id="JlR-jE-cVo"/>
                                     <outlet property="PhotoImageView" destination="nBZ-gu-v7R" id="IVc-oY-ZJT"/>
@@ -331,6 +342,7 @@
                                     <outlet property="ShareButton" destination="Gu3-IX-I55" id="CFs-Pf-fIf"/>
                                     <outlet property="SocialTypeImageView" destination="dXO-hc-AOq" id="dE7-Xa-BBz"/>
                                     <outlet property="TimeLabel" destination="PlL-0V-pmU" id="J6J-ug-wIO"/>
+                                    <outlet property="TimelineView" destination="n7x-CC-dnx" id="FEh-Rm-Lea"/>
                                     <outlet property="UserImageView" destination="ruf-VC-Mdn" id="tkQ-Dn-6ai"/>
                                 </connections>
                             </tableViewCell>

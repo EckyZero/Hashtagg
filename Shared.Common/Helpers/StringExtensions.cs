@@ -55,7 +55,6 @@ namespace Shared.Common
 
 			return sb.ToString ();
 		}
-
 	}
 }
 
