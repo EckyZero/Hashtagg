@@ -159,4 +159,10 @@
   	<data name="Share" xml:space="preserve">
     	<value>Share</value>
   	</data>
+  	<data name="Now" xml:space="preserve">
+    	<value>Now</value>
+  	</data>
+  	<data name="Comments" xml:space="preserve">
+    	<value>Comments</value>
+  	</data>
 </root>

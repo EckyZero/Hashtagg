@@ -24,13 +24,31 @@ namespace iOS.Phone
 			CircleView.Layer.CornerRadius = CircleView.Frame.Height / 2;
 			CircleView.Layer.BorderColor = ThemeManager.Instance.CurrentTheme.PrimaryColor.ToUIColor().CGColor;
 			CircleView.Layer.BorderWidth = 2;
+
+			UserInteractionEnabled = false;
 		}
 
 		protected override void ConfigureSubviews (IListItem item)
 		{
 			var viewModel = item as HeaderCardViewModel;
 
-			TitleLabel.Text = viewModel.Time;
+			TitleLabel.Text = viewModel.Title;
+
+			if(viewModel.Position == Position.Top)
+			{
+				TimeLineViewTopConstraint.Constant = 18;
+				TimeLineBottomConstraint.Constant = 0;
+			}
+			else if(viewModel.Position == Position.Middle)
+			{
+				TimeLineViewTopConstraint.Constant = 0;
+				TimeLineBottomConstraint.Constant = 0;
+			}
+			else if(viewModel.Position == Position.Bottom)
+			{
+				TimeLineViewTopConstraint.Constant = 0;
+				TimeLineBottomConstraint.Constant = 2;
+			}
 		}
 
 		#endregion

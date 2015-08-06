@@ -36,15 +36,17 @@ namespace Shared.Common
 			}
 			else if (delta < 45 * MINUTE)
 			{
-				value = ts.Minutes + " min";
+				var minmins = (ts.Minutes == 1) ? "min" : "mins";
+
+				value = ts.Minutes + " " + minmins + " ago";
 			}
 			else if (delta < 120 * MINUTE)
 			{
-				value = "1 hr";
+				value = "1 hr ago";
 			}
 			else if (delta < 24 * HOUR)
 			{
-				value = ts.Hours + " hrs";
+				value = ts.Hours + " hrs ago";
 			}
 			else if (delta < 48 * HOUR)
 			{

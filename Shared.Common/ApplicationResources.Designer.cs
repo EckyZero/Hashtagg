@@ -47,6 +47,12 @@ namespace Shared.Common {
             }
         }
         
+        public static string Now {
+            get {
+                return ResourceManager.GetString("Now", resourceCulture);
+            }
+        }
+        
         public static string Done {
             get {
                 return ResourceManager.GetString("Done", resourceCulture);
@@ -104,6 +110,12 @@ namespace Shared.Common {
         public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        public static string Comments {
+            get {
+                return ResourceManager.GetString("Comments", resourceCulture);
             }
         }
         

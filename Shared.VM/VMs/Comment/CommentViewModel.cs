@@ -2,6 +2,7 @@
 using Shared.Common;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Shared.VM
 {
@@ -14,6 +15,11 @@ namespace Shared.VM
 		#endregion
 
 		#region Properties
+
+		public string Comments 
+		{
+			get { return ApplicationResources.Comments; }
+		}
 
 		public ObservableRangeCollection<IListItem> CardViewModels 
 		{
@@ -35,7 +41,6 @@ namespace Shared.VM
 		public CommentViewModel (BaseContentCardViewModel viewModel) : base ()
 		{
 			PrimaryCardViewModel = viewModel;
-			CardViewModels.Add (PrimaryCardViewModel);
 		}
 
 		#endregion
@@ -44,7 +49,6 @@ namespace Shared.VM
 
 		public override async Task DidLoad ()
 		{
-
 			// Only fetch new comments as needed
 			if(PrimaryCardViewModel.CommentCount != 0 || PrimaryCardViewModel.CommentViewModels.Count == 0)
 			{
@@ -52,19 +56,63 @@ namespace Shared.VM
 			}
 
 			// populate all cards
-			// TODO: Insert section headers foreach 15 minute grouping
-			var viewModels = PrimaryCardViewModel.CommentViewModels.OrderBy (vm => vm.OrderByDateTime);
-//			var dateTimes = viewModels.Select (vm => vm.OrderByDateTime);
+			var viewModels = PrimaryCardViewModel.CommentViewModels.OrderBy (vm => vm.OrderByDateTime).ToList();
 
-			CardViewModels.AddRange (viewModels);
+			// Group by the relative string of the 15 minute increment
+			var groups = viewModels.GroupBy(x =>
+				{
+					var stamp = x.OrderByDateTime;
+
+					stamp = stamp.AddMinutes(-(stamp.Minute % 15));
+					stamp = stamp.AddMilliseconds(-stamp.Millisecond - 1000 * stamp.Second);
+
+					return stamp.ToRelativeString();
+				})
+				.Select(g =>  new CommentGroup(new HeaderCardViewModel(g.Key), g.Distinct()));
+
+			var contentViewModels = new List<BaseCardViewModel> ();
+
+			// Format the new grouping by including the headers in the main list
+			contentViewModels.Add (PrimaryCardViewModel);
+
+			for (int i = 0; i < groups.Count(); i++)
+			{
+				var commentGroup = groups.ElementAtOrDefault(i);
+
+				if(i == 0)
+				{
+					commentGroup.Header.Position = Position.Top;
+				}
+
+				contentViewModels.Add (commentGroup.Header);
+
+				foreach(BaseContentCardViewModel viewModel in commentGroup.Content)
+				{
+					contentViewModels.Add (viewModel);
+				}
+			}
+
+			// Add the footer header for "now"
+			contentViewModels.Add (new HeaderCardViewModel (ApplicationResources.Now, Position.Bottom));
+
+			CardViewModels.AddRange (contentViewModels);
 		}
 
-		protected override void InitCommands ()
-		{
-			
-		}
+		protected override void InitCommands () { }
 			
 		#endregion
+	}
+
+	public class CommentGroup
+	{
+		public HeaderCardViewModel Header { get; set; }
+		public IEnumerable<BaseContentCardViewModel> Content { get; set; }
+
+		public CommentGroup (HeaderCardViewModel header, IEnumerable<BaseContentCardViewModel> content)
+		{
+			Header = header;
+			Content = content;
+		}
 	}
 }
 

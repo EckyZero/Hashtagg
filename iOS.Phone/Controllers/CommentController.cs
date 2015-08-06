@@ -25,6 +25,12 @@ namespace iOS.Phone
 			base.ViewDidLoad ();
 
 			await ViewModel.DidLoad ();
+			InitUI ();
+		}
+
+		private void InitUI ()
+		{
+			Title = ViewModel.Title;
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)

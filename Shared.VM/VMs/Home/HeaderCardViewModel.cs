@@ -1,7 +1,15 @@
 ﻿using System;
+using Shared.Common;
 
 namespace Shared.VM
 {
+	public enum Position
+	{
+		Top,
+		Middle,
+		Bottom
+	}
+
 	public class HeaderCardViewModel : BaseCardViewModel
 	{
 		#region Private Variables
@@ -24,16 +32,15 @@ namespace Shared.VM
 			get { return SocialType.None; }
 		}
 			
-		public string Time 
-		{ 
-			get { return _dateTime.ToString ("t"); }
-		}
+		public string Title { get; private set; }
+		public Position Position { get; set; }
 
 		#endregion
 
-		public HeaderCardViewModel (DateTime dateTime)
+		public HeaderCardViewModel (string title, Position position = Position.Middle)
 		{
-			_dateTime = dateTime;
+			Title = title;
+			Position = position;
 		}
 	}
 }

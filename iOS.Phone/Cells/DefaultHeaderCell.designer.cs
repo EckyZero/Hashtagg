@@ -16,26 +16,42 @@ namespace iOS.Phone
 		UIKit.UIView CircleView { get; set; }
 
 		[Outlet]
-		UIKit.UIView LineView { get; set; }
+		UIKit.NSLayoutConstraint TimeLineBottomConstraint { get; set; }
+
+		[Outlet]
+		UIKit.UIView TimelineView { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint TimeLineViewTopConstraint { get; set; }
 
 		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (TitleLabel != null) {
-				TitleLabel.Dispose ();
-				TitleLabel = null;
-			}
-
 			if (CircleView != null) {
 				CircleView.Dispose ();
 				CircleView = null;
 			}
 
-			if (LineView != null) {
-				LineView.Dispose ();
-				LineView = null;
+			if (TimelineView != null) {
+				TimelineView.Dispose ();
+				TimelineView = null;
+			}
+
+			if (TitleLabel != null) {
+				TitleLabel.Dispose ();
+				TitleLabel = null;
+			}
+
+			if (TimeLineViewTopConstraint != null) {
+				TimeLineViewTopConstraint.Dispose ();
+				TimeLineViewTopConstraint = null;
+			}
+
+			if (TimeLineBottomConstraint != null) {
+				TimeLineBottomConstraint.Dispose ();
+				TimeLineBottomConstraint = null;
 			}
 		}
 	}
