@@ -1,10 +1,21 @@
 configuration: Debug
 
+install:
+- set PATH=C:\Program Files (x86)\Mono\bin;%PATH%
+- ps: $zipPath = "$($env:APPVEYOR_BUILD_FOLDER)\xpkg.zip"
+- ps: (New-Object Net.WebClient).DownloadFile('https://components.xamarin.com/submit/xpkg', $zipPath)
+- ps: 7z x $zipPath
+
 # restore NuGet packages before running MSBuild
+# - send "%xamarin_password%\r"
+# - mono xamarin-component.exe login %xamarin_email%
 before_build:
-- nuget restore
-- appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product iOS
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
+- mono xamarin-component.exe restore MVVMSkeleton.sln
+- send "Y\r"
+- interact
+- nuget restore
  
 on_finish:
 - appveyor UnregisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password%
+
