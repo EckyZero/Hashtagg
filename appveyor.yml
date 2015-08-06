@@ -12,6 +12,7 @@ install:
 # - mono xamarin-component.exe restore MVVMSkeleton.sln
 before_build:
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
+- xamarin-component.exe login
 - xamarin-component.exe restore MVVMSkeleton.sln
 - nuget restore
  
