@@ -5,6 +5,7 @@ using System;
 using Foundation;
 using UIKit;
 using Shared.VM;
+using CoreGraphics;
 
 namespace iOS.Phone
 {
@@ -28,9 +29,37 @@ namespace iOS.Phone
 			InitUI ();
 		}
 
+		public override void ViewDidAppear (bool animated)
+		{
+			base.ViewDidAppear (animated);
+
+			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillShowNotification, KeyboardWillShow);
+			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillHideNotification, KeyboardWillHide);
+		}
+
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+
+			NSNotificationCenter.DefaultCenter.RemoveObserver (this);
+		}
+
 		private void InitUI ()
 		{
+			// Add tap to dismiss keyboard
+			var tap = new UITapGestureRecognizer (() => {
+				CommentTextView.ResignFirstResponder();	
+			});
+
+			tap.NumberOfTapsRequired = 1;
+
+			View.AddGestureRecognizer (tap);
+
+			// Set UI elements
 			Title = ViewModel.Title;
+			CommentTextView.TextContainer.LineFragmentPadding = 0;
+			CommentTextView.TextContainerInset = UIEdgeInsets.Zero;
+//			CommentTextView.D
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
@@ -46,6 +75,40 @@ namespace iOS.Phone
 			}
 		}
 
+		#endregion
+
+		#region Methods
+
+		private void KeyboardWillShow (NSNotification notification)
+		{
+			var keyboardFrame = UIKeyboard.FrameEndFromNotification (notification);
+
+			KeyboardWillChange (keyboardFrame.Height, notification);
+		}
+
+		private void KeyboardWillHide (NSNotification notification)
+		{
+			var keyboardFrame = UIKeyboard.FrameEndFromNotification (notification);
+
+			KeyboardWillChange (0, notification);
+		}
+
+		private void KeyboardWillChange(nfloat bottom, NSNotification notification)
+		{
+			var duration = UIKeyboard.AnimationDurationFromNotification (notification);
+
+			CommentContainerView.SetNeedsLayout ();
+
+			CommentContainerViewBottomConstraint.Constant = bottom;
+
+			UIView.Animate (
+				duration: duration,
+				animation: () => {
+					CommentContainerView.LayoutIfNeeded();		
+				}
+			);
+		}
+			
 		#endregion
 	}
 }

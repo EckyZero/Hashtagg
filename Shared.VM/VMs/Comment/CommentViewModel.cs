@@ -31,7 +31,7 @@ namespace Shared.VM
 
 		public string Title
 		{
-			get { return ApplicationResources.Comment; }
+			get { return ApplicationResources.Comments; }
 		}
 
 		#endregion

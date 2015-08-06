@@ -6,6 +6,7 @@
     <customFonts key="customFonts">
         <mutableArray key="SanFranciscoText-Medium.otf">
             <string>SanFranciscoText-Medium</string>
+            <string>SanFranciscoText-Medium</string>
         </mutableArray>
         <mutableArray key="SanFranciscoText-Regular.otf">
             <string>SanFranciscoText-Regular</string>
@@ -30,6 +31,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="App-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="8TK-EQ-77X">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MgI-8J-Z1V">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -37,16 +41,62 @@
                                     <segue destination="pZD-lh-TZh" kind="embed" id="Ov7-jR-tSe"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XN-TR-Aft">
+                                <rect key="frame" x="0.0" y="472" width="320" height="32"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwL-Sk-9zL">
+                                        <rect key="frame" x="8" y="4" width="239" height="24"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tw-fX-Fl4">
+                                        <rect key="frame" x="255" y="0.0" width="65" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="lyY-89-3pM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Medium" family="San Francisco Text" pointSize="16"/>
+                                        <state key="normal" title="Reply">
+                                            <color key="titleColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3Tw-fX-Fl4" secondAttribute="bottom" id="0xt-rj-gtE"/>
+                                    <constraint firstItem="3Tw-fX-Fl4" firstAttribute="top" secondItem="3XN-TR-Aft" secondAttribute="top" id="4KB-6b-Zkt"/>
+                                    <constraint firstItem="wwL-Sk-9zL" firstAttribute="top" secondItem="3XN-TR-Aft" secondAttribute="top" constant="4" id="BZq-Fv-96Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Tw-fX-Fl4" secondAttribute="trailing" id="OXy-Eu-H2Q"/>
+                                    <constraint firstItem="3Tw-fX-Fl4" firstAttribute="leading" secondItem="wwL-Sk-9zL" secondAttribute="trailing" constant="8" id="TL5-GK-2vL"/>
+                                    <constraint firstItem="wwL-Sk-9zL" firstAttribute="leading" secondItem="3XN-TR-Aft" secondAttribute="leading" constant="8" id="VO0-8S-bj5"/>
+                                    <constraint firstAttribute="bottom" secondItem="wwL-Sk-9zL" secondAttribute="bottom" constant="4" id="exD-jd-8En"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MgI-8J-Z1V" firstAttribute="leading" secondItem="36t-Uv-ieP" secondAttribute="leading" id="1b7-FX-VDQ"/>
+                            <constraint firstAttribute="trailing" secondItem="8TK-EQ-77X" secondAttribute="trailing" id="1yw-2l-A4i"/>
                             <constraint firstItem="MgI-8J-Z1V" firstAttribute="top" secondItem="0B8-2i-dYr" secondAttribute="bottom" id="8d8-7u-j97"/>
+                            <constraint firstItem="8TK-EQ-77X" firstAttribute="top" secondItem="0B8-2i-dYr" secondAttribute="bottom" id="Rqm-ks-HHb"/>
+                            <constraint firstItem="y1D-ka-UCb" firstAttribute="top" secondItem="3XN-TR-Aft" secondAttribute="bottom" id="VJz-pw-pso"/>
+                            <constraint firstItem="3XN-TR-Aft" firstAttribute="leading" secondItem="36t-Uv-ieP" secondAttribute="leading" id="bVm-MI-5u4"/>
                             <constraint firstItem="y1D-ka-UCb" firstAttribute="top" secondItem="MgI-8J-Z1V" secondAttribute="bottom" id="jJ3-Tb-9Ta"/>
+                            <constraint firstAttribute="trailing" secondItem="3XN-TR-Aft" secondAttribute="trailing" id="kCz-7R-EVf"/>
+                            <constraint firstItem="8TK-EQ-77X" firstAttribute="leading" secondItem="36t-Uv-ieP" secondAttribute="leading" id="lix-1I-Spg"/>
                             <constraint firstAttribute="trailing" secondItem="MgI-8J-Z1V" secondAttribute="trailing" id="uis-ij-3TG"/>
+                            <constraint firstItem="y1D-ka-UCb" firstAttribute="top" secondItem="8TK-EQ-77X" secondAttribute="bottom" id="xoy-H0-arb"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="CommentContainerView" destination="3XN-TR-Aft" id="Ly1-B7-cik"/>
+                        <outlet property="CommentContainerViewBottomConstraint" destination="VJz-pw-pso" id="FqH-EC-IPH"/>
+                        <outlet property="CommentTextView" destination="wwL-Sk-9zL" id="6fZ-bc-P0p"/>
+                        <outlet property="ReplyButton" destination="3Tw-fX-Fl4" id="vW9-CU-8B8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dlf-zp-eTJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,9 +111,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="eYy-Dl-6S2">
-                            <rect key="frame" x="0.0" y="354" width="320" height="20"/>
+                            <rect key="frame" x="0.0" y="362" width="320" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Default" rowHeight="312" id="7xY-4J-2Zx" customClass="DefaultCell">
@@ -297,6 +347,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="App-bg.png" width="320" height="569"/>
         <image name="Facebook.png" width="44" height="44"/>
         <image name="Twitter.png" width="44" height="44"/>
     </resources>
