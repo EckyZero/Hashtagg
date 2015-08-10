@@ -35,8 +35,7 @@ namespace Droid.Phone
 	    private bool _init;
 	    private bool _loaded;
 	    private TextView _usernameText;
-	    private CircularImageView _headerImage1;
-	    private CircularImageView _headerImage2;
+        private List<CircularImageView> _headerImages;
 
 	    public HomeFragment(HomeViewModel viewModel)
 		{
@@ -52,19 +51,40 @@ namespace Droid.Phone
 			_listLayout = viewGroup.FindViewById<ListView> (Resource.Id.HomeListView);
             header = inflater.Inflate(Resource.Layout.HomeHeader, _listLayout, false);
 			_listLayout.AddHeaderView(header);
-            //(_listLayout as OverscrollListView).OnOverScroll += OnOnOverScroll;
 			_listLayout.Adapter = new HomeListAdapter<IListItem> (_viewModel.CardViewModels,  inflater, _listLayout);
-			// Use this to return your custom view for this Fragment
-			// return inflater.Inflate(Resource.Layout.YourFragment, container, false);
 		    _usernameText = header.FindViewById<TextView>(Resource.Id.HomeHeaderUsernameText);
+            _usernameText.Text = string.Empty;
             _viewModel.PropertyChanged += ViewModelOnPropertyChanged;
             _swipeLayout.Refresh += SwipeLayoutOnRefresh;
             _viewModel.RequestCompleted += OnRequestCompleted;
-            _headerImage1 = header.FindViewById<CircularImageView>(Resource.Id.HomeHeaderImage1);
-            _headerImage2 = header.FindViewById<CircularImageView>(Resource.Id.HomeHeaderImage2);
+
+            _headerImages = new List<CircularImageView>()
+            {
+                header.FindViewById<CircularImageView>(Resource.Id.HomeHeaderImage1),
+                header.FindViewById<CircularImageView>(Resource.Id.HomeHeaderImage2),
+                header.FindViewById<CircularImageView>(Resource.Id.HomeHeaderImage3)
+            };
+
+            _viewModel.RequestHeaderImages = OnRequestHeaderImages;
             viewGroup.ViewTreeObserver.GlobalLayout += ViewTreeObserverOnGlobalLayout;
+
 			return viewGroup;
 		}
+
+        private void OnRequestHeaderImages(List<string> urls)
+        {
+            var i = 0;
+            var shift = urls.Count > 1 ? -12 : 0;
+            foreach (var url in urls)
+            {
+                _headerImages[i].SetX(_headerImages[i].GetX() + TypedValue.ApplyDimension(ComplexUnitType.Dip, shift, Application.Context.ApplicationContext.Resources.DisplayMetrics));
+                UrlImageViewHelper.SetUrlDrawable(_headerImages[i], url, Resource.Drawable.Profile_Image_Default, new CircularImageShadowCallback() );
+                shift += 24;
+                i++;
+            }
+            for (i = i; i < _headerImages.Count; i++)
+                _headerImages[i].Visibility = ViewStates.Gone;
+        }
 
 	    private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
 	    {
@@ -89,27 +109,22 @@ namespace Droid.Phone
 	    private async void ViewTreeObserverOnGlobalLayout(object sender, EventArgs eventArgs)
 	    {
 	        
-	        if (_init && !_loaded)
+            if (_init && !_loaded)
 	        {
 	            _loaded = true;
-	            _swipeLayout.Refreshing = true;
-                await _viewModel.DidLoad();
-                if(!string.IsNullOrWhiteSpace(_viewModel.FacebookImageUrl))
-                    UrlImageViewHelper.SetUrlDrawable(_headerImage1, _viewModel.FacebookImageUrl, Resource.Drawable.Profile_Image_Default, new TestCallback() );
+
+                _listLayout.OverScrollMode = OverScrollMode.Never;
+                _swipeLayout.SetProgressViewOffset(false, header.Height - header.FindViewById<RelativeLayout>(Resource.Id.HomeHeaderPaddingLayout).Height, (int)Math.Ceiling(header.Height + _swipeLayout.Height * 0.01));
+                _swipeLayout.SetColorSchemeResources(Resource.Color.carnation);
+
+                await _viewModel.DidAppear();
                 return;
             }
-            if (_init)
-            {
-                return;
-            }
-	        _init = true;
-	        _usernameText.Text = string.Empty;
-            _listLayout.OverScrollMode = OverScrollMode.Never;
-            _swipeLayout.SetProgressViewOffset(false, header.Height - header.FindViewById<RelativeLayout>(Resource.Id.HomeHeaderPaddingLayout).Height, (int)Math.Ceiling(header.Height + _swipeLayout.Height * 0.01));
-            _swipeLayout.SetColorSchemeResources(Resource.Color.carnation);
+            _init = true;
+
 	    }
 
-	    public class TestCallback : Java.Lang.Object, IUrlImageViewCallback
+	    public class CircularImageShadowCallback : Java.Lang.Object, IUrlImageViewCallback
 	    {
 
             public void OnLoaded(ImageView p0, Android.Graphics.Bitmap p1, string p2, bool p3)
@@ -142,20 +157,8 @@ namespace Droid.Phone
                         return ProcessSocialCard(position, vm as BaseContentCardViewModel, convertView);
                 }
 				var cell = _inflater.Inflate(Resource.Layout.DefaultCell, _listView, false);
-				//var label = cell.FindViewById<TextView>(Resource.Id.TweetCellTweetBody);
-				//label.Text = vm.ToString();
 				return cell;
 			}
-
-            private class TwitterViewHolder : Java.Lang.Object
-            {
-                
-            }
-
-            private class FacebookViewHolder : Java.Lang.Object
-            {
-
-            }
 
             private View ProcessSocialCard(int position, BaseContentCardViewModel cardViewModel, View convertView)
             {

@@ -37,7 +37,7 @@
         android:background="@android:color/transparent"
         android:layout_marginBottom="15dp"
         android:layout_alignBottom="@id/HomeHeaderPaddingLayout">
-        <ImageView
+        <Droid.Controls.CircularImageView
             custom:circular_image_border="true"
             custom:circular_image_border_width="0dp"
             custom:circular_image_border_color="@android:color/transparent"
@@ -45,7 +45,6 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/HomeHeaderImage2"
-            android:translationX="12dp"
             android:layout_centerHorizontal="true"
             android:scaleType="fitCenter" />
         <Droid.Controls.CircularImageView
@@ -57,7 +56,16 @@
             android:layout_height="50dp"
             android:id="@+id/HomeHeaderImage1"
             android:layout_centerHorizontal="true"
-            android:scaleType="fitCenter"
-            android:translationX="-12dp" />
+            android:scaleType="fitCenter" />
+        <Droid.Controls.CircularImageView
+            custom:circular_image_border="true"
+            custom:circular_image_border_width="0dp"
+            custom:circular_image_border_color="@android:color/transparent"
+            android:src="@drawable/profile_image_default"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/HomeHeaderImage3"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter" />
     </RelativeLayout>
 </RelativeLayout>

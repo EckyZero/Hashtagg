@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:layout_width="match_parent"
+    p1:layout_height="60dp"
+    p1:id="@+id/relativeLayout1">
+    <RelativeLayout
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:layout_marginLeft="25dp"
+        p1:layout_marginTop="15dp"
+        p1:layout_alignParentTop="true"
+        p1:layout_alignParentLeft="true"
+        p1:id="@+id/DrawerCellTextImageContainer">
+        <ImageView
+            p1:src="@drawable/addbutton"
+            p1:layout_width="25dp"
+            p1:layout_height="25dp"
+            p1:id="@+id/DrawerCellImage" />
+        <TextView
+            p1:text="Facebook"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:layout_toRightOf="@id/DrawerCellImage"
+            p1:id="@+id/textView1"
+            p1:textColor="@color/carnation"
+            p1:layout_centerVertical="true"
+            p1:textSize="18sp"
+            p1:layout_marginLeft="12dp" />
+    </RelativeLayout>
+    <TextView
+        p1:text="username@gmail.com"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:layout_below="@id/DrawerCellTextImageContainer"
+        p1:id="@+id/textView2"
+        p1:layout_alignLeft="@id/DrawerCellTextImageContainer"
+        p1:textColor="@color/blue2"
+        p1:textSize="13sp"
+        p1:layout_marginLeft="37dp" />
+</RelativeLayout>

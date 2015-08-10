@@ -176,10 +176,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ApplicationLayer\" />
-    <Folder Include="ApplicationLayer\ImageViewer\" />
-  </ItemGroup>
-  <ItemGroup>
     <InterfaceDefinition Include="ApplicationLayer\ImageViewer\ImageViewerViewController.xib" />
   </ItemGroup>
 </Project>

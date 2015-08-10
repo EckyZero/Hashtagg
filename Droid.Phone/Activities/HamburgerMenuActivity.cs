@@ -21,108 +21,142 @@ using FragmentManager = Android.Support.V4.App.FragmentManager;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Droid;
 using Shared.VM;
+using Android.Widget;
+using GalaSoft.MvvmLight.Helpers;
+using Shared.Common;
 
 namespace Droid.Phone
 {
-	[Activity (Label = "HomeActivity",  MainLauncher = false)]			
-	public class HamburgerMenuActivity : ActionBarBaseActivity
-	{
-		private ActionBarDrawerToggle _drawerToggle;
+    [Activity (Label = "HomeActivity",  MainLauncher = false)]          
+    public class HamburgerMenuActivity : ActionBarBaseActivity
+    {
+        private ActionBarDrawerToggle _drawerToggle;
 
-		private Toolbar _toolbar;
+        private Toolbar _toolbar;
 
-		private DrawerLayout _drawerLayout;
+        private DrawerLayout _drawerLayout;
 
-		private ListView _drawerList;
-	    private RelativeLayout _drawerHeader;
-	    private RelativeLayout _drawerFooter;
-	    private bool _init;
+        private ListView _drawerList;
+        private bool _init;
 
+        HomeViewModel _homeViewModel;
+        MenuViewModel _menuViewModel;
 
-	    protected override void OnCreate(Bundle savedInstanceState)
-		{
-			// Must change theme to support the toolbar
-			//SetTheme(Resource.Style.MyTheme);
-			base.OnCreate(savedInstanceState);
-			SetContentView(Resource.Layout.HamburgerLayout);
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            // Must change theme to support the toolbar
+            //SetTheme(Resource.Style.MyTheme);
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.HamburgerLayout);
 
-			_toolbar = FindViewById<Toolbar>(Resource.Id.hamburgerMenu_toolbar);
+            _toolbar = FindViewById<Toolbar>(Resource.Id.hamburgerMenu_toolbar);
             _toolbar.ViewTreeObserver.GlobalLayout += ViewTreeObserverOnGlobalLayout;
-			SetSupportActionBar(_toolbar);
-			SupportActionBar.SetDisplayShowTitleEnabled(true);
+            SetSupportActionBar(_toolbar);
+            SupportActionBar.SetDisplayShowTitleEnabled(true);
 
-			OnCreateFragmentSetup ();
 
-			SetupMenu();
-		}
+            GetAndRemoveParameters();
+            _menuViewModel = new MenuViewModel(_homeViewModel);
 
-	    private void ViewTreeObserverOnGlobalLayout(object sender, EventArgs eventArgs)
-	    {
-	        if (_init)
-	            return;
-	        _init = true;
-	    }
+            OnCreateFragmentSetup ();
+            SetupMenu();
+        }
 
-	    protected virtual void OnCreateFragmentSetup()
-		{
-			GetAndNavigateFragment();
-		}
+        private void ViewTreeObserverOnGlobalLayout(object sender, EventArgs eventArgs)
+        {
+            if (_init)
+                return;
+            _init = true;
+        }
 
-		protected override void OnNewIntent (Intent intent)
-		{
-			base.OnNewIntent (intent);
-		}
+        protected virtual void OnCreateFragmentSetup()
+        {
+            GetAndNavigateFragment();
+        }
 
-		private async void GetAndNavigateFragment()
-		{
-			SupportActionBar.Title = string.Empty;
+        void GetAndRemoveParameters()
+        {
+            _homeViewModel = _navigationService.GetAndRemoveParameter(Intent) as HomeViewModel;
+        }
 
-			Fragment next = await GetMenuFragment();
+        protected override void OnNewIntent (Intent intent)
+        {
+            base.OnNewIntent (intent);
+        }
 
-			if (next != null)
-			{
-				SupportFragmentManager.BeginTransaction()
-					.Replace(Resource.Id.hamburgerMenu_content, next)
-					.Commit();
-			}
-		}
+        private async void GetAndNavigateFragment()
+        {
+            SupportActionBar.Title = string.Empty;
 
-		private void SetupMenu()
-		{
+            Fragment next = await GetMenuFragment();
 
-			_drawerLayout = FindViewById<DrawerLayout>(Resource.Id.hamburgerMenu_layout);
+            if (next != null)
+            {
+                SupportFragmentManager.BeginTransaction()
+                    .Replace(Resource.Id.hamburgerMenu_content, next)
+                    .Commit();
+            }
+        }
+
+        private void SetupMenu()
+        {
+
+            _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.hamburgerMenu_layout);
             _drawerList = FindViewById<ListView>(Resource.Id.hamburgerMenu_menu);
-            _drawerHeader = LayoutInflater.Inflate(Resource.Layout.DrawerHeader, _drawerList, false) as RelativeLayout;
-            _drawerFooter = LayoutInflater.Inflate(Resource.Layout.DrawerFooter, _drawerList, false) as RelativeLayout;
-            //_drawerList.AddView(_drawerHeader, 0);
-            //_drawerList.AddView(_drawerFooter, _drawerList.ChildCount);
 
-			//_drawerList.Adapter = new SimpleAdapter(this, new List<IDictionary<string, object>>(), 0, new []{""}, new []{0});
-			//_drawerList.ItemClick += DrawerListOnItemClick;
+            _drawerList.Adapter = new MenuAdapter(LayoutInflater)
+            {
+                DataSource=_menuViewModel.ItemViewModels
+            };
+                //_drawerList.ItemClick += DrawerListOnItemClick;
 
-			_drawerToggle = new ActionBarDrawerToggle(this,_drawerLayout,_toolbar,Resource.String.abc_action_bar_home_description,Resource.String.abc_toolbar_collapse_description);
-			_drawerLayout.SetDrawerListener(_drawerToggle);
-			_drawerToggle.SyncState();
-		}
-
+            _drawerToggle = new ActionBarDrawerToggle(this,_drawerLayout,_toolbar,Resource.String.abc_action_bar_home_description,Resource.String.abc_toolbar_collapse_description);
+            _drawerLayout.SetDrawerListener(_drawerToggle);
+            _drawerToggle.SyncState();
+        }
 
 
-		private void DrawerListOnItemClick(object sender, AdapterView.ItemClickEventArgs itemClickEventArgs)
-		{
-			ItemSelected(itemClickEventArgs.Position);
-		}
 
-		private async void ItemSelected(int position)
-		{
-		}
+        private void DrawerListOnItemClick(object sender, AdapterView.ItemClickEventArgs itemClickEventArgs)
+        {
+            ItemSelected(itemClickEventArgs.Position);
+        }
 
-		private async Task<Android.Support.V4.App.Fragment> GetMenuFragment()
-		{
-			var homeFrag = new HomeFragment (new HomeViewModel ());
-			return homeFrag;
-		}
+        private async void ItemSelected(int position)
+        {
+        }
 
-		//Dissable Hardware Back
-		public override void OnBackPressed() { }
-	}
+
+        private async Task<Android.Support.V4.App.Fragment> GetMenuFragment()
+        {
+            var homeFrag = new HomeFragment (_homeViewModel);
+
+            return homeFrag;
+        }
+
+        //Dissable Hardware Back
+        public override void OnBackPressed() { }
+    }
+
+    public class MenuAdapter : ObservableAdapter<IListItem>
+    {
+        private LayoutInflater _layoutInflater;
+
+        private ObservableRangeCollection<IListItem> _viewModels;
+
+        public MenuAdapter(LayoutInflater inflater)
+        {
+            _layoutInflater = inflater;
+        }
+
+        public override View GetView(int position, View convertView, ViewGroup parent)
+        {
+            if(convertView == null)
+                convertView = _layoutInflater.Inflate(Resource.Layout.DrawerCell, parent, false);
+
+            //convertView.FindViewById<ImageView>(Resource.Id.DrawerCellImage).SetResourceDrawable(Data
+            return convertView;
+        }
+
+    }
 }

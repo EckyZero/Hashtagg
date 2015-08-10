@@ -267,11 +267,6 @@
       <Name>Shared.Service</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Cells\" />
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <InterfaceDefinition Include="Home.storyboard" />
