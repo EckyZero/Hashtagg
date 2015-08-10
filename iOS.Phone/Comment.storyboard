@@ -11,6 +11,7 @@
         <mutableArray key="SanFranciscoText-Regular.otf">
             <string>SanFranciscoText-Regular</string>
             <string>SanFranciscoText-Regular</string>
+            <string>SanFranciscoText-Regular</string>
         </mutableArray>
         <mutableArray key="SanFranciscoText-Semibold.otf">
             <string>SanFranciscoText-Semibold</string>
@@ -46,20 +47,26 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwL-Sk-9zL">
                                         <rect key="frame" x="8" y="4" width="239" height="24"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="backgroundColor" red="0.91764705882352937" green="0.93725490196078431" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Hih-FJ-QzJ"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="13"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tw-fX-Fl4">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tw-fX-Fl4">
                                         <rect key="frame" x="255" y="0.0" width="65" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="65" id="lyY-89-3pM"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SanFranciscoText-Medium" family="San Francisco Text" pointSize="16"/>
                                         <state key="normal" title="Reply">
-                                            <color key="titleColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.94901960784313721" green="0.36078431372549019" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                 </subviews>
@@ -95,6 +102,7 @@
                         <outlet property="CommentContainerView" destination="3XN-TR-Aft" id="Ly1-B7-cik"/>
                         <outlet property="CommentContainerViewBottomConstraint" destination="VJz-pw-pso" id="FqH-EC-IPH"/>
                         <outlet property="CommentTextView" destination="wwL-Sk-9zL" id="6fZ-bc-P0p"/>
+                        <outlet property="CommentTextViewHeightConstraint" destination="Hih-FJ-QzJ" id="rLR-Cs-ZLi"/>
                         <outlet property="ReplyButton" destination="3Tw-fX-Fl4" id="vW9-CU-8B8"/>
                     </connections>
                 </viewController>

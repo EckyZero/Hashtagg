@@ -6,11 +6,20 @@ using Foundation;
 using UIKit;
 using Shared.VM;
 using CoreGraphics;
+using Shared.Common;
+using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Helpers;
 
 namespace iOS.Phone
 {
 	public partial class CommentController : UIViewController
 	{
+		#region Variables
+
+		private PSObservableTableController _tableController;
+
+		#endregion
+
 		#region Properties
 
 		public CommentViewModel ViewModel { get; set; }
@@ -27,6 +36,7 @@ namespace iOS.Phone
 
 			await ViewModel.DidLoad ();
 			InitUI ();
+			InitBindings ();
 		}
 
 		public override void ViewDidAppear (bool animated)
@@ -35,6 +45,9 @@ namespace iOS.Phone
 
 			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillShowNotification, KeyboardWillShow);
 			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillHideNotification, KeyboardWillHide);
+
+			CommentTextView.Changed += OnCommentTextViewChanged;
+			CommentTextView.Started += OnCommentTextViewStarted;
 		}
 
 		public override void ViewWillDisappear (bool animated)
@@ -42,14 +55,15 @@ namespace iOS.Phone
 			base.ViewWillDisappear (animated);
 
 			NSNotificationCenter.DefaultCenter.RemoveObserver (this);
+
+			CommentTextView.Changed -= OnCommentTextViewChanged;
+			CommentTextView.Started -= OnCommentTextViewStarted;
 		}
 
 		private void InitUI ()
 		{
 			// Add tap to dismiss keyboard
-			var tap = new UITapGestureRecognizer (() => {
-				CommentTextView.ResignFirstResponder();	
-			});
+			var tap = new UITapGestureRecognizer (() => CommentTextView.ResignFirstResponder ());
 
 			tap.NumberOfTapsRequired = 1;
 
@@ -57,9 +71,20 @@ namespace iOS.Phone
 
 			// Set UI elements
 			Title = ViewModel.Title;
-			CommentTextView.TextContainer.LineFragmentPadding = 0;
-			CommentTextView.TextContainerInset = UIEdgeInsets.Zero;
-//			CommentTextView.D
+			CommentTextView.TextContainer.LineFragmentPadding = 8;
+			CommentTextView.TextContainerInset = new UIEdgeInsets(top: 3.7f, left: 0f, bottom: 2.3f, right: 0f);
+			CommentTextView.BackgroundColor = ThemeManager.Instance.CurrentTheme.BackgroundColor.ToUIColor();
+			CommentTextView.Layer.CornerRadius = 5;
+		}
+
+		private void InitBindings ()
+		{
+			this.SetBinding (
+				() => CommentTextView.Text,
+				() => ViewModel.Comments
+			).UpdateSourceTrigger("Changed");
+
+			ReplyButton.SetCommand ("TouchUpInside", ViewModel.ReplyCommand);
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
@@ -68,10 +93,10 @@ namespace iOS.Phone
 
 			if(segue.DestinationViewController.GetType() == typeof(PSObservableTableController)) {
 
-				var tableController = segue.DestinationViewController as PSObservableTableController;
+				_tableController = segue.DestinationViewController as PSObservableTableController;
 
-				tableController.Collection = ViewModel.CardViewModels;
-				tableController.SetEstimatedHeight (175);
+				_tableController.Collection = ViewModel.CardViewModels;
+				_tableController.SetEstimatedHeight (175);
 			}
 		}
 
@@ -103,10 +128,36 @@ namespace iOS.Phone
 
 			UIView.Animate (
 				duration: duration,
+				animation: CommentContainerView.LayoutIfNeeded
+			);
+		}
+
+		private void OnCommentTextViewChanged (object sender, EventArgs args)
+		{
+			// Set bounds for text
+			var height = CommentTextView.SizeThatFits(new CGSize(CommentTextView.Frame.Width, nfloat.MaxValue)).Height;
+
+			Console.WriteLine (height);
+
+			height = height > 100 ? 100 : height;
+			height = height < 24 ? 24 : height;
+
+			CommentTextView.SetNeedsLayout ();
+
+			CommentTextViewHeightConstraint.Constant = height;
+
+			UIView.Animate (
+				duration: 0.25, 
 				animation: () => {
-					CommentContainerView.LayoutIfNeeded();		
+					CommentTextView.LayoutIfNeeded();
+					CommentContainerView.LayoutIfNeeded();
 				}
 			);
+		}
+
+		private async void OnCommentTextViewStarted (object sender, EventArgs args)
+		{
+			_tableController.TableView.ScrollToBottom (true);
 		}
 			
 		#endregion

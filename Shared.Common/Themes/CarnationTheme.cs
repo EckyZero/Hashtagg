@@ -38,6 +38,10 @@ namespace Shared.Common
 			get { return "App-bg.png"; }
 		}
 
+		public PSColor BackgroundColor {
+			get { return new PSColor(234, 239, 241); }
+		}
+
 		#endregion
 
 		#region Methods

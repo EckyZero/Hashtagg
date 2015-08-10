@@ -15,6 +15,7 @@ namespace Shared.Common
 		PSColor Disabled { get; }
 
 		string BackgroundImageName { get; }
+		PSColor BackgroundColor { get; }
 	}
 }
 

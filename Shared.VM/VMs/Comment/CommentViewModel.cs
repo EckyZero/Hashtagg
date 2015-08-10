@@ -3,9 +3,22 @@ using Shared.Common;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
+using GalaSoft.MvvmLight.Command;
 
 namespace Shared.VM
 {
+	public class CommentGroup
+	{
+		public HeaderCardViewModel Header { get; set; }
+		public IEnumerable<BaseContentCardViewModel> Content { get; set; }
+
+		public CommentGroup (HeaderCardViewModel header, IEnumerable<BaseContentCardViewModel> content)
+		{
+			Header = header;
+			Content = content;
+		}
+	}
+
 	public class CommentViewModel : SharedViewModelBase
 	{
 		#region Variables
@@ -16,10 +29,9 @@ namespace Shared.VM
 
 		#region Properties
 
-		public string Comments 
-		{
-			get { return ApplicationResources.Comments; }
-		}
+		public BaseContentCardViewModel PrimaryCardViewModel { get; set; }
+
+		public string Comments { get; set; }
 
 		public ObservableRangeCollection<IListItem> CardViewModels 
 		{
@@ -27,12 +39,17 @@ namespace Shared.VM
 			set { _cardViewModels = value; }
 		}
 
-		public BaseContentCardViewModel PrimaryCardViewModel { get; set; }
-
 		public string Title
 		{
 			get { return ApplicationResources.Comments; }
 		}
+
+		public string CommentPlaceholder 
+		{
+			get { return ApplicationResources.CommentPlaceholder; }
+		}
+
+		public RelayCommand ReplyCommand { get; private set; }
 
 		#endregion
 
@@ -98,21 +115,19 @@ namespace Shared.VM
 			CardViewModels.AddRange (contentViewModels);
 		}
 
-		protected override void InitCommands () { }
-			
-		#endregion
-	}
-
-	public class CommentGroup
-	{
-		public HeaderCardViewModel Header { get; set; }
-		public IEnumerable<BaseContentCardViewModel> Content { get; set; }
-
-		public CommentGroup (HeaderCardViewModel header, IEnumerable<BaseContentCardViewModel> content)
-		{
-			Header = header;
-			Content = content;
+		protected override void InitCommands () 
+		{ 
+			ReplyCommand = new RelayCommand (ReplyCommandExecute);		
 		}
+			
+		private void ReplyCommandExecute ()
+		{
+				// TODO: Don't forget to fire off CanExecute event
+				// TODO: validate text and post to correct outlet
+				// TODO: update the UI with the latest post
+		}
+
+		#endregion
 	}
 }
 

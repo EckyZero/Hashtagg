@@ -22,20 +22,13 @@ namespace iOS.Phone
 		UIKit.UITextView CommentTextView { get; set; }
 
 		[Outlet]
+		UIKit.NSLayoutConstraint CommentTextViewHeightConstraint { get; set; }
+
+		[Outlet]
 		UIKit.UIButton ReplyButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (ReplyButton != null) {
-				ReplyButton.Dispose ();
-				ReplyButton = null;
-			}
-
-			if (CommentTextView != null) {
-				CommentTextView.Dispose ();
-				CommentTextView = null;
-			}
-
 			if (CommentContainerView != null) {
 				CommentContainerView.Dispose ();
 				CommentContainerView = null;
@@ -44,6 +37,21 @@ namespace iOS.Phone
 			if (CommentContainerViewBottomConstraint != null) {
 				CommentContainerViewBottomConstraint.Dispose ();
 				CommentContainerViewBottomConstraint = null;
+			}
+
+			if (CommentTextView != null) {
+				CommentTextView.Dispose ();
+				CommentTextView = null;
+			}
+
+			if (ReplyButton != null) {
+				ReplyButton.Dispose ();
+				ReplyButton = null;
+			}
+
+			if (CommentTextViewHeightConstraint != null) {
+				CommentTextViewHeightConstraint.Dispose ();
+				CommentTextViewHeightConstraint = null;
 			}
 		}
 	}

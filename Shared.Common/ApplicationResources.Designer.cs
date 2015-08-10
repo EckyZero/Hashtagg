@@ -95,6 +95,12 @@ namespace Shared.Common {
             }
         }
         
+        public static string CommentPlaceholder {
+            get {
+                return ResourceManager.GetString("CommentPlaceholder", resourceCulture);
+            }
+        }
+        
         public static string Facebook {
             get {
                 return ResourceManager.GetString("Facebook", resourceCulture);
