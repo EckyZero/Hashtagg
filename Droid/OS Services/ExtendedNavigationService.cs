@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Android.Content;
 using Shared.Common;
+using Android.App;
 
 namespace Droid
 {
@@ -115,7 +116,7 @@ namespace Droid
         /// <param name="flags">This parameter should be passed if you need intent flags</param>
         /// <exception cref="ArgumentException">When this method is called for 
         /// a key that has not been configured earlier.</exception>
-        public void NavigateTo(string pageKey, object parameter, ActivityFlags[] flags = null)
+        public void NavigateTo(string pageKey, object parameter, ActivityFlags[] flags = null, Android.OS.Bundle activtityOptions = null)
         {
             if (_activity == null)
             {
@@ -151,6 +152,8 @@ namespace Droid
                     }
                 }
 
+                if (activtityOptions != null)
+                    _activity.StartActivity(intent, activtityOptions);
                 _activity.StartActivity(intent);
                 Activity.NextPageKey = pageKey;
             }

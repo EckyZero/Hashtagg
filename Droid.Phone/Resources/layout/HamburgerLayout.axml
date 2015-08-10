@@ -20,8 +20,24 @@
             android:background="@drawable/App_bg"
             android:layout_gravity="start"
             android:layout_height="match_parent">
+            <RelativeLayout
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:id="@+id/DrawerHeaderLayout">
+                <TextView
+                    android:text="Hashtagg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/DrawerAppName"
+                    android:layout_centerInParent="true"
+                    android:textSize="28sp"
+                    android:textColor="@color/carnation" />
+            </RelativeLayout>
             <ListView
                 android:listSelector="@android:color/transparent"
+                android:layout_below="@+id/DrawerHeaderLayout"
                 android:layout_above="@+id/DrawerFooterMainLayout"
                 android:id="@+id/hamburgerMenu_menu"
                 android:layout_width="240dp"

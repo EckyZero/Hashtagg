@@ -145,12 +145,13 @@
     <AndroidResource Include="Resources\layout\SplashLayout.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\DrawerHeader.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\DrawerFooter.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\DrawerCell.axml" />
+    <AndroidResource Include="Resources\drawable-mdpi\addButton.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\addButton.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\addButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Insights.1.10.5\build\MonoAndroid10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.5\build\MonoAndroid10\Xamarin.Insights.targets')" />

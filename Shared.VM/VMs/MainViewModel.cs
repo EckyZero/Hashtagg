@@ -2,6 +2,7 @@
 using Shared.Service;
 using Shared.Common;
 using Microsoft.Practices.Unity;
+using System.Threading.Tasks;
 
 namespace Shared.VM
 {
@@ -35,6 +36,12 @@ namespace Shared.VM
 		}
 			
 		protected override void InitCommands () { }
+
+        public override async Task DidLoad()
+        {
+            await base.DidLoad();
+            OnApplicationWillStart(this, null);
+        }
 
 		private void OnApplicationWillStart (object sender, EventArgs args)
 		{

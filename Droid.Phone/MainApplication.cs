@@ -34,7 +34,7 @@ namespace Droid.Phone
 
 		private ILogger _logger;
         private int _sessionDepth = 0;
-		private ILifecycleService _lifecycleService = IocContainer.GetContainer ().Resolve<ILifecycleService> ();
+		private ILifecycleService _lifecycleService;
 
         private static ViewModelLocator _locator;
         private static ViewModelStore _store;
@@ -84,6 +84,7 @@ namespace Droid.Phone
         private void Init()
         {
             IocBootstrapper.RegisterTypes(IocContainer.GetContainer());
+            _lifecycleService = IocContainer.GetContainer ().Resolve<ILifecycleService> ();
             AutoMapperBootstrapper.MapTypes();
 
             _locator = new ViewModelLocator();
