@@ -4,6 +4,7 @@ using Shared.Common;
 using System.Text;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Shared.Service;
 
 namespace Shared.VM
 {
@@ -214,6 +215,8 @@ namespace Shared.VM
 
 		// Make sure to set the CommentViewModels Property before completing this
 		public virtual async Task GetComments () { }
+
+		public virtual async Task Reply(string message) { }
 
 		#endregion
 	}

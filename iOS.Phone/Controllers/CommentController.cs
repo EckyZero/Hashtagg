@@ -43,11 +43,13 @@ namespace iOS.Phone
 		{
 			base.ViewDidAppear (animated);
 
+			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.DidShowNotification, KeyboardDidShow);
 			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillShowNotification, KeyboardWillShow);
 			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillHideNotification, KeyboardWillHide);
 
 			CommentTextView.Changed += OnCommentTextViewChanged;
 			CommentTextView.Started += OnCommentTextViewStarted;
+			CommentTextView.Ended += OnCommentTextViewEnded;
 		}
 
 		public override void ViewWillDisappear (bool animated)
@@ -58,6 +60,7 @@ namespace iOS.Phone
 
 			CommentTextView.Changed -= OnCommentTextViewChanged;
 			CommentTextView.Started -= OnCommentTextViewStarted;
+			CommentTextView.Ended -= OnCommentTextViewEnded;
 		}
 
 		private void InitUI ()
@@ -71,6 +74,8 @@ namespace iOS.Phone
 
 			// Set UI elements
 			Title = ViewModel.Title;
+			CommentTextView.Text = ViewModel.CommentPlaceholder;
+
 			CommentTextView.TextContainer.LineFragmentPadding = 8;
 			CommentTextView.TextContainerInset = new UIEdgeInsets(top: 3.7f, left: 0f, bottom: 2.3f, right: 0f);
 			CommentTextView.BackgroundColor = ThemeManager.Instance.CurrentTheme.BackgroundColor.ToUIColor();
@@ -85,6 +90,8 @@ namespace iOS.Phone
 			).UpdateSourceTrigger("Changed");
 
 			ReplyButton.SetCommand ("TouchUpInside", ViewModel.ReplyCommand);
+
+			ViewModel.RequestCanExecute = OnRequestCanExecute;
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
@@ -103,6 +110,11 @@ namespace iOS.Phone
 		#endregion
 
 		#region Methods
+
+		private async void KeyboardDidShow (NSNotification notification)
+		{
+			_tableController.TableView.ScrollToBottom (true);
+		}
 
 		private void KeyboardWillShow (NSNotification notification)
 		{
@@ -155,11 +167,28 @@ namespace iOS.Phone
 			);
 		}
 
-		private async void OnCommentTextViewStarted (object sender, EventArgs args)
+		private void OnRequestCanExecute (bool canExecute)
 		{
-			_tableController.TableView.ScrollToBottom (true);
+			ReplyButton.Enabled = canExecute;
 		}
-			
+
+		private void OnCommentTextViewStarted (object sender, EventArgs args)
+		{
+			if(CommentTextView.Text.Equals(ViewModel.CommentPlaceholder))
+			{
+				CommentTextView.Text = string.Empty;
+			}
+		}
+
+		private void OnCommentTextViewEnded (object sender, EventArgs args)
+		{
+			if(string.IsNullOrWhiteSpace(CommentTextView.Text))
+			{
+				CommentTextView.Text = ViewModel.CommentPlaceholder;
+			}
+		}
+
+
 		#endregion
 	}
 }

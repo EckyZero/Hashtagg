@@ -58,6 +58,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tw-fX-Fl4">
                                         <rect key="frame" x="255" y="0.0" width="65" height="32"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="32D-RG-ACg"/>
                                             <constraint firstAttribute="width" constant="65" id="lyY-89-3pM"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SanFranciscoText-Medium" family="San Francisco Text" pointSize="16"/>
@@ -73,7 +74,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="3Tw-fX-Fl4" secondAttribute="bottom" id="0xt-rj-gtE"/>
-                                    <constraint firstItem="3Tw-fX-Fl4" firstAttribute="top" secondItem="3XN-TR-Aft" secondAttribute="top" id="4KB-6b-Zkt"/>
                                     <constraint firstItem="wwL-Sk-9zL" firstAttribute="top" secondItem="3XN-TR-Aft" secondAttribute="top" constant="4" id="BZq-Fv-96Q"/>
                                     <constraint firstAttribute="trailing" secondItem="3Tw-fX-Fl4" secondAttribute="trailing" id="OXy-Eu-H2Q"/>
                                     <constraint firstItem="3Tw-fX-Fl4" firstAttribute="leading" secondItem="wwL-Sk-9zL" secondAttribute="trailing" constant="8" id="TL5-GK-2vL"/>

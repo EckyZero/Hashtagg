@@ -166,6 +166,11 @@ namespace Shared.VM
 			}
 		}
 
+		public override async Task Reply (string message)
+		{
+			await _facebookService.Comment (_facebookPost.Id, message);
+		}
+
 		#endregion
 	}
 }

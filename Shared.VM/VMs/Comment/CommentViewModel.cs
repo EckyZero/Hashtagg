@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
 using GalaSoft.MvvmLight.Command;
+using Shared.Service;
 
 namespace Shared.VM
 {
@@ -24,14 +25,23 @@ namespace Shared.VM
 		#region Variables
 
 		private ObservableRangeCollection<IListItem> _cardViewModels = new ObservableRangeCollection<IListItem> ();
+		private string _comments;
 
 		#endregion
 
 		#region Properties
 
+		public Action<bool> RequestCanExecute { get; set; }
+
 		public BaseContentCardViewModel PrimaryCardViewModel { get; set; }
 
-		public string Comments { get; set; }
+		public string Comments { 
+			get { return _comments; } 
+			set {
+				CanExecute ();
+				Set (() => Comments, ref _comments, value);
+			} 
+		}
 
 		public ObservableRangeCollection<IListItem> CardViewModels 
 		{
@@ -70,6 +80,7 @@ namespace Shared.VM
 			if(PrimaryCardViewModel.CommentCount != 0 || PrimaryCardViewModel.CommentViewModels.Count == 0)
 			{
 				await PrimaryCardViewModel.GetComments ();
+				CardViewModels.Clear ();
 			}
 
 			// populate all cards
@@ -120,11 +131,33 @@ namespace Shared.VM
 			ReplyCommand = new RelayCommand (ReplyCommandExecute);		
 		}
 			
-		private void ReplyCommandExecute ()
+		private async void ReplyCommandExecute ()
 		{
-				// TODO: Don't forget to fire off CanExecute event
-				// TODO: validate text and post to correct outlet
-				// TODO: update the UI with the latest post
+			var response = ServiceResponseType.ERROR;
+
+			try
+			{
+				_hudService.Show();
+
+				await PrimaryCardViewModel.Reply(Comments);
+				await DidLoad();
+
+				Comments = string.Empty;
+			}
+			finally
+			{
+				_hudService.Dismiss ();	
+			}
+		}
+
+		private void CanExecute ()
+		{
+			var canExecute = !String.IsNullOrWhiteSpace (Comments) && !Comments.Equals(CommentPlaceholder);
+
+			if(RequestCanExecute != null)
+			{
+				RequestCanExecute (canExecute);
+			}
 		}
 
 		#endregion

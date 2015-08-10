@@ -2,6 +2,7 @@
 using Shared.Common;
 using Shared.Service;
 using Microsoft.Practices.Unity;
+using System.Threading.Tasks;
 
 namespace Shared.VM
 {
@@ -143,6 +144,11 @@ namespace Shared.VM
 			base.CommentCommandExecute ();
 
 			// TODO: present screen to enter comment
+		}
+
+		public override async Task Reply (string message)
+		{
+			await _twitterService.Comment (_tweet.Id, message);
 		}
 	}
 }
