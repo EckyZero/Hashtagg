@@ -9,7 +9,7 @@ install:
 # restore NuGet packages before running MSBuild
 before_build:
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
-- xamarin-component.exe login %xamarin_email% < file_with_password.txt
+- xamarin-component.exe login %xamarin_email%
 - Dim oShell
 - Set oShell = WScript.CreateObject("WScript.Shell")
 - oShell.Run "cmd /k cd xamarin-component.exe"
