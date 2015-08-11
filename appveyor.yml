@@ -5,13 +5,17 @@ install:
 - ps: $zipPath = "$($env:APPVEYOR_BUILD_FOLDER)\xpkg.zip"
 - ps: (New-Object Net.WebClient).DownloadFile('https://components.xamarin.com/submit/xpkg', $zipPath)
 - ps: 7z x $zipPath
-# - echo %xamarin_password% > file_with_password.txt
 
 # restore NuGet packages before running MSBuild
 before_build:
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
-- ps: "$env:xamarin_password`n" | Out-File .\file_with_password.txt -Encoding ascii
 - xamarin-component.exe login %xamarin_email% < file_with_password.txt
+- Dim oShell
+- Set oShell = WScript.CreateObject("WScript.Shell")
+- oShell.Run "cmd /k cd xamarin-component.exe"
+- Wscript.sleep 100
+- oShell.AppActivate "Connect"
+- oShell.SendKeys "$env:xamarin_password{ENTER}"
 - xamarin-component.exe restore MVVMSkeleton.sln
 - nuget restore
  
