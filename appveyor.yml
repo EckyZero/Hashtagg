@@ -10,7 +10,7 @@ install:
 before_build:
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
 - xamarin-component.exe login %xamarin_email%
-- [System.Windows.Forms.SendKeys]::SendWait("$env:xamarin_password{ENTER}")
+- ps: [System.Windows.Forms.SendKeys]::SendWait("$env:xamarin_password{ENTER}")
 - xamarin-component.exe restore MVVMSkeleton.sln
 - nuget restore
  
