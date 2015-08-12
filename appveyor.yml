@@ -10,7 +10,7 @@ install:
 before_build:
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
 - xamarin-component login %xamarin_email%
-- expect "Password: "
+- ps: expect "Password: "
 - send %xamarin_password%
 - xamarin-component restore MVVMSkeleton.sln
 - nuget restore
