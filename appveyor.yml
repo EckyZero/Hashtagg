@@ -11,6 +11,7 @@ before_build:
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
 - xamarin-component login %xamarin_email%
 - echo %xamarin_password%
+- echo -ne '\n'
 - xamarin-component restore MVVMSkeleton.sln
 - nuget restore
  
