@@ -9,9 +9,8 @@ install:
 # restore NuGet packages before running MSBuild
 before_build:
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
-- xamarin-component.exe login %xamarin_email%
-- ps: [System.Windows.Forms.SendKeys]::SendWait("$env:xamarin_password{ENTER}")
-- xamarin-component.exe restore MVVMSkeleton.sln
+- xamarin-component login %xamarin_email%
+- xamarin-component restore MVVMSkeleton.sln
 - nuget restore
  
 on_finish:
