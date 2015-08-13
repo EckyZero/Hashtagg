@@ -32,6 +32,7 @@ namespace Shared.VM
 		#region Properties
 
 		public Action<bool> RequestCanExecute { get; set; }
+		public Action RequestDismissKeyboard { get; set; }
 
 		public BaseContentCardViewModel PrimaryCardViewModel { get; set; }
 
@@ -46,7 +47,7 @@ namespace Shared.VM
 		public ObservableRangeCollection<IListItem> CardViewModels 
 		{
 			get { return _cardViewModels; }
-			set { _cardViewModels = value; }
+			set { Set (()=> CardViewModels, ref _cardViewModels, value);  }
 		}
 
 		public string Title
@@ -80,7 +81,6 @@ namespace Shared.VM
 			if(PrimaryCardViewModel.CommentCount != 0 || PrimaryCardViewModel.CommentViewModels.Count == 0)
 			{
 				await PrimaryCardViewModel.GetComments ();
-				CardViewModels.Clear ();
 			}
 
 			// populate all cards
@@ -101,6 +101,8 @@ namespace Shared.VM
 			var contentViewModels = new List<BaseCardViewModel> ();
 
 			// Format the new grouping by including the headers in the main list
+			PrimaryCardViewModel.ShowCommentButton = false;
+
 			contentViewModels.Add (PrimaryCardViewModel);
 
 			for (int i = 0; i < groups.Count(); i++)
@@ -123,16 +125,23 @@ namespace Shared.VM
 			// Add the footer header for "now"
 			contentViewModels.Add (new HeaderCardViewModel (ApplicationResources.Now, Position.Bottom));
 
-			CardViewModels.AddRange (contentViewModels);
+			CardViewModels.Clear ();
+			CardViewModels.AddRange (contentViewModels);	
+		}
+
+		public override async Task WillDisappear ()
+		{
+			PrimaryCardViewModel.ShowCommentButton = true;
 		}
 
 		protected override void InitCommands () 
 		{ 
 			ReplyCommand = new RelayCommand (ReplyCommandExecute);		
 		}
-			
+
 		private async void ReplyCommandExecute ()
 		{
+			// TODO: Determine if we need to track the response
 			var response = ServiceResponseType.ERROR;
 
 			try
@@ -143,6 +152,11 @@ namespace Shared.VM
 				await DidLoad();
 
 				Comments = string.Empty;
+
+				if(RequestDismissKeyboard != null)
+				{
+					RequestDismissKeyboard();
+				}
 			}
 			finally
 			{

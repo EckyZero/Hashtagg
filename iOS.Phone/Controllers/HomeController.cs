@@ -69,7 +69,16 @@ namespace iOS.Phone
 				_refreshControl.Bounds.Width,
 				_refreshControl.Bounds.Height
 			);
+
+            PostBarButton.Clicked += OnPostBarButtonClicked;
 		}
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+
+            PostBarButton.Clicked -= OnPostBarButtonClicked;
+        }
 
 		#endregion
 
@@ -109,6 +118,7 @@ namespace iOS.Phone
 			ViewModel.RequestPhotoViewer = OnRequestPhotoViewer;
 			ViewModel.RequestMovieViewer = OnRequestMovieViewer;
 			ViewModel.RequestCommentPage = OnRequestCommentPage;
+			ViewModel.RequestPostPage = OnRequestPostPage;
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
@@ -333,6 +343,22 @@ namespace iOS.Phone
 
 			NavigationController.PushViewController (controller, true);
 		}
+
+		private void OnRequestPostPage (PostViewModel viewModel)
+		{
+			var storyboard = UIStoryboard.FromName ("Post", null);
+			var controller = storyboard.InstantiateInitialViewController () as UINavigationController;
+			var child = controller.TopViewController as PostController;
+
+			child.ViewModel = viewModel;
+
+			PresentViewController (controller, true, null);
+		}
+
+        private void OnPostBarButtonClicked (object sender, EventArgs args)
+        {
+            ViewModel.PostCommand.Execute(null);
+        }
 
 		#endregion
 	}

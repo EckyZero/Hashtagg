@@ -60,7 +60,7 @@ namespace Shared.VM
         private bool _showLikeButton = true;
         public bool ShowLikeButton { get{ return _showLikeButton; } protected set{ _showLikeButton = value; } }
         private bool _showCommentButton = true;
-        public bool ShowCommentButton { get{ return _showCommentButton; } protected set{ _showCommentButton = value; } }
+        public bool ShowCommentButton { get{ return _showCommentButton; } set{ _showCommentButton = value; } }
         private bool _showShareButton = true;
         public bool ShowShareButton { get{ return _showShareButton; } protected set{ _showShareButton = value; } }
         private bool _showDateTime = true;
@@ -68,7 +68,7 @@ namespace Shared.VM
         private bool _showSocialMediaImage = true;
         public bool ShowSocialMediaImage { get{ return _showSocialMediaImage; } protected set{ _showSocialMediaImage = value; } }
 
-		public List<BaseContentCardViewModel> CommentViewModels { get; set; }
+		public List<BaseContentCardViewModel> CommentViewModels = new List<BaseContentCardViewModel> ();
 
 		public string DisplayDateTime { 
 			get { return OrderByDateTime.ToRelativeString (); }

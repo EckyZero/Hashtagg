@@ -5,6 +5,7 @@ using Microsoft.Practices.Unity;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Shared.VM
 {
@@ -14,6 +15,7 @@ namespace Shared.VM
 
 		private FacebookPost _facebookPost;
 		private IFacebookService _facebookService;
+		private IFacebookHelper _facebookHelper;
 
 		#endregion
 
@@ -125,6 +127,7 @@ namespace Shared.VM
 		{
 			_facebookPost = post;
 			_facebookService = IocContainer.GetContainer ().Resolve<IFacebookService> ();
+			_facebookHelper = IocContainer.GetContainer ().Resolve<IFacebookHelper> ();
 		}
 
 		protected override async void LikeCommandExecute ()
@@ -142,33 +145,42 @@ namespace Shared.VM
 			}
 		}
 
-		protected override void CommentCommandExecute ()
-		{
-			base.CommentCommandExecute ();
-
-//			if()
-		}
-
 		public override async Task GetComments ()
 		{
-			if(CommentViewModels == null)
-			{
-				CommentViewModels = new List<BaseContentCardViewModel> ();
-			}
-
-			CommentViewModels.Clear ();
-
+			// Only add them if they don't already exist in the list
 			foreach (FacebookComment comment in _facebookPost.Comments)
 			{
-				var viewModel = new FacebookCommentCardViewModel (comment);
+				var any = CommentViewModels.Any (vm => vm.UserName.Equals (comment.User.Name) && vm.UserImageUrl.Equals (comment.User.Picture) && vm.Text.Equals (comment.Message));
 
-				CommentViewModels.Add (viewModel);
+				if(!any)
+				{
+					var viewModel = new FacebookCommentCardViewModel (comment);
+
+					CommentViewModels.Add (viewModel);	
+				}
 			}
 		}
 
 		public override async Task Reply (string message)
 		{
-			await _facebookService.Comment (_facebookPost.Id, message);
+			// TODO: Grab the comment from the response and save the id
+			var account = _facebookHelper.GetAccount ();
+//			var response = await _facebookService.Comment (_facebookPost.Id, message);
+			var comment = new FacebookComment ()
+			{
+				Id = Guid.NewGuid().ToString(),
+				CreatedAt = DateTime.Now,
+				Message = message,
+				LikedCount = 0,
+				IsLikedByUser = false,
+				User = new FacebookUser ()
+				{
+					Id = account.Properties["id"],
+					Name = account.Username,
+				}
+			};
+
+			_facebookPost.Comments.Add (comment);
 		}
 
 		#endregion

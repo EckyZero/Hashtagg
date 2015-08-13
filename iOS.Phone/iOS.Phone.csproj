@@ -216,6 +216,10 @@
     <Compile Include="Cells\DefaultHeaderCell.designer.cs">
       <DependentUpon>DefaultHeaderCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\PostController.designer.cs">
+      <DependentUpon>PostController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -274,6 +278,7 @@
     <InterfaceDefinition Include="Splash.storyboard" />
     <InterfaceDefinition Include="Onboarding.storyboard" />
     <InterfaceDefinition Include="Comment.storyboard" />
+    <InterfaceDefinition Include="Post.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Instagram%402x.png" />
@@ -369,5 +374,14 @@
     <BundleResource Include="Resources\App-bg%402x.png" />
     <BundleResource Include="Resources\Hashtagg_title%402x.png" />
     <BundleResource Include="Resources\Hashtagg_title%403x.png" />
+    <BundleResource Include="Resources\socialTwitterUnselected.png" />
+    <BundleResource Include="Resources\socialTwitterUnselected%402x.png" />
+    <BundleResource Include="Resources\socialTwitterUnselected%403x.png" />
+    <BundleResource Include="Resources\socialFacebookUnselected.png" />
+    <BundleResource Include="Resources\socialFacebookUnselected%402x.png" />
+    <BundleResource Include="Resources\socialFacebookUnselected%403x.png" />
+    <BundleResource Include="Resources\cancelIcon.png" />
+    <BundleResource Include="Resources\cancelIcon%402x.png" />
+    <BundleResource Include="Resources\cancelIcon%403x.png" />
   </ItemGroup>
 </Project>

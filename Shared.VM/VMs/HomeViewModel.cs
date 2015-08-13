@@ -39,6 +39,7 @@ namespace Shared.VM
 		public Action<BaseContentCardViewModel> RequestPhotoViewer { get; set; }
 		public Action<BaseContentCardViewModel> RequestMovieViewer { get; set; }
 		public Action<CommentViewModel> RequestCommentPage { get; set; }
+        public Action<PostViewModel> RequestPostPage { get; set; }
 
 		#endregion
 
@@ -88,6 +89,7 @@ namespace Shared.VM
 		public RelayCommand RefreshCommand { get; private set; }
 		public RelayCommand TwitterCommand { get; private set; }
 		public RelayCommand FacebookCommand { get; private set; }
+        public RelayCommand PostCommand { get; private set; }
 
 		#endregion
 
@@ -130,6 +132,7 @@ namespace Shared.VM
 			RefreshCommand = new RelayCommand (RefreshCommandExecute);
 			TwitterCommand = new RelayCommand (TwitterCommandExecute);
 			FacebookCommand = new RelayCommand (FacebookCommandExecute);
+            PostCommand = new RelayCommand (PostCommandExecute);
 		}
 
 		private async void RefreshCommandExecute ()
@@ -381,6 +384,15 @@ namespace Shared.VM
         public string FacebookImageUrl {
             get { return _facebookHelper.GetAccount().Properties["imageUrl"]; }
         }
+
+        public void PostCommandExecute ()
+        {
+            if(RequestPostPage != null)
+            {
+                RequestPostPage(new PostViewModel());
+            }
+        }
+
 		#endregion
 	}
 }

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mna-n2-dKz">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SanFranciscoText-Medium.otf">
+            <string>SanFranciscoText-Medium</string>
+        </mutableArray>
+        <mutableArray key="SanFranciscoText-Regular.otf">
+            <string>SanFranciscoText-Regular</string>
+            <string>SanFranciscoText-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--New Post-->
+        <scene sceneID="78d-sM-U1s">
+            <objects>
+                <viewController restorationIdentifier="PostController" storyboardIdentifier="PostController" id="SSM-bP-Lji" customClass="PostController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wEq-Sv-x85"/>
+                        <viewControllerLayoutGuide type="bottom" id="EmD-Uy-cmn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pK7-F9-VNK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="App-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="jqY-cC-gQg">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's happening?" translatesAutoresizingMaskIntoConstraints="NO" id="X2W-SD-Utc">
+                                <rect key="frame" x="44" y="25" width="232" height="354"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cb2-VU-egK">
+                                <rect key="frame" x="0.0" y="404" width="320" height="100"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3M-Z9-QRw">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                        <color key="backgroundColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="TDU-Qi-Psc"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgJ-i0-Tgd">
+                                        <rect key="frame" x="0.0" y="61" width="320" height="1"/>
+                                        <color key="backgroundColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Ty7-t8-TIB"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1O-rh-mm9">
+                                        <rect key="frame" x="0.0" y="62" width="320" height="38"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qac-eb-Z7t">
+                                                <rect key="frame" x="255" y="0.0" width="65" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="65" id="Jp3-yZ-C91"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="SanFranciscoText-Medium" family="San Francisco Text" pointSize="16"/>
+                                                <state key="normal" title="Post">
+                                                    <color key="titleColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ktd-oT-Zey">
+                                                <rect key="frame" x="241" y="9" width="10" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="16"/>
+                                                <color key="textColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="qac-eb-Z7t" secondAttribute="trailing" id="5S3-qx-e5h"/>
+                                            <constraint firstAttribute="bottom" secondItem="qac-eb-Z7t" secondAttribute="bottom" id="CNJ-W5-hbB"/>
+                                            <constraint firstItem="qac-eb-Z7t" firstAttribute="leading" secondItem="Ktd-oT-Zey" secondAttribute="trailing" constant="4" id="IKe-up-GC6"/>
+                                            <constraint firstItem="qac-eb-Z7t" firstAttribute="top" secondItem="j1O-rh-mm9" secondAttribute="top" id="PX5-pG-T4U"/>
+                                            <constraint firstItem="qac-eb-Z7t" firstAttribute="centerY" secondItem="Ktd-oT-Zey" secondAttribute="centerY" id="aFW-CO-tU9"/>
+                                            <constraint firstAttribute="height" constant="38" id="kWg-Oy-l3x"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kmz-pg-MfY">
+                                        <rect key="frame" x="101" y="0.0" width="118" height="61"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-4T-Sdx">
+                                                <rect key="frame" x="8" y="8" width="45" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="kl1-4T-Sdx" secondAttribute="height" multiplier="1:1" id="bNh-Rg-vy8"/>
+                                                </constraints>
+                                                <state key="normal" image="socialFacebookUnselected.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="selected" image="Facebook.png"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-1I-dr3">
+                                                <rect key="frame" x="61" y="8" width="45" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="0kj-1I-dr3" secondAttribute="height" multiplier="1:1" id="uqF-U2-UYp"/>
+                                                </constraints>
+                                                <state key="normal" image="socialTwitterUnselected.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="selected" image="Twitter.png"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="kl1-4T-Sdx" firstAttribute="leading" secondItem="kmz-pg-MfY" secondAttribute="leading" constant="8" id="3gO-he-NrE"/>
+                                            <constraint firstItem="0kj-1I-dr3" firstAttribute="top" secondItem="kl1-4T-Sdx" secondAttribute="top" id="CWy-CT-2nQ"/>
+                                            <constraint firstItem="kl1-4T-Sdx" firstAttribute="top" secondItem="kmz-pg-MfY" secondAttribute="top" constant="8" id="ZH6-9q-5ie"/>
+                                            <constraint firstAttribute="bottom" secondItem="kl1-4T-Sdx" secondAttribute="bottom" constant="8" id="as2-3v-sWf"/>
+                                            <constraint firstAttribute="trailing" secondItem="0kj-1I-dr3" secondAttribute="trailing" constant="12" id="atr-MB-G48"/>
+                                            <constraint firstItem="0kj-1I-dr3" firstAttribute="leading" secondItem="kl1-4T-Sdx" secondAttribute="trailing" constant="8" id="l4L-d0-Ar8"/>
+                                            <constraint firstItem="0kj-1I-dr3" firstAttribute="bottom" secondItem="kl1-4T-Sdx" secondAttribute="bottom" id="sRr-7p-eKa"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="kmz-pg-MfY" secondAttribute="centerX" id="1th-9r-UUp"/>
+                                    <constraint firstItem="j1O-rh-mm9" firstAttribute="top" secondItem="kgJ-i0-Tgd" secondAttribute="bottom" id="8rS-sq-RZv"/>
+                                    <constraint firstAttribute="trailing" secondItem="kgJ-i0-Tgd" secondAttribute="trailing" id="96x-72-Ua1"/>
+                                    <constraint firstAttribute="trailing" secondItem="z3M-Z9-QRw" secondAttribute="trailing" id="B8t-6O-x9i"/>
+                                    <constraint firstItem="kgJ-i0-Tgd" firstAttribute="top" secondItem="kmz-pg-MfY" secondAttribute="bottom" id="Bkc-MC-6SB"/>
+                                    <constraint firstItem="kgJ-i0-Tgd" firstAttribute="leading" secondItem="Cb2-VU-egK" secondAttribute="leading" id="DLx-W3-dfG"/>
+                                    <constraint firstAttribute="height" constant="100" id="KDZ-jc-Cog"/>
+                                    <constraint firstItem="j1O-rh-mm9" firstAttribute="leading" secondItem="Cb2-VU-egK" secondAttribute="leading" id="Oho-nd-9fm"/>
+                                    <constraint firstAttribute="trailing" secondItem="j1O-rh-mm9" secondAttribute="trailing" id="a2t-lX-RJC"/>
+                                    <constraint firstItem="z3M-Z9-QRw" firstAttribute="leading" secondItem="Cb2-VU-egK" secondAttribute="leading" id="aNb-mk-5Y2"/>
+                                    <constraint firstItem="kmz-pg-MfY" firstAttribute="top" secondItem="Cb2-VU-egK" secondAttribute="top" id="cFR-WG-vCh"/>
+                                    <constraint firstAttribute="bottom" secondItem="j1O-rh-mm9" secondAttribute="bottom" id="qWz-jD-zNu"/>
+                                    <constraint firstItem="z3M-Z9-QRw" firstAttribute="top" secondItem="Cb2-VU-egK" secondAttribute="top" id="ul0-3g-xsN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="X2W-SD-Utc" firstAttribute="leading" secondItem="pK7-F9-VNK" secondAttribute="leading" constant="44" id="1TB-iN-ic9"/>
+                            <constraint firstItem="EmD-Uy-cmn" firstAttribute="top" secondItem="Cb2-VU-egK" secondAttribute="bottom" id="4VD-SR-b20"/>
+                            <constraint firstAttribute="trailing" secondItem="Cb2-VU-egK" secondAttribute="trailing" id="5u1-Yh-Kzi"/>
+                            <constraint firstItem="X2W-SD-Utc" firstAttribute="top" secondItem="wEq-Sv-x85" secondAttribute="bottom" constant="25" id="6fK-nP-iHt"/>
+                            <constraint firstItem="jqY-cC-gQg" firstAttribute="top" secondItem="wEq-Sv-x85" secondAttribute="bottom" id="DUp-S8-HHC"/>
+                            <constraint firstItem="EmD-Uy-cmn" firstAttribute="top" secondItem="jqY-cC-gQg" secondAttribute="bottom" id="Hm3-vf-nIQ"/>
+                            <constraint firstAttribute="trailing" secondItem="jqY-cC-gQg" secondAttribute="trailing" id="JTM-kn-NUg"/>
+                            <constraint firstItem="jqY-cC-gQg" firstAttribute="leading" secondItem="pK7-F9-VNK" secondAttribute="leading" id="WmF-gq-yTj"/>
+                            <constraint firstItem="Cb2-VU-egK" firstAttribute="leading" secondItem="pK7-F9-VNK" secondAttribute="leading" id="WoB-2u-baT"/>
+                            <constraint firstAttribute="trailing" secondItem="X2W-SD-Utc" secondAttribute="trailing" constant="44" id="mdt-XJ-i5o"/>
+                            <constraint firstItem="Cb2-VU-egK" firstAttribute="top" secondItem="X2W-SD-Utc" secondAttribute="bottom" constant="25" id="olL-9O-u6K"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Post" id="K36-vC-rSW">
+                        <barButtonItem key="rightBarButtonItem" image="cancelIcon.png" style="plain" id="nFB-44-1YP">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="OnCancelButtonTapped:" destination="SSM-bP-Lji" id="cFg-we-2Qb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="BackgroundImageView" destination="jqY-cC-gQg" id="toG-i4-P66"/>
+                        <outlet property="CountLabel" destination="Ktd-oT-Zey" id="UpS-9b-cja"/>
+                        <outlet property="FacebookButton" destination="kl1-4T-Sdx" id="XzR-SW-b8G"/>
+                        <outlet property="FooterView" destination="Cb2-VU-egK" id="LWz-V6-DzM"/>
+                        <outlet property="PostButton" destination="qac-eb-Z7t" id="1sn-hb-fnu"/>
+                        <outlet property="TextView" destination="X2W-SD-Utc" id="642-3s-aWh"/>
+                        <outlet property="TwitterButton" destination="0kj-1I-dr3" id="70c-Ig-KFd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hlt-2a-KgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="736" y="430"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yc4-hr-CyN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mna-n2-dKz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="UDK-cF-8pf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SSM-bP-Lji" kind="relationship" relationship="rootViewController" id="7cO-OK-ZBQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="85q-e4-Mod" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="293" y="430"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="App-bg.png" width="320" height="569"/>
+        <image name="Facebook.png" width="44" height="44"/>
+        <image name="Twitter.png" width="44" height="44"/>
+        <image name="cancelIcon.png" width="16" height="16"/>
+        <image name="socialFacebookUnselected.png" width="44" height="44"/>
+        <image name="socialTwitterUnselected.png" width="44" height="44"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

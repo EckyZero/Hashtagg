@@ -9,6 +9,8 @@ using CoreGraphics;
 using Shared.Common;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Helpers;
+using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace iOS.Phone
 {
@@ -17,6 +19,7 @@ namespace iOS.Phone
 		#region Variables
 
 		private PSObservableTableController _tableController;
+        private List<NSObject> _notificationObservers = new List<NSObject>();
 
 		#endregion
 
@@ -43,9 +46,10 @@ namespace iOS.Phone
 		{
 			base.ViewDidAppear (animated);
 
-			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.DidShowNotification, KeyboardDidShow);
-			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillShowNotification, KeyboardWillShow);
-			NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillHideNotification, KeyboardWillHide);
+            _notificationObservers.Add(NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.DidShowNotification, KeyboardDidShow));
+            _notificationObservers.Add(NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillShowNotification, KeyboardWillShow));
+            _notificationObservers.Add(NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.DidHideNotification, KeyboardDidHide));
+            _notificationObservers.Add(NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillHideNotification, KeyboardWillHide));
 
 			CommentTextView.Changed += OnCommentTextViewChanged;
 			CommentTextView.Started += OnCommentTextViewStarted;
@@ -56,7 +60,7 @@ namespace iOS.Phone
 		{
 			base.ViewWillDisappear (animated);
 
-			NSNotificationCenter.DefaultCenter.RemoveObserver (this);
+            NSNotificationCenter.DefaultCenter.RemoveObservers(_notificationObservers);
 
 			CommentTextView.Changed -= OnCommentTextViewChanged;
 			CommentTextView.Started -= OnCommentTextViewStarted;
@@ -86,12 +90,14 @@ namespace iOS.Phone
 		{
 			this.SetBinding (
 				() => CommentTextView.Text,
-				() => ViewModel.Comments
+				() => ViewModel.Comments,
+				BindingMode.TwoWay
 			).UpdateSourceTrigger("Changed");
 
 			ReplyButton.SetCommand ("TouchUpInside", ViewModel.ReplyCommand);
 
 			ViewModel.RequestCanExecute = OnRequestCanExecute;
+			ViewModel.RequestDismissKeyboard = OnRequestDismissKeyboard;
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
@@ -111,9 +117,9 @@ namespace iOS.Phone
 
 		#region Methods
 
-		private async void KeyboardDidShow (NSNotification notification)
+		private void KeyboardDidShow (NSNotification notification)
 		{
-			_tableController.TableView.ScrollToBottom (true);
+//			_tableController.TableView.ScrollToBottom (true);
 		}
 
 		private void KeyboardWillShow (NSNotification notification)
@@ -123,10 +129,13 @@ namespace iOS.Phone
 			KeyboardWillChange (keyboardFrame.Height, notification);
 		}
 
+		private void KeyboardDidHide (NSNotification notification)
+		{
+//			_tableController.TableView.ScrollToBottom (true);
+		}
+
 		private void KeyboardWillHide (NSNotification notification)
 		{
-			var keyboardFrame = UIKeyboard.FrameEndFromNotification (notification);
-
 			KeyboardWillChange (0, notification);
 		}
 
@@ -188,6 +197,10 @@ namespace iOS.Phone
 			}
 		}
 
+		private void OnRequestDismissKeyboard ()
+		{
+			CommentTextView.ResignFirstResponder();
+		}
 
 		#endregion
 	}

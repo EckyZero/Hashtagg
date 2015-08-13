@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Shared.Common
 {
@@ -19,6 +20,8 @@ namespace Shared.Common
 		public string UserLocation { get; set; }
 		public string UserUrl { get; set; }
 		public string UserImageUrl { get; set; }
+
+		public List<TwitterUser> CommentedOnByUsers { get; set; }
 
 		public Tweet ()
 		{

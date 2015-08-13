@@ -383,7 +383,8 @@ namespace iOS
 					var paths = new NSIndexPath[count];
 					for (var i = 0; i < count; i++)
 					{
-						paths[i] = NSIndexPath.FromRowSection(e.NewStartingIndex + i, 0);
+						var startingIndex = e.OldStartingIndex < 0 ? 0 : e.OldStartingIndex;
+						paths[i] = NSIndexPath.FromRowSection(startingIndex + i, 0);
 					}
 					TableView.InsertRows(paths, AddAnimation);
 				}

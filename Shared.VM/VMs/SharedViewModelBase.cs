@@ -45,6 +45,8 @@ namespace Shared.VM
 
 		public virtual async Task DidAppear () {}
 
+		public virtual async Task WillDisappear () {}
+
 		private void InitServices()
 		{
 			_navigationService = IocContainer.GetContainer().Resolve<IExtendedNavigationService>();

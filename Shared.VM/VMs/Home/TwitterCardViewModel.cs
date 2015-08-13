@@ -54,7 +54,6 @@ namespace Shared.VM
 
 		public override int? CommentCount 
 		{
-			// TODO: Unsure as to how to gather this data
 			get { return null; }
 		}
 
@@ -120,6 +119,7 @@ namespace Shared.VM
 		{
 			_tweet = tweet;
 			_twitterService = IocContainer.GetContainer ().Resolve<ITwitterService> ();
+			ShowCommentButton = false;
 		}
 
 		#endregion

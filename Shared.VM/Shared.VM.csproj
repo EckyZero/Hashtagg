@@ -51,6 +51,7 @@
     <Compile Include="VMs\MainViewModel.cs" />
     <Compile Include="VMs\Comment\CommentViewModel.cs" />
     <Compile Include="VMs\Comment\FacebookCommentCardViewModel.cs" />
+    <Compile Include="VMs\PostViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared.Common\Shared.Common.csproj">
