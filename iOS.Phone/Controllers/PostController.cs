@@ -26,7 +26,8 @@ namespace iOS.Phone
         {
             base.ViewDidLoad();
 
-            TextView.BecomeFirstResponder();
+            InitUI();
+            InitBindings();
         }
 
         public override void ViewWillDisappear(bool animated)
@@ -43,6 +44,16 @@ namespace iOS.Phone
         public override UIStatusBarStyle PreferredStatusBarStyle()
         {
             return UIStatusBarStyle.LightContent;
+        }
+
+        private void InitUI()
+        {
+            TextView.BecomeFirstResponder();
+        }
+
+        private void InitBindings ()
+        {
+            
         }
 
         #endregion

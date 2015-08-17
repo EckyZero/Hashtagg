@@ -65,9 +65,21 @@ namespace Shared.Common {
             }
         }
         
+        public static string DropTwitter {
+            get {
+                return ResourceManager.GetString("DropTwitter", resourceCulture);
+            }
+        }
+        
         public static string GenericError {
             get {
                 return ResourceManager.GetString("GenericError", resourceCulture);
+            }
+        }
+        
+        public static string PleaseTryAgain {
+            get {
+                return ResourceManager.GetString("PleaseTryAgain", resourceCulture);
             }
         }
         
@@ -89,6 +101,18 @@ namespace Shared.Common {
             }
         }
         
+        public static string SendingMessage {
+            get {
+                return ResourceManager.GetString("SendingMessage", resourceCulture);
+            }
+        }
+        
+        public static string TheFollowingServicesFailed {
+            get {
+                return ResourceManager.GetString("TheFollowingServicesFailed", resourceCulture);
+            }
+        }
+        
         public static string Liked {
             get {
                 return ResourceManager.GetString("Liked", resourceCulture);
@@ -104,6 +128,12 @@ namespace Shared.Common {
         public static string Facebook {
             get {
                 return ResourceManager.GetString("Facebook", resourceCulture);
+            }
+        }
+        
+        public static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
             }
         }
         
@@ -146,6 +176,12 @@ namespace Shared.Common {
         public static string GenericOffline {
             get {
                 return ResourceManager.GetString("GenericOffline", resourceCulture);
+            }
+        }
+        
+        public static string MessageIsTooLong {
+            get {
+                return ResourceManager.GetString("MessageIsTooLong", resourceCulture);
             }
         }
     }

@@ -168,4 +168,22 @@
   	<data name="CommentPlaceholder" xml:space="preserve">
     	<value>Write a comment...</value>
   	</data>
+  	<data name="MessageIsTooLong" xml:space="preserve">
+    	<value>Message is too long</value>
+  	</data>
+  	<data name="DropTwitter" xml:space="preserve">
+    	<value>Either unselect Twitter or limit your message to 140 characters</value>
+  	</data>
+  	<data name="SendingMessage" xml:space="preserve">
+    	<value>Sending Message</value>
+  	</data>
+  	<data name="TheFollowingServicesFailed" xml:space="preserve">
+    	<value>The following service(s) failed:</value>
+  	</data>
+  	<data name="PleaseTryAgain" xml:space="preserve">
+    	<value>Please try again</value>
+  	</data>
+  	<data name="Success" xml:space="preserve">
+    	<value>Success!</value>
+  	</data>
 </root>
