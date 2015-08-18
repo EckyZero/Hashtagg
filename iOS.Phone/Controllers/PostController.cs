@@ -5,14 +5,24 @@ using System;
 using Foundation;
 using UIKit;
 using Shared.VM;
+using GalaSoft.MvvmLight.Helpers;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace iOS.Phone
 {
 	public partial class PostController : UIViewController
 	{
+        #region Variables
+
+        private bool _isFirstLoad = true;
+
+        #endregion
+
 		#region Properties
 
 		public PostViewModel ViewModel { get; set; }
+        private List<NSObject> _notificationObservers = new List<NSObject>();
 
 		#endregion
 
@@ -20,14 +30,38 @@ namespace iOS.Phone
 
 		public PostController (IntPtr handle) : base (handle)
 		{
+            ViewModel = new PostViewModel();
 		}
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            InitUI();
             InitBindings();
+            InitUI();
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            // Have to do this here because of a rendering issue
+            if(_isFirstLoad)
+            {
+                TextView.Text = string.Empty;
+                TextView.Text = ViewModel.Placeholder;   
+            }
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            _notificationObservers.Add(NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillShowNotification, KeyboardDidShow));
+            _notificationObservers.Add(NSNotificationCenter.DefaultCenter.AddObserver (UIKeyboard.WillHideNotification, KeyboardWillHide));
+
+            TextView.Started += OnTextStarted;
+            TextView.Ended += OnTextEnded;
         }
 
         public override void ViewWillDisappear(bool animated)
@@ -35,6 +69,11 @@ namespace iOS.Phone
             base.ViewWillDisappear(animated);
 
             TextView.ResignFirstResponder();
+
+            TextView.Started -= OnTextStarted;
+            TextView.Ended -= OnTextEnded;
+
+            _isFirstLoad = false;
         }
 
         #endregion
@@ -43,17 +82,109 @@ namespace iOS.Phone
 
         public override UIStatusBarStyle PreferredStatusBarStyle()
         {
-            return UIStatusBarStyle.LightContent;
+            return UIStatusBarStyle.Default;
         }
 
         private void InitUI()
         {
-            TextView.BecomeFirstResponder();
+            // Add tap to dismiss keyboard
+            var tap = new UITapGestureRecognizer (() => TextView.ResignFirstResponder ());
+
+            tap.NumberOfTapsRequired = 1;
+
+            View.AddGestureRecognizer (tap);
+
+            TextView.TextColor = ViewModel.PlaceholderTextColor.ToUIColor();
+            PostButton.Enabled = false;
+            TextView.TextContainerInset = new UIEdgeInsets(top: 25f, left: 0f, bottom: 0f, right: 0f);
         }
 
         private void InitBindings ()
         {
+            ViewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) =>
+            {
+                if(e.PropertyName.Equals("CharacterCount"))
+                {
+                    CountLabel.Text = ViewModel.CharacterCount;    
+                }
+            };
+
+            this.SetBinding (
+                ()=> TextView.Text,
+                ()=> ViewModel.Message,
+                BindingMode.TwoWay
+            ).UpdateSourceTrigger("Changed");
+
+            this.SetBinding (
+                ()=> FacebookButton.Selected,
+                ()=> ViewModel.IsFacebookSelected,
+                BindingMode.TwoWay
+            ).UpdateSourceTrigger("TouchUpInside");
+
+            this.SetBinding (
+                ()=> TwitterButton.Selected,
+                ()=> ViewModel.IsTwitterSelected,
+                BindingMode.TwoWay
+            ).UpdateSourceTrigger("TouchUpInside");
+                
+
+            ViewModel.CanExecute = OnCanExecute;
+
+            PostButton.SetCommand("TouchUpInside", ViewModel.PostCommand);
+            TwitterButton.SetCommand("TouchUpInside", ViewModel.TwitterCommand);
+            FacebookButton.SetCommand("TouchUpInside", ViewModel.FacebookCommand);
+        }
+
+        private void OnCanExecute (bool canExecute)
+        {
+            PostButton.Enabled = canExecute;
+        }
+
+        private void KeyboardDidShow (NSNotification notification)
+        {
+            var keyboardFrame = UIKeyboard.FrameEndFromNotification (notification);
+
+            KeyboardWillChange (keyboardFrame.Height, notification);
+        }
+
+        private void KeyboardWillHide (NSNotification notification)
+        {
+            KeyboardWillChange (0, notification);
+        }
+
+        private void KeyboardWillChange(nfloat bottom, NSNotification notification)
+        {
+            var duration = UIKeyboard.AnimationDurationFromNotification (notification);
+
+            FooterView.SetNeedsLayout();
+
+            FooterViewBottomConstraint.Constant = bottom;
+
+            UIView.Animate (
+                duration: duration,
+                animation: FooterView.LayoutIfNeeded);
+        }
             
+        private void OnTextStarted (object sender, EventArgs args)
+        {
+            var textView = sender as UITextView;
+
+            if(textView.Text.Equals(ViewModel.Placeholder))
+            {
+                textView.Text = string.Empty;
+                textView.TextColor = ViewModel.TextColor.ToUIColor();
+            }
+        }
+
+        private void OnTextEnded (object sender, EventArgs args)
+        {
+            var textView = sender as UITextView;
+
+            if(string.IsNullOrWhiteSpace(textView.Text))
+            {
+                textView.Text = ViewModel.Placeholder;
+                textView.TextColor = ViewModel.PlaceholderTextColor.ToUIColor();
+            }
         }
 
         #endregion

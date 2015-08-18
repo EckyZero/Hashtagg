@@ -158,8 +158,6 @@ namespace iOS.Phone
 			// Set bounds for text
 			var height = CommentTextView.SizeThatFits(new CGSize(CommentTextView.Frame.Width, nfloat.MaxValue)).Height;
 
-			Console.WriteLine (height);
-
 			height = height > 100 ? 100 : height;
 			height = height < 24 ? 24 : height;
 

@@ -186,4 +186,13 @@
   	<data name="Success" xml:space="preserve">
     	<value>Success!</value>
   	</data>
+  	<data name="WhatsHappening" xml:space="preserve">
+    	<value>What's happening?</value>
+  	</data>
+  	<data name="NoAccountSelected" xml:space="preserve">
+    	<value>No Accounts Selected</value>
+  	</data>
+  	<data name="ChooseFromTheOptionsBelow" xml:space="preserve">
+    	<value>Choose from the options below where you'd like to post.</value>
+  	</data>
 </root>

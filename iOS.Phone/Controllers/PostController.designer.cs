@@ -25,6 +25,9 @@ namespace iOS.Phone
 		UIKit.UIView FooterView { get; set; }
 
 		[Outlet]
+		UIKit.NSLayoutConstraint FooterViewBottomConstraint { get; set; }
+
+		[Outlet]
 		UIKit.UIButton PostButton { get; set; }
 
 		[Outlet]
@@ -71,6 +74,11 @@ namespace iOS.Phone
 			if (TwitterButton != null) {
 				TwitterButton.Dispose ();
 				TwitterButton = null;
+			}
+
+			if (FooterViewBottomConstraint != null) {
+				FooterViewBottomConstraint.Dispose ();
+				FooterViewBottomConstraint = null;
 			}
 		}
 	}

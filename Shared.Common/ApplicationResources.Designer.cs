@@ -101,6 +101,12 @@ namespace Shared.Common {
             }
         }
         
+        public static string ChooseFromTheOptionsBelow {
+            get {
+                return ResourceManager.GetString("ChooseFromTheOptionsBelow", resourceCulture);
+            }
+        }
+        
         public static string SendingMessage {
             get {
                 return ResourceManager.GetString("SendingMessage", resourceCulture);
@@ -167,6 +173,12 @@ namespace Shared.Common {
             }
         }
         
+        public static string WhatsHappening {
+            get {
+                return ResourceManager.GetString("WhatsHappening", resourceCulture);
+            }
+        }
+        
         public static string Comment {
             get {
                 return ResourceManager.GetString("Comment", resourceCulture);
@@ -182,6 +194,12 @@ namespace Shared.Common {
         public static string MessageIsTooLong {
             get {
                 return ResourceManager.GetString("MessageIsTooLong", resourceCulture);
+            }
+        }
+        
+        public static string NoAccountSelected {
+            get {
+                return ResourceManager.GetString("NoAccountSelected", resourceCulture);
             }
         }
     }

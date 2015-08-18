@@ -29,11 +29,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="App-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="jqY-cC-gQg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's happening?" translatesAutoresizingMaskIntoConstraints="NO" id="X2W-SD-Utc">
-                                <rect key="frame" x="44" y="25" width="232" height="354"/>
+                            <textView multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's happening?" translatesAutoresizingMaskIntoConstraints="NO" id="X2W-SD-Utc">
+                                <rect key="frame" x="44" y="0.0" width="232" height="404"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Regular" family="San Francisco Text" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cb2-VU-egK">
@@ -146,14 +146,14 @@
                             <constraint firstItem="X2W-SD-Utc" firstAttribute="leading" secondItem="pK7-F9-VNK" secondAttribute="leading" constant="44" id="1TB-iN-ic9"/>
                             <constraint firstItem="EmD-Uy-cmn" firstAttribute="top" secondItem="Cb2-VU-egK" secondAttribute="bottom" id="4VD-SR-b20"/>
                             <constraint firstAttribute="trailing" secondItem="Cb2-VU-egK" secondAttribute="trailing" id="5u1-Yh-Kzi"/>
-                            <constraint firstItem="X2W-SD-Utc" firstAttribute="top" secondItem="wEq-Sv-x85" secondAttribute="bottom" constant="25" id="6fK-nP-iHt"/>
+                            <constraint firstItem="X2W-SD-Utc" firstAttribute="top" secondItem="wEq-Sv-x85" secondAttribute="bottom" id="6fK-nP-iHt"/>
                             <constraint firstItem="jqY-cC-gQg" firstAttribute="top" secondItem="wEq-Sv-x85" secondAttribute="bottom" id="DUp-S8-HHC"/>
                             <constraint firstItem="EmD-Uy-cmn" firstAttribute="top" secondItem="jqY-cC-gQg" secondAttribute="bottom" id="Hm3-vf-nIQ"/>
                             <constraint firstAttribute="trailing" secondItem="jqY-cC-gQg" secondAttribute="trailing" id="JTM-kn-NUg"/>
                             <constraint firstItem="jqY-cC-gQg" firstAttribute="leading" secondItem="pK7-F9-VNK" secondAttribute="leading" id="WmF-gq-yTj"/>
                             <constraint firstItem="Cb2-VU-egK" firstAttribute="leading" secondItem="pK7-F9-VNK" secondAttribute="leading" id="WoB-2u-baT"/>
                             <constraint firstAttribute="trailing" secondItem="X2W-SD-Utc" secondAttribute="trailing" constant="44" id="mdt-XJ-i5o"/>
-                            <constraint firstItem="Cb2-VU-egK" firstAttribute="top" secondItem="X2W-SD-Utc" secondAttribute="bottom" constant="25" id="olL-9O-u6K"/>
+                            <constraint firstItem="Cb2-VU-egK" firstAttribute="top" secondItem="X2W-SD-Utc" secondAttribute="bottom" id="olL-9O-u6K"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Post" id="K36-vC-rSW">
@@ -169,6 +169,7 @@
                         <outlet property="CountLabel" destination="Ktd-oT-Zey" id="UpS-9b-cja"/>
                         <outlet property="FacebookButton" destination="kl1-4T-Sdx" id="XzR-SW-b8G"/>
                         <outlet property="FooterView" destination="Cb2-VU-egK" id="LWz-V6-DzM"/>
+                        <outlet property="FooterViewBottomConstraint" destination="4VD-SR-b20" id="Pd1-tb-Ft4"/>
                         <outlet property="PostButton" destination="qac-eb-Z7t" id="1sn-hb-fnu"/>
                         <outlet property="TextView" destination="X2W-SD-Utc" id="642-3s-aWh"/>
                         <outlet property="TwitterButton" destination="0kj-1I-dr3" id="70c-Ig-KFd"/>
