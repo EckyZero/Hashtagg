@@ -13,8 +13,9 @@ namespace Shared.VM
         #region Variables
 
         private string _message;
-        private bool _isFacebookEnabled;
-        private bool _isTwitterEnabled;
+        private string _characterCount;
+        private bool _isFacebookSelected;
+        private bool _isTwitterSelected;
 
         private ITwitterService _twitterService;
         private IFacebookService _facebookService;
@@ -28,32 +29,61 @@ namespace Shared.VM
 
         public Action<bool> CanExecute { get; set; }
 
+        public string Placeholder
+        {
+            get { return ApplicationResources.WhatsHappening; }
+        }
+
+        public PSColor PlaceholderTextColor
+        {
+            get { return ThemeManager.Instance.CurrentTheme.Disabled; }
+        }
+
+        public PSColor TextColor
+        {
+            get { return ThemeManager.Instance.CurrentTheme.TextPrimaryColor; }
+        }
+
         public string Message 
         { 
             get { return _message; } 
             set 
             { 
                 Set(() => Message, ref _message, value); 
-                CharacterCount = _message.Length;
+                CharacterCount = _message.Equals(Placeholder) ? "0" : _message.Length.ToString();
                 RequestCanExecute();
             }
         }
 
-        public bool IsFacebookEnabled
+        public bool IsFacebookSelected
         {
-            get { return _isFacebookEnabled; }
-            set { Set(() => IsFacebookEnabled, ref _isFacebookEnabled, value); }
+            get { return _isFacebookSelected; }
+            set 
+            { 
+                Set(() => IsFacebookSelected, ref _isFacebookSelected, value); 
+                RequestCanExecute();
+            }
         }
 
-        public bool IsTwitterEnabled
+        public bool IsTwitterSelected
         {
-            get { return _isTwitterEnabled; }
-            set { Set(() => IsTwitterEnabled, ref _isTwitterEnabled, value); }
+            get { return _isTwitterSelected; }
+            set 
+            { 
+                Set(() => IsTwitterSelected, ref _isTwitterSelected, value); 
+                RequestCanExecute();
+            }
         }
 
-        public int CharacterCount { get; private set; }
+        public string CharacterCount 
+        { 
+            get { return _characterCount; }
+            set { Set(() => CharacterCount, ref _characterCount, value); }
+        }
 
         public RelayCommand PostCommand { get; private set; }
+        public RelayCommand FacebookCommand { get; private set; }
+        public RelayCommand TwitterCommand { get; private set; }
 
         #endregion
 
@@ -71,6 +101,8 @@ namespace Shared.VM
         protected override void InitCommands()
         {
             PostCommand = new RelayCommand(PostCommandExecute);
+            FacebookCommand = new RelayCommand(FacebookCommandExecute);
+            TwitterCommand = new RelayCommand(TwitterCommandExecute);
         }
 
         private async void PostCommandExecute ()
@@ -112,21 +144,22 @@ namespace Shared.VM
 
                 // Reset state
                 Message = string.Empty;
-                IsFacebookEnabled = false;
-                IsTwitterEnabled = false;
+                IsFacebookSelected = false;
+                IsTwitterSelected = false;
             }
         }
 
         private void RequestCanExecute ()
         {
-            var canExecute = 
-                !string.IsNullOrWhiteSpace(Message) &&
-                (IsFacebookEnabled || IsTwitterEnabled);
+            var canExecute = !string.IsNullOrWhiteSpace(Message) && !Message.Equals(Placeholder);
 
-            if(_isTwitterEnabled && Message.Length > 140)
+            if(IsTwitterSelected && Message.Length > 140)
             {
                 canExecute = false;
-                _dialogService.ShowMessage(ApplicationResources.DropTwitter, ApplicationResources.MessageIsTooLong);
+            }
+            else if (!IsFacebookSelected && !IsTwitterSelected)
+            {
+                canExecute = false;
             }
 
             if(CanExecute != null)
@@ -135,13 +168,23 @@ namespace Shared.VM
             }
         }
 
+        private void FacebookCommandExecute ()
+        {
+            IsFacebookSelected = !IsFacebookSelected;
+        }
+
+        private void TwitterCommandExecute ()
+        {
+            IsTwitterSelected = !IsTwitterSelected;
+        }
+
         private async Task<bool> TryPostFacebook (string message)
         {
             SocialAccount account = _facebookHelper.GetAccount();
             bool error = false;
 
             // Only try if we have a valid account is enabled
-            if(account != null && IsFacebookEnabled)
+            if(account != null && IsFacebookSelected)
             {
                 var id = account.Properties["id"];
                 var response = await _facebookService.Post(id, message);
@@ -158,7 +201,7 @@ namespace Shared.VM
             bool error = false;
 
             // Only try if we have a valid account is enabled
-            if(account != null && IsTwitterEnabled)
+            if(account != null && IsTwitterSelected)
             {
                 var response = await _twitterService.Post(message);
 
