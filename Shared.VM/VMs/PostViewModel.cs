@@ -28,6 +28,7 @@ namespace Shared.VM
         #region Properties
 
         public Action<bool> CanExecute { get; set; }
+        public Action RequestDismissPage { get; set; }
 
         public string Placeholder
         {
@@ -109,8 +110,8 @@ namespace Shared.VM
         {
             _hudService.Show(ApplicationResources.SendingMessage);
 
-            bool facebookError;
-            bool twitterError;
+            bool facebookError = false;
+            bool twitterError = false;
 
             // Fire off all posts
             try
@@ -133,19 +134,19 @@ namespace Shared.VM
 
                 var message = builder.ToString();
 
-                message.Trim(new [] { ' ', ',' });
-                message.Insert(0, string.Format("{0}\n\n", ApplicationResources.TheFollowingServicesFailed));
+                message = message.Trim(new [] { ' ', ',' });
+                message = message.Insert(0, string.Format("{0}\n\n", ApplicationResources.TheFollowingServicesFailed));
 
                 await  _dialogService.ShowMessage(message, ApplicationResources.PleaseTryAgain);
             }
             else
             {
-                await _dialogService.ShowMessage(string.Empty, ApplicationResources.Success);
+                await _dialogService.ShowMessage(ApplicationResources.MessageDeliveredSuccessfully, ApplicationResources.Success);
 
-                // Reset state
-                Message = string.Empty;
-                IsFacebookSelected = false;
-                IsTwitterSelected = false;
+                if(RequestDismissPage != null)
+                {
+                    RequestDismissPage();
+                }
             }
         }
 

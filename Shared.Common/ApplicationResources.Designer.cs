@@ -47,9 +47,33 @@ namespace Shared.Common {
             }
         }
         
-        public static string Now {
+        public static string Commented {
             get {
-                return ResourceManager.GetString("Now", resourceCulture);
+                return ResourceManager.GetString("Commented", resourceCulture);
+            }
+        }
+        
+        public static string Facebook {
+            get {
+                return ResourceManager.GetString("Facebook", resourceCulture);
+            }
+        }
+        
+        public static string Shared {
+            get {
+                return ResourceManager.GetString("Shared", resourceCulture);
+            }
+        }
+        
+        public static string CurrentlyOffline {
+            get {
+                return ResourceManager.GetString("CurrentlyOffline", resourceCulture);
+            }
+        }
+        
+        public static string GenericOffline {
+            get {
+                return ResourceManager.GetString("GenericOffline", resourceCulture);
             }
         }
         
@@ -65,33 +89,15 @@ namespace Shared.Common {
             }
         }
         
-        public static string DropTwitter {
+        public static string SendingMessage {
             get {
-                return ResourceManager.GetString("DropTwitter", resourceCulture);
+                return ResourceManager.GetString("SendingMessage", resourceCulture);
             }
         }
         
-        public static string GenericError {
+        public static string NoAccountSelected {
             get {
-                return ResourceManager.GetString("GenericError", resourceCulture);
-            }
-        }
-        
-        public static string PleaseTryAgain {
-            get {
-                return ResourceManager.GetString("PleaseTryAgain", resourceCulture);
-            }
-        }
-        
-        public static string Commented {
-            get {
-                return ResourceManager.GetString("Commented", resourceCulture);
-            }
-        }
-        
-        public static string Shared {
-            get {
-                return ResourceManager.GetString("Shared", resourceCulture);
+                return ResourceManager.GetString("NoAccountSelected", resourceCulture);
             }
         }
         
@@ -101,57 +107,21 @@ namespace Shared.Common {
             }
         }
         
+        public static string MessageDeliveredSuccessfully {
+            get {
+                return ResourceManager.GetString("MessageDeliveredSuccessfully", resourceCulture);
+            }
+        }
+        
         public static string ChooseFromTheOptionsBelow {
             get {
                 return ResourceManager.GetString("ChooseFromTheOptionsBelow", resourceCulture);
             }
         }
         
-        public static string SendingMessage {
-            get {
-                return ResourceManager.GetString("SendingMessage", resourceCulture);
-            }
-        }
-        
-        public static string TheFollowingServicesFailed {
-            get {
-                return ResourceManager.GetString("TheFollowingServicesFailed", resourceCulture);
-            }
-        }
-        
-        public static string Liked {
-            get {
-                return ResourceManager.GetString("Liked", resourceCulture);
-            }
-        }
-        
-        public static string CommentPlaceholder {
-            get {
-                return ResourceManager.GetString("CommentPlaceholder", resourceCulture);
-            }
-        }
-        
-        public static string Facebook {
-            get {
-                return ResourceManager.GetString("Facebook", resourceCulture);
-            }
-        }
-        
         public static string Success {
             get {
                 return ResourceManager.GetString("Success", resourceCulture);
-            }
-        }
-        
-        public static string CurrentlyOffline {
-            get {
-                return ResourceManager.GetString("CurrentlyOffline", resourceCulture);
-            }
-        }
-        
-        public static string Error {
-            get {
-                return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         
@@ -167,9 +137,9 @@ namespace Shared.Common {
             }
         }
         
-        public static string Twitter {
+        public static string GenericError {
             get {
-                return ResourceManager.GetString("Twitter", resourceCulture);
+                return ResourceManager.GetString("GenericError", resourceCulture);
             }
         }
         
@@ -179,15 +149,45 @@ namespace Shared.Common {
             }
         }
         
+        public static string TheFollowingServicesFailed {
+            get {
+                return ResourceManager.GetString("TheFollowingServicesFailed", resourceCulture);
+            }
+        }
+        
+        public static string Now {
+            get {
+                return ResourceManager.GetString("Now", resourceCulture);
+            }
+        }
+        
+        public static string PleaseTryAgain {
+            get {
+                return ResourceManager.GetString("PleaseTryAgain", resourceCulture);
+            }
+        }
+        
         public static string Comment {
             get {
                 return ResourceManager.GetString("Comment", resourceCulture);
             }
         }
         
-        public static string GenericOffline {
+        public static string CommentPlaceholder {
             get {
-                return ResourceManager.GetString("GenericOffline", resourceCulture);
+                return ResourceManager.GetString("CommentPlaceholder", resourceCulture);
+            }
+        }
+        
+        public static string DropTwitter {
+            get {
+                return ResourceManager.GetString("DropTwitter", resourceCulture);
+            }
+        }
+        
+        public static string Twitter {
+            get {
+                return ResourceManager.GetString("Twitter", resourceCulture);
             }
         }
         
@@ -197,9 +197,15 @@ namespace Shared.Common {
             }
         }
         
-        public static string NoAccountSelected {
+        public static string Error {
             get {
-                return ResourceManager.GetString("NoAccountSelected", resourceCulture);
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        public static string Liked {
+            get {
+                return ResourceManager.GetString("Liked", resourceCulture);
             }
         }
     }

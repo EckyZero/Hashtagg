@@ -195,4 +195,7 @@
   	<data name="ChooseFromTheOptionsBelow" xml:space="preserve">
     	<value>Choose from the options below where you'd like to post.</value>
   	</data>
+  	<data name="MessageDeliveredSuccessfully" xml:space="preserve">
+    	<value>Your message was delivered to each selected outlet.</value>
+  	</data>
 </root>

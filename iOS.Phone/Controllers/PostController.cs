@@ -127,8 +127,8 @@ namespace iOS.Phone
                 BindingMode.TwoWay
             ).UpdateSourceTrigger("TouchUpInside");
                 
-
             ViewModel.CanExecute = OnCanExecute;
+            ViewModel.RequestDismissPage = OnRequestDismissPage;
 
             PostButton.SetCommand("TouchUpInside", ViewModel.PostCommand);
             TwitterButton.SetCommand("TouchUpInside", ViewModel.TwitterCommand);
@@ -138,6 +138,11 @@ namespace iOS.Phone
         private void OnCanExecute (bool canExecute)
         {
             PostButton.Enabled = canExecute;
+        }
+
+        private void OnRequestDismissPage ()
+        {
+            DismissViewController(true, null);
         }
 
         private void KeyboardDidShow (NSNotification notification)
