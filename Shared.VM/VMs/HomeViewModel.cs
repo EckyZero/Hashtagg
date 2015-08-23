@@ -82,6 +82,18 @@ namespace Shared.VM
 
 		public bool IsRefreshing { get; set; }
 
+        public bool ShowPostOption
+        {
+            get 
+            {
+                var atLeastOneAccountExists = 
+                    _facebookHelper.GetAccount() != null ||
+                    _twitterHelper.GetAccount() != null;
+
+                return atLeastOneAccountExists;
+            }
+        }
+
 		#endregion
 
 		#region Commands

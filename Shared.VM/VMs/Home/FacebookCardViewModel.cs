@@ -97,9 +97,18 @@ namespace Shared.VM
 
 		public override bool IsCommentedByUser 
 		{
-			// TODO: Unsure as to how to gather this data
-			get { return false; }
-			set { }
+            get 
+            { 
+                var account = _facebookHelper.GetAccount();
+                var id = account.Properties["id"];
+                var isCommentedByUser = _facebookPost.Comments.Any( c => c.User.Id.Equals(id));
+
+                return isCommentedByUser;
+            }
+            set
+            {
+                RaisePropertyChanged(() => IsCommentedByUser);
+            }
 		}
 
 		public override bool IsSharedByUser 
@@ -180,6 +189,7 @@ namespace Shared.VM
 				}
 			};
 
+            IsCommentedByUser = true;
 			_facebookPost.Comments.Add (comment);
 		}
 

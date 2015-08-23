@@ -91,12 +91,6 @@
     <Reference Include="GalaSoft.MvvmLight.Platform">
       <HintPath>..\packages\MvvmLightLibs.5.1.1.0\lib\monoandroid1\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Xamarin.Android.Common">
-      <HintPath>..\ThirdParty\Telerik\Android\Telerik.Xamarin.Android.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Xamarin.Android.Input">
-      <HintPath>..\ThirdParty\Telerik\Android\Telerik.Xamarin.Android.Input.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Android.Support.v13">
       <HintPath>..\packages\Xamarin.Android.Support.v13.22.1.1.1\lib\MonoAndroid32\Xamarin.Android.Support.v13.dll</HintPath>
     </Reference>

@@ -70,6 +70,9 @@ namespace iOS.Phone
 				_refreshControl.Bounds.Height
 			);
 
+            // 0 defaults to normal button width, which is the width of the text/image
+            PostBarButton.TintColor = ViewModel.ShowPostOption ? null : UIColor.Clear;
+            PostBarButton.Enabled = ViewModel.ShowPostOption;
             PostBarButton.Clicked += OnPostBarButtonClicked;
 		}
 

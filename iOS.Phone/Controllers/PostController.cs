@@ -8,6 +8,7 @@ using Shared.VM;
 using GalaSoft.MvvmLight.Helpers;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace iOS.Phone
 {
@@ -97,6 +98,9 @@ namespace iOS.Phone
             TextView.TextColor = ViewModel.PlaceholderTextColor.ToUIColor();
             PostButton.Enabled = false;
             TextView.TextContainerInset = new UIEdgeInsets(top: 25f, left: 0f, bottom: 0f, right: 0f);
+
+            HideButtonIfNeeded(FacebookButton, ViewModel.IsFacebookEnabled, FacebookTrailingConstraint);
+            HideButtonIfNeeded(TwitterButton, ViewModel.IsTwitterEnabled, TwitterTrailingConstraint);
         }
 
         private void InitBindings ()
@@ -192,11 +196,22 @@ namespace iOS.Phone
             }
         }
 
+        private void HideButtonIfNeeded (UIButton button, bool isEnabled, NSLayoutConstraint trailingConstraint)
+        {
+            if(!isEnabled)
+            {
+                var widthConstraint =  button.Constraints.FirstOrDefault( c=> c.FirstItem.Equals(button) && c.FirstAttribute == NSLayoutAttribute.Width);
+
+                widthConstraint.Constant = 0;   
+                trailingConstraint.Constant = 0;
+            }
+        }
+
         #endregion
 
         #region Actions
 
-        partial void OnCancelButtonTapped(UIKit.UIBarButtonItem sender)
+        partial void OnCancelButtonTapped(UIBarButtonItem sender)
         {
             DismissViewController(true, null);
         }

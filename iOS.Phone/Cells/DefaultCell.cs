@@ -132,6 +132,9 @@ namespace iOS.Phone
 
 			CommentButton.Hidden = !ViewModel.ShowCommentButton;
 			ShareButton.Hidden = !ViewModel.ShowShareButton;
+
+            // TODO: Remove this when we're ready to support sharing
+            ShareButton.Hidden = true;
 		}
 
 		void InitBindings ()

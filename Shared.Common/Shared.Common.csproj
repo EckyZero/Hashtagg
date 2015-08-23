@@ -76,6 +76,7 @@
     <Compile Include="Themes\CarnationTheme.cs" />
     <Compile Include="Themes\ITheme.cs" />
     <Compile Include="Models\TwitterUser.cs" />
+    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -76,6 +76,25 @@ namespace Shared.VM
             }
         }
 
+        public bool IsFacebookEnabled
+        {
+            get 
+            {
+                var account = _facebookHelper.GetAccount();
+                return account != null;
+            }
+        }
+
+        public bool IsTwitterEnabled
+        {
+            get 
+            {
+                var account = _twitterHelper.GetAccount();
+
+                return account != null;
+            }
+        }
+
         public string CharacterCount 
         { 
             get { return _characterCount; }

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mna-n2-dKz">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SanFranciscoText-Medium.otf">
@@ -90,20 +89,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kmz-pg-MfY">
                                         <rect key="frame" x="101" y="0.0" width="118" height="61"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-4T-Sdx">
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-4T-Sdx">
                                                 <rect key="frame" x="8" y="8" width="45" height="45"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="kl1-4T-Sdx" secondAttribute="height" multiplier="1:1" id="bNh-Rg-vy8"/>
+                                                    <constraint firstAttribute="width" constant="45" id="zXN-0L-7So"/>
                                                 </constraints>
                                                 <state key="normal" image="socialFacebookUnselected.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <state key="selected" image="Facebook.png"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-1I-dr3">
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kj-1I-dr3">
                                                 <rect key="frame" x="61" y="8" width="45" height="45"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="0kj-1I-dr3" secondAttribute="height" multiplier="1:1" id="uqF-U2-UYp"/>
+                                                    <constraint firstAttribute="width" constant="45" id="PzB-WQ-8WQ"/>
                                                 </constraints>
                                                 <state key="normal" image="socialTwitterUnselected.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -165,14 +164,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="AccountsView" destination="kmz-pg-MfY" id="wvl-80-7mK"/>
                         <outlet property="BackgroundImageView" destination="jqY-cC-gQg" id="toG-i4-P66"/>
                         <outlet property="CountLabel" destination="Ktd-oT-Zey" id="UpS-9b-cja"/>
                         <outlet property="FacebookButton" destination="kl1-4T-Sdx" id="XzR-SW-b8G"/>
+                        <outlet property="FacebookTrailingConstraint" destination="l4L-d0-Ar8" id="vpS-J4-ENA"/>
                         <outlet property="FooterView" destination="Cb2-VU-egK" id="LWz-V6-DzM"/>
                         <outlet property="FooterViewBottomConstraint" destination="4VD-SR-b20" id="Pd1-tb-Ft4"/>
                         <outlet property="PostButton" destination="qac-eb-Z7t" id="1sn-hb-fnu"/>
                         <outlet property="TextView" destination="X2W-SD-Utc" id="642-3s-aWh"/>
                         <outlet property="TwitterButton" destination="0kj-1I-dr3" id="70c-Ig-KFd"/>
+                        <outlet property="TwitterTrailingConstraint" destination="atr-MB-G48" id="wfB-Zb-l2s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlt-2a-KgX" userLabel="First Responder" sceneMemberID="firstResponder"/>

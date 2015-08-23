@@ -13,6 +13,9 @@ namespace iOS.Phone
 	partial class PostController
 	{
 		[Outlet]
+		UIKit.UIView AccountsView { get; set; }
+
+		[Outlet]
 		UIKit.UIImageView BackgroundImageView { get; set; }
 
 		[Outlet]
@@ -20,6 +23,9 @@ namespace iOS.Phone
 
 		[Outlet]
 		UIKit.UIButton FacebookButton { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint FacebookTrailingConstraint { get; set; }
 
 		[Outlet]
 		UIKit.UIView FooterView { get; set; }
@@ -35,6 +41,9 @@ namespace iOS.Phone
 
 		[Outlet]
 		UIKit.UIButton TwitterButton { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint TwitterTrailingConstraint { get; set; }
 
 		[Action ("OnCancelButtonTapped:")]
 		partial void OnCancelButtonTapped (UIKit.UIBarButtonItem sender);
@@ -56,9 +65,19 @@ namespace iOS.Phone
 				FacebookButton = null;
 			}
 
+			if (FacebookTrailingConstraint != null) {
+				FacebookTrailingConstraint.Dispose ();
+				FacebookTrailingConstraint = null;
+			}
+
 			if (FooterView != null) {
 				FooterView.Dispose ();
 				FooterView = null;
+			}
+
+			if (FooterViewBottomConstraint != null) {
+				FooterViewBottomConstraint.Dispose ();
+				FooterViewBottomConstraint = null;
 			}
 
 			if (PostButton != null) {
@@ -76,9 +95,14 @@ namespace iOS.Phone
 				TwitterButton = null;
 			}
 
-			if (FooterViewBottomConstraint != null) {
-				FooterViewBottomConstraint.Dispose ();
-				FooterViewBottomConstraint = null;
+			if (TwitterTrailingConstraint != null) {
+				TwitterTrailingConstraint.Dispose ();
+				TwitterTrailingConstraint = null;
+			}
+
+			if (AccountsView != null) {
+				AccountsView.Dispose ();
+				AccountsView = null;
 			}
 		}
 	}
