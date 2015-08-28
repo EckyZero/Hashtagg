@@ -113,6 +113,8 @@ namespace Shared.VM
 			_twitterHelper = IocContainer.GetContainer ().Resolve<ITwitterHelper> ();
 			_facebookService = IocContainer.GetContainer ().Resolve<IFacebookService> ();
 			_facebookHelper = IocContainer.GetContainer ().Resolve<IFacebookHelper> ();
+
+            _logger.Track(Analytics.HOME_PAGE_VIEWED.ToString());
 		}
 
 		public override async Task DidLoad ()

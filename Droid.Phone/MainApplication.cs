@@ -60,6 +60,8 @@ namespace Droid.Phone
         {
             _logger = new Logger();
 
+            Insights.Initialize(Settings.XamarinInsightsApiKey, ApplicationContext);
+
             AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
             {
                 args.Handled = false;

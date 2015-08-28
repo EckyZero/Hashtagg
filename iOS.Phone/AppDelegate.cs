@@ -1,11 +1,7 @@
 ﻿using Foundation;
 using UIKit;
 using Microsoft.Practices.Unity;
-using System;
-using System.Collections.Generic;
 using Xamarin;
-using CoreGraphics;
-using JASidePanels;
 using Shared.VM;
 using Shared.Common;
 using Shared.Service;
@@ -42,6 +38,8 @@ namespace iOS.Phone
 			#if DEBUG
 			Calabash.Start();
 			#endif
+
+            Insights.Initialize(Settings.XamarinInsightsApiKey);
 
 			return true;
 		}

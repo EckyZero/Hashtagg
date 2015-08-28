@@ -51,6 +51,7 @@ namespace Shared.Api
 
 			try
 			{
+                _logger.StartTrackTime(TimedEvent.GET_TWITTER_FEED.ToString());
 				var response = await _twitterHelper.ExecuteRequest (GET, url, parameters);
 				var results = JsonConvert.DeserializeObject<List<TwitterFeedItemDto>> (response, _settings);	
 
@@ -62,6 +63,10 @@ namespace Shared.Api
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.GET_TWITTER_FEED.ToString());
+            }
 		}
 
 		public async Task<TwitterUserDto> GetUser (string screenName)
@@ -73,6 +78,7 @@ namespace Shared.Api
 
 			try
 			{
+                _logger.StartTrackTime(TimedEvent.GET_TWITTER_USER.ToString());
 				var response = await _twitterHelper.ExecuteRequest(GET, url, parameters);
 				var results = JsonConvert.DeserializeObject<TwitterUserDto>(response, _settings);
 
@@ -84,6 +90,10 @@ namespace Shared.Api
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.GET_TWITTER_USER.ToString());
+            }
 		}
 
 		public async Task Like(string tweetId)
@@ -95,6 +105,7 @@ namespace Shared.Api
 
 			try 
 			{
+                _logger.StartTrackTime(TimedEvent.TWITTER_LIKE.ToString());
 				await _twitterHelper.ExecuteRequest(POST, url, parameters);
 			}
 			catch (Exception e)
@@ -103,6 +114,10 @@ namespace Shared.Api
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.TWITTER_LIKE.ToString());
+            }
 		}
 
 		public async Task Unlike(string tweetId)
@@ -114,6 +129,7 @@ namespace Shared.Api
 
 			try 
 			{
+                _logger.StartTrackTime(TimedEvent.TWITTER_UNLIKE.ToString());
 				await _twitterHelper.ExecuteRequest(POST, url, parameters);
 			}
 			catch (Exception e)
@@ -122,6 +138,10 @@ namespace Shared.Api
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.TWITTER_UNLIKE.ToString());
+            }
 		}
 
 		public async Task Comment (string tweetId, string message)
@@ -135,6 +155,7 @@ namespace Shared.Api
 			try
 			{
 				// TODO: return the id so we can track this
+                _logger.StartTrackTime(TimedEvent.TWITTER_COMMENT.ToString());
 				await _twitterHelper.ExecuteRequest(POST, url, parameters);	
 			}
 			catch (Exception e)
@@ -143,6 +164,10 @@ namespace Shared.Api
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.TWITTER_COMMENT.ToString());
+            }
 		}
 
 		public async Task DeleteTweet (string tweetId)
@@ -151,6 +176,7 @@ namespace Shared.Api
 
 			try
 			{
+                _logger.StartTrackTime(TimedEvent.DELETE_TWITTER_POST.ToString());
 				await _twitterHelper.ExecuteRequest(POST, url);	
 			}
 			catch (Exception e)
@@ -159,6 +185,10 @@ namespace Shared.Api
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.DELETE_TWITTER_POST.ToString());
+            }
 		}
 
 		public async Task Post (string message)
@@ -174,6 +204,7 @@ namespace Shared.Api
 				// TODO: Determine if we care about if this fails
 				// Do we store locally and try to resync later?
 				// Do we just alert the user that twitter failed?
+                _logger.StartTrackTime(TimedEvent.TWITTER_POST.ToString());
 				await _twitterHelper.ExecuteRequest(POST, url, parameters);	
 			}
 			catch (Exception e)
@@ -182,6 +213,10 @@ namespace Shared.Api
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.TWITTER_POST.ToString());
+            }
 		}
 
 

@@ -29,12 +29,20 @@ namespace Shared.VM
 
 		public bool IsFacebookSelected { 
 			get { return _isFacebookSelected; }
-			set { Set (() => IsFacebookSelected, ref _isFacebookSelected, value); }
+			set 
+            { 
+                Set (() => IsFacebookSelected, ref _isFacebookSelected, value); 
+                _logger.Track(value ? Analytics.ADD_FACEBOOK_INTEGRATION.ToString() : Analytics.REMOVE_FACEBOOK_INTEGRATION.ToString());
+            }
 		}
 
 		public bool IsTwitterSelected { 
 			get { return _isTwitterSelected; }
-			set { Set (() => IsTwitterSelected, ref _isTwitterSelected, value); }
+			set 
+            { 
+                Set (() => IsTwitterSelected, ref _isTwitterSelected, value); 
+                _logger.Track(value ? Analytics.ADD_TWITTER_INTEGRATION.ToString() : Analytics.REMOVE_TWITTER_INTEGRATION.ToString());
+            }
 		}
 
 		#endregion
@@ -45,6 +53,8 @@ namespace Shared.VM
 		{
 			_twitterHelper = IocContainer.GetContainer ().Resolve<ITwitterHelper> ();
 			_facebookHelper = IocContainer.GetContainer ().Resolve<IFacebookHelper> ();
+
+            _logger.Track(Analytics.ONBOARDING_PAGE_VIEWED.ToString());
 		}
 
 		public override async Task DidLoad ()

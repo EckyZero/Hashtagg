@@ -42,6 +42,7 @@ namespace Shared.Api
 
 			try
 			{
+                _logger.StartTrackTime(TimedEvent.GET_FACEBOOK_FEED.ToString());
 				var response = await _facebookHelper.ExecuteRequest(GET, url, parameters);
 				var results = JsonConvert.DeserializeObject<FacebookResponseDto>(response);
 
@@ -53,6 +54,10 @@ namespace Shared.Api
 				_logger.Log (exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.GET_FACEBOOK_FEED.ToString());
+            }
 		}
 
 		public async Task<FacebookToFromDto> GetUser ()
@@ -61,6 +66,7 @@ namespace Shared.Api
 
 			try
 			{
+                _logger.StartTrackTime(TimedEvent.GET_FACEBOOK_USER.ToString());
 				var response = await _facebookHelper.ExecuteRequest(GET, url);
 				var result = JsonConvert.DeserializeObject<FacebookToFromDto>(response);
 
@@ -72,6 +78,10 @@ namespace Shared.Api
 				_logger.Log (exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.GET_FACEBOOK_USER.ToString());
+            }
 		}
 
 		public async Task Like(string postId)
@@ -80,6 +90,7 @@ namespace Shared.Api
 
 			try 
 			{
+                _logger.StartTrackTime(TimedEvent.FACEBOOK_LIKE.ToString());
 				await _facebookHelper.ExecuteRequest(POST, url, null);
 			}
 			catch (Exception e)
@@ -88,6 +99,10 @@ namespace Shared.Api
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.FACEBOOK_LIKE.ToString());
+            }
 		}
 
 		public async Task Unlike(string postId)
@@ -96,6 +111,7 @@ namespace Shared.Api
 
 			try 
 			{
+                _logger.StartTrackTime(TimedEvent.FACEBOOK_UNLIKE.ToString());
 				await _facebookHelper.ExecuteRequest(DELETE, url, null);
 			}
 			catch (Exception e)
@@ -104,6 +120,10 @@ namespace Shared.Api
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.FACEBOOK_UNLIKE.ToString());
+            }
 		}
 
 		public async Task Comment (string postId, string message)
@@ -116,6 +136,7 @@ namespace Shared.Api
 			try
 			{
 				// TODO: return id so we can track the post locally
+                _logger.StartTrackTime(TimedEvent.FACEBOOK_COMMENT.ToString());
 				await _facebookHelper.ExecuteRequest(POST, url, parameters);	
 			}
 			catch (Exception e)
@@ -124,6 +145,10 @@ namespace Shared.Api
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.FACEBOOK_COMMENT.ToString());
+            }
 		}
 
 		public async Task DeleteComment (string commentId)
@@ -132,6 +157,7 @@ namespace Shared.Api
 
 			try
 			{
+                _logger.StartTrackTime(TimedEvent.DELETE_FACEBOOK_COMMENT.ToString());
 				await _facebookHelper.ExecuteRequest(DELETE, url);	
 			}
 			catch (Exception e)
@@ -140,6 +166,10 @@ namespace Shared.Api
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.DELETE_FACEBOOK_COMMENT.ToString());
+            }
 		}
 
 		public async Task Post (string userId, string message)
@@ -157,6 +187,7 @@ namespace Shared.Api
 				// TODO: Determine if we care about if this fails
 				// Do we store locally and try to resync later?
 				// Do we just alert the user that twitter failed?
+                _logger.StartTrackTime(TimedEvent.FACEBOOK_POST.ToString());
 				await _facebookHelper.ExecuteRequest(POST, url, parameters);	
 			}
 			catch (Exception e)
@@ -165,6 +196,10 @@ namespace Shared.Api
 				_logger.Log(exception, LogType.ERROR);
 				throw exception;
 			}
+            finally
+            {
+                _logger.StopTrackTime(TimedEvent.FACEBOOK_POST.ToString());
+            }
 		}
 
 		#endregion

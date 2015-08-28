@@ -1,5 +1,4 @@
-﻿ings
-using System;
+﻿using System;
 
 namespace Shared.Common
 {

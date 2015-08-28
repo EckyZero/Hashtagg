@@ -31,6 +31,7 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Insights.1.10.6\build\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.10.6\build\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.targets')" />
   <ItemGroup>
     <Compile Include="Helpers\PropertyExtensions.cs" />
     <Compile Include="Logging\ILogger.cs" />
@@ -77,6 +78,9 @@
     <Compile Include="Themes\ITheme.cs" />
     <Compile Include="Models\TwitterUser.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Logging\Tracker.cs" />
+    <Compile Include="Enums\TimedEvent.cs" />
+    <Compile Include="Enums\Analytics.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -95,6 +99,9 @@
     <Reference Include="GalaSoft.MvvmLight.Extras">
       <HintPath>..\packages\MvvmLightLibs.5.1.1.0\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.Extras.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.10.6\lib\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -108,5 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Themes\" />
+    <Folder Include="Enums\" />
   </ItemGroup>
 </Project>

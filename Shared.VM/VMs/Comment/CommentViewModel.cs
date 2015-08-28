@@ -69,6 +69,8 @@ namespace Shared.VM
 		public CommentViewModel (BaseContentCardViewModel viewModel) : base ()
 		{
 			PrimaryCardViewModel = viewModel;
+
+            _logger.Track(Analytics.COMMENT_PAGE_VIEWED.ToString());
 		}
 
 		#endregion

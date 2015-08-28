@@ -116,6 +116,8 @@ namespace Shared.VM
 
             _twitterService = IocContainer.GetContainer().Resolve<ITwitterService>();
             _facebookService = IocContainer.GetContainer().Resolve<IFacebookService>();
+
+            _logger.Track(Analytics.POST_PAGE_VIEWED.ToString());
 		}
 
         protected override void InitCommands()
