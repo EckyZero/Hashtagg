@@ -21,12 +21,18 @@ namespace Shared.Common
 
         public void Log(Exception exception = null, LogType severity = LogType.WARNING, IDictionary extraData = null)
         {
-            Insights.Report(exception, extraData, LogTypeToInsight(severity));
+            if(Insights.IsInitialized)
+            {
+                Insights.Report(exception, extraData, LogTypeToInsight(severity));   
+            }
         }
 
         public void Track(string identifier, IDictionary<string,string> extraData = null)
         {
-            Insights.Track(identifier, extraData);
+            if(Insights.IsInitialized)
+            {
+                Insights.Track(identifier, extraData);   
+            }
         }
 
         public void StartTrackTime(string eventName, IDictionary<string,string> extraData = null)

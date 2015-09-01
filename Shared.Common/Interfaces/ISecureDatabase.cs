@@ -6,7 +6,6 @@ namespace Shared.Common
 	public interface ISecureDatabase
 	{
 		int CreateTable<T>();
-		void SeedTable<T>(); //TODO: May need to be removed as it was intended for demo data
 		int Insert(object model);
 		int InsertAll(IEnumerable models);
 		int InsertOrReplace(object model);
