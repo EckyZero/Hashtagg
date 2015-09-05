@@ -37,11 +37,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tests.cs" />
-    <Compile Include="AppInitializer.cs" />
+    <Compile Include="Helpers\AndroidQueryUtils.cs" />
+    <Compile Include="Helpers\AppUtils.cs" />
+    <Compile Include="Helpers\IQueryUtils.cs" />
+    <Compile Include="Helpers\iOSQueryUtils.cs" />
+    <Compile Include="ScreenQueries\AndroidQueries.cs" />
+    <Compile Include="ScreenQueries\ScreenQueries.cs" />
+    <Compile Include="ScreenQueries\iOSQueries.cs" />
+    <Compile Include="Tests\BaseTest.cs" />
+    <Compile Include="Tests\MainTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="ScreenQueries\" />
+    <Folder Include="Tests\" />
   </ItemGroup>
 </Project>
