@@ -10,6 +10,11 @@ namespace Shared.Common
 		public Dictionary<string,string> Properties { get; set; }
 		public CookieContainer Cookies { get; set; }
 
+        public SocialAccount()
+        {
+            
+        }
+
 		public SocialAccount (string username, Dictionary<string,string> properties, CookieContainer cookies)
 		{
 			Username = username;

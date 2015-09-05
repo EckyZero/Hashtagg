@@ -9,7 +9,6 @@ namespace UnitTests
         [Test()]
         public void TestCase()
         {
-            Assert.IsTrue(true);
         }
     }
 }
