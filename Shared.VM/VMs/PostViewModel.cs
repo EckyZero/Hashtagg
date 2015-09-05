@@ -13,7 +13,7 @@ namespace Shared.VM
         #region Variables
 
         private string _message;
-        private string _characterCount;
+        private string _characterCount = "0";
         private bool _isFacebookSelected;
         private bool _isTwitterSelected;
 

@@ -12,7 +12,7 @@ namespace UnitTests
         [Test()]
         public void TestFacebookCard()
         {
-            // Test that Facebook values are mapped correctly
+            // Test that Facebook posts are mapped and formatted through viewModels correctly
             var posts = MockFacebook.GetPosts();
             var viewModels = new List<BaseContentCardViewModel>();
 
@@ -32,7 +32,7 @@ namespace UnitTests
         [Test()]
         public void TestTwitterCard()
         {
-            // Test that Twitter values are mapped correctly
+            // Test that Tweets are mapped and formatted through ViewModels correctly
             var tweets = MockTwitter.GetPosts();
             var viewModels = new List<BaseContentCardViewModel>();
 

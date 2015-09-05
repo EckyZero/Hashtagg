@@ -73,8 +73,6 @@
     <Compile Include="Tests\BaseTest.cs" />
     <Compile Include="Tests\CommentTests.cs" />
     <Compile Include="Tests\HomeTests.cs" />
-    <Compile Include="Tests\MenuTests.cs" />
-    <Compile Include="Tests\OnboardingTests.cs" />
     <Compile Include="Tests\PostTests.cs" />
     <Compile Include="Mock\MockFacebook.cs" />
     <Compile Include="Mock\MockTwitter.cs" />
