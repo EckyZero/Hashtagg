@@ -178,7 +178,7 @@ namespace Shared.VM
 
 				await existingViewModel.DidLoad();
 
-				ItemViewModels.Add(existingViewModel);
+				ItemViewModels.Insert(0, existingViewModel);
 			}
 			return existingViewModel;
 		}

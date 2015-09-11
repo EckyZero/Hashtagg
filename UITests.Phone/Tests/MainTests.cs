@@ -22,15 +22,17 @@ namespace UITests.Phone
         [Test]
         public void AppLaunches()
         {
-            SignInToFacebook();
-
             SignInToTwitter();
 
             SignIn();
 
             LikeUnlikePost();
 
-            UseMenu();
+            OpenMenu();
+
+            SignInToFacebook();
+
+            CloseMenu();
 
             NewPost();
         }
@@ -110,7 +112,7 @@ namespace UITests.Phone
             }
         }
 
-        private void UseMenu ()
+        private void OpenMenu ()
         {
             try
             {
@@ -122,20 +124,29 @@ namespace UITests.Phone
                 App.WaitForElement(c => c.Marked("Sign out"));
                 App.Tap(c => c.Marked("Sign out"));
 
-                App.Screenshot("Removing Facebook");
-                App.WaitForElement(c => c.Marked("Facebook"));
-                App.Tap(c => c.Marked("Facebook"));
-
                 App.Screenshot("Tapping Done");
                 App.WaitForElement(c => c.Marked("Done!"));
                 App.Tap(c => c.Marked("Done!"));
+            }
+            catch (Exception)
+            {
+                App.Screenshot("Failed to open menu");
+                throw; 
+            }
+        }
 
+        private void CloseMenu ()
+        {
+            try
+            {
+                App.Screenshot("Closing menu");
+                App.WaitForElement(c => c.Marked("Menu Button"));
                 App.Tap(c => c.Marked("Menu Button"));
             }
             catch (Exception)
             {
-                App.Screenshot("Failed Menu");
-                throw; 
+                App.Screenshot("Failed to close menu");
+                throw;
             }
         }
 
