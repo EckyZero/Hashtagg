@@ -137,6 +137,7 @@ namespace iOS.Phone
 				_tableController.OnPullToRefresh = OnPullToRefresh;
 				_tableController.HandleScrolled = OnScrolled;
 				_tableController.HandleDraggingStarted = OnDraggingStarted;
+                _tableController.TableView.AccessibilityIdentifier = "HomePage_ListView";
 
 				_tableController.SetEstimatedHeight (175);
 			}

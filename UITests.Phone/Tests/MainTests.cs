@@ -4,12 +4,14 @@ using System.Linq;
 using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
+using System.Threading;
 
 namespace UITests.Phone
 {
     [TestFixture]
     public class MainTests : BaseTest
     {
+        private readonly string HomeListIdentifier = "HomePage_ListView";
         [SetUp]
         public void BeforeEach()
         {
@@ -21,17 +23,16 @@ namespace UITests.Phone
         public void AppLaunches()
         {
             SignInToFacebook();
+
             SignInToTwitter();
 
-            App.Screenshot("Signing in with all accounts authorized");
-            App.Tap(c => c.Marked("Let's go!"));
+            SignIn();
 
-            // Dismiss alert if exists
-            if(App.Query(c => c.Marked("Ok")).Length > 0)
-            {
-                App.Screenshot("Dismiss alert");
-                App.Tap(c => c.Marked("Ok"));
-            }
+            LikeUnlikePost();
+
+            UseMenu();
+
+            NewPost();
         }
 
         private void SignInToFacebook ()
@@ -53,9 +54,10 @@ namespace UITests.Phone
                 App.Screenshot("Authorizing Facebook");
                 App.Tap(c => c.WebView().Css("[name=\"login\"]"));    
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 App.Screenshot("Failed to Sign in to Facebook");
+                throw;
             }
         }
 
@@ -78,9 +80,116 @@ namespace UITests.Phone
                 App.Screenshot("Authorizing Twitter");
                 App.Tap(c => c.WebView().Css("[id=\\\"allow\\\"]")); 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 App.Screenshot("Failed to Sign in to Twitter");
+                throw;
+            }
+        }
+
+        private void SignIn ()
+        {
+            try
+            {
+                App.Screenshot("Signing in with all accounts authorized");
+                App.WaitForElement(c => c.Marked("Let's go!"));
+                App.Tap(c => c.Marked("Let's go!"));
+
+                // Dismiss alert if exists
+                Thread.Sleep(3000);
+                if(App.Query(c => c.Marked("OK")).Length > 0)
+                {
+                    App.Screenshot("Dismiss alert");
+                    App.Tap(c => c.Marked("OK"));
+                }   
+            }
+            catch (Exception)
+            {
+                App.Screenshot("Failed to Sign in");
+                throw;
+            }
+        }
+
+        private void UseMenu ()
+        {
+            try
+            {
+                App.Screenshot("Opening Menu");
+                App.WaitForElement(c => c.Marked("Menu Button"));
+                App.Tap(c => c.Marked("Menu Button"));
+
+                App.Screenshot("Tapping Sign out");
+                App.WaitForElement(c => c.Marked("Sign out"));
+                App.Tap(c => c.Marked("Sign out"));
+
+                App.Screenshot("Removing Facebook");
+                App.WaitForElement(c => c.Marked("Facebook"));
+                App.Tap(c => c.Marked("Facebook"));
+
+                App.Screenshot("Tapping Done");
+                App.WaitForElement(c => c.Marked("Done!"));
+                App.Tap(c => c.Marked("Done!"));
+
+                App.Tap(c => c.Marked("Menu Button"));
+            }
+            catch (Exception)
+            {
+                App.Screenshot("Failed Menu");
+                throw; 
+            }
+        }
+
+        private void LikeUnlikePost ()
+        {
+            try
+            {
+                App.Screenshot("Like Post");
+
+                if(App.Query(c => c.Property("text").Like("*Like (*")).Length < 0)
+                {
+                    App.ScrollDown();   
+                }
+                App.Tap(c => c.Property("text").Like("*Like (*"));
+
+                App.Screenshot("Unlike Post");
+                App.WaitForElement(c => c.Property("text").Like("*Liked (*"));
+                App.Tap(c => c.Property("text").Like("*Liked (*"));
+            }
+            catch (Exception)
+            {
+                App.Screenshot("Failed to like/unlike post");
+                throw; 
+            }
+        }
+
+        private void NewPost ()
+        {
+            try
+            {
+                App.Screenshot("Opening New Post");
+                App.WaitForElement(c => c.Marked("New Post Button"));
+                App.Tap(c => c.Marked("New Post Button"));
+
+                App.Screenshot("Entering text");
+                App.WaitForElement("New Post");
+
+                Thread.Sleep(2000);
+                App.EnterText("This is a test post. Please ignore.");
+
+                App.Screenshot("Select social accounts");
+                App.Tap("socialTwitterUnselected");
+
+                App.Screenshot("Post");
+                App.Tap("Post");
+
+                App.Screenshot("Dismiss alert");
+                App.WaitForElement("OK");
+                App.Tap("OK");
+            }
+            catch (Exception)
+            {
+                App.Screenshot("Failed to create post");
+                throw; 
             }
         }
     }

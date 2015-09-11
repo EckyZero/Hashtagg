@@ -41,7 +41,7 @@ namespace UITests.Phone
 			    if (Platform == iOS)
 			    {
                     pathToApp = Path.Combine(directory, "iOS.Phone", "bin", "iPhoneSimulator", "Debug", "CompassMobileiOSPhone.app");
-                    App = ConfigureApp.iOS.AppBundle(pathToApp).EnableLocalScreenshots().ApiKey(Key).StartApp();
+                    App = ConfigureApp.iOS.AppBundle(pathToApp).DeviceIdentifier("452E26EA-E16C-44AF-B7B9-69F89CF9C644").EnableLocalScreenshots().ApiKey(Key).StartApp();
                     Queries = new iOSQueries();
 			    }
 
