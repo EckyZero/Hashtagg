@@ -22,6 +22,7 @@ using Android.Support.V4.Graphics.Drawable;
 using Android.Util;
 using Android.Views.Animations;
 using GalaSoft.MvvmLight.Helpers;
+using Shared.VM;
 
 namespace Droid.Phone.Activities
 {

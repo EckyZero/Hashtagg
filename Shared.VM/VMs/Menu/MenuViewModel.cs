@@ -84,7 +84,7 @@ namespace Shared.VM
 			await base.DidLoad ();
 			await _homeViewModel.DidLoad ();
 
-			Title = _homeViewModel.Title;
+			Title = "Hashtagg";
 		}
 
 		private async void OnListItemSelected (IListItem item)
@@ -101,7 +101,7 @@ namespace Shared.VM
 				await viewModel.DidLoad();
 			}
 			var addedCount = ItemViewModels.Count (vm => ((BaseMenuItemViewModel)vm).MenuItemType == MenuItemType.Added || ((BaseMenuItemViewModel)vm).MenuItemType == MenuItemType.Remove);
-			Title =  (addedCount == 0) ? String.Empty : _homeViewModel.GetName();
+			//Title =  (addedCount == 0) ? String.Empty : _homeViewModel.GetName();
 		}
 
 		private async void PrimaryCommandExecute ()
@@ -109,11 +109,13 @@ namespace Shared.VM
 			// Toggle the states
 			if(MenuState == MenuState.Add) 
 			{
+                Title = ApplicationResources.Signout;
 				MenuState = MenuState.Remove;
 				ConfigureForRemoval ();
 			} 
 			else if (MenuState == MenuState.Remove) 
 			{
+                Title = "Hashtagg";
 				MenuState = MenuState.Add;
 				await ConfigureForAdding ();
 			}

@@ -2686,58 +2686,64 @@ namespace Droid.Phone
 			public const int addButton = 2130837563;
 			
 			// aapt resource value: 0x7f02003c
-			public const int App_bg = 2130837564;
+			public const int addedButton = 2130837564;
 			
 			// aapt resource value: 0x7f02003d
-			public const int EZButton = 2130837565;
+			public const int App_bg = 2130837565;
 			
 			// aapt resource value: 0x7f02003e
-			public const int EZSocialButton = 2130837566;
+			public const int EZButton = 2130837566;
 			
 			// aapt resource value: 0x7f02003f
-			public const int Facebook = 2130837567;
+			public const int EZSocialButton = 2130837567;
 			
 			// aapt resource value: 0x7f020040
-			public const int facebookUnselected = 2130837568;
+			public const int Facebook = 2130837568;
 			
 			// aapt resource value: 0x7f020041
-			public const int GooglePlus = 2130837569;
+			public const int facebookUnselected = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int googleUnselected = 2130837570;
+			public const int GooglePlus = 2130837570;
 			
 			// aapt resource value: 0x7f020043
-			public const int header_temp = 2130837571;
+			public const int googleUnselected = 2130837571;
 			
 			// aapt resource value: 0x7f020044
-			public const int ic_errorstatus = 2130837572;
+			public const int header_temp = 2130837572;
 			
 			// aapt resource value: 0x7f020045
-			public const int ic_successstatus = 2130837573;
+			public const int ic_errorstatus = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int Instagram = 2130837574;
+			public const int ic_successstatus = 2130837574;
 			
 			// aapt resource value: 0x7f020047
-			public const int instagramUnselected = 2130837575;
+			public const int Instagram = 2130837575;
 			
 			// aapt resource value: 0x7f020048
-			public const int linkedInUnselected = 2130837576;
+			public const int instagramUnselected = 2130837576;
 			
 			// aapt resource value: 0x7f020049
-			public const int Profile_Image_Default = 2130837577;
+			public const int linkedInUnselected = 2130837577;
 			
 			// aapt resource value: 0x7f02004a
-			public const int roundedbg = 2130837578;
+			public const int Profile_Image_Default = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int roundedbgdark = 2130837579;
+			public const int removeButton = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int Twitter = 2130837580;
+			public const int roundedbg = 2130837580;
 			
 			// aapt resource value: 0x7f02004d
-			public const int twitterUnselected = 2130837581;
+			public const int roundedbgdark = 2130837581;
+			
+			// aapt resource value: 0x7f02004e
+			public const int Twitter = 2130837582;
+			
+			// aapt resource value: 0x7f02004f
+			public const int twitterUnselected = 2130837583;
 			
 			static Drawable()
 			{
@@ -2794,8 +2800,14 @@ namespace Droid.Phone
 			// aapt resource value: 0x7f060068
 			public const int DrawerAppName = 2131099752;
 			
+			// aapt resource value: 0x7f060061
+			public const int DrawerCellFooterText = 2131099745;
+			
 			// aapt resource value: 0x7f06005f
 			public const int DrawerCellImage = 2131099743;
+			
+			// aapt resource value: 0x7f060060
+			public const int DrawerCellText = 2131099744;
 			
 			// aapt resource value: 0x7f06005e
 			public const int DrawerCellTextImageContainer = 2131099742;
@@ -2809,56 +2821,59 @@ namespace Droid.Phone
 			// aapt resource value: 0x7f060067
 			public const int DrawerHeaderLayout = 2131099751;
 			
-			// aapt resource value: 0x7f06006f
-			public const int HomeHeaderColorLayout = 2131099759;
-			
-			// aapt resource value: 0x7f060072
-			public const int HomeHeaderImage1 = 2131099762;
-			
-			// aapt resource value: 0x7f060071
-			public const int HomeHeaderImage2 = 2131099761;
-			
-			// aapt resource value: 0x7f060073
-			public const int HomeHeaderImage3 = 2131099763;
-			
-			// aapt resource value: 0x7f06006d
-			public const int HomeHeaderMainLayout = 2131099757;
-			
-			// aapt resource value: 0x7f06006e
-			public const int HomeHeaderPaddingLayout = 2131099758;
+			// aapt resource value: 0x7f060069
+			public const int DrawerSubTitle = 2131099753;
 			
 			// aapt resource value: 0x7f060070
-			public const int HomeHeaderUsernameText = 2131099760;
+			public const int HomeHeaderColorLayout = 2131099760;
 			
-			// aapt resource value: 0x7f06006a
-			public const int HomeLayout = 2131099754;
+			// aapt resource value: 0x7f060073
+			public const int HomeHeaderImage1 = 2131099763;
 			
-			// aapt resource value: 0x7f06006c
-			public const int HomeListView = 2131099756;
+			// aapt resource value: 0x7f060072
+			public const int HomeHeaderImage2 = 2131099762;
+			
+			// aapt resource value: 0x7f060074
+			public const int HomeHeaderImage3 = 2131099764;
+			
+			// aapt resource value: 0x7f06006e
+			public const int HomeHeaderMainLayout = 2131099758;
+			
+			// aapt resource value: 0x7f06006f
+			public const int HomeHeaderPaddingLayout = 2131099759;
+			
+			// aapt resource value: 0x7f060071
+			public const int HomeHeaderUsernameText = 2131099761;
 			
 			// aapt resource value: 0x7f06006b
-			public const int HomeSwipeRefreshLayout = 2131099755;
+			public const int HomeLayout = 2131099755;
 			
-			// aapt resource value: 0x7f06007a
-			public const int SplashAppName = 2131099770;
+			// aapt resource value: 0x7f06006d
+			public const int HomeListView = 2131099757;
 			
-			// aapt resource value: 0x7f060079
-			public const int SplashAppNameLayout = 2131099769;
-			
-			// aapt resource value: 0x7f06007c
-			public const int SplashFacebookButton = 2131099772;
-			
-			// aapt resource value: 0x7f06007e
-			public const int SplashGoButton = 2131099774;
-			
-			// aapt resource value: 0x7f060078
-			public const int SplashMainRelativeLayout = 2131099768;
-			
-			// aapt resource value: 0x7f06007d
-			public const int SplashTwitterButton = 2131099773;
+			// aapt resource value: 0x7f06006c
+			public const int HomeSwipeRefreshLayout = 2131099756;
 			
 			// aapt resource value: 0x7f06007b
-			public const int SplashWhatAccounts = 2131099771;
+			public const int SplashAppName = 2131099771;
+			
+			// aapt resource value: 0x7f06007a
+			public const int SplashAppNameLayout = 2131099770;
+			
+			// aapt resource value: 0x7f06007d
+			public const int SplashFacebookButton = 2131099773;
+			
+			// aapt resource value: 0x7f06007f
+			public const int SplashGoButton = 2131099775;
+			
+			// aapt resource value: 0x7f060079
+			public const int SplashMainRelativeLayout = 2131099769;
+			
+			// aapt resource value: 0x7f06007e
+			public const int SplashTwitterButton = 2131099774;
+			
+			// aapt resource value: 0x7f06007c
+			public const int SplashWhatAccounts = 2131099772;
 			
 			// aapt resource value: 0x7f060041
 			public const int action_bar = 2131099713;
@@ -2962,8 +2977,8 @@ namespace Droid.Phone
 			// aapt resource value: 0x7f060065
 			public const int hamburgerMenu_layout = 2131099749;
 			
-			// aapt resource value: 0x7f060069
-			public const int hamburgerMenu_menu = 2131099753;
+			// aapt resource value: 0x7f06006a
+			public const int hamburgerMenu_menu = 2131099754;
 			
 			// aapt resource value: 0x7f060064
 			public const int hamburgerMenu_toolbar = 2131099748;
@@ -2992,14 +3007,14 @@ namespace Droid.Phone
 			// aapt resource value: 0x7f06002b
 			public const int list_item = 2131099691;
 			
-			// aapt resource value: 0x7f060076
-			public const int loadingImage = 2131099766;
-			
-			// aapt resource value: 0x7f060074
-			public const int loadingProgressBar = 2131099764;
-			
 			// aapt resource value: 0x7f060077
-			public const int loadingProgressWheel = 2131099767;
+			public const int loadingImage = 2131099767;
+			
+			// aapt resource value: 0x7f060075
+			public const int loadingProgressBar = 2131099765;
+			
+			// aapt resource value: 0x7f060078
+			public const int loadingProgressWheel = 2131099768;
 			
 			// aapt resource value: 0x7f060016
 			public const int middle = 2131099670;
@@ -3103,14 +3118,8 @@ namespace Droid.Phone
 			// aapt resource value: 0x7f060034
 			public const int textSpacerNoButtons = 2131099700;
 			
-			// aapt resource value: 0x7f060060
-			public const int textView1 = 2131099744;
-			
-			// aapt resource value: 0x7f060061
-			public const int textView2 = 2131099745;
-			
-			// aapt resource value: 0x7f060075
-			public const int textViewStatus = 2131099765;
+			// aapt resource value: 0x7f060076
+			public const int textViewStatus = 2131099766;
 			
 			// aapt resource value: 0x7f06002d
 			public const int title = 2131099693;
@@ -3118,8 +3127,8 @@ namespace Droid.Phone
 			// aapt resource value: 0x7f060030
 			public const int title_template = 2131099696;
 			
-			// aapt resource value: 0x7f06007f
-			public const int toolbar = 2131099775;
+			// aapt resource value: 0x7f060080
+			public const int toolbar = 2131099776;
 			
 			// aapt resource value: 0x7f06002f
 			public const int topPanel = 2131099695;

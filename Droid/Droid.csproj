@@ -188,5 +188,17 @@
       <Project>{CF876A71-9E29-4F7C-ABC7-BE9FE04E47B4}</Project>
       <Name>Shared.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shared.Api\Shared.Api.csproj">
+      <Project>{57D15B6D-9101-4615-8FD3-87565A0BAA5B}</Project>
+      <Name>Shared.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared.Repo\Shared.Repo.csproj">
+      <Project>{D089B658-A2BC-46EF-A5D4-67314688CA53}</Project>
+      <Name>Shared.Repo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared.Service\Shared.Service.csproj">
+      <Project>{6BC8D2B7-7FA1-4642-873F-59357FAB0904}</Project>
+      <Name>Shared.Service</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

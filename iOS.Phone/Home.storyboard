@@ -141,7 +141,7 @@
                                 <constraint firstAttribute="trailing" secondItem="K1a-O1-dBy" secondAttribute="trailing" id="zIv-kl-PHN"/>
                             </constraints>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" image="New Post Button.png" id="Zs8-01-7rr"/>
+                        <barButtonItem key="rightBarButtonItem" image="newPostButton.png" id="Zs8-01-7rr"/>
                     </navigationItem>
                     <connections>
                         <outlet property="AccountImageView" destination="iCc-4y-YH7" id="Fv1-G3-eWi"/>
@@ -391,7 +391,7 @@
     <resources>
         <image name="App-bg.png" width="320" height="569"/>
         <image name="Facebook.png" width="44" height="44"/>
-        <image name="New Post Button.png" width="20" height="21"/>
+        <image name="newPostButton.png" width="20" height="21"/>
         <image name="Profile Image default.png" width="60" height="60"/>
         <image name="Twitter.png" width="44" height="44"/>
     </resources>

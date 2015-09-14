@@ -299,8 +299,6 @@
     <BundleResource Include="Resources\Twitter%403x.png" />
     <BundleResource Include="Resources\Menu Button%402x.png" />
     <BundleResource Include="Resources\Menu Button%403x.png" />
-    <BundleResource Include="Resources\New Post Button%402x.png" />
-    <BundleResource Include="Resources\New Post Button%403x.png" />
     <BundleResource Include="Resources\Profile Image default%402x.png" />
     <BundleResource Include="Resources\Profile Image default%403x.png" />
     <BundleResource Include="Resources\SanFranciscoDisplay-Bold.otf">
@@ -372,12 +370,6 @@
     <BundleResource Include="Resources\SanFranciscoDisplay-Black.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
-    <BundleResource Include="Resources\Add button%402x.png" />
-    <BundleResource Include="Resources\Add button%403x.png" />
-    <BundleResource Include="Resources\Added button%402x.png" />
-    <BundleResource Include="Resources\Added button%403x.png" />
-    <BundleResource Include="Resources\Remove button%402x.png" />
-    <BundleResource Include="Resources\Remove button%403x.png" />
     <BundleResource Include="Resources\App-bg%403x.png" />
     <BundleResource Include="Resources\App-bg%402x.png" />
     <BundleResource Include="Resources\Hashtagg_title%402x.png" />
@@ -391,5 +383,13 @@
     <BundleResource Include="Resources\cancelIcon.png" />
     <BundleResource Include="Resources\cancelIcon%402x.png" />
     <BundleResource Include="Resources\cancelIcon%403x.png" />
+    <BundleResource Include="Resources\addedButton%402x.png" />
+    <BundleResource Include="Resources\addedButton%403x.png" />
+    <BundleResource Include="Resources\addButton%403x.png" />
+    <BundleResource Include="Resources\addButton%402x.png" />
+    <BundleResource Include="Resources\removeButton%402x.png" />
+    <BundleResource Include="Resources\removeButton%403x.png" />
+    <BundleResource Include="Resources\newPostButton%402x.png" />
+    <BundleResource Include="Resources\newPostButton%403x.png" />
   </ItemGroup>
 </Project>
