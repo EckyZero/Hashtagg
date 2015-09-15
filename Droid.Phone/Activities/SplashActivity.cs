@@ -22,6 +22,7 @@ using Android.Support.V4.Graphics.Drawable;
 using Android.Util;
 using Android.Views.Animations;
 using GalaSoft.MvvmLight.Helpers;
+using Shared.VM;
 
 namespace Droid.Phone.Activities
 {
@@ -56,13 +57,12 @@ namespace Droid.Phone.Activities
 
             _splashViewModel = new MainViewModel();
             _splashViewModel.RequestHomePage = OnRequestHomePage;
-            _splashViewModel.RequestOnboardingPage = RunAnimation;
-            await _splashViewModel.DidLoad();
+            _splashViewModel.RequestOnboardingPage = OnRequestOnboardingPage;
+            _mainLayout.ViewTreeObserver.GlobalLayout += ViewTreeObserverOnGlobalLayout;
         }
 
         private void BindEvents()
         {
-            _mainLayout.ViewTreeObserver.GlobalLayout += ViewTreeObserverOnGlobalLayout;
 
             _viewModel.CanExecute += b =>
             {
@@ -160,7 +160,7 @@ namespace Droid.Phone.Activities
             PrepareMediaDrawable(_twitterButton);
             PrepareMediaDrawable(_facebookButton);
 
-            await _viewModel.DidAppear();
+            await _splashViewModel.DidLoad();
             await _splashViewModel.DidAppear();
         }
 
@@ -170,7 +170,7 @@ namespace Droid.Phone.Activities
             _facebookButton.Selected = _viewModel.IsFacebookSelected;    
         }
 
-        private async void RunAnimation(OnboardingViewModel oVm)
+        private async void OnRequestOnboardingPage(OnboardingViewModel oVm)
         {
             _viewModel = oVm;
             AnimationInitUI();
@@ -240,6 +240,7 @@ namespace Droid.Phone.Activities
             await Task.Delay(2000);
 
             mainAnimatorSet.Start();
+            await _viewModel.DidAppear();
         }
     }
 }

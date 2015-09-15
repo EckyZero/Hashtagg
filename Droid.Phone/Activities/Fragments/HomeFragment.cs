@@ -22,6 +22,7 @@ using Droid.Controls;
 using Droid.UIHelpers;
 using Koush;
 using Shared.Common.Helpers;
+using Android.Views;
 
 namespace Droid.Phone
 {

@@ -100,10 +100,13 @@ namespace Shared.VM
             get 
             { 
                 var account = _facebookHelper.GetAccount();
-                var id = account.Properties["id"];
-                var isCommentedByUser = _facebookPost.Comments.Any( c => c.User.Id.Equals(id));
-
-                return isCommentedByUser;
+                if (account.Properties.ContainsKey("id"))
+                {
+                    var id = account.Properties["id"];
+                    var isCommentedByUser = _facebookPost.Comments.Any(c => c.User.Id.Equals(id));
+                    return isCommentedByUser;
+                }
+                return false;
             }
             set
             {

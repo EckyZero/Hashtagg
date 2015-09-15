@@ -16,7 +16,7 @@ namespace Shared.VM
 		private bool _userInteractionEnabled = true;
 		private ListItemType _listItemType = ListItemType.MenuItem;
 		private MenuItemType _menuItemType = MenuItemType.Add;
-		private string _imageName = "Add button.png";
+		private string _imageName = "addButton.png";
 
 		#endregion
 
@@ -74,13 +74,13 @@ namespace Shared.VM
 
 		protected void UpdateImageName ()
 		{
-			var imageName = "Add button.png";
+			var imageName = "addButton.png";
 
 			if(MenuItemType == MenuItemType.Added) {
-				imageName = "Added button.png";
+				imageName = "addedButton.png";
 			} 
 			else if (MenuItemType == MenuItemType.Remove) {
-				imageName = "Remove button.png";
+				imageName = "removeButton.png";
 			}
 			ImageName = imageName;
 		}

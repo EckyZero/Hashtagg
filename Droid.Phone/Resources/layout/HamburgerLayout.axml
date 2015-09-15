@@ -23,17 +23,30 @@
             <RelativeLayout
                 android:minWidth="25px"
                 android:minHeight="25px"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/DrawerHeaderLayout">
                 <TextView
                     android:text="Hashtagg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/DrawerAppName"
-                    android:layout_centerInParent="true"
+                    android:layout_alignParentTop="true"
                     android:textSize="28sp"
-                    android:textColor="@color/carnation" />
+                    android:textColor="@color/carnation"
+                    android:layout_marginTop="10dp" />
+                <TextView
+                    android:text="You aren't signed into any accounts."
+                    android:layout_marginTop="46dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/DrawerSubTitle"
+                    android:layout_centerInParent="true"
+                    android:layout_below="@id/DrawerAppName"
+                    android:textSize="18sp"
+                    android:textColor="@color/silver" />
             </RelativeLayout>
             <ListView
                 android:listSelector="@android:color/transparent"
@@ -45,6 +58,7 @@
                 android:choiceMode="singleChoice"
                 android:scrollbars="none"
                 android:background="@drawable/App_bg"
+                android:layout_marginTop="40dp"
                 android:divider="@android:color/transparent" />
             <RelativeLayout
                 android:minWidth="25px"
@@ -61,7 +75,10 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:textSize="18sp"
+                    android:textColor="@color/blue2"
                     android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
                     android:background="@drawable/ezbutton" />
             </RelativeLayout>
         </RelativeLayout>
