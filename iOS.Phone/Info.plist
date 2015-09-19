@@ -81,5 +81,10 @@
 	<string></string>
 	<key>UILaunchStoryboardName</key>
 	<string>Splash</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
