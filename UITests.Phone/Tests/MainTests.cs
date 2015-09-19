@@ -11,7 +11,6 @@ namespace UITests.Phone
     [TestFixture]
     public class MainTests : BaseTest
     {
-        private readonly string HomeListIdentifier = "HomePage_ListView";
         [SetUp]
         public void BeforeEach()
         {
@@ -178,8 +177,8 @@ namespace UITests.Phone
             try
             {
                 App.Screenshot("Opening New Post");
-                App.WaitForElement(c => c.Marked("New Post Button"));
-                App.Tap(c => c.Marked("New Post Button"));
+                App.WaitForElement(c => c.Marked("newPostButton"));
+                App.Tap(c => c.Marked("newPostButton"));
 
                 App.Screenshot("Entering text");
                 App.WaitForElement("New Post");
