@@ -41,7 +41,7 @@ namespace Shared.Api
 		{
 			var url = new Uri(String.Format ("{0}{1}", BASE_URL, Routes.TWITTER_HOME_FEED));
 			var parameters = new Dictionary<string, string> () {
-				{ "count", "3" },
+				{ "count", "20" },
 				{ "include_rts", "1" },
 				{ "exclude_replies", "0" },
 				{ "include_entities", "1" },

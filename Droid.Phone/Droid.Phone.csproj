@@ -14,9 +14,9 @@
     <AndroidApplication>True</AndroidApplication>
     <AssemblyName>Droid.Phone</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <AndroidLinkSkip />
     <AndroidStoreUncompressedFileExtensions />
   </PropertyGroup>
@@ -118,6 +118,9 @@
       <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\SplashActivity.cs" />
@@ -130,6 +133,7 @@
       <DependentUpon>SplashActivity.cs</DependentUpon>
     </Compile>
     <Compile Include="Activities\Fragments\HomeFragment.cs" />
+    <Compile Include="UIHelpers\FileReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -187,6 +191,10 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="modernhttpclient">
       <Version>2.4.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="json.net">
+      <Version>7.0.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
@@ -320,5 +328,11 @@
       <Project>{57D15B6D-9101-4615-8FD3-87565A0BAA5B}</Project>
       <Name>Shared.Api</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Facebook_Feed.json" />
+    <AndroidAsset Include="Assets\Facebook_User.json" />
+    <AndroidAsset Include="Assets\Twitter_Feed.json" />
+    <AndroidAsset Include="Assets\Twitter_User.json" />
   </ItemGroup>
 </Project>

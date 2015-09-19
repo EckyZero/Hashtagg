@@ -391,5 +391,9 @@
     <BundleResource Include="Resources\removeButton%403x.png" />
     <BundleResource Include="Resources\newPostButton%402x.png" />
     <BundleResource Include="Resources\newPostButton%403x.png" />
+    <BundleResource Include="Resources\Facebook_Feed.json" />
+    <BundleResource Include="Resources\Facebook_User.json" />
+    <BundleResource Include="Resources\Twitter_Feed.json" />
+    <BundleResource Include="Resources\Twitter_User.json" />
   </ItemGroup>
 </Project>

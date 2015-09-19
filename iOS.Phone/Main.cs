@@ -79,6 +79,7 @@ namespace iOS.Phone
 			IocContainer.GetContainer().RegisterInstance<IEmailService> (new EmailService());
 			IocContainer.GetContainer().RegisterInstance<ITwitterHelper> (new iOSTwitterHelper ());
 			IocContainer.GetContainer().RegisterInstance<IFacebookHelper> (new iOSFacebookHelper ());
+            IocContainer.GetContainer().RegisterInstance<IFileReader> (new FileReader ());
 		}
 
 		private static ExtendedNavigationService ConfigureNav()

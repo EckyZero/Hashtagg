@@ -64,6 +64,9 @@
     <Compile Include="Dtos\Facebook\FacebookLocationDto.cs" />
     <Compile Include="Dtos\Facebook\FacebookToFromDto.cs" />
     <Compile Include="Dtos\Facebook\FacebookActionDto.cs" />
+    <Compile Include="Mocks\MockTwitterApi.cs" />
+    <Compile Include="Mocks\MockFacebookApi.cs" />
+    <Compile Include="Interfaces\IFileReader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -99,5 +102,6 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Dtos\Twitter\" />
     <Folder Include="Dtos\Facebook\" />
+    <Folder Include="Mocks\" />
   </ItemGroup>
 </Project>

@@ -20,6 +20,7 @@ using Shared.VM;
 using Shared.Bootstrapper;
 using Droid;
 using Shared.Service;
+using Shared.Api;
 
 namespace Droid.Phone
 {
@@ -105,8 +106,9 @@ namespace Droid.Phone
 			IocContainer.GetContainer().RegisterInstance<IPhoneService> (new PhoneService());
 			IocContainer.GetContainer().RegisterInstance<IMapService> (new MapService());
 			IocContainer.GetContainer().RegisterInstance<IEmailService> (new EmailService());
-			IocContainer.GetContainer ().RegisterInstance<ITwitterHelper> (new AndroidTwitterHelper ());
-			IocContainer.GetContainer ().RegisterInstance<IFacebookHelper> (new AndroidFacebookHelper ());
+			IocContainer.GetContainer().RegisterInstance<ITwitterHelper> (new AndroidTwitterHelper ());
+			IocContainer.GetContainer().RegisterInstance<IFacebookHelper> (new AndroidFacebookHelper ());
+            IocContainer.GetContainer().RegisterInstance<IFileReader> (new FileReader ());
 
 			_lifecycleService.OnStart ();
         }

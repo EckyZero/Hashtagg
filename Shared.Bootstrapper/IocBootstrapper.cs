@@ -12,8 +12,10 @@ namespace Shared.Bootstrapper
 			ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(container));
 
 			// APIs
-			container.RegisterType<ITwitterApi, TwitterApi> ();
-			container.RegisterType<IFacebookApi, FacebookApi> ();
+//            container.RegisterType<ITwitterApi, TwitterApi> ();
+//            container.RegisterType<IFacebookApi, FacebookApi> ();
+            container.RegisterType<ITwitterApi, MockTwitterApi> ();
+            container.RegisterType<IFacebookApi, MockFacebookApi> ();
 
 			// Services
 			container.RegisterType<ITwitterService, TwitterService> ();
