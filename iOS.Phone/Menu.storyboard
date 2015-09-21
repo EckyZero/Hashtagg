@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="p64-8T-Yea">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="p64-8T-Yea">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SanFranciscoText-Medium.otf">
             <string>SanFranciscoText-Medium</string>
         </mutableArray>
         <mutableArray key="SanFranciscoText-Thin.otf">
-            <string>SanFranciscoText-Thin</string>
             <string>SanFranciscoText-Thin</string>
             <string>SanFranciscoText-Thin</string>
             <string>SanFranciscoText-Thin</string>
@@ -27,17 +26,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Michael Peters" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="tep-o4-7D2">
-                                <rect key="frame" x="24" y="66" width="246" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="kdh-i3-jp9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SanFranciscoText-Thin" family="San Francisco Text" pointSize="28"/>
-                                <color key="textColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You aren't signed in to any accounts" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsa-U6-l1y">
-                                <rect key="frame" x="24" y="137" width="246" height="53"/>
+                                <rect key="frame" x="-13.5" y="137" width="347" height="26.5"/>
                                 <fontDescription key="fontDescription" name="SanFranciscoText-Thin" family="San Francisco Text" pointSize="22"/>
                                 <color key="textColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -63,20 +53,21 @@
                                     <segue destination="hvh-C5-sX1" kind="embed" id="jfw-pF-ncP"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hashtaggLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="JoQ-7r-Pqf">
+                                <rect key="frame" x="67.5" y="62" width="185" height="41"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nsa-U6-l1y" firstAttribute="leading" secondItem="tep-o4-7D2" secondAttribute="leading" id="C8j-16-fNG"/>
                             <constraint firstItem="4Np-lV-3CN" firstAttribute="top" secondItem="2hZ-cY-Ibb" secondAttribute="bottom" constant="37" id="CWL-Sn-J20"/>
-                            <constraint firstItem="nsa-U6-l1y" firstAttribute="trailing" secondItem="tep-o4-7D2" secondAttribute="trailing" id="KlG-Ea-sQk"/>
-                            <constraint firstAttribute="trailing" secondItem="tep-o4-7D2" secondAttribute="trailing" constant="50" id="UTc-Fi-0kg"/>
-                            <constraint firstItem="tep-o4-7D2" firstAttribute="top" secondItem="qce-ni-vhj" secondAttribute="bottom" constant="46" id="X2Z-Wv-v6M"/>
-                            <constraint firstItem="nsa-U6-l1y" firstAttribute="top" secondItem="tep-o4-7D2" secondAttribute="bottom" constant="37" id="bHO-H0-DTP"/>
+                            <constraint firstItem="Ru6-no-cOa" firstAttribute="top" secondItem="JoQ-7r-Pqf" secondAttribute="bottom" constant="34" id="NiU-mk-EqQ"/>
+                            <constraint firstItem="nsa-U6-l1y" firstAttribute="centerX" secondItem="JoQ-7r-Pqf" secondAttribute="centerX" id="PpR-7Z-zdj"/>
+                            <constraint firstItem="nsa-U6-l1y" firstAttribute="top" secondItem="JoQ-7r-Pqf" secondAttribute="bottom" constant="34" id="SYC-0q-QyM"/>
                             <constraint firstItem="Ru6-no-cOa" firstAttribute="leading" secondItem="vwo-LJ-xhq" secondAttribute="leading" id="cJE-h1-ThJ"/>
+                            <constraint firstItem="JoQ-7r-Pqf" firstAttribute="top" secondItem="qce-ni-vhj" secondAttribute="bottom" constant="42" id="duC-VZ-TvU"/>
                             <constraint firstItem="2hZ-cY-Ibb" firstAttribute="top" secondItem="Ru6-no-cOa" secondAttribute="bottom" constant="8" id="fqi-f4-BpH"/>
-                            <constraint firstItem="Ru6-no-cOa" firstAttribute="top" secondItem="tep-o4-7D2" secondAttribute="bottom" constant="37" id="h3z-zv-3Mk"/>
-                            <constraint firstItem="tep-o4-7D2" firstAttribute="leading" secondItem="vwo-LJ-xhq" secondAttribute="leading" constant="24" id="irz-nK-9Hn"/>
                             <constraint firstItem="2hZ-cY-Ibb" firstAttribute="leading" secondItem="vwo-LJ-xhq" secondAttribute="leading" constant="24" id="kRj-ke-aUC"/>
+                            <constraint firstItem="JoQ-7r-Pqf" firstAttribute="centerX" secondItem="vwo-LJ-xhq" secondAttribute="centerX" id="m1E-b6-0YE"/>
                             <constraint firstAttribute="trailing" secondItem="Ru6-no-cOa" secondAttribute="trailing" id="rQ1-vW-AJf"/>
                             <constraint firstAttribute="trailing" secondItem="2hZ-cY-Ibb" secondAttribute="trailing" constant="94" id="ziE-ll-L9e"/>
                         </constraints>
@@ -84,7 +75,6 @@
                     <connections>
                         <outlet property="PrimaryButton" destination="2hZ-cY-Ibb" id="wZb-cZ-BRG"/>
                         <outlet property="SubtitleLabel" destination="nsa-U6-l1y" id="YYr-aD-doC"/>
-                        <outlet property="TitleLabel" destination="tep-o4-7D2" id="9bc-cf-7cc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uof-rB-NWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -101,8 +91,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuItem" rowHeight="52" id="mRS-JZ-1bU" customClass="MenuItemCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mRS-JZ-1bU" id="7fQ-xf-0X6">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addButton.png" translatesAutoresizingMaskIntoConstraints="NO" id="5rM-Z4-lYg">
@@ -156,10 +148,6 @@
     </scenes>
     <resources>
         <image name="addButton.png" width="22" height="22"/>
+        <image name="hashtaggLogo.png" width="185" height="41"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
