@@ -26,7 +26,7 @@ using Android.Views;
 
 namespace Droid.Phone
 {
-	public class HomeFragment : Android.Support.V4.App.Fragment
+	public class HomeFragment : BaseFragment
 	{
 		HomeViewModel _viewModel;
 		ListView _listLayout;
@@ -43,7 +43,7 @@ namespace Droid.Phone
 			_viewModel = viewModel;
 		}
 
-		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			_inflater = inflater;
 

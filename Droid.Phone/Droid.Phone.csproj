@@ -117,10 +117,10 @@
     <Reference Include="Xamarin.Insights">
       <HintPath>..\packages\Xamarin.Insights.1.10.5\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Android" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\SplashActivity.cs" />
@@ -158,6 +158,10 @@
     <AndroidResource Include="Resources\drawable-mdpi\removeButton.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\removeButton.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\removeButton.png" />
+    <AndroidResource Include="Resources\anim\pull_in_left.xml" />
+    <AndroidResource Include="Resources\anim\pull_in_right.xml" />
+    <AndroidResource Include="Resources\anim\push_out_left.xml" />
+    <AndroidResource Include="Resources\anim\push_out_right.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

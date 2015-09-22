@@ -125,6 +125,7 @@
     <Compile Include="Utils\UIUtil.cs" />
     <Compile Include="OS Services\AndroidTwitterHelper.cs" />
     <Compile Include="OS Services\AndroidFacebookHelper.cs" />
+    <Compile Include="Fragments\BaseFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -172,12 +173,17 @@
     <Folder Include="Assets\" />
     <Folder Include="Resources\drawable\" />
     <Folder Include="Resources\Values-v11\" />
+    <Folder Include="Fragments\" />
   </ItemGroup>
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <ItemGroup>
     <AndroidResource Include="Resources\values\colors.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\anim\pull_in_left.xml" />
+    <AndroidResource Include="Resources\anim\pull_in_right.xml" />
+    <AndroidResource Include="Resources\anim\push_out_left.xml" />
+    <AndroidResource Include="Resources\anim\push_out_right.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Attrs.xml" />

@@ -50,6 +50,12 @@ namespace Droid
             this.OnBackPressed();
         }
 
+        public override void OnBackPressed()
+        {
+            base.OnBackPressed();
+            OverridePendingTransition(Resource.Animation.pull_in_left, Resource.Animation.push_out_right);
+        }
+
         protected override void OnResume()
         {
             base.OnResume();

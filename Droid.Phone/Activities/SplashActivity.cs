@@ -76,8 +76,18 @@ namespace Droid.Phone.Activities
             _viewModel.RequestHomePage += OnRequestHomePage;  
         }
 
+        private async void OnRequestCommentPage(CommentViewModel cVm)
+        {
+            var hvm = new HomeViewModel();
+            await hvm.DidLoad();
+            _navigationService.NavigateTo(ViewModelLocator.HOME_KEY, hvm);
+        }
+
         private async void OnRequestHomePage(HomeViewModel hVm)
         {
+            //Did Load will assign through Actions to Post view models, we need to assign this action early, but it is safe due to shared services
+            hVm.RequestCommentPage = OnRequestCommentPage;
+
             await hVm.DidLoad();
             var animation = ActivityOptions.MakeScaleUpAnimation(_goButton, 0, 0, _goButton.Width, _goButton.Height).ToBundle();
             _navigationService.NavigateTo(ViewModelLocator.HOME_KEY, hVm, null, animation);

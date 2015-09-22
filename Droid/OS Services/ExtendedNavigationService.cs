@@ -100,6 +100,7 @@ namespace Droid
                 }
 
                 _activity.StartActivity(intent);
+                _activity.OverridePendingTransition(Resource.Animation.pull_in_right, Resource.Animation.push_out_left);
                 Activity.NextPageKey = pageKey;
             }
         }
