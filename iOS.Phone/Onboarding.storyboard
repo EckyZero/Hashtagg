@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="OK1-mU-exO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="OK1-mU-exO">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SanFranciscoText-Light.otf">
@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What accounts do you use?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PL-gD-dut">
-                                <rect key="frame" x="79" y="243" width="163.5" height="16"/>
+                                <rect key="frame" x="79" y="250" width="163.5" height="16"/>
                                 <fontDescription key="fontDescription" name="SanFranciscoText-Medium" family="San Francisco Text" pointSize="13"/>
                                 <color key="textColor" red="0.94901960780000005" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -77,8 +77,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hashtagg_title.png" translatesAutoresizingMaskIntoConstraints="NO" id="QYN-PX-KMe">
-                                <rect key="frame" x="97" y="205" width="127" height="38"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hashtaggLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="QYN-PX-KMe">
+                                <rect key="frame" x="68" y="205" width="185" height="41"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="osn-k3-oAz">
                                 <rect key="frame" x="150" y="525.5" width="20" height="20"/>
@@ -94,7 +94,7 @@
                             <constraint firstItem="yOt-dJ-sAe" firstAttribute="centerY" secondItem="gXK-7g-B9R" secondAttribute="centerY" constant="67.5" id="K5e-Ib-VfK"/>
                             <constraint firstItem="QYN-PX-KMe" firstAttribute="centerX" secondItem="3PL-gD-dut" secondAttribute="centerX" id="Mzo-F0-n6f"/>
                             <constraint firstItem="gXK-7g-B9R" firstAttribute="leading" secondItem="dyv-qe-Qew" secondAttribute="trailing" constant="-135" id="Nyf-bS-dpc"/>
-                            <constraint firstItem="3PL-gD-dut" firstAttribute="top" secondItem="QYN-PX-KMe" secondAttribute="bottom" id="ObK-1h-t3S"/>
+                            <constraint firstItem="3PL-gD-dut" firstAttribute="top" secondItem="QYN-PX-KMe" secondAttribute="bottom" constant="4" id="ObK-1h-t3S"/>
                             <constraint firstItem="gXK-7g-B9R" firstAttribute="centerY" secondItem="dyv-qe-Qew" secondAttribute="centerY" constant="-68" id="OsL-Jf-5Lt"/>
                             <constraint firstItem="gXK-7g-B9R" firstAttribute="top" secondItem="Gm8-FO-KbD" secondAttribute="top" id="R9i-GV-VS2"/>
                             <constraint firstItem="osn-k3-oAz" firstAttribute="centerX" secondItem="QjB-G1-n0w" secondAttribute="centerX" id="UcF-u0-gbe"/>
@@ -154,11 +154,6 @@
     </scenes>
     <resources>
         <image name="App-bg.png" width="320" height="569"/>
-        <image name="Hashtagg_title.png" width="127" height="38"/>
+        <image name="hashtaggLogo.png" width="185" height="41"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
