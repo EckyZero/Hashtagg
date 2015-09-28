@@ -13,27 +13,27 @@ namespace iOS.Phone
 	partial class MenuController
 	{
 		[Outlet]
-		UIKit.UIImageView BackgroundImageView { get; set; }
-
-		[Outlet]
 		UIKit.UIButton PrimaryButton { get; set; }
 
 		[Outlet]
 		UIKit.UILabel SubtitleLabel { get; set; }
 
 		[Outlet]
+		UIKit.UIImageView TitleImageView { get; set; }
+
+		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (BackgroundImageView != null) {
-				BackgroundImageView.Dispose ();
-				BackgroundImageView = null;
-			}
-
 			if (PrimaryButton != null) {
 				PrimaryButton.Dispose ();
 				PrimaryButton = null;
+			}
+
+			if (SubtitleLabel != null) {
+				SubtitleLabel.Dispose ();
+				SubtitleLabel = null;
 			}
 
 			if (TitleLabel != null) {
@@ -41,9 +41,9 @@ namespace iOS.Phone
 				TitleLabel = null;
 			}
 
-			if (SubtitleLabel != null) {
-				SubtitleLabel.Dispose ();
-				SubtitleLabel = null;
+			if (TitleImageView != null) {
+				TitleImageView.Dispose ();
+				TitleImageView = null;
 			}
 		}
 	}

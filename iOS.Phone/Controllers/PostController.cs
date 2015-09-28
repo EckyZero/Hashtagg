@@ -63,8 +63,6 @@ namespace iOS.Phone
 
             TextView.Started += OnTextStarted;
             TextView.Ended += OnTextEnded;
-
-            TextView.BecomeFirstResponder();
         }
 
         public override void ViewWillDisappear(bool animated)
