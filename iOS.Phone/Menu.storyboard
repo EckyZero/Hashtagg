@@ -11,6 +11,7 @@
             <string>SanFranciscoText-Thin</string>
             <string>SanFranciscoText-Thin</string>
             <string>SanFranciscoText-Thin</string>
+            <string>SanFranciscoText-Thin</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -27,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You aren't signed in to any accounts" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsa-U6-l1y">
-                                <rect key="frame" x="-13.5" y="137" width="347" height="26.5"/>
+                                <rect key="frame" x="24" y="137" width="244" height="53"/>
                                 <fontDescription key="fontDescription" name="SanFranciscoText-Thin" family="San Francisco Text" pointSize="22"/>
                                 <color key="textColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -54,20 +55,31 @@
                                 </connections>
                             </containerView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hashtaggLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="JoQ-7r-Pqf">
-                                <rect key="frame" x="67.5" y="62" width="185" height="41"/>
+                                <rect key="frame" x="24" y="62" width="185" height="41"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sO7-U4-EgC">
+                                <rect key="frame" x="24" y="62" width="185" height="41"/>
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Thin" family="San Francisco Text" pointSize="28"/>
+                                <color key="textColor" red="0.94901960784313721" green="0.36078431372549019" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="sO7-U4-EgC" firstAttribute="bottom" secondItem="JoQ-7r-Pqf" secondAttribute="bottom" id="4P4-zC-Xy5"/>
+                            <constraint firstItem="nsa-U6-l1y" firstAttribute="leading" secondItem="JoQ-7r-Pqf" secondAttribute="leading" id="A59-wC-Fnr"/>
                             <constraint firstItem="4Np-lV-3CN" firstAttribute="top" secondItem="2hZ-cY-Ibb" secondAttribute="bottom" constant="37" id="CWL-Sn-J20"/>
+                            <constraint firstItem="sO7-U4-EgC" firstAttribute="top" secondItem="JoQ-7r-Pqf" secondAttribute="top" id="Hmh-8c-gVe"/>
                             <constraint firstItem="Ru6-no-cOa" firstAttribute="top" secondItem="JoQ-7r-Pqf" secondAttribute="bottom" constant="34" id="NiU-mk-EqQ"/>
-                            <constraint firstItem="nsa-U6-l1y" firstAttribute="centerX" secondItem="JoQ-7r-Pqf" secondAttribute="centerX" id="PpR-7Z-zdj"/>
                             <constraint firstItem="nsa-U6-l1y" firstAttribute="top" secondItem="JoQ-7r-Pqf" secondAttribute="bottom" constant="34" id="SYC-0q-QyM"/>
+                            <constraint firstAttribute="trailing" secondItem="nsa-U6-l1y" secondAttribute="trailing" constant="52" id="WQE-VE-sdH"/>
+                            <constraint firstItem="sO7-U4-EgC" firstAttribute="trailing" secondItem="JoQ-7r-Pqf" secondAttribute="trailing" id="XZf-fR-WgW"/>
+                            <constraint firstItem="JoQ-7r-Pqf" firstAttribute="leading" secondItem="vwo-LJ-xhq" secondAttribute="leading" constant="24" id="YQd-cI-Wy0"/>
                             <constraint firstItem="Ru6-no-cOa" firstAttribute="leading" secondItem="vwo-LJ-xhq" secondAttribute="leading" id="cJE-h1-ThJ"/>
                             <constraint firstItem="JoQ-7r-Pqf" firstAttribute="top" secondItem="qce-ni-vhj" secondAttribute="bottom" constant="42" id="duC-VZ-TvU"/>
                             <constraint firstItem="2hZ-cY-Ibb" firstAttribute="top" secondItem="Ru6-no-cOa" secondAttribute="bottom" constant="8" id="fqi-f4-BpH"/>
+                            <constraint firstItem="sO7-U4-EgC" firstAttribute="leading" secondItem="JoQ-7r-Pqf" secondAttribute="leading" id="hfZ-cW-IM3"/>
                             <constraint firstItem="2hZ-cY-Ibb" firstAttribute="leading" secondItem="vwo-LJ-xhq" secondAttribute="leading" constant="24" id="kRj-ke-aUC"/>
-                            <constraint firstItem="JoQ-7r-Pqf" firstAttribute="centerX" secondItem="vwo-LJ-xhq" secondAttribute="centerX" id="m1E-b6-0YE"/>
                             <constraint firstAttribute="trailing" secondItem="Ru6-no-cOa" secondAttribute="trailing" id="rQ1-vW-AJf"/>
                             <constraint firstAttribute="trailing" secondItem="2hZ-cY-Ibb" secondAttribute="trailing" constant="94" id="ziE-ll-L9e"/>
                         </constraints>
@@ -75,6 +87,8 @@
                     <connections>
                         <outlet property="PrimaryButton" destination="2hZ-cY-Ibb" id="wZb-cZ-BRG"/>
                         <outlet property="SubtitleLabel" destination="nsa-U6-l1y" id="YYr-aD-doC"/>
+                        <outlet property="TitleImageView" destination="JoQ-7r-Pqf" id="yLn-eR-X75"/>
+                        <outlet property="TitleLabel" destination="sO7-U4-EgC" id="QbZ-HY-did"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uof-rB-NWb" userLabel="First Responder" sceneMemberID="firstResponder"/>

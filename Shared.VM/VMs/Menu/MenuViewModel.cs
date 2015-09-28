@@ -62,6 +62,11 @@ namespace Shared.VM
 			set { Set(() => ItemViewModels, ref _itemViewModels, value); }
 		}
 
+        public bool ShowTitleLogo
+        {
+            get { return string.IsNullOrWhiteSpace(Title); }    
+        }
+
 		#endregion
 
 		#region Methods
@@ -84,7 +89,7 @@ namespace Shared.VM
 			await base.DidLoad ();
 			await _homeViewModel.DidLoad ();
 
-			Title = "Hashtagg";
+            Title = string.Empty;
 		}
 
 		private async void OnListItemSelected (IListItem item)
@@ -115,7 +120,7 @@ namespace Shared.VM
 			} 
 			else if (MenuState == MenuState.Remove) 
 			{
-                Title = "Hashtagg";
+                Title = string.Empty;
 				MenuState = MenuState.Add;
 				await ConfigureForAdding ();
 			}

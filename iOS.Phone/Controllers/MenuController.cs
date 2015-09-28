@@ -75,8 +75,27 @@ namespace iOS.Phone
 				}
 				else if (e.PropertyName.Equals("Title")) 
 				{
-					TitleLabel.Text = ViewModel.Title;
-				}
+                    if(ViewModel.ShowTitleLogo)
+                    {
+                        UIView.Animate(
+                            duration: 0.5f,
+                            animation: () => {
+                                TitleLabel.Alpha = 0;
+                                TitleImageView.Alpha = 1;
+                        });
+                    }
+                    else
+                    {
+                        UIView.Animate(
+                            duration: 0.5f,
+                            animation: () => {
+                                TitleLabel.Alpha = 1;
+                                TitleImageView.Alpha = 0;
+                        });
+                    }
+                    TitleLabel.Text = ViewModel.Title;
+                    TitleImageView.Hidden = !ViewModel.ShowTitleLogo;
+			    }
 			};
 
 			PrimaryButton.SetCommand ("TouchUpInside", ViewModel.PrimaryCommand);
