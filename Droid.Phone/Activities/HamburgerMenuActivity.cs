@@ -95,6 +95,25 @@ namespace Droid.Phone
             _init = true;
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.HomeMenu, menu);
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_post:
+                    _homeViewModel.PostCommand.Execute(null);
+                    break;
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
+            return true;
+        }
+
         protected virtual void OnCreateFragmentSetup()
         {
             GetAndNavigateFragment();
@@ -148,10 +167,14 @@ namespace Droid.Phone
 
             _drawerToggle = new ActionBarDrawerToggle(this,_drawerLayout,_toolbar,Resource.String.abc_action_bar_home_description,Resource.String.abc_toolbar_collapse_description);
             _drawerLayout.SetDrawerListener(_drawerToggle);
+            _drawerLayout.DrawerClosed += RaiseOnDrawerClosed;
             _drawerToggle.SyncState();
         }
 
-
+        private void RaiseOnDrawerClosed(object sender, DrawerLayout.DrawerClosedEventArgs drawerClosedEventArgs)
+        {
+            _homeViewModel.DidAppear();
+        }
 
         private void DrawerListOnItemClick(object sender, AdapterView.ItemClickEventArgs itemClickEventArgs)
         {

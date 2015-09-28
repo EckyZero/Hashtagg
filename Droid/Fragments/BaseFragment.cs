@@ -21,11 +21,15 @@ namespace Droid
     {
         ExtendedNavigationService _navigationService;
 
+        public string Title { get; set; }
+        public Action LeftActionBarButton { get; set; }
+        public Action RightActionBarButton { get; set; }
+
         protected ExtendedNavigationService NavigationService
         {
             get
             { 
-                _navigationService = _navigationService ?? IocContainer.GetContainer().Resolve<INavigationService>() as ExtendedNavigationService;
+                _navigationService = _navigationService ?? IocContainer.GetContainer().Resolve<IExtendedNavigationService>() as ExtendedNavigationService;
                 return _navigationService;
             }
         }

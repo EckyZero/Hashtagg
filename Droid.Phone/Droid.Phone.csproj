@@ -17,8 +17,6 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
-    <AndroidLinkSkip />
-    <AndroidStoreUncompressedFileExtensions />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,11 +28,9 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
-    <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
-    <MandroidI18n>
-    </MandroidI18n>
     <Debugger>Xamarin</Debugger>
     <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
   </PropertyGroup>
@@ -57,9 +53,12 @@
     </MonoDroidExtraArgs>
     <PlatformTarget>x86</PlatformTarget>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidLinkSkip>
+    </AndroidLinkSkip>
+    <AndroidStoreUncompressedFileExtensions>
+    </AndroidStoreUncompressedFileExtensions>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -120,20 +119,22 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\SplashActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="UIHelpers\ColorExtensions.cs" />
     <Compile Include="UIHelpers\DrawableHelpers.cs" />
-    <Compile Include="Activities\HamburgerMenuActivity.cs">
-      <DependentUpon>SplashActivity.cs</DependentUpon>
-    </Compile>
     <Compile Include="Activities\Fragments\HomeFragment.cs" />
     <Compile Include="UIHelpers\FileReader.cs" />
+    <Compile Include="Activities\Fragments\PostFragment.cs" />
+    <Compile Include="Activities\SplashActivity.cs" />
+    <Compile Include="Activities\HamburgerMenuActivity.cs" />
+    <Compile Include="Activities\PostActivity.cs" />
+    <Compile Include="Activities\CommentActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -162,6 +163,59 @@
     <AndroidResource Include="Resources\anim\pull_in_right.xml" />
     <AndroidResource Include="Resources\anim\push_out_left.xml" />
     <AndroidResource Include="Resources\anim\push_out_right.xml" />
+    <AndroidResource Include="Resources\menu\HomeMenu.xml" />
+    <AndroidResource Include="Resources\drawable-mdpi\newPostButton.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\newPostButton.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\newPostButton.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\appIcon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\appIcon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\appIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\appIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\appIcon.png" />
+    <AndroidResource Include="Resources\layout\Post.axml" />
+    <AndroidResource Include="Resources\layout\GenericFragmentContainer.axml" />
+    <AndroidResource Include="Resources\menu\PostMenu.xml" />
+    <AndroidResource Include="Resources\drawable-mdpi\cancelIcon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\cancelIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\cancelIcon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\cameraIcon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\removeIcon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\socialFacebookSelected.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\socialFacebookUnselected.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\socialGoogleSelected.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\socialGoogleUnselected.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\socialInstagramSelected.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\socialInstagramUnselected.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\socialLinkedInSelected.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\socialLinkedInUnselected.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\socialTwitterSelected.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\socialTwitterUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\cameraIcon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\removeIcon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\socialFacebookSelected.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\socialFacebookUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\socialGoogleSelected.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\socialGoogleUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\socialInstagramSelected.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\socialInstagramUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\socialLinkedInSelected.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\socialLinkedInUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\socialTwitterSelected.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\socialTwitterUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\cameraIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\removeIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\socialFacebookSelected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\socialFacebookUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\socialGoogleSelected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\socialGoogleUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\socialInstagramSelected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\socialInstagramUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\socialLinkedInSelected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\socialLinkedInUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\socialTwitterSelected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\socialTwitterUnselected.png" />
+    <AndroidResource Include="Resources\drawable\PostButton.xml" />
+    <AndroidResource Include="Resources\layout\Comments.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -205,6 +259,8 @@
   <ItemGroup>
     <Folder Include="Resources\anim\" />
     <Folder Include="Resources\drawable-hdpi\" />
+    <Folder Include="Resources\menu\" />
+    <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />
@@ -304,10 +360,6 @@
     </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Droid\Droid.csproj">
-      <Project>{82D90133-B8A7-4810-B2C4-661808A0062B}</Project>
-      <Name>Droid</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shared.VM\Shared.VM.csproj">
       <Project>{8BA73740-09B9-4923-8D33-B4539FAB205F}</Project>
       <Name>Shared.VM</Name>
@@ -331,6 +383,10 @@
     <ProjectReference Include="..\Shared.Api\Shared.Api.csproj">
       <Project>{57D15B6D-9101-4615-8FD3-87565A0BAA5B}</Project>
       <Name>Shared.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Droid\Droid.csproj">
+      <Project>{82D90133-B8A7-4810-B2C4-661808A0062B}</Project>
+      <Name>Droid</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -176,7 +176,7 @@ namespace Shared.VM
 			{
 				var response = await _facebookService.GetHomeFeed ();
 
-				if(await ProcessResponse(response))
+				if(await ProcessResponse(response, false))
 				{
 					foreach(FacebookPost post in response.Result)
 					{
@@ -196,7 +196,7 @@ namespace Shared.VM
 			{
 				var response = await _twitterService.GetHomeFeed ();	
 
-				if(await ProcessResponse(response))
+				if(await ProcessResponse(response, false))
 				{
 					foreach(Tweet tweet in response.Result)
 					{

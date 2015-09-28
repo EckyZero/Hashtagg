@@ -15,7 +15,7 @@ namespace Shared.VM
 		None
 	}
 
-	public abstract class BaseContentCardViewModel : BaseCardViewModel
+    public abstract class BaseContentCardViewModel : BaseCardViewModel, IEquatable<BaseContentCardViewModel>
 	{
 		#region Private Variables
 
@@ -219,6 +219,47 @@ namespace Shared.VM
 		public virtual async Task Reply(string message) { }
 
 		#endregion
+
+        public bool Equals(BaseContentCardViewModel other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            return UserName == other.UserName && Text == other.Text && LikeCount == other.LikeCount && DisplayDateTime == other.DisplayDateTime;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as BaseContentCardViewModel);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (-1521134295) * (UserName.GetHashCode() + Text.GetHashCode() - LikeCount ?? 0 + DisplayDateTime.GetHashCode());
+            }
+        }
+
+        public override string ToString()
+        {
+            return String.Format(
+                "UserName = {0}, Text = {1}, LikeCount = {3}, DisplayDateTime = {4}",
+                UserName,
+                Text,
+                LikeCount,
+                DisplayDateTime
+            );
+        }
+
+        public static bool operator ==(BaseContentCardViewModel leftOperand, BaseContentCardViewModel rightOperand)
+        {
+            if (ReferenceEquals(null, leftOperand)) return ReferenceEquals(null, rightOperand);
+            return leftOperand.Equals(rightOperand);
+        }
+
+        public static bool operator !=(BaseContentCardViewModel leftOperand, BaseContentCardViewModel rightOperand)
+        {
+            return !(leftOperand == rightOperand);
+        }
 	}
 }
 

@@ -23,6 +23,7 @@ using Android.Util;
 using Android.Views.Animations;
 using GalaSoft.MvvmLight.Helpers;
 using Shared.VM;
+using System.ComponentModel;
 
 namespace Droid.Phone.Activities
 {
@@ -78,9 +79,8 @@ namespace Droid.Phone.Activities
 
         private async void OnRequestCommentPage(CommentViewModel cVm)
         {
-            var hvm = new HomeViewModel();
-            await hvm.DidLoad();
-            _navigationService.NavigateTo(ViewModelLocator.HOME_KEY, hvm);
+            await cVm.DidLoad();
+            _navigationService.NavigateTo(ViewModelLocator.COMMENT_KEY, cVm);
         }
 
         private async void OnRequestHomePage(HomeViewModel hVm)
@@ -89,8 +89,8 @@ namespace Droid.Phone.Activities
             hVm.RequestCommentPage = OnRequestCommentPage;
 
             await hVm.DidLoad();
-            var animation = ActivityOptions.MakeScaleUpAnimation(_goButton, 0, 0, _goButton.Width, _goButton.Height).ToBundle();
-            _navigationService.NavigateTo(ViewModelLocator.HOME_KEY, hVm, null, animation);
+            //TODO add back in the grow animation
+            _navigationService.NavigateTo(ViewModelLocator.HOME_KEY, hVm, null, Shared.Common.AnimationFlag.Grow);
         }
 
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)

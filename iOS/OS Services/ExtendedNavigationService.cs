@@ -128,6 +128,12 @@ namespace iOS
 			}
 		}
 
+        void GoBack(AnimationFlag animationFlag)
+        {
+            GoBack();
+        }
+
+
 		public void GoBack()
 		{
 			var nav = CurrentNavigationController ();
@@ -184,6 +190,11 @@ namespace iOS
 				}
 			}
 		}
+
+        public void NavigateTo(string pageKey, object parameter, List<NavigationFlag> navigationFlags, AnimationFlag animationFlags = AnimationFlag.Forward)
+        {
+            NavigateTo(pageKey, parameter);   
+        }
 
 
 		private UIViewController MakeController(Type controllerType, object parameter)

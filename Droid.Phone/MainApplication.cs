@@ -118,6 +118,8 @@ namespace Droid.Phone
             var nav = new ExtendedNavigationService();
 
             nav.Configure(ViewModelLocator.HOME_KEY, typeof(HamburgerMenuActivity));
+            nav.Configure(ViewModelLocator.POST_KEY, typeof(PostActivity));
+            nav.Configure(ViewModelLocator.POST_KEY, typeof(CommentActivity));
 
 			return nav;
 		}

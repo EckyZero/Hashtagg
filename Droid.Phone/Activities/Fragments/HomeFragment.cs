@@ -67,6 +67,7 @@ namespace Droid.Phone
             };
 
             _viewModel.RequestHeaderImages = OnRequestHeaderImages;
+            _viewModel.RequestPostPage = OnRequestPostPage;
             viewGroup.ViewTreeObserver.GlobalLayout += ViewTreeObserverOnGlobalLayout;
 
 			return viewGroup;
@@ -96,6 +97,11 @@ namespace Droid.Phone
 	                break;
 	        }
 	    }
+
+        void OnRequestPostPage(PostViewModel pVm)
+        {
+            NavigationService.NavigateTo(ViewModelLocator.POST_KEY, pVm, null, Shared.Common.AnimationFlag.Up);
+        }
 
 	    private void OnRequestCompleted()
 	    {
@@ -161,114 +167,103 @@ namespace Droid.Phone
 				return cell;
 			}
 
+            private class BaseCardViewHolder : Java.Lang.Object
+            {
+                public ImageView MainImage { get; set; }
+                public CircularImageView ProfileImage { get; set; }
+                public TextView UserName { get; set; }
+                public TextView BodyText { get; set; }
+                public CircularImageView SocialImage { get; set; }
+                public Button LikeButton { get; set; }
+                public Button CommentButton { get; set; }
+                public Button ShareButton { get; set; }
+                public BaseContentCardViewModel LinkedVM { get; set; }
+                public EventHandler LikeEventHandler { get ;set;}
+                public EventHandler CommentEventHandler { get ;set;}
+                public EventHandler ShareEventHandler { get ;set;}
+                public BaseCardViewHolder(){}
+            }
+
             private View ProcessSocialCard(int position, BaseContentCardViewModel cardViewModel, View convertView)
             {
-                switch (cardViewModel.SocialType)
-                {
-                    case SocialType.Facebook:
-                        return ProcessFacebook(position, cardViewModel as FacebookCardViewModel, convertView);
-                        break;
-                    case SocialType.Twitter:
-                        return ProcessTwitter(position, cardViewModel as TwitterCardViewModel, convertView);
-                        break;
-                    case SocialType.None:
-                        throw new NotImplementedException();
-                        break;
-                    default:
-                        throw new NotImplementedException();
-                        break;
-                }          
-            }
-
-            private View ProcessFacebook(int position, FacebookCardViewModel fbVm, View convertView)
-            {
-                if ( convertView == null || convertView.Id != Resource.Id.DefaultCellMainLayout)
-                    convertView = _inflater.Inflate(Resource.Layout.DefaultCell, null, false);
-                var mainImage = convertView.FindViewById<ImageView>(Resource.Id.DefaultCellMainImage);
-                var profileImage = convertView.FindViewById<CircularImageView>(Resource.Id.DefaultCellProfileImage);
-                convertView.FindViewById<TextView>(Resource.Id.DefaultCellMainText).TextFormatted = Html.FromHtml(fbVm.Text);
-                convertView.FindViewById<CircularImageView>(Resource.Id.DefaultCellSocialImage).SetImageResource(Resource.Drawable.Facebook);
-
-                var likeButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellLikeButton);
-                var commentButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellCommentButton);
-                var shareButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellShareButton);
-
-                likeButton.Text = fbVm.LikeButtonText;
-                likeButton.SetCommand("Click", fbVm.LikeCommand);
-
-                commentButton.Text = fbVm.CommentButtonText;
-                commentButton.SetCommand("Click", fbVm.CommentCommand);
-
-                shareButton.Text = fbVm.ShareButtonText;
-                shareButton.SetCommand("Click", fbVm.ShareCommand);
-
-                if (!string.IsNullOrWhiteSpace(fbVm.UserImageUrl))
-                {
-                    UrlImageViewHelper.SetUrlDrawable(profileImage, fbVm.UserImageUrl, SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(fbVm.UserImagePlaceholder));
-                }
-                else
-                {
-                    profileImage.SetImageResource(SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(fbVm.UserImagePlaceholder));
-                }
-
-                if (fbVm.ShowImage)
-                {
-                    mainImage.Visibility = ViewStates.Visible;
-                    UrlImageViewHelper.SetUrlDrawable(mainImage, fbVm.ImageUrl);
-                }
-                else
-                {
-                    mainImage.Visibility = ViewStates.Gone;
-                }
-
-                return convertView;
-            }
-
-            private View ProcessTwitter(int position, TwitterCardViewModel tVm, View convertView)
-            {
+                BaseCardViewHolder viewHolder = null;
                 if (convertView == null || convertView.Id != Resource.Id.DefaultCellMainLayout)
+                {
                     convertView = _inflater.Inflate(Resource.Layout.DefaultCell, null, false);
 
-                var mainImage = convertView.FindViewById<ImageView>(Resource.Id.DefaultCellMainImage);
-                var profileImage = convertView.FindViewById<CircularImageView>(Resource.Id.DefaultCellProfileImage);
-                convertView.FindViewById<TextView>(Resource.Id.DefaultCellMainText).TextFormatted = Html.FromHtml(tVm.Text);
-                convertView.FindViewById<CircularImageView>(Resource.Id.DefaultCellSocialImage).SetImageResource(Resource.Drawable.Twitter);
-
-                var likeButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellLikeButton);
-                var commentButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellCommentButton);
-                var shareButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellShareButton);
-
-                likeButton.Text = tVm.LikeButtonText;
-                likeButton.SetCommand("Click", tVm.LikeCommand);
-
-                commentButton.Text = tVm.CommentButtonText;
-                commentButton.SetCommand("Click", tVm.CommentCommand);
-
-                shareButton.Text = tVm.ShareButtonText;
-                shareButton.SetCommand("Click", tVm.ShareCommand);
-
-                if (!string.IsNullOrWhiteSpace(tVm.UserImageUrl))
-                {
-                    UrlImageViewHelper.SetUrlDrawable(profileImage, tVm.UserImageUrl, SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(tVm.UserImagePlaceholder));
+                    viewHolder = new BaseCardViewHolder()
+                    {
+                        MainImage = convertView.FindViewById<ImageView>(Resource.Id.DefaultCellMainImage),
+                        ProfileImage = convertView.FindViewById<CircularImageView>(Resource.Id.DefaultCellProfileImage),
+                        UserName = convertView.FindViewById<TextView>(Resource.Id.DefaultCellUserName),
+                        BodyText = convertView.FindViewById<TextView>(Resource.Id.DefaultCellMainText),
+                        SocialImage = convertView.FindViewById<CircularImageView>(Resource.Id.DefaultCellSocialImage),
+                        LikeButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellLikeButton),
+                        CommentButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellCommentButton),
+                        ShareButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellShareButton),
+                        LinkedVM = cardViewModel
+                    };
+                    
+                    convertView.Tag = viewHolder;
                 }
                 else
                 {
-                    profileImage.SetImageResource(SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(tVm.UserImagePlaceholder));
+                    viewHolder = convertView.Tag as BaseCardViewHolder;
+                    if (viewHolder == null)
+                        return convertView;
+                    if (viewHolder.LinkedVM != cardViewModel)
+                    {
+                        viewHolder.LikeButton.Click -= viewHolder.LikeEventHandler;
+                        viewHolder.CommentButton.Click -= viewHolder.CommentEventHandler;
+                        viewHolder.ShareButton.Click -= viewHolder.ShareEventHandler;
+                    }
+                    else
+                    {
+                        return convertView;
+                    }
+                    viewHolder.LikeEventHandler = null;
+                    viewHolder.CommentEventHandler = null;
+                    viewHolder.ShareEventHandler = null;
                 }
 
-                if (tVm.ShowImage)
+                if (viewHolder.LikeEventHandler == null)
                 {
-                    mainImage.Visibility = ViewStates.Visible;
-                    UrlImageViewHelper.SetUrlDrawable(mainImage, tVm.ImageUrl);
+                    viewHolder.LikeEventHandler = (object sender, EventArgs e) => cardViewModel.LikeCommand.Execute(null);
+                    viewHolder.LikeButton.Click += viewHolder.LikeEventHandler;
+                }
+                if (viewHolder.CommentEventHandler == null)
+                {
+                    viewHolder.CommentEventHandler = (object sender, EventArgs e) => cardViewModel.CommentCommand.Execute(null);
+                    viewHolder.CommentButton.Click += viewHolder.CommentEventHandler;
+                }
+                if (viewHolder.ShareEventHandler == null)
+                {
+                    viewHolder.ShareEventHandler = (object sender, EventArgs e) => cardViewModel.ShareCommand.Execute(null);
+                    viewHolder.ShareButton.Click += viewHolder.ShareEventHandler;
+                }
+                
+                viewHolder.UserName.Text = cardViewModel.UserName;
+                viewHolder.BodyText.TextFormatted = Html.FromHtml(cardViewModel.Text);
+                viewHolder.SocialImage.SetImageResource(DrawableHelpers.GetDrawableResourceIdViaReflection(cardViewModel.SocialMediaImage));
+                viewHolder.LikeButton.Text = cardViewModel.LikeButtonText;
+                viewHolder.CommentButton.Text = cardViewModel.CommentButtonText;
+                viewHolder.ShareButton.Text = cardViewModel.ShareButtonText;
+
+                if (!string.IsNullOrWhiteSpace(cardViewModel.UserImageUrl))
+                    UrlImageViewHelper.SetUrlDrawable(viewHolder.ProfileImage, cardViewModel.UserImageUrl, SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(cardViewModel.UserImagePlaceholder));
+                else
+                    viewHolder.ProfileImage.SetImageResource(SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(cardViewModel.UserImagePlaceholder));
+
+                if (cardViewModel.ShowImage)
+                {
+                    viewHolder.MainImage.Visibility = ViewStates.Visible;
+                    UrlImageViewHelper.SetUrlDrawable(viewHolder.MainImage, cardViewModel.ImageUrl);
                 }
                 else
-                {
-                    mainImage.Visibility = ViewStates.Gone;
-                }
+                    viewHolder.MainImage.Visibility = ViewStates.Gone;
 
                 return convertView;
             }
-
 		}
 	}
 }

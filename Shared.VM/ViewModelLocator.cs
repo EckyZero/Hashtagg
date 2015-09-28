@@ -18,5 +18,9 @@ namespace Shared.VM
     public class ViewModelLocator
     {
 		public const string HOME_KEY = "Home";
+
+        public const string POST_KEY = "Post";
+
+        public const string COMMENT_KEY = "Comment";
     }
 }

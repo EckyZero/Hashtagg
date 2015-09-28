@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Android.Content;
+using Droid;
 using Shared.Common;
+using GalaSoft.MvvmLight.Views;
 using Android.App;
 
 namespace Droid
 {
-	public class ExtendedNavigationService : BaseService, IExtendedNavigationService
-	{
-		public ExtendedNavigationService ():base()
-		{
-		}
+    public class ExtendedNavigationService : BaseService, IExtendedNavigationService
+    {
+        public ExtendedNavigationService ():base()
+        {
+        }
+
+        public void Present(string pageKey, object parameter = null)
+        {
+            NavigateTo(pageKey, parameter);
+        }
 
         /// <summary>
         /// The key that is returned by the <see cref="CurrentPageKey"/> property
@@ -41,6 +49,25 @@ namespace Droid
         public void GoBack()
         {
             Activity.GoBack();
+            _activity.OverridePendingTransition(Resource.Animation.pull_in_left, Resource.Animation.push_out_right);
+        }
+
+
+        public void GoBack(AnimationFlag animationFlag)
+        {
+            Activity.GoBack();
+            switch (animationFlag)
+            {
+                case AnimationFlag.Grow:
+                case AnimationFlag.Up:
+                case AnimationFlag.Forward:
+                    _activity.OverridePendingTransition(Resource.Animation.pull_in_right, Resource.Animation.push_out_left);
+                    break;
+                case AnimationFlag.Down:
+                case AnimationFlag.Back:
+                    _activity.OverridePendingTransition(Resource.Animation.pull_in_left, Resource.Animation.push_out_right);
+                    break;
+            }
         }
 
         /// <summary>
@@ -54,7 +81,60 @@ namespace Droid
         /// a key that has not been configured earlier.</exception>
         public void NavigateTo(string pageKey)
         {
-            NavigateTo(pageKey, null);
+            NavigateTo(pageKey, null, null, AnimationFlag.Forward);
+        }
+
+        public void NavigateTo(string pageKey, object parameter, List<NavigationFlag> navigationFlags, AnimationFlag animationFlag = AnimationFlag.Forward )
+        {
+            Intent intent = null;
+
+            lock (_pagesByKey)
+            {
+                if (!_pagesByKey.ContainsKey(pageKey))
+                {
+                    throw new ArgumentException(
+                        string.Format(
+                            "No such page: {0}. Did you forget to call NavigationService.Configure?",
+                            pageKey),
+                        "pageKey");
+                }
+
+                intent = new Intent(_activity, _pagesByKey[pageKey]);
+            }
+
+            if (navigationFlags != null && navigationFlags.Any())
+            {
+                foreach (var flag in navigationFlags)
+                {
+                    switch (flag)
+                    {
+                        case NavigationFlag.ClearStack:
+                            intent.AddFlags(ActivityFlags.ClearTop);
+                            break;
+                        case NavigationFlag.SingleInstance:
+                            intent.AddFlags(ActivityFlags.SingleTop);
+                            break;
+                        case NavigationFlag.ClearTask:
+                            intent.AddFlags(ActivityFlags.ClearTask);
+                            break;
+                        case NavigationFlag.NewTask:
+                            intent.AddFlags(ActivityFlags.NewTask);
+                            break;
+                    }
+                }
+            }
+
+            if (parameter != null)
+            {
+                lock (_parametersByKey)
+                {
+                    var guid = Guid.NewGuid().ToString();
+                    _parametersByKey.Add(guid, parameter);
+                    intent.PutExtra(ParameterKeyName, guid);
+                }
+            }
+
+            StartIntentAndAnimate(intent, pageKey, animationFlag);
         }
 
         /// <summary>
@@ -71,39 +151,9 @@ namespace Droid
         /// a key that has not been configured earlier.</exception>
         public void NavigateTo(string pageKey, object parameter)
         {
-            if (_activity == null)
-            {
-                throw new InvalidOperationException("No CurrentActivity found");
-            }
-
-            lock (_pagesByKey)
-            {
-                if (!_pagesByKey.ContainsKey(pageKey))
-                {
-                    throw new ArgumentException(
-                        string.Format(
-                            "No such page: {0}. Did you forget to call NavigationService.Configure?",
-                            pageKey),
-                        "pageKey");
-                }
-
-                var intent = new Intent(_activity, _pagesByKey[pageKey]);
-
-                if (parameter != null)
-                {
-                    lock (_parametersByKey)
-                    {
-                        var guid = Guid.NewGuid().ToString();
-                        _parametersByKey.Add(guid, parameter);
-                        intent.PutExtra(ParameterKeyName, guid);
-                    }
-                }
-
-                _activity.StartActivity(intent);
-                _activity.OverridePendingTransition(Resource.Animation.pull_in_right, Resource.Animation.push_out_left);
-                Activity.NextPageKey = pageKey;
-            }
+            NavigateTo(pageKey, parameter, null, AnimationFlag.Forward);
         }
+
         /// <summary>
         /// Displays a new page corresponding to the given key,
         /// and passes a parameter to the new page.
@@ -117,7 +167,7 @@ namespace Droid
         /// <param name="flags">This parameter should be passed if you need intent flags</param>
         /// <exception cref="ArgumentException">When this method is called for 
         /// a key that has not been configured earlier.</exception>
-        public void NavigateTo(string pageKey, object parameter, ActivityFlags[] flags = null, Android.OS.Bundle activtityOptions = null)
+        public void NavigateTo(string pageKey, object parameter, ActivityFlags[] flags)
         {
             if (_activity == null)
             {
@@ -152,11 +202,27 @@ namespace Droid
                         intent.PutExtra(ParameterKeyName, guid);
                     }
                 }
+                StartIntentAndAnimate(intent, pageKey);
+            }
+        }
 
-                if (activtityOptions != null)
-                    _activity.StartActivity(intent, activtityOptions);
-                _activity.StartActivity(intent);
-                Activity.NextPageKey = pageKey;
+        private void StartIntentAndAnimate(Intent intent, string pageKey = "", AnimationFlag animationFlag = AnimationFlag.Forward)
+        {
+            Activity.NextPageKey = pageKey;
+
+            _activity.StartActivity(intent);
+
+            switch (animationFlag)
+            {
+                case AnimationFlag.Grow:
+                case AnimationFlag.Up:
+                case AnimationFlag.Forward:
+                    _activity.OverridePendingTransition(Resource.Animation.pull_in_right, Resource.Animation.push_out_left);
+                    break;
+                case AnimationFlag.Down:
+                case AnimationFlag.Back:
+                    _activity.OverridePendingTransition(Resource.Animation.pull_in_left, Resource.Animation.push_out_right);
+                    break;
             }
         }
 
@@ -229,6 +295,6 @@ namespace Droid
         {
             return GetAndRemoveParameter(intent) is T ? (T) GetAndRemoveParameter(intent) : default(T);
         }
-	}
+    }
 }
 
