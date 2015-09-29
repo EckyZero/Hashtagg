@@ -216,6 +216,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\socialTwitterUnselected.png" />
     <AndroidResource Include="Resources\drawable\PostButton.xml" />
     <AndroidResource Include="Resources\layout\Comments.axml" />
+    <AndroidResource Include="Resources\drawable-mdpi\hashtaggLogo.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\hashtaggLogo.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\hashtaggLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

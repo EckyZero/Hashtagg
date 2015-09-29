@@ -98,7 +98,7 @@ namespace Droid.Phone
             {
                 postButton.Enabled = canExecute;
             };
-            _viewModel.RequestDismissPage = Activity.OnBackPressed;
+            _viewModel.RequestDismissPage = NavigationService.GoBack;
 
             return contentView;
         }

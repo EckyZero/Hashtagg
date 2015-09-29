@@ -12,7 +12,7 @@ namespace Shared.VM
 	{
         #region Variables
 
-        private string _message;
+        private string _message = string.Empty;
         private string _characterCount = "0";
         private bool _isFacebookSelected;
         private bool _isTwitterSelected;
@@ -162,12 +162,12 @@ namespace Shared.VM
             }
             else
             {
-                await _dialogService.ShowMessage(ApplicationResources.MessageDeliveredSuccessfully, ApplicationResources.Success);
-
-                if(RequestDismissPage != null)
-                {
-                    RequestDismissPage();
-                }
+                await _dialogService.ShowMessage(ApplicationResources.MessageDeliveredSuccessfully, ApplicationResources.Success, ApplicationResources.OK, () => {
+                    if(RequestDismissPage != null)
+                    {
+                        RequestDismissPage();
+                    }    
+                });
             }
         }
 

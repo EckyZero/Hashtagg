@@ -39,7 +39,9 @@ namespace Droid.Phone
 
         private Button _drawerButton;
 
-        private TextView _drawerTitle;
+        private ImageView _drawerTitle;
+
+        private TextView _drawerTopText;
 
         private ListView _drawerList;
 
@@ -80,7 +82,8 @@ namespace Droid.Phone
                     _drawerButton.Text = _menuViewModel.PrimaryButtonText;
                     break;
                 case "Title":
-                    _drawerTitle.Text = _menuViewModel.Title;
+                    _drawerTopText.Text = _menuViewModel.Title;
+                    _drawerTitle.Visibility = _menuViewModel.ShowTitleLogo ? ViewStates.Visible : ViewStates.Invisible;
                     break;
                 case "ShowSubtitle":
                     _drawerSubtitle.Visibility = _menuViewModel.ShowSubtitle ? ViewStates.Visible : ViewStates.Gone;
@@ -148,7 +151,8 @@ namespace Droid.Phone
 
             _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.hamburgerMenu_layout);
             _drawerList = FindViewById<ListView>(Resource.Id.hamburgerMenu_menu);
-            _drawerTitle = FindViewById<TextView>(Resource.Id.DrawerAppName);
+            _drawerTitle = FindViewById<ImageView>(Resource.Id.DrawerAppName);
+            _drawerTopText = FindViewById<TextView>(Resource.Id.DrawerTopText);
             _drawerButton = FindViewById<Button>(Resource.Id.DrawerFooterButton);
             _drawerSubtitle = FindViewById<TextView>(Resource.Id.DrawerSubTitle);
 
@@ -157,7 +161,8 @@ namespace Droid.Phone
             _drawerButton.SetCommand("Click", _menuViewModel.PrimaryCommand);
             _drawerButton.Text = _menuViewModel.PrimaryButtonText;
 
-            _drawerTitle.Text = _menuViewModel.Title;
+            _drawerTitle.Visibility = _menuViewModel.ShowTitleLogo ? ViewStates.Visible : ViewStates.Invisible;
+            _drawerTopText.Text = _menuViewModel.Title;
 
             _drawerList.Adapter = new MenuAdapter(LayoutInflater)
             {

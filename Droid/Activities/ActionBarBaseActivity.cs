@@ -74,6 +74,17 @@ namespace Droid
             InitServices();
             RegServices();
         }
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    _navigationService.GoBack();
+                    return true;
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
+        }
 
         public string ActivityKey { get; private set; }
 

@@ -119,7 +119,7 @@ namespace Droid.Phone
 
             nav.Configure(ViewModelLocator.HOME_KEY, typeof(HamburgerMenuActivity));
             nav.Configure(ViewModelLocator.POST_KEY, typeof(PostActivity));
-            nav.Configure(ViewModelLocator.POST_KEY, typeof(CommentActivity));
+            nav.Configure(ViewModelLocator.COMMENT_KEY, typeof(CommentActivity));
 
 			return nav;
 		}

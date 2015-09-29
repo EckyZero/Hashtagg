@@ -28,11 +28,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/DrawerHeaderLayout">
-                <TextView
-                    android:text="Hashtagg"
+                <ImageView
+                    android:src="@drawable/hashtaggLogo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/DrawerAppName"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp" />
+                <TextView
+                    android:text=""
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/DrawerTopText"
                     android:layout_alignParentTop="true"
                     android:textSize="28sp"
                     android:textColor="@color/carnation"
@@ -44,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/DrawerSubTitle"
                     android:layout_centerInParent="true"
-                    android:layout_below="@id/DrawerAppName"
+                    android:layout_below="@id/DrawerTopText"
                     android:textSize="18sp"
                     android:textColor="@color/silver" />
             </RelativeLayout>

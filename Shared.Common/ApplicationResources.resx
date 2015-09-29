@@ -198,4 +198,7 @@
   	<data name="MessageDeliveredSuccessfully" xml:space="preserve">
     	<value>Your message was delivered to each selected outlet.</value>
   	</data>
+  	  	<data name="OK" xml:space="preserve">
+    	<value>OK</value>
+  	</data>
 </root>

@@ -178,6 +178,7 @@ namespace Droid.Phone
                 public Button CommentButton { get; set; }
                 public Button ShareButton { get; set; }
                 public BaseContentCardViewModel LinkedVM { get; set; }
+                public PropertyChangedEventHandler PropertyChangedEventHandler {get;set;}
                 public EventHandler LikeEventHandler { get ;set;}
                 public EventHandler CommentEventHandler { get ;set;}
                 public EventHandler ShareEventHandler { get ;set;}
@@ -213,6 +214,7 @@ namespace Droid.Phone
                         return convertView;
                     if (viewHolder.LinkedVM != cardViewModel)
                     {
+                        viewHolder.LinkedVM.PropertyChanged -= viewHolder.PropertyChangedEventHandler;
                         viewHolder.LikeButton.Click -= viewHolder.LikeEventHandler;
                         viewHolder.CommentButton.Click -= viewHolder.CommentEventHandler;
                         viewHolder.ShareButton.Click -= viewHolder.ShareEventHandler;
@@ -221,6 +223,8 @@ namespace Droid.Phone
                     {
                         return convertView;
                     }
+                    viewHolder.LinkedVM = cardViewModel;
+                    viewHolder.PropertyChangedEventHandler = null;
                     viewHolder.LikeEventHandler = null;
                     viewHolder.CommentEventHandler = null;
                     viewHolder.ShareEventHandler = null;
@@ -228,7 +232,11 @@ namespace Droid.Phone
 
                 if (viewHolder.LikeEventHandler == null)
                 {
-                    viewHolder.LikeEventHandler = (object sender, EventArgs e) => cardViewModel.LikeCommand.Execute(null);
+                    viewHolder.LikeEventHandler = (object sender, EventArgs e) =>
+                    {
+                        viewHolder.LikeButton.Selected =  !viewHolder.LikeButton.Selected ;  
+                        cardViewModel.LikeCommand.Execute(null);
+                    };
                     viewHolder.LikeButton.Click += viewHolder.LikeEventHandler;
                 }
                 if (viewHolder.CommentEventHandler == null)
@@ -241,13 +249,58 @@ namespace Droid.Phone
                     viewHolder.ShareEventHandler = (object sender, EventArgs e) => cardViewModel.ShareCommand.Execute(null);
                     viewHolder.ShareButton.Click += viewHolder.ShareEventHandler;
                 }
-                
+                if (viewHolder.PropertyChangedEventHandler == null)
+                {
+                    viewHolder.PropertyChangedEventHandler = (object sender, PropertyChangedEventArgs e) =>
+                    {
+                            switch(e.PropertyName)
+                            {
+                                case "IsLikedByUser":
+                                case "LikeButtonText":
+                                case "LikeButtonTextColor":
+                                case "ShowLikeButton":
+                                    viewHolder.LikeButton.Text = cardViewModel.LikeButtonText;
+                                    viewHolder.LikeButton.SetTextColor(cardViewModel.LikeButtonTextColor.ToDroidColor());
+                                    viewHolder.LikeButton.Visibility = cardViewModel.ShowLikeButton ? ViewStates.Visible : ViewStates.Invisible;
+                                    break;
+
+                                case "IsCommentedByUser":
+                                case "CommentButtonText":
+                                case "CommentButtonTextColor":
+                                case "ShowCommentButton":
+                                    viewHolder.CommentButton.Text = cardViewModel.CommentButtonText;
+                                    viewHolder.CommentButton.SetTextColor(cardViewModel.CommentButtonTextColor.ToDroidColor());
+                                    viewHolder.CommentButton.Visibility = cardViewModel.ShowCommentButton ? ViewStates.Visible : ViewStates.Invisible;
+                                    break;
+
+                                case "IsSharedByUser":
+                                case "ShareButtonText":
+                                case "ShareButtonTextColor":
+                                case "ShowShareButton":
+                                    viewHolder.ShareButton.Text = cardViewModel.ShareButtonText;
+                                    viewHolder.ShareButton.SetTextColor(cardViewModel.ShareButtonTextColor.ToDroidColor());
+                                    viewHolder.ShareButton.Visibility = cardViewModel.ShowShareButton ? ViewStates.Visible : ViewStates.Invisible;
+                                    break;
+                            }      
+
+                    };
+                    cardViewModel.PropertyChanged += viewHolder.PropertyChangedEventHandler;
+                }
                 viewHolder.UserName.Text = cardViewModel.UserName;
                 viewHolder.BodyText.TextFormatted = Html.FromHtml(cardViewModel.Text);
                 viewHolder.SocialImage.SetImageResource(DrawableHelpers.GetDrawableResourceIdViaReflection(cardViewModel.SocialMediaImage));
+
                 viewHolder.LikeButton.Text = cardViewModel.LikeButtonText;
+                viewHolder.LikeButton.SetTextColor(cardViewModel.LikeButtonTextColor.ToDroidColor());
+                viewHolder.LikeButton.Visibility = cardViewModel.ShowLikeButton ? ViewStates.Visible : ViewStates.Invisible;
+
                 viewHolder.CommentButton.Text = cardViewModel.CommentButtonText;
+                viewHolder.CommentButton.SetTextColor(cardViewModel.CommentButtonTextColor.ToDroidColor());
+                viewHolder.CommentButton.Visibility = cardViewModel.ShowCommentButton ? ViewStates.Visible : ViewStates.Invisible;
+
                 viewHolder.ShareButton.Text = cardViewModel.ShareButtonText;
+                viewHolder.ShareButton.SetTextColor(cardViewModel.ShareButtonTextColor.ToDroidColor());
+                viewHolder.ShareButton.Visibility = cardViewModel.ShowShareButton ? ViewStates.Visible : ViewStates.Invisible;
 
                 if (!string.IsNullOrWhiteSpace(cardViewModel.UserImageUrl))
                     UrlImageViewHelper.SetUrlDrawable(viewHolder.ProfileImage, cardViewModel.UserImageUrl, SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(cardViewModel.UserImagePlaceholder));

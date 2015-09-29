@@ -24,6 +24,9 @@ using Android.Views.Animations;
 using GalaSoft.MvvmLight.Helpers;
 using Shared.VM;
 using System.ComponentModel;
+using Shared.Common;
+using Microsoft.Practices.Unity;
+using Shared.Api;
 
 namespace Droid.Phone.Activities
 {
@@ -32,7 +35,7 @@ namespace Droid.Phone.Activities
     {
         private RelativeLayout _mainLayout;
         private bool _init;
-        private TextView _appName;
+        private ImageView _appName;
         private TextView _whatAccounts;
         private RelativeLayout _appNameLayout;
         private Button _facebookButton;
@@ -47,7 +50,7 @@ namespace Droid.Phone.Activities
             SetContentView(Resource.Layout.SplashLayout);
 
             _mainLayout = FindViewById<RelativeLayout>(Resource.Id.SplashMainRelativeLayout);
-            _appName = FindViewById<TextView>(Resource.Id.SplashAppName);
+            _appName = FindViewById<ImageView>(Resource.Id.SplashAppName);
             _whatAccounts = FindViewById<TextView>(Resource.Id.SplashWhatAccounts);
             _appNameLayout = FindViewById<RelativeLayout>(Resource.Id.SplashAppNameLayout);
             _facebookButton = FindViewById<Button>(Resource.Id.SplashFacebookButton);
@@ -87,6 +90,9 @@ namespace Droid.Phone.Activities
         {
             //Did Load will assign through Actions to Post view models, we need to assign this action early, but it is safe due to shared services
             hVm.RequestCommentPage = OnRequestCommentPage;
+
+            if (_viewModel == null && IocContainer.GetContainer().Resolve<ITwitterApi>().GetType() == typeof(MockTwitterApi))
+                await Task.Delay(5000);
 
             await hVm.DidLoad();
             //TODO add back in the grow animation

@@ -26,6 +26,9 @@ namespace Droid.Phone
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            _viewModel = _navigationService.GetAndRemoveParameter(Intent) as CommentViewModel;
+
             SetContentView(Resource.Layout.Comments);
 
             SetSupportActionBar(FindViewById<Toolbar>(Resource.Id.CommentsToolbar));
