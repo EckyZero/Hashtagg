@@ -135,6 +135,7 @@
     <Compile Include="Activities\HamburgerMenuActivity.cs" />
     <Compile Include="Activities\PostActivity.cs" />
     <Compile Include="Activities\CommentActivity.cs" />
+    <Compile Include="AdapterHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -219,6 +220,8 @@
     <AndroidResource Include="Resources\drawable-mdpi\hashtaggLogo.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\hashtaggLogo.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\hashtaggLogo.png" />
+    <AndroidResource Include="Resources\layout\HeaderCell.axml" />
+    <AndroidResource Include="Resources\drawable\HeaderRing.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

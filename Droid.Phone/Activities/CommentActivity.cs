@@ -46,6 +46,16 @@ namespace Droid.Phone
         private View GetCell(int position, IListItem cVm, View convertView)
         {
             var a = cVm;
+            switch (cVm.ListItemType)
+            {
+                case ListItemType.Default:
+                    return AdapterHelpers.ProcessSocialCard(position, cVm as BaseContentCardViewModel, convertView, LayoutInflater);
+                case ListItemType.Header:
+                    return LayoutInflater.Inflate(Resource.Layout.HeaderCell, null, false);
+                case ListItemType.MenuItem:
+                default:
+                    break;
+            }
             return LayoutInflater.Inflate(Resource.Layout.DefaultCell, null, false);
         }
     }

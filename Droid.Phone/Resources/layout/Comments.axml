@@ -13,5 +13,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/CommentsToolbar"
+        android:layout_above="@+id/CommentsEntryBar"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
         android:id="@+id/CommentsListView" />
+    <RelativeLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/CommentsEntryBar"
+        android:background="#FFFFFF"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:text="Reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/CommentReplyButton"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textSize="16sp"
+            android:background="@android:color/transparent"
+            android:paddingRight="13dp"
+            android:paddingLeft="13dp"
+            android:textColor="@drawable/PostButton" />
+        <TextView
+            android:visibility="gone"
+            android:text="123"
+            android:textColor="@color/silver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/CommentTextCount"
+            android:layout_toLeftOf="@id/CommentReplyButton"
+            android:layout_centerVertical="true"
+            android:textSize="16sp" />
+        <EditText
+            android:text=""
+            android:hint="Write a comment..."
+            android:textColorHint="@color/silver"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/CommentReplyButton"
+            android:id="@+id/CommentReplyText"
+            android:layout_marginLeft="15dp"
+            android:background="@color/mystic"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
 </RelativeLayout>

@@ -1,131 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
-    p1:minWidth="25px"
-    p1:minHeight="25px"
     p1:paddingLeft="8dp"
     p1:paddingRight="8dp"
     p1:layout_width="match_parent"
     p1:layout_height="wrap_content"
     p1:id="@+id/DefaultCellMainLayout"
-    p1:background="#00000000"
-    p1:paddingBottom="20dp">
-    <FrameLayout
-        p1:minWidth="25px"
-        p1:minHeight="19dp"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/DefaultCellMainImageFrameLayout">
-        <ImageView
-            p1:src="@android:drawable/ic_menu_gallery"
-            p1:layout_width="match_parent"
-            p1:layout_height="170dp"
-            p1:id="@+id/DefaultCellMainImage"
-            p1:layout_alignParentTop="true"
-            p1:visibility="visible"
-            p1:scaleType="centerCrop"
-            p1:adjustViewBounds="true" />
-    </FrameLayout>
+    p1:background="#00000000">
     <RelativeLayout
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/DefaultCellContentLayout"
-        p1:background="@color/white"
-        p1:layout_below="@id/DefaultCellMainImageFrameLayout">
-        <TextView
-            p1:text="Mark Elwood"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:layout_marginLeft="36dp"
-            p1:layout_marginRight="76dp"
-            p1:id="@+id/DefaultCellUserName"
-            p1:layout_marginTop="6dp"
-            p1:textSize="13sp"
-            p1:textColor="@color/gray4"
-            p1:layout_alignParentRight="true"
-            p1:layout_alignParentLeft="true" />
-        <TextView
-            p1:text="Lorim Ipsum Sir Dolor Lemet"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:layout_below="@id/DefaultCellUserName"
-            p1:id="@+id/DefaultCellMainText"
-            p1:layout_alignLeft="@id/DefaultCellUserName"
-            p1:layout_marginTop="4dp"
-            p1:textSize="13sp"
-            p1:textColor="@color/silver"
-            p1:layout_alignRight="@id/DefaultCellUserName" />
-        <View
-            p1:layout_width="wrap_content"
-            p1:layout_height="1dp"
-            p1:layout_below="@id/DefaultCellMainText"
-            p1:id="@+id/DefaultCellButtonDivider"
-            p1:layout_marginLeft="24dp"
-            p1:background="@color/gray1"
-            p1:layout_marginBottom="21dp" />
-        <LinearLayout
-            p1:orientation="horizontal"
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="wrap_content"
-            p1:layout_height="25dp"
-            p1:layout_below="@id/DefaultCellButtonDivider"
-            p1:id="@+id/DefaultCellButtonLayout"
-            p1:layout_alignLeft="@id/DefaultCellButtonDivider"
-            p1:layout_alignParentRight="true"
-            p1:layout_marginRight="13dp">
-            <Button
-                p1:text="Like (123)"
-                p1:layout_width="0dp"
-                p1:layout_height="match_parent"
-                p1:id="@+id/DefaultCellLikeButton"
-                p1:layout_weight="1"
-                p1:gravity="left|center_vertical"
-                p1:textColor="@color/gray3"
-                p1:background="@android:color/transparent"
-                p1:paddingLeft="12dp"
-                p1:textSize="11sp" />
-            <Button
-                p1:text="Comment (123)"
-                p1:layout_width="0dp"
-                p1:layout_height="match_parent"
-                p1:id="@+id/DefaultCellCommentButton"
-                p1:layout_weight="1"
-                p1:gravity="left|center_vertical"
-                p1:paddingLeft="8dp"
-                p1:background="@android:color/transparent"
-                p1:textColor="@color/gray3"
-                p1:textSize="11sp" />
-            <Button
-                p1:text="Shared (123)"
-                p1:layout_width="0dp"
-                p1:layout_height="match_parent"
-                p1:id="@+id/DefaultCellShareButton"
-                p1:layout_weight="1"
-                p1:gravity="left|center_vertical"
-                p1:paddingLeft="8dp"
-                p1:background="@android:color/transparent"
-                p1:textColor="@color/gray3"
-                p1:textSize="11sp" />
-        </LinearLayout>
+        p1:layout_width="40dp"
+        p1:layout_height="match_parent"
+        p1:background="@android:color/transparent"
+        p1:layout_alignParentLeft="true"
+        p1:layout_marginLeft="-8dp"
+        p1:layout_alignTop="@+id/DefaultCellInternalContentLayout"
+        p1:layout_alignBottom="@+id/DefaultCellInternalContentLayout"
+        p1:id="@+id/DefaultCellCommentLineContainer">
+        <FrameLayout
+            p1:id="@+id/DefaultCellCommentLine"
+            p1:layout_width="2dp"
+            p1:layout_height="match_parent"
+            p1:layout_centerInParent="true"
+            p1:background="@color/silver" />
     </RelativeLayout>
-    <Droid.Controls.CircularImageView
-        p1:src="@drawable/Profile_Image_Default"
-        p1:layout_width="24dp"
-        p1:layout_height="24dp"
-        p1:id="@+id/DefaultCellProfileImage"
-        p1:layout_marginBottom="-12dp"
-        p1:layout_marginLeft="7dp"
-        p1:scaleType="fitCenter"
-        p1:layout_above="@id/DefaultCellContentLayout" />
-    <Droid.Controls.CircularImageView
-        p1:src="@drawable/Profile_Image_Default"
-        p1:layout_width="38dp"
-        p1:layout_height="38dp"
-        p1:id="@+id/DefaultCellSocialImage"
-        p1:layout_marginBottom="-19dp"
-        p1:layout_above="@id/DefaultCellContentLayout"
-        p1:scaleType="fitCenter"
-        p1:layout_alignParentRight="true" />
+    <RelativeLayout
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:background="@android:color/transparent"
+        p1:layout_toRightOf="@id/DefaultCellCommentLineContainer"
+        p1:id="@+id/DefaultCellInternalContentLayout">
+        <FrameLayout
+            p1:minWidth="25px"
+            p1:minHeight="19dp"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/DefaultCellMainImageFrameLayout">
+            <ImageView
+                p1:src="@android:drawable/ic_menu_gallery"
+                p1:layout_width="match_parent"
+                p1:layout_height="170dp"
+                p1:id="@+id/DefaultCellMainImage"
+                p1:layout_alignParentTop="true"
+                p1:visibility="visible"
+                p1:scaleType="centerCrop"
+                p1:adjustViewBounds="true" />
+        </FrameLayout>
+        <RelativeLayout
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/DefaultCellContentLayout"
+            p1:paddingBottom="14dp"
+            p1:layout_below="@id/DefaultCellMainImageFrameLayout">
+            <RelativeLayout
+                p1:id="@+id/DefaultCellTextContents"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:background="@color/white">
+                <RelativeLayout
+                    p1:id="@+id/DefaultCellNameAndDateTime"
+                    p1:layout_marginLeft="36dp"
+                    p1:layout_marginRight="76dp"
+                    p1:layout_width="match_parent"
+                    p1:layout_height="wrap_content">
+                    <TextView
+                        p1:text="Mark Elwood"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/DefaultCellUserName"
+                        p1:layout_marginTop="6dp"
+                        p1:textSize="13sp"
+                        p1:textColor="@color/gray4"
+                        p1:layout_alignParentRight="true"
+                        p1:layout_alignParentLeft="true" />
+                    <TextView
+                        p1:layout_alignLeft="@id/DefaultCellUserName"
+                        p1:layout_alignRight="@id/DefaultCellUserName"
+                        p1:layout_below="@id/DefaultCellUserName"
+                        p1:text="5/7/9"
+                        p1:layout_width="wrap_content"
+                        p1:layout_height="wrap_content"
+                        p1:id="@+id/DefaultCellDateText"
+                        p1:layout_marginTop="0dp"
+                        p1:textSize="13sp"
+                        p1:textColor="@color/silver" />
+                </RelativeLayout>
+                <TextView
+                    p1:text="Lorim Ipsum Sir Dolor Lemet"
+                    p1:layout_width="wrap_content"
+                    p1:layout_height="wrap_content"
+                    p1:layout_below="@id/DefaultCellNameAndDateTime"
+                    p1:id="@+id/DefaultCellMainText"
+                    p1:layout_alignLeft="@id/DefaultCellNameAndDateTime"
+                    p1:layout_marginTop="4dp"
+                    p1:textSize="13sp"
+                    p1:textColor="@color/silver"
+                    p1:layout_alignRight="@id/DefaultCellNameAndDateTime" />
+                <View
+                    p1:layout_width="wrap_content"
+                    p1:layout_height="1dp"
+                    p1:layout_below="@id/DefaultCellMainText"
+                    p1:id="@+id/DefaultCellButtonDivider"
+                    p1:layout_marginLeft="24dp"
+                    p1:background="@color/gray1"
+                    p1:layout_marginTop="21dp" />
+                <LinearLayout
+                    p1:orientation="horizontal"
+                    p1:minWidth="25px"
+                    p1:minHeight="25px"
+                    p1:layout_width="wrap_content"
+                    p1:layout_height="25dp"
+                    p1:layout_below="@id/DefaultCellButtonDivider"
+                    p1:id="@+id/DefaultCellButtonLayout"
+                    p1:layout_alignLeft="@id/DefaultCellButtonDivider"
+                    p1:layout_alignParentRight="true"
+                    p1:layout_marginRight="13dp">
+                    <Button
+                        p1:text="Like (123)"
+                        p1:layout_width="0dp"
+                        p1:layout_height="match_parent"
+                        p1:id="@+id/DefaultCellLikeButton"
+                        p1:layout_weight="1"
+                        p1:gravity="center"
+                        p1:textColor="@color/gray3"
+                        p1:background="@android:color/transparent"
+                        p1:textSize="11sp" />
+                    <Button
+                        p1:text="Comment (123)"
+                        p1:layout_width="0dp"
+                        p1:layout_height="match_parent"
+                        p1:id="@+id/DefaultCellCommentButton"
+                        p1:layout_weight="1"
+                        p1:gravity="center"
+                        p1:background="@android:color/transparent"
+                        p1:textColor="@color/gray3"
+                        p1:textSize="11sp" />
+                    <Button
+                        p1:text="Shared (123)"
+                        p1:layout_width="0dp"
+                        p1:layout_height="match_parent"
+                        p1:id="@+id/DefaultCellShareButton"
+                        p1:layout_weight="1"
+                        p1:gravity="center"
+                        p1:background="@android:color/transparent"
+                        p1:textColor="@color/gray3"
+                        p1:textSize="11sp" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+        <Droid.Controls.CircularImageView
+            p1:src="@drawable/Profile_Image_Default"
+            p1:layout_width="24dp"
+            p1:layout_height="24dp"
+            p1:id="@+id/DefaultCellProfileImage"
+            p1:layout_marginBottom="-12dp"
+            p1:layout_marginLeft="7dp"
+            p1:scaleType="fitCenter"
+            p1:layout_above="@id/DefaultCellContentLayout" />
+        <Droid.Controls.CircularImageView
+            p1:src="@drawable/Profile_Image_Default"
+            p1:layout_width="38dp"
+            p1:layout_height="38dp"
+            p1:id="@+id/DefaultCellSocialImage"
+            p1:layout_marginBottom="-19dp"
+            p1:layout_above="@id/DefaultCellContentLayout"
+            p1:scaleType="fitCenter"
+            p1:layout_alignParentRight="true" />
+    </RelativeLayout>
 </RelativeLayout>
