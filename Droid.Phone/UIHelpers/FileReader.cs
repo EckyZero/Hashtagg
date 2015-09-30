@@ -14,7 +14,7 @@ namespace Droid.Phone
             var stream = MainApplication.Context.Assets.Open (string.Format("{0}.{1}", fileName, fileType));
             var reader = new StreamReader(stream);
             var json = reader.ReadToEnd ();
-            var results = JsonConvert.DeserializeObject<T>(json);
+            var results = JsonConvert.DeserializeObject<T>(json, settings);
 
             return results;
         }
