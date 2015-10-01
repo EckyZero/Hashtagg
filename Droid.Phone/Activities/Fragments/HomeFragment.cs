@@ -80,6 +80,7 @@ namespace Droid.Phone
             foreach (var url in urls)
             {
                 _headerImages[i].SetX((_listLayout.Width/2)-(_headerImages[i].Width/2) + TypedValue.ApplyDimension(ComplexUnitType.Dip, shift, Application.Context.ApplicationContext.Resources.DisplayMetrics));
+                _headerImages[i].Visibility = ViewStates.Visible;
                 UrlImageViewHelper.SetUrlDrawable(_headerImages[i], url, Resource.Drawable.Profile_Image_Default, new CircularImageShadowCallback() );
                 shift += 24;
                 i++;

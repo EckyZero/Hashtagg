@@ -62,7 +62,7 @@ namespace Shared.VM
         private bool _showCommentButton = true;
         public bool ShowCommentButton { get{ return _showCommentButton; } set{ _showCommentButton = value; } }
         private bool _showShareButton = true;
-        public bool ShowShareButton { get{ return _showShareButton; } protected set{ _showShareButton = value; } }
+        public bool ShowShareButton { get{ return false; } protected set{ } }
         private bool _showDateTime = true;
         public bool ShowDateTime { get{ return _showDateTime; } protected set{ _showDateTime = value; } }
         private bool _showSocialMediaImage = true;
