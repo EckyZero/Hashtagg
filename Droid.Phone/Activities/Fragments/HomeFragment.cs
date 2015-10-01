@@ -79,13 +79,19 @@ namespace Droid.Phone
             var shift = urls.Count > 1 ? -12 : 0;
             foreach (var url in urls)
             {
-                _headerImages[i].SetX(_headerImages[i].GetX() + TypedValue.ApplyDimension(ComplexUnitType.Dip, shift, Application.Context.ApplicationContext.Resources.DisplayMetrics));
+                _headerImages[i].SetX((_listLayout.Width/2)-(_headerImages[i].Width/2) + TypedValue.ApplyDimension(ComplexUnitType.Dip, shift, Application.Context.ApplicationContext.Resources.DisplayMetrics));
                 UrlImageViewHelper.SetUrlDrawable(_headerImages[i], url, Resource.Drawable.Profile_Image_Default, new CircularImageShadowCallback() );
                 shift += 24;
                 i++;
             }
             for (i = i; i < _headerImages.Count; i++)
                 _headerImages[i].Visibility = ViewStates.Gone;
+        }
+
+        public override async void OnResume()
+        {
+            base.OnResume();
+            await _viewModel.DidAppear();
         }
 
 	    private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)

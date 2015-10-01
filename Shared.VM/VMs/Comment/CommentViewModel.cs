@@ -39,8 +39,8 @@ namespace Shared.VM
 		public string Comments { 
 			get { return _comments; } 
 			set {
-				CanExecute ();
 				Set (() => Comments, ref _comments, value);
+                CanExecute ();
 			} 
 		}
 

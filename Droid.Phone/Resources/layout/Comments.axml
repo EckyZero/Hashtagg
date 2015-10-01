@@ -54,11 +54,12 @@
             android:textSize="16sp"
             android:textColor="@android:color/black"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="24dp"
             android:layout_toLeftOf="@id/CommentReplyButton"
             android:id="@+id/CommentReplyText"
             android:layout_marginLeft="15dp"
-            android:background="@color/mystic"
+            android:paddingLeft="10dp"
+            android:background="@drawable/RoundedEditText"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true" />
     </RelativeLayout>

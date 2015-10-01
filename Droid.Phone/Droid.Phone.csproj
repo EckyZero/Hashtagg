@@ -222,6 +222,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\hashtaggLogo.png" />
     <AndroidResource Include="Resources\layout\HeaderCell.axml" />
     <AndroidResource Include="Resources\drawable\HeaderRing.xml" />
+    <AndroidResource Include="Resources\drawable\RoundedEditText.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

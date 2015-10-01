@@ -29,6 +29,7 @@ namespace Shared.VM
 		private IFacebookHelper _facebookHelper;
 		private IFacebookService _facebookService;
 		private ObservableRangeCollection<IListItem> _cardViewModels = new ObservableRangeCollection<IListItem> ();
+        private CommentViewModel _viewedComment = null;
 
 		#endregion
 
@@ -139,7 +140,15 @@ namespace Shared.VM
 
 			GetHeaderImages ();
 			RemoveCardsIfNeeded ();
-		}
+
+            //Check if we came back from a comment page, if so, our stolen request noted the comment and will signal Commented by user or not
+            if (_viewedComment != null)
+            {
+                _viewedComment.PrimaryCardViewModel.IsCommentedByUser = _viewedComment.PrimaryCardViewModel.IsCommentedByUser;
+                _viewedComment.CardViewModels = null;
+            }
+            _viewedComment = null;
+        }
 
 		protected override void InitCommands ()
 		{
@@ -266,7 +275,7 @@ namespace Shared.VM
 			{
 				viewModel.RequestMovieViewer = RequestMovieViewer;
 				viewModel.RequestPhotoViewer = RequestPhotoViewer;
-				viewModel.RequestCommentPage = RequestCommentPage;
+                viewModel.RequestCommentPage = OnRequestCommentPage;
 			}
 
 			IsRefreshing = false;
@@ -275,6 +284,16 @@ namespace Shared.VM
 				RequestCompleted ();
 			}
 		}
+
+        private void OnRequestCommentPage(CommentViewModel cVm)
+        {
+            
+            if (RequestCommentPage != null)
+            {
+                _viewedComment = cVm;
+                RequestCommentPage(cVm);
+            }
+        }
 
 		public string GetName ()
 		{
