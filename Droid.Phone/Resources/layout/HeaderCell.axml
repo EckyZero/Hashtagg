@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="match_parent"
+    p1:layout_height="wrap_content"
+    p1:id="@+id/HeaderCellMainLayout">
+    <RelativeLayout
+        p1:layout_marginLeft="15dp"
+        p1:layout_width="wrap_content"
+        p1:layout_height="23dp"
+        p1:id="@+id/HeaderRingLayout">
+        <View
+            p1:layout_width="2dp"
+            p1:layout_height="7dp"
+            p1:layout_centerHorizontal="true"
+            p1:layout_above="@+id/HeaderRing"
+            p1:background="@color/silver"
+            p1:id="@+id/HeaderTopBar" />
+        <View
+            p1:minHeight="25px"
+            p1:minWidth="25px"
+            p1:layout_width="11dp"
+            p1:layout_height="11dp"
+            p1:layout_centerVertical="true"
+            p1:background="@drawable/HeaderRing"
+            p1:id="@+id/HeaderRing" />
+        <View
+            p1:layout_width="2dp"
+            p1:layout_height="7dp"
+            p1:layout_centerHorizontal="true"
+            p1:layout_below="@+id/HeaderRing"
+            p1:background="@color/silver"
+            p1:id="@+id/HeaderBottomBar" />
+    </RelativeLayout>
+    <TextView
+        p1:layout_marginLeft="15dp"
+        p1:layout_width="wrap_content"
+        p1:layout_height="23dp"
+        p1:layout_toRightOf="@id/HeaderRingLayout"
+        p1:textSize="13sp"
+        p1:gravity="center_vertical"
+        p1:textColor="@android:color/black"
+        p1:text="8 hours ago"
+        p1:id="@+id/HeaderText" />
+</RelativeLayout>

@@ -17,6 +17,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,7 +30,7 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
-    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <Debugger>Xamarin</Debugger>
     <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
@@ -52,7 +53,6 @@
     <MonoDroidExtraArgs>
     </MonoDroidExtraArgs>
     <PlatformTarget>x86</PlatformTarget>
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidLinkSkip>
     </AndroidLinkSkip>
     <AndroidStoreUncompressedFileExtensions>
@@ -135,6 +135,7 @@
     <Compile Include="Activities\HamburgerMenuActivity.cs" />
     <Compile Include="Activities\PostActivity.cs" />
     <Compile Include="Activities\CommentActivity.cs" />
+    <Compile Include="AdapterHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -219,6 +220,9 @@
     <AndroidResource Include="Resources\drawable-mdpi\hashtaggLogo.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\hashtaggLogo.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\hashtaggLogo.png" />
+    <AndroidResource Include="Resources\layout\HeaderCell.axml" />
+    <AndroidResource Include="Resources\drawable\HeaderRing.xml" />
+    <AndroidResource Include="Resources\drawable\RoundedEditText.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

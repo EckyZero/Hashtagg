@@ -48,7 +48,7 @@ namespace UITests.Phone
 			    else
 			    {
                     pathToApp = Path.Combine(directory, "Droid.Phone", "bin", "Debug", "com.parivedasolutions.projectez.apk");
-                    App = ConfigureApp.Android.ApkFile(pathToApp).EnableLocalScreenshots().ApiKey(Key).StartApp();
+                    App = ConfigureApp.Android.ApkFile(pathToApp).EnableLocalScreenshots().ApiKey(Key).DeviceSerial("f13ada45").StartApp(Xamarin.UITest.Configuration.AppDataMode.Clear);
 			        Queries = new AndroidQueries();
 			    }
 			}

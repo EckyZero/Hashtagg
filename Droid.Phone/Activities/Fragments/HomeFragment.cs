@@ -79,13 +79,20 @@ namespace Droid.Phone
             var shift = urls.Count > 1 ? -12 : 0;
             foreach (var url in urls)
             {
-                _headerImages[i].SetX(_headerImages[i].GetX() + TypedValue.ApplyDimension(ComplexUnitType.Dip, shift, Application.Context.ApplicationContext.Resources.DisplayMetrics));
+                _headerImages[i].SetX((_listLayout.Width/2)-(_headerImages[i].Width/2) + TypedValue.ApplyDimension(ComplexUnitType.Dip, shift, Application.Context.ApplicationContext.Resources.DisplayMetrics));
+                _headerImages[i].Visibility = ViewStates.Visible;
                 UrlImageViewHelper.SetUrlDrawable(_headerImages[i], url, Resource.Drawable.Profile_Image_Default, new CircularImageShadowCallback() );
                 shift += 24;
                 i++;
             }
             for (i = i; i < _headerImages.Count; i++)
                 _headerImages[i].Visibility = ViewStates.Gone;
+        }
+
+        public override async void OnResume()
+        {
+            base.OnResume();
+            await _viewModel.DidAppear();
         }
 
 	    private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
@@ -161,162 +168,13 @@ namespace Droid.Phone
                 switch (vm.ListItemType)
                 {
                     case ListItemType.Default:
-                        return ProcessSocialCard(position, vm as BaseContentCardViewModel, convertView);
+                        return AdapterHelpers.ProcessSocialCard(position, vm as BaseContentCardViewModel, convertView, _inflater);
                 }
 				var cell = _inflater.Inflate(Resource.Layout.DefaultCell, _listView, false);
 				return cell;
 			}
 
-            private class BaseCardViewHolder : Java.Lang.Object
-            {
-                public ImageView MainImage { get; set; }
-                public CircularImageView ProfileImage { get; set; }
-                public TextView UserName { get; set; }
-                public TextView BodyText { get; set; }
-                public CircularImageView SocialImage { get; set; }
-                public Button LikeButton { get; set; }
-                public Button CommentButton { get; set; }
-                public Button ShareButton { get; set; }
-                public BaseContentCardViewModel LinkedVM { get; set; }
-                public PropertyChangedEventHandler PropertyChangedEventHandler {get;set;}
-                public EventHandler LikeEventHandler { get ;set;}
-                public EventHandler CommentEventHandler { get ;set;}
-                public EventHandler ShareEventHandler { get ;set;}
-                public BaseCardViewHolder(){}
-            }
 
-            private View ProcessSocialCard(int position, BaseContentCardViewModel cardViewModel, View convertView)
-            {
-                BaseCardViewHolder viewHolder = null;
-                if (convertView == null || convertView.Id != Resource.Id.DefaultCellMainLayout)
-                {
-                    convertView = _inflater.Inflate(Resource.Layout.DefaultCell, null, false);
-
-                    viewHolder = new BaseCardViewHolder()
-                    {
-                        MainImage = convertView.FindViewById<ImageView>(Resource.Id.DefaultCellMainImage),
-                        ProfileImage = convertView.FindViewById<CircularImageView>(Resource.Id.DefaultCellProfileImage),
-                        UserName = convertView.FindViewById<TextView>(Resource.Id.DefaultCellUserName),
-                        BodyText = convertView.FindViewById<TextView>(Resource.Id.DefaultCellMainText),
-                        SocialImage = convertView.FindViewById<CircularImageView>(Resource.Id.DefaultCellSocialImage),
-                        LikeButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellLikeButton),
-                        CommentButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellCommentButton),
-                        ShareButton = convertView.FindViewById<Button>(Resource.Id.DefaultCellShareButton),
-                        LinkedVM = cardViewModel
-                    };
-                    
-                    convertView.Tag = viewHolder;
-                }
-                else
-                {
-                    viewHolder = convertView.Tag as BaseCardViewHolder;
-                    if (viewHolder == null)
-                        return convertView;
-                    if (viewHolder.LinkedVM != cardViewModel)
-                    {
-                        viewHolder.LinkedVM.PropertyChanged -= viewHolder.PropertyChangedEventHandler;
-                        viewHolder.LikeButton.Click -= viewHolder.LikeEventHandler;
-                        viewHolder.CommentButton.Click -= viewHolder.CommentEventHandler;
-                        viewHolder.ShareButton.Click -= viewHolder.ShareEventHandler;
-                    }
-                    else
-                    {
-                        return convertView;
-                    }
-                    viewHolder.LinkedVM = cardViewModel;
-                    viewHolder.PropertyChangedEventHandler = null;
-                    viewHolder.LikeEventHandler = null;
-                    viewHolder.CommentEventHandler = null;
-                    viewHolder.ShareEventHandler = null;
-                }
-
-                if (viewHolder.LikeEventHandler == null)
-                {
-                    viewHolder.LikeEventHandler = (object sender, EventArgs e) =>
-                    {
-                        viewHolder.LikeButton.Selected =  !viewHolder.LikeButton.Selected ;  
-                        cardViewModel.LikeCommand.Execute(null);
-                    };
-                    viewHolder.LikeButton.Click += viewHolder.LikeEventHandler;
-                }
-                if (viewHolder.CommentEventHandler == null)
-                {
-                    viewHolder.CommentEventHandler = (object sender, EventArgs e) => cardViewModel.CommentCommand.Execute(null);
-                    viewHolder.CommentButton.Click += viewHolder.CommentEventHandler;
-                }
-                if (viewHolder.ShareEventHandler == null)
-                {
-                    viewHolder.ShareEventHandler = (object sender, EventArgs e) => cardViewModel.ShareCommand.Execute(null);
-                    viewHolder.ShareButton.Click += viewHolder.ShareEventHandler;
-                }
-                if (viewHolder.PropertyChangedEventHandler == null)
-                {
-                    viewHolder.PropertyChangedEventHandler = (object sender, PropertyChangedEventArgs e) =>
-                    {
-                            switch(e.PropertyName)
-                            {
-                                case "IsLikedByUser":
-                                case "LikeButtonText":
-                                case "LikeButtonTextColor":
-                                case "ShowLikeButton":
-                                    viewHolder.LikeButton.Text = cardViewModel.LikeButtonText;
-                                    viewHolder.LikeButton.SetTextColor(cardViewModel.LikeButtonTextColor.ToDroidColor());
-                                    viewHolder.LikeButton.Visibility = cardViewModel.ShowLikeButton ? ViewStates.Visible : ViewStates.Invisible;
-                                    break;
-
-                                case "IsCommentedByUser":
-                                case "CommentButtonText":
-                                case "CommentButtonTextColor":
-                                case "ShowCommentButton":
-                                    viewHolder.CommentButton.Text = cardViewModel.CommentButtonText;
-                                    viewHolder.CommentButton.SetTextColor(cardViewModel.CommentButtonTextColor.ToDroidColor());
-                                    viewHolder.CommentButton.Visibility = cardViewModel.ShowCommentButton ? ViewStates.Visible : ViewStates.Invisible;
-                                    break;
-
-                                case "IsSharedByUser":
-                                case "ShareButtonText":
-                                case "ShareButtonTextColor":
-                                case "ShowShareButton":
-                                    viewHolder.ShareButton.Text = cardViewModel.ShareButtonText;
-                                    viewHolder.ShareButton.SetTextColor(cardViewModel.ShareButtonTextColor.ToDroidColor());
-                                    viewHolder.ShareButton.Visibility = cardViewModel.ShowShareButton ? ViewStates.Visible : ViewStates.Invisible;
-                                    break;
-                            }      
-
-                    };
-                    cardViewModel.PropertyChanged += viewHolder.PropertyChangedEventHandler;
-                }
-                viewHolder.UserName.Text = cardViewModel.UserName;
-                viewHolder.BodyText.TextFormatted = Html.FromHtml(cardViewModel.Text);
-                viewHolder.SocialImage.SetImageResource(DrawableHelpers.GetDrawableResourceIdViaReflection(cardViewModel.SocialMediaImage));
-
-                viewHolder.LikeButton.Text = cardViewModel.LikeButtonText;
-                viewHolder.LikeButton.SetTextColor(cardViewModel.LikeButtonTextColor.ToDroidColor());
-                viewHolder.LikeButton.Visibility = cardViewModel.ShowLikeButton ? ViewStates.Visible : ViewStates.Invisible;
-
-                viewHolder.CommentButton.Text = cardViewModel.CommentButtonText;
-                viewHolder.CommentButton.SetTextColor(cardViewModel.CommentButtonTextColor.ToDroidColor());
-                viewHolder.CommentButton.Visibility = cardViewModel.ShowCommentButton ? ViewStates.Visible : ViewStates.Invisible;
-
-                viewHolder.ShareButton.Text = cardViewModel.ShareButtonText;
-                viewHolder.ShareButton.SetTextColor(cardViewModel.ShareButtonTextColor.ToDroidColor());
-                viewHolder.ShareButton.Visibility = cardViewModel.ShowShareButton ? ViewStates.Visible : ViewStates.Invisible;
-
-                if (!string.IsNullOrWhiteSpace(cardViewModel.UserImageUrl))
-                    UrlImageViewHelper.SetUrlDrawable(viewHolder.ProfileImage, cardViewModel.UserImageUrl, SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(cardViewModel.UserImagePlaceholder));
-                else
-                    viewHolder.ProfileImage.SetImageResource(SharedDrawableHelpers.GetSharedDrawableResourceIdViaReflection(cardViewModel.UserImagePlaceholder));
-
-                if (cardViewModel.ShowImage)
-                {
-                    viewHolder.MainImage.Visibility = ViewStates.Visible;
-                    UrlImageViewHelper.SetUrlDrawable(viewHolder.MainImage, cardViewModel.ImageUrl);
-                }
-                else
-                    viewHolder.MainImage.Visibility = ViewStates.Gone;
-
-                return convertView;
-            }
 		}
 	}
 }

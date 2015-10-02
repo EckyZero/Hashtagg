@@ -164,11 +164,11 @@ namespace Droid.Phone
             _drawerTitle.Visibility = _menuViewModel.ShowTitleLogo ? ViewStates.Visible : ViewStates.Invisible;
             _drawerTopText.Text = _menuViewModel.Title;
 
-            _drawerList.Adapter = new MenuAdapter(LayoutInflater)
+            _drawerList.Adapter = new ObservableAdapter<IListItem>
             {
-                DataSource=_menuViewModel.ItemViewModels,
+                DataSource= _menuViewModel.ItemViewModels,
+                GetTemplateDelegate = AdapterHelpers.SetupMenuCell
             };
-                //_drawerList.ItemClick += DrawerListOnItemClick;
 
             _drawerToggle = new ActionBarDrawerToggle(this,_drawerLayout,_toolbar,Resource.String.abc_action_bar_home_description,Resource.String.abc_toolbar_collapse_description);
             _drawerLayout.SetDrawerListener(_drawerToggle);
@@ -207,93 +207,11 @@ namespace Droid.Phone
     {
         private LayoutInflater _layoutInflater;
 
-        private ObservableRangeCollection<IListItem> _viewModels;
-
         public MenuAdapter(LayoutInflater inflater)
         {
             _layoutInflater = inflater;
         }
 
-        public override View GetView(int position, View convertView, ViewGroup parent)
-        {
-            var vm = DataSource[position] as BaseMenuItemViewModel;
-            MenuViewHolder viewHolder = null;
-
-            if (convertView != null)
-            {
-                var oldViewHolder = convertView.Tag as MenuViewHolder;
-                if (oldViewHolder != null && oldViewHolder.HolderType != vm.GetType())
-                {
-                    vm.PropertyChanged -= oldViewHolder.PropertyChanger;
-                    convertView.Click -= oldViewHolder.OnSelect;
-                    convertView = null;
-                }
-            }
-
-            if (convertView == null)
-            {
-                convertView = _layoutInflater.Inflate(Resource.Layout.DrawerCell, parent, false);
-                convertView.Tag = new MenuViewHolder
-                {
-                    Image = convertView.FindViewById<ImageView>(Resource.Id.DrawerCellImage),
-                    Title = convertView.FindViewById<TextView>(Resource.Id.DrawerCellText),
-                    Subtitle = convertView.FindViewById<TextView>(Resource.Id.DrawerCellFooterText),
-                    HolderType = vm.GetType()
-                };
-            }
-
-            viewHolder = convertView.Tag as MenuViewHolder;
-
-            var image = DrawableHelpers.GetDrawableResourceIdViaReflection(vm.ImageName);
-            viewHolder.Image.SetImageResource(image);
-            viewHolder.Title.Text = vm.Title;
-            viewHolder.Subtitle.Text = vm.Subtitle;
-
-            vm.PropertyChanged -= viewHolder.PropertyChanger;
-
-            viewHolder.PropertyChanger = (object sender, System.ComponentModel.PropertyChangedEventArgs e) =>
-            {
-                var senderVm = sender as BaseMenuItemViewModel;
-                switch (e.PropertyName)
-                {
-                    case "Title":
-                        viewHolder.Title.Text = senderVm.Title;
-                        break;
-                    case "Subtitle":
-                        viewHolder.Subtitle.Text = senderVm.Subtitle;
-                        break;
-                    case "ImageName":
-                        viewHolder.Image.SetImageResource(
-                            DrawableHelpers.GetDrawableResourceIdViaReflection(senderVm.ImageName));
-                        break;
-                }
-            };
-
-            vm.PropertyChanged += viewHolder.PropertyChanger;
-             
-            convertView.Click -= viewHolder.OnSelect;
-
-            viewHolder.OnSelect = (sender, eventargs) => vm.Selected();
-
-            convertView.Tag = viewHolder;
-
-            if (vm.UserInteractionEnabled)
-            {
-                convertView.Click += viewHolder.OnSelect;
-            }
-
-            return convertView;
-        }
-
-        private class MenuViewHolder: Java.Lang.Object
-        {
-            public ImageView Image {get;set;}
-            public TextView Title {get;set;}
-            public TextView Subtitle { get; set; }
-            public System.ComponentModel.PropertyChangedEventHandler PropertyChanger { get; set; }
-            public EventHandler OnSelect {get;set;}
-            public Type HolderType { get; set; }
-        }
-
+       
     }
 }

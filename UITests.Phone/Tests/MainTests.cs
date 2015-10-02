@@ -15,7 +15,7 @@ namespace UITests.Phone
         public void BeforeEach()
         {
             // Must be called to initialize the Utils, App, and Queries Properties
-            base.BeforeEach(repl: false, platform: AppUtils.iOS);
+            base.BeforeEach(repl: true, platform: AppUtils.Android);
         }
 
         [Test]
@@ -68,6 +68,7 @@ namespace UITests.Phone
             App.EnterText("Hashtagg123$");
             App.Screenshot("Entering Twitter Password");
 
+            App.DismissKeyboard();
             App.Tap(c => c.WebView().Css("[id=\\\"allow\\\"]")); 
             App.Screenshot("Authorizing Twitter");
         }
