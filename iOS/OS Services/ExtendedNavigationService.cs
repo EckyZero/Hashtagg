@@ -128,13 +128,13 @@ namespace iOS
 			}
 		}
 
-        void GoBack(AnimationFlag animationFlag)
-        {
-            GoBack();
-        }
+//        void GoBack(AnimationFlag animationFlag)
+//        {
+//            GoBack();
+//        }
 
 
-		public void GoBack()
+        public void GoBack(AnimationFlag animationFlag)
 		{
 			var nav = CurrentNavigationController ();
 
