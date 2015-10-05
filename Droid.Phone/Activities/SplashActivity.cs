@@ -30,7 +30,7 @@ using Shared.Api;
 
 namespace Droid.Phone.Activities
 {
-    [Activity(Label = "HashTagg", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "Hashtagg", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
     public class SplashActivity : BaseActivity
     {
         private RelativeLayout _mainLayout;
